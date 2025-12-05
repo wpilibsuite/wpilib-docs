@@ -27,7 +27,7 @@ Once you have installed Python, you can use pip to install RobotPy on your devel
 
       .. note:: If you previously installed a pre-2024 or 2024 beta version of RobotPy, you should first uninstall RobotPy via ``py -m pip uninstall robotpy`` before upgrading.
 
-      .. warning:: On Windows, the [Visual Studio 2022 redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#latest-microsoft-visual-c-redistributable-version) package is required to be installed.
+      .. warning:: On Windows, the [Visual Studio 2022 redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#latest-supported-redistributable-version) package is required to be installed.
 
       Run the following command from cmd or Powershell to install the core RobotPy packages:
 
@@ -118,7 +118,7 @@ Once you have installed Python, you can use pip to install RobotPy on your devel
 
          Our ARM wheels are built for Debian 12 (Bookworm) with GCC 12.
 
-      If you need to build with a specific compiler version, you can specify them using the :envvar:`CC` and :envvar:`CXX` environment variables:
+      If you need to build with a specific compiler version, you can specify them using the ``CC`` and ``CXX`` environment variables:
 
       ```sh
       export CC=gcc-12 CXX=g++-12
@@ -155,7 +155,9 @@ If you already have a RobotPy robot project, you can use that to download the pi
       python3 -m robotpy init
       ```
 
-This will create a ``robot.py`` and ``pyproject.toml`` file. The ``pyproject.toml`` file should be customized and details the requirements needed to run your robot code, among other things.
+This will create a ``robot.py`` and ``pyproject.toml`` file. The ``robot.py`` file contains a skeleton structure to help you get started writing your robot code. The ``pyproject.toml`` file should be customized and details the requirements needed to run your robot code, among other things.
+
+.. important:: The ``robotpy deploy`` command requires that you have written working robot code. The generated ``robot.py`` is just a starting point - you cannot deploy to the roboRIO until you have implemented your robot-specific code. See the :doc:`RobotPy Programming Guide </docs/software/python/index>` for information on writing robot code.
 
 .. seealso:: The default ``pyproject.toml`` created for you only contains the version of RobotPy installed on your computer. If you want to enable vendor packages or install other python packages from PyPI, see our :doc:`pyproject.toml documentation </docs/software/python/pyproject_toml>`
 
