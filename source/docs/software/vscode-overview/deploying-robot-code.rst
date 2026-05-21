@@ -12,7 +12,7 @@ To build a robot project, do one of:
 
 ## Deploy
 
-To deploy a robot program, select :guilabel:`Deploy Robot Code` from any of the three locations from the previous instructions. That will build (if necessary) and deploy the robot program to Systemcore.
+To deploy a robot program, select :guilabel:`Deploy Robot Code` from any of the three locations from the previous instructions (or press :kbd:`shift+f5`). That will build (if necessary) and deploy the robot program to Systemcore.
 
 .. image:: images/deploying-robot-code/building-code-options.png
 
