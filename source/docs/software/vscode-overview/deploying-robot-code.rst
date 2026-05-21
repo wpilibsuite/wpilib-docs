@@ -28,7 +28,7 @@ If successful, we will see a "Build Successful" message (1) and the RioLog will 
 
 Choosing to deploy robot code will first build the code if it has not been built since the last change. If the code has already been built, it will skip the build step and deploy the existing build artifacts to Systemcore. You can force a rebuild by selecting :guilabel:`Build Robot Code` before deploying. There are some differences when running the :guilabel:`Build Robot Code` command vs the :guilabel:`Deploy Robot Code` command:
 
-* :guilabel:`Build Robot Code` will download dependencies from the internet, while :guilabel:`Deploy Robot Code` will not. If you have not built the code before (for example, if you are working with a new project or you have recently cloned the repository, or you have added or changed a vendordep), you must run :guilabel:`Build Robot Code` at least once to download dependencies before you can deploy.
+* :guilabel:`Build Robot Code` will download dependencies from the internet, while :guilabel:`Deploy Robot Code` will not. If you have not built the code before (for example, if you are working with a new project or you have recently cloned the repository, or you have added or changed a vendordep), you must run :guilabel:`Build Robot Code` while connected to the internet to download dependencies before you can deploy.
 * :guilabel:`Build Robot Code` will run unit tests, if your project has unit tests, while :guilabel:`Deploy Robot Code` will not.
 
 ## Clean
