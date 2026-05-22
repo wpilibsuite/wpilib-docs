@@ -4,7 +4,7 @@ This document contains information on how to build the HTML, PDF, and EPUB versi
 
 ## Prerequisites
 
-Ensure that [Git](https://git-scm.com/) is installed and that the wpilib-docs repository is cloned by using ``git clone https://github.com/wpilibsuite/frc-docs.git``.
+Ensure that [Git](https://git-scm.com/) is installed and that the wpilib-docs repository is cloned by using ``git clone https://github.com/wpilibsuite/wpilib-docs.git``.
 
 You will need to install [uv](https://docs.astral.sh/uv/), a Python package and project manager. Follow the [installation instructions](https://docs.astral.sh/uv/getting-started/installation/) for your operating system.
 
@@ -34,7 +34,7 @@ Ensure that Python is in your Path by selecting the **Add Python to PATH** toggl
 .. image:: images/python-path.png
     :alt: Showing where to click the box to add Python to PATH.
 
-Install the missing MikTex packages by navigating to the frc-docs directory, then running the following command from Powershell: ``miktex --verbose packages require --package-id-file miktex-packages.txt``
+Install the missing MikTex packages by navigating to the wpilib-docs directory, then running the following command from Powershell: ``miktex --verbose packages require --package-id-file miktex-packages.txt``
 
 ### Linux (Ubuntu)
 
@@ -46,20 +46,20 @@ $ sudo apt install -y texlive-latex-recommended texlive-fonts-recommended texliv
 
 ## Building
 
-Open up a Powershell Window or terminal and navigate to the frc-docs directory that was cloned.
+Open up a Powershell Window or terminal and navigate to the wpilib-docs directory that was cloned.
 
 ```console
 PS > cd "%USERPROFILE%\Documents"
-PS C:\Users\Example\Documents> git clone https://github.com/wpilibsuite/frc-docs.git
-Cloning into 'frc-docs'...
+PS C:\Users\Example\Documents> git clone https://github.com/wpilibsuite/wpilib-docs.git
+Cloning into 'wpilib-docs'...
 remote: Enumerating objects: 217, done.
 remote: Counting objects: 100% (217/217), done.
 remote: Compressing objects: 100% (196/196), done.
 remote: Total 2587 (delta 50), reused 68 (delta 21), pack-reused 2370
 Receiving objects: 100% (2587/2587), 42.68MiB | 20.32 MiB/s, done.
 Receiving deltas: 100% (1138/1138), done/
-PS C:\Users\Example\Documents> cd frc-docs
-PS C:\Users\Example\Documents\frc-docs>
+PS C:\Users\Example\Documents> cd wpilib-docs
+PS C:\Users\Example\Documents\wpilib-docs>
 ```
 
 ### Lint Check

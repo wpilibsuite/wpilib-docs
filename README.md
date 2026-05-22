@@ -1,6 +1,6 @@
 ![Documentation Status](https://readthedocs.org/projects/frc-docs/badge/?version=latest)
-[![CI](https://github.com/wpilibsuite/frc-docs/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/wpilibsuite/frc-docs/actions/workflows/CI.yml?query=branch:main)
-[![Link Check](https://github.com/wpilibsuite/frc-docs/actions/workflows/link-check.yml/badge.svg)](https://github.com/wpilibsuite/frc-docs/actions/workflows/link-check.yml)
+[![CI](https://github.com/wpilibsuite/wpilib-docs/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/wpilibsuite/wpilib-docs/actions/workflows/CI.yml?query=branch:main)
+[![Link Check](https://github.com/wpilibsuite/wpilib-docs/actions/workflows/link-check.yml/badge.svg)](https://github.com/wpilibsuite/wpilib-docs/actions/workflows/link-check.yml)
 
 # wpilib-docs
 Welcome to wpilib-docs! This repository contains the various source articles for the wpilib-docs website. wpilib-docs is licensed under Creative Commons, with assets such as the *FIRST* logo under trademark and copyright of [FIRST](https://www.firstinspires.org/).

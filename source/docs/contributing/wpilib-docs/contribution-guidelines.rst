@@ -4,7 +4,7 @@
 
 Welcome to the contribution guidelines for the wpilib-docs project. If you are unfamiliar to writing in the reStructuredText format, please read up on it [here](https://sphinx-tutorial.readthedocs.io/cheatsheet/).
 
-.. important:: *FIRST*\ |reg| retains all rights to documentation and images provided. Credit for articles/updates will be in the [GitHub commit history.](https://github.com/wpilibsuite/frc-docs/graphs/commit-activity)
+.. important:: *FIRST*\ |reg| retains all rights to documentation and images provided. Credit for articles/updates will be in the [GitHub commit history.](https://github.com/wpilibsuite/wpilib-docs/graphs/commit-activity)
 
 ## Mission Statement
 
@@ -41,11 +41,11 @@ Off-Season:
 
 ## Creating a PR
 
-PRs should be made to the [wpilib-docs](https://github.com/wpilibsuite/frc-docs) repo on GitHub. They should point to the ``main`` branch and *not* ``stable``.
+PRs should be made to the [wpilib-docs](https://github.com/wpilibsuite/wpilib-docs) repo on GitHub. They should point to the ``main`` branch and *not* ``stable``.
 
 ## Creating New Content
 
-Thanks for contributing to the [wpilib-docs](https://github.com/wpilibsuite/frc-docs) project! There are a couple things you should know before getting started!
+Thanks for contributing to the [wpilib-docs](https://github.com/wpilibsuite/wpilib-docs) project! There are a couple things you should know before getting started!
 
 ### Where to place articles?
 
@@ -55,7 +55,7 @@ The location for new articles can be a pretty opinionated subject. Standalone ar
 
 ### Where to place sections?
 
-Sections are quite tricky, as they contain a large amount of content. We advise the author to open an [issue](https://github.com/wpilibsuite/frc-docs/issues) to gather discussion before opening up a PR.
+Sections are quite tricky, as they contain a large amount of content. We advise the author to open an [issue](https://github.com/wpilibsuite/wpilib-docs/issues) to gather discussion before opening up a PR.
 
 ### Linking Other Articles
 

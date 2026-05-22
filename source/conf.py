@@ -304,7 +304,7 @@ def setup(app):
 html_context = {
     "display_github": True,  # Integrate GitHub
     "github_user": "wpilibsuite",  # Username
-    "github_repo": "frc-docs",  # Repo name
+    "github_repo": "wpilib-docs",  # Repo name
     "github_version": "2027",  # Version, set to 2027 so edit on github makes PRs to 2027 instead of main/stable
     "conf_py_path": "/source/",  # Path in the checkout to the docs root
 }
