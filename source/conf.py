@@ -151,7 +151,7 @@ linkcheck_anchors = True
 linkcheck_ignore = [
     #    r".*kauailabs.com.*",
     r".*wpilibpi.local.*",
-    #    r".*andymark.com.*",
+    r".*andymark.com.*",
     #    r".*ti.com/lit/an/spma033a/spma033a.pdf.*",
     r".*java.com.*",
     r".*playingwithfusion.com/contactus.php.*",
@@ -174,12 +174,17 @@ linkcheck_ignore = [
     r".*strawberryperl.com.*",
     r".*docutils.sourceforge.io.*",
     r".*cppreference.com.*",
+    r".*thriftybot.com.*",
+    r".*wcproducts.com.*",
+    r".*store.ctr-electronics.com.*",
+    r".*calib.io.*",
+    r".*limelightvision.io.*",
+    r".*https://wiki.debian.org.*",
 ]
 
 linkcheck_anchors_ignore_for_url = [
     r".*github.com.*",
     r".*ni.com/en/support/downloads/drivers/download.frc-game-tools.html.*",
-    r".*ni.com/en/support/downloads/software-products/download.package-manager.html.*",
 ]
 
 # Sets linkcheck timeout in seconds
@@ -189,7 +194,7 @@ linkcheck_workers = 1
 linkcheck_report_timeouts_as_broken = False
 
 # Specify a standard user agent, as Sphinx default is blocked on some sites
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
 
 # Autosection labels prefix document path and filename
 autosectionlabel_prefix_document = True
