@@ -11,7 +11,7 @@ jobs:
       # ---- Find Trigger States ----
       # Run Inspector autofix on everything
       - name: Trigger-Check
-        uses: shanegenschaw/pull-request-comment-trigger@v3.0.0
+        uses: sciencewhiz/pull-request-comment-trigger@Node24
         id: trigger-check-all
         with:
           trigger: '\inspector check all'
@@ -22,7 +22,7 @@ jobs:
 
       # Run Inspector autofix on everything
       - name: Trigger-All
-        uses: shanegenschaw/pull-request-comment-trigger@v3.0.0
+        uses: sciencewhiz/pull-request-comment-trigger@Node24
         id: trigger-all
         with:
           trigger: '\inspector fix all'
