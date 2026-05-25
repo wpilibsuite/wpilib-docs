@@ -118,30 +118,30 @@ DifferentialDrive is a method provided for the control of "skid-steer" or "West 
     .. tab-item:: Java
         :sync: Java
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.3.2/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/tankdrive/Robot.java
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/tankdrivegamepad/Robot.java
             :language: java
-            :lines: 17-18,22-23,24-26,30-35,38
+            :lines: 17-21,25,32-33,43
 
     .. tab-item:: C++ (Header)
         :sync: C++ (Header)
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.3.2/wpilibcExamples/src/main/cpp/examples/TankDrive/cpp/Robot.cpp
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/TankDriveGamepad/cpp/Robot.cpp
             :language: c++
             :lines: 15-19
 
     .. tab-item:: C++ (Source)
          :sync: C++ (Source)
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.3.2/wpilibcExamples/src/main/cpp/examples/TankDrive/cpp/Robot.cpp
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/TankDriveGamepad/cpp/Robot.cpp
             :language: c++
-            :lines: 24, 28-32
+            :lines: 23, 27-31
 
     .. tab-item:: Python
         :sync: Python
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/examples/d89b0587a1e1111239728140466c7dc4324d4005/TankDrive/robot.py
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/refs/tags/2027.0.0a6/examples/robot/TankDrive/robot.py
            :language: python
-           :lines: 18-23,27-30
+           :lines: 17-23,27-30
 
 
 ### Multi-Motor DifferentialDrive
@@ -155,48 +155,39 @@ Many FRC\ |reg| drivetrains have more than 1 motor on each side. Classes derived
 
         Class variables (e.g. in Robot.java or Subsystem):
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.3.2/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/ramsetecommand/subsystems/DriveSubsystem.java
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotinlined/subsystems/DriveSubsystem.java
             :language: java
-            :lines: 19-25
+            :lines: 16-26
 
         In Robot or Subsystem constructor:
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.3.2/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/ramsetecommand/subsystems/DriveSubsystem.java
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotinlined/subsystems/DriveSubsystem.java
             :language: java
-            :lines: 56-62
+            :lines: 47-53
 
     .. tab-item:: C++ (Header)
         :sync: C++ (Header)
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.3.2/wpilibcExamples/src/main/cpp/examples/RamseteCommand/include/subsystems/DriveSubsystem.h
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/HatchbotInlined/include/subsystems/DriveSubsystem.hpp
             :language: c++
-            :lines: 114, 118-126
+            :lines: 54, 58-67
 
     .. tab-item:: C++ (Source)
         :sync: C++ (Source)
 
         In Robot or Subsystem constructor:
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.3.2/wpilibcExamples/src/main/cpp/examples/RamseteCommand/cpp/subsystems/DriveSubsystem.cpp
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/HatchbotInlined/cpp/subsystems/DriveSubsystem.cpp
             :language: c++
-            :lines: 23-29
+            :lines: 21-27
 
     .. tab-item:: Python
         :sync: Python
 
-        ```python
-        def robotInit(self):
-            leftLeader = wpilib.Spark(1)
-            leftFollower = wpilib.Spark(2)
-            leftLeader.addFollower(leftFollower)
-            leftLeader.setInverted(
-                True
-            )  # if you want to invert the entire side you can do so here
-            rightLeader = wpilib.Spark(3)
-            rightFollower = wpilib.Spark(4)
-            rightLeader.addFollower(rightFollower)
-            self.drive = wpilib.drive.DifferentialDrive(leftLeader, rightLeader)
-        ```
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/refs/tags/2027.0.0a6/examples/robot/HatchbotInlined/subsystems/drivesubsystem.py
+            :language: python
+            :lines: 15-29
+
 
 ### Drive Modes
 .. note::
@@ -254,17 +245,17 @@ MecanumDrive is a method provided for the control of holonomic drivetrains with 
 
 .. tab-set-code::
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.3.2/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/mecanumdrive/Robot.java
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/mecanumdrive/Robot.java
         :language: java
-        :lines: 15-18, 24-30, 37-42, 45
+        :lines: 19-22, 32-48, 48
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.3.2/wpilibcExamples/src/main/cpp/examples/MecanumDrive/cpp/Robot.cpp
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/MecanumDrive/cpp/Robot.cpp
         :language: c++
-        :lines: 36-40, 43-53, 16, 22-26
+        :lines: 42-45, 50-58, 18, 24-28
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/examples/d89b0587a1e1111239728140466c7dc4324d4005/MecanumDrive/robot.py
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/refs/tags/2027.0.0a6/examples/robot/MecanumDrive/robot.py
       :language: python
-      :lines: 18-22, 26-42
+      :lines: 18-21, 25-27, 32-42
 
 ### Mecanum Drive Modes
 .. note::
