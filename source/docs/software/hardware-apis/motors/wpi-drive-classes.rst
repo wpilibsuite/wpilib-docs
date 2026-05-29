@@ -28,29 +28,28 @@ When viewed from the top, the rollers on a mecanum drivetrain should form an 'X'
 
 It is the responsibility of the user to manage proper inversions for their drivetrain. Users can invert motors by calling ``setInverted()``/``SetInverted()`` on their motor objects. Typically for differential drive trains, one side must be inverted to avoid spinning in circles, since the forward direction of each side of the tank drive is opposite of each other.
 
-.. tab-set-code::
+.. tab-set::
 
-   ```java
-   PWMSparkMax m_motorRight = new PWMSparkMax(0);
+    .. tab-item:: Java
+        :sync: Java
 
-   public Robot() {
-      m_motorRight.setInverted(true);
-   }
-   ```
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/tankdrivegamepad/Robot.java
+            :language: java
+            :lines: 18,25,32-33
 
-   ```c++
-   wpi::PWMSparkMax m_motorLeft{0};
-   public:
-    Robot::Robot() {
-      m_motorRight.SetInverted(true);
-    }
-   ```
+    .. tab-item:: C++
+         :sync: C++
 
-   ```python
-   def robotInit(self):
-       self.motorRight = wpilib.PWMSparkMax(0)
-       self.motorRight.setInverted(True)
-   ```
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/TankDriveGamepad/cpp/Robot.cpp
+            :language: c++
+            :lines: 15, 22-23, 30-31
+
+    .. tab-item:: Python
+        :sync: Python
+
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/refs/tags/2027.0.0a6/examples/robot/TankDrive/robot.py
+           :language: python
+           :lines: 17-21,30
 
 ### Squaring Inputs
 
