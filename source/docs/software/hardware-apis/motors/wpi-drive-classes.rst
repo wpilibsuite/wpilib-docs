@@ -270,3 +270,23 @@ The use of field-oriented driving makes often makes the robot much easier to dri
 Just remember to get the gyro angle each time ``driveCartesian()`` is called.
 
 .. note:: Many teams also like to ramp the joysticks inputs over time to promote a smooth acceleration and reduce jerk.  This can be accomplished with a :ref:`Slew Rate Limiter <docs/software/advanced-controls/filters/slew-rate-limiter:Slew Rate Limiter>`.
+
+## Swerve Drive
+
+Swerve drive is a method of driving using independently steerable and drivable wheels. This allows the robot to drive in any direction without changing the orientation of the robot, much like mecanum drive. However, since the wheels are steerable, they can be driven with their force vectors pointing straight forward, rather than at a 45 degree angle as in mecanum drive. This results in more efficient movement and better traction than mecanum drive.
+
+WPILib does not have a default class for controlling swerve drive. The WPILib swerve drive kinematics classes can be used to help with the math for controlling a swerve drive. See the :doc:`/docs/software/kinematics-and-odometry/swerve-drive-kinematics` section for more information on the kinematics of swerve drive and how to use the WPILib swerve drive kinematics classes. See the :doc:`/docs/software/kinematics-and-odometry/swerve-drive-odometry` section for more information on the odometry of swerve drive and how to use the WPILib swerve drive odometry classes. These are used in the SwerveBot ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/swervebot), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/SwerveBot), [Python](https://github.com/robotpy/mostrobotpy/tree/main/examples/robot/SwerveBot)) and SwerveDrivePoseEstimator ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/swervedriveposeestimator), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/SwerveDrivePoseEstimator)) examples.
+
+### Third Party Swerve Drive Libraries
+
+There are also third party libraries for controlling swerve drive. These libraries typically include classes for controlling the swerve modules and the drivetrain as a whole, and may also include features such as odometry and path following. See the vendor's documentation for more information on how to use these libraries.
+
+[AdvantageKit Swerve](https://docs.advantagekit.org/getting-started/template-projects): Thare are templates provided by AdvantageKit for controlling swerve drive robots for users of the AdvantageKit library.
+
+[CTRE Swerve Project Generator](https://v6.docs.ctr-electronics.com/en/latest/docs/tuner/tuner-swerve/index.html): This is a tool provided by CTRE to generate swerve drive code for their motor controllers, encoders, and gyro.
+
+[Rev Max Swerve Template](https://github.com/REVrobotics/MAXSwerve-Java-Template): This is a template provided by REV Robotics for controlling their MAX Swerve drive system.
+
+[Thrifty Swerve Generator](https://docs.home.thethriftybot.com/pages/thrifty-config.html): This is a tool provided by ThriftyBot to generate swerve drive code for their motor controllers and encoders.
+
+[Yet Another Mechanism System (YAMS)](https://yagsl.gitbook.io/yams/documentation/tutorials/swerve-drive): This is a generic mechanism library that includes support for swerve drive.
