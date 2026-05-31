@@ -75,19 +75,14 @@ The Motor Safety interface of motor controllers can be interacted with by the us
 
 .. tab-set-code::
 
-    ```java
-    m_motorRight.setSafetyEnabled(true);
-    m_motorRight.setSafetyEnabled(false);
-    m_motorRight.setExpiration(.1);
-    m_motorRight.feed()
-    ```
 
-    ```c++
-    m_motorRight->SetSafetyEnabled(true);
-    m_motorRight->SetSafetyEnabled(false);
-    m_motorRight->SetExpiration(.1);
-    m_motorRight->Feed();
-    ```
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/a3c18d24a7953fbc454c5c8fb93d2d59e72eda55/wpilibjExamples/src/main/java/org/wpilib/snippets/motorcontrol/Robot.java
+        :language: java
+        :lines: 50-53
+
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/a3c18d24a7953fbc454c5c8fb93d2d59e72eda55/wpilibcExamples/src/main/cpp/snippets/MotorControl/cpp/Robot.cpp
+        :language: c++
+        :lines: 49-52
 
     ```python
     m_motorRight.setSafetyEnabled(True)
@@ -95,6 +90,8 @@ The Motor Safety interface of motor controllers can be interacted with by the us
     m_motorRight.setExpiration(.1)
     m_motorRight.feed()
     ```
+
+.. todo:: Add RLI for python example above.
 
 By default all Drive objects enable Motor Safety. Depending on the mechanism and the structure of your program, you may wish to configure the timeout length of the motor safety (in seconds). The timeout length is configured on a per actuator basis and is not a global setting. The default (and minimum useful) value is 100ms.
 
@@ -206,27 +203,13 @@ Like Arcade Drive, the Curvature Drive mode is used to control the drivetrain us
 
 .. tab-set-code::
 
-    ```java
-    public void teleopPeriodic() {
-        // Tank drive with a given left and right rates
-        myDrive.tankDrive(-leftStick.getY(), -rightStick.getY());
-        // Arcade drive with a given forward and turn rate
-        myDrive.arcadeDrive(-driveStick.getY(), -driveStick.getX());
-        // Curvature drive with a given forward and turn rate, as well as a button for turning in-place.
-        myDrive.curvatureDrive(-driveStick.getY(), -driveStick.getX(), driveStick.getButton(1));
-    }
-    ```
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/a3c18d24a7953fbc454c5c8fb93d2d59e72eda55/wpilibjExamples/src/main/java/org/wpilib/snippets/differentialdrive/Robot.java
+        :language: java
+        :lines: 34-42
 
-    ```c++
-    void TeleopPeriodic() override {
-        // Tank drive with a given left and right rates
-        myDrive.TankDrive(-leftStick.GetY(), -rightStick.GetY());
-        // Arcade drive with a given forward and turn rate
-        myDrive.ArcadeDrive(-driveStick.GetY(), -driveStick.GetX());
-        // Curvature drive with a given forward and turn rate, as well as a quick-turn button
-        myDrive.CurvatureDrive(-driveStick.GetY(), -driveStick.GetX(), driveStick.GetButton(1));
-    }
-    ```
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/a3c18d24a7953fbc454c5c8fb93d2d59e72eda55/wpilibcExamples/src/main/cpp/snippets/DifferentialDrive/cpp/Robot.cpp
+        :language: c++
+        :lines: 32-47
 
     ```python
     def teleopPeriodic(self):
@@ -237,6 +220,8 @@ Like Arcade Drive, the Curvature Drive mode is used to control the drivetrain us
         # Curvature drive with a given forward and turn rate, as well as a button for turning in-place.
         self.myDrive.curvatureDrive(-self.driveStick.getY(), -self.driveStick.getX(), self.driveStick.getButton(1))
     ```
+
+.. todo:: Add RLI for python example above.
 
 ## Using the MecanumDrive class to control Mecanum Drive robots
 
@@ -268,23 +253,13 @@ The MecanumDrive class contains two different default modes of driving your robo
 
 .. tab-set-code::
 
-    ```java
-    public void teleopPeriodic() {
-        // Drive using the X, Y, and Z axes of the joystick.
-        m_robotDrive.driveCartesian(-m_stick.getY(), -m_stick.getX(), -m_stick.getZ());
-        // Drive at 45 degrees relative to the robot, at the speed given by the Y axis of the joystick, with no rotation.
-        m_robotDrive.drivePolar(-m_stick.getY(), Rotation2d.fromDegrees(45), 0);
-    }
-    ```
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/a3c18d24a7953fbc454c5c8fb93d2d59e72eda55/wpilibjExamples/src/main/java/org/wpilib/snippets/mecanumdrive/Robot.java
+        :language: java
+        :lines: 68-73
 
-    ```c++
-    void TeleopPeriodic() override {
-        // Drive using the X, Y, and Z axes of the joystick.
-        m_robotDrive.driveCartesian(-m_stick.GetY(), -m_stick.GetX(), -m_stick.GetZ());
-        // Drive at 45 degrees relative to the robot, at the speed given by the Y axis of the joystick, with no rotation.
-        m_robotDrive.drivePolar(-m_stick.GetY(), 45_deg, 0);
-    }
-    ```
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/a3c18d24a7953fbc454c5c8fb93d2d59e72eda55/wpilibcExamples/src/main/cpp/snippets/MecanumDrive/cpp/Robot.cpp
+        :language: c++
+        :lines: 43-48
 
     ```python
     def teleopPeriodic(self):
@@ -293,6 +268,8 @@ The MecanumDrive class contains two different default modes of driving your robo
         # Drive at 45 degrees relative to the robot, at the speed given by the Y axis of the joystick, with no rotation.
         self.robotDrive.drivePolar(-self.stick.getY(), Rotation2d.fromDegrees(45), 0)
     ```
+
+.. todo:: Add RLI for python example above.
 
 ### Field-Oriented Driving
 
