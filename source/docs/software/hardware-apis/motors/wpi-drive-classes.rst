@@ -35,21 +35,21 @@ It is the responsibility of the user to manage proper inversions for their drive
 
         .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/tankdrivegamepad/Robot.java
             :language: java
-            :lines: 18,25,32-33
+            :lines: 18,25,31,33
 
     .. tab-item:: C++
-         :sync: C++
+        :sync: C++
 
         .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/TankDriveGamepad/cpp/Robot.cpp
             :language: c++
-            :lines: 15, 22-23, 30-31
+            :lines: 15, 22-23, 29, 31
 
     .. tab-item:: Python
         :sync: Python
 
         .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/refs/tags/2027.0.0a6/examples/robot/TankDrive/robot.py
            :language: python
-           :lines: 17-21,30
+           :lines: 17-21,29
 
 ### Squaring Inputs
 
@@ -85,10 +85,10 @@ The Motor Safety interface of motor controllers can be interacted with by the us
         :lines: 49-52
 
     ```python
-    m_motorRight.setSafetyEnabled(True)
-    m_motorRight.setSafetyEnabled(False)
-    m_motorRight.setExpiration(.1)
-    m_motorRight.feed()
+        m_motorRight.setSafetyEnabled(True)
+        m_motorRight.setSafetyEnabled(False)
+        m_motorRight.setExpiration(.1)
+        m_motorRight.feed()
     ```
 
 .. todo:: Add RLI for python example above.
@@ -126,7 +126,7 @@ DifferentialDrive is a method provided for the control of "skid-steer" or "West 
             :lines: 15-19
 
     .. tab-item:: C++ (Source)
-         :sync: C++ (Source)
+        :sync: C++ (Source)
 
         .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/TankDriveGamepad/cpp/Robot.cpp
             :language: c++
@@ -186,12 +186,6 @@ Many FRC\ |reg| drivetrains have more than 1 motor on each side. Classes derived
 
 
 ### Drive Modes
-.. note::
-    The DifferentialDrive class contains three different default modes of driving your robot's motors.
-
-    - Tank Drive, which controls the left and right side independently
-    - Arcade Drive, which controls a forward and turn speed
-    - Curvature Drive, a subset of Arcade Drive, which makes your robot handle like a car with constant-curvature turns.
 
 The DifferentialDrive class contains three default methods for controlling skid-steer or WCD robots. Note that you can create your own methods of controlling the robot's driving and have them call tankDrive() with the derived inputs for left and right motors.
 
@@ -209,7 +203,7 @@ Like Arcade Drive, the Curvature Drive mode is used to control the drivetrain us
 
     .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/a3c18d24a7953fbc454c5c8fb93d2d59e72eda55/wpilibcExamples/src/main/cpp/snippets/DifferentialDrive/cpp/Robot.cpp
         :language: c++
-        :lines: 32-47
+        :lines: 37-47
 
     ```python
     def teleopPeriodic(self):
@@ -231,7 +225,7 @@ MecanumDrive is a method provided for the control of holonomic drivetrains with 
 
     .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/mecanumdrive/Robot.java
         :language: java
-        :lines: 19-22, 32-48, 48
+        :lines: 19-22, 32-48, 54
 
     .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/MecanumDrive/cpp/Robot.cpp
         :language: c++
