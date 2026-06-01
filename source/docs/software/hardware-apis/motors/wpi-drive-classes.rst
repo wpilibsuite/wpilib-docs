@@ -22,6 +22,14 @@ Mecanum drive is a method of driving using specially designed wheels that allow 
 
 When viewed from the top, the rollers on a mecanum drivetrain should form an 'X' pattern. This results in the force vectors (when driving the wheel forward) on the front two wheels pointing forward and inward and the rear two wheels pointing forward and outward. By spinning the wheels in different directions, various components of the force vectors cancel out, resulting in the desired robot movement. A quick chart of different movements has been provided below, drawing out the force vectors for each of these motions may help in understanding how these drivetrains work. By varying the speeds of the wheels in addition to the direction, movements can be combined resulting in translation in any direction and rotation, simultaneously.
 
+## Swerve Drive
+
+.. image:: images/WCPSwerveX2i.png
+   :alt: A swerve drive robot using WCP X2i swerve modules.
+   :width: 600
+
+Swerve drive is a method of driving using independently steerable and drivable wheels. This allows the robot to drive in any direction without changing the orientation of the robot, much like mecanum drive. However, since the wheels are steerable, they can be driven with their force vectors pointing straight forward, rather than at a 45 degree angle as in mecanum drive. This results in more efficient movement and better traction than mecanum drive.
+
 ## Drive Class Conventions
 
 ### Motor Inversion
@@ -271,9 +279,7 @@ Just remember to get the gyro angle each time ``driveCartesian()`` is called.
 
 .. note:: Many teams also like to ramp the joysticks inputs over time to promote a smooth acceleration and reduce jerk.  This can be accomplished with a :ref:`Slew Rate Limiter <docs/software/advanced-controls/filters/slew-rate-limiter:Slew Rate Limiter>`.
 
-## Swerve Drive
-
-Swerve drive is a method of driving using independently steerable and drivable wheels. This allows the robot to drive in any direction without changing the orientation of the robot, much like mecanum drive. However, since the wheels are steerable, they can be driven with their force vectors pointing straight forward, rather than at a 45 degree angle as in mecanum drive. This results in more efficient movement and better traction than mecanum drive.
+## Swerve Drive SW
 
 WPILib does not have a default class for controlling swerve drive. The WPILib swerve drive kinematics classes can be used to help with the math for controlling a swerve drive. See the :doc:`/docs/software/kinematics-and-odometry/swerve-drive-kinematics` section for more information on the kinematics of swerve drive and how to use the WPILib swerve drive kinematics classes. See the :doc:`/docs/software/kinematics-and-odometry/swerve-drive-odometry` section for more information on the odometry of swerve drive and how to use the WPILib swerve drive odometry classes. These are used in the SwerveBot ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/swervebot), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/SwerveBot), [Python](https://github.com/robotpy/mostrobotpy/tree/main/examples/robot/SwerveBot)) and SwerveDrivePoseEstimator ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/swervedriveposeestimator), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/SwerveDrivePoseEstimator)) examples.
 
