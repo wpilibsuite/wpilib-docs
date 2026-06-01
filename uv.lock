@@ -1436,7 +1436,7 @@ wheels = [
 [[package]]
 name = "sphinx-build-compatibility"
 version = "0.0.1"
-source = { git = "https://github.com/readthedocs/sphinx-build-compatibility#58aabc5f207c6c2421f23d3578adc0b14af57047" }
+source = { git = "https://github.com/readthedocs/sphinx-build-compatibility?rev=4f304bd4562cdc96316f4fec82b264ca379d23e0#4f304bd4562cdc96316f4fec82b264ca379d23e0" }
 dependencies = [
     { name = "requests" },
     { name = "sphinx" },
@@ -1888,7 +1888,7 @@ requires-dist = [
     { name = "markdown2", specifier = "==2.5.5" },
     { name = "modern-sphinx-version-warning", specifier = "==1.1.6" },
     { name = "sphinx", specifier = "==8.2.3" },
-    { name = "sphinx-build-compatibility", git = "https://github.com/readthedocs/sphinx-build-compatibility" },
+    { name = "sphinx-build-compatibility", git = "https://github.com/readthedocs/sphinx-build-compatibility?rev=4f304bd4562cdc96316f4fec82b264ca379d23e0" },
     { name = "sphinx-contributors", specifier = "==0.3.0" },
     { name = "sphinx-copybutton", specifier = "==0.5.2" },
     { name = "sphinx-design", specifier = "==0.7.0" },
