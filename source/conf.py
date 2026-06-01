@@ -75,14 +75,14 @@ if os.getenv("READTHEDOCS") == "True":
 extensions += local_extensions
 
 versionwarning_messages = {
+    # "latest": """
+    #    The documentation you are currently viewing is for upcoming changes to WPILib.
+    #    Please see the <a href="https://docs.wpilib.org" id="versionwarning_href">stable</a> version for the current release of WPILib.
+    #    <script>
+    #        document.getElementById("versionwarning_href").setAttribute("href", location.href.replace("/latest/", "/stable/"))
+    #    </script>
+    #    """,
     "latest": """
-        The documentation you are currently viewing is for upcoming changes to WPILib.
-        Please see the <a href="https://docs.wpilib.org" id="versionwarning_href">stable</a> version for the current release of WPILib.
-        <script>
-            document.getElementById("versionwarning_href").setAttribute("href", location.href.replace("/latest/", "/stable/"))
-        </script>
-        """,
-    "2027": """
         The documentation you are currently viewing is for the SystemCore Alpha Test.
         Please see the <a href="https://docs.wpilib.org" id="versionwarning_href">stable</a> version for the current release of WPILib.
         <script>
@@ -310,7 +310,7 @@ html_context = {
     "display_github": True,  # Integrate GitHub
     "github_user": "wpilibsuite",  # Username
     "github_repo": "wpilib-docs",  # Repo name
-    "github_version": "2027",  # Version, set to 2027 so edit on github makes PRs to 2027 instead of main/stable
+    "github_version": "main",  # Version
     "conf_py_path": "/source/",  # Path in the checkout to the docs root
 }
 
