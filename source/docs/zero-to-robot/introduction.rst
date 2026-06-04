@@ -8,12 +8,8 @@ This guide walks you through everything you need to start driving a robot.
 
 .. raw:: html
 
-<<<<<<< HEAD
-These pages cover the specifics of the WPILib libraries and the FIRST Control System and do not describe the basics of using the supported programming languages. If you would like resources on learning the supported programming languages check out the recommendations below:
-=======
    <style>
    :root { --frc:#009CD7; --frc-light:#e6f6fc; --ftc:#e07000; --ftc-light:#fff3e0; --shared:#2e7d32; --shared-light:#f1f8f1; }
->>>>>>> 892fcbcf (Major changes to homepage and getting started, trying to keep one page)
 
    .sw-label { display:inline-block; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; padding:2px 8px; border-radius:4px; margin-bottom:10px; }
    .sw-label-frc    { background:var(--frc);    color:#fff; }
@@ -224,7 +220,7 @@ These pages cover the specifics of the WPILib libraries and the FIRST Control Sy
 
      <div class="sw-tip" style="margin-bottom:0;">
        <strong>A tip</strong><br>
-       An example tip 
+       An example tip
      </div>
 
      <div class="sw-tip" style="margin-bottom:0;">
@@ -232,5 +228,5 @@ These pages cover the specifics of the WPILib libraries and the FIRST Control Sy
        This is another tip
      </div>
 
-     
+
    </div>
