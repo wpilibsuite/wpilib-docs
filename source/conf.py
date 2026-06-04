@@ -339,6 +339,16 @@ latex_elements = {
     "printindex": r"\footnotesize\raggedright\printindex",
 }
 
+latex_documents = [
+    (
+        master_doc,
+        "firstroboticscompetition.tex",
+        "FIRST Robotics Documentation",
+        author,
+        "manual",
+    )
+]
+
 suppress_warnings = ["epub.unknown_project_files"]
 
 
