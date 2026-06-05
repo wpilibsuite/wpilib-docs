@@ -349,7 +349,7 @@ latex_documents = [
     )
 ]
 
-suppress_warnings = ["epub.unknown_project_files"]
+suppress_warnings = ["epub.unknown_project_files", "rediraffe"]
 
 
 # Options for translation support -------------------------------------------
