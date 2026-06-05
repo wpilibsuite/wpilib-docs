@@ -342,7 +342,7 @@ latex_elements = {
 latex_documents = [
     (
         master_doc,
-        "firstroboticscompetition.tex",
+        "wpilib.tex",
         "FIRST Robotics Documentation",
         author,
         "manual",
