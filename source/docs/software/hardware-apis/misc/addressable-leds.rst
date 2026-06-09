@@ -10,7 +10,7 @@ Wiring addressable LEDs is simple: the strip's (or other product's) DATA pin is 
 
 These LEDs can be controlled even when the robot is disabled.
 
-.. note:: This library supports only WS2812B-compliant LEDs. LEDs that do not follow the below timings may not work correctly. For example, WS2815 & DotStar LEDs are not supported.
+.. note:: This library supports only WS2812B-compliant LEDs. The LED timings are fixed and not user-configurable like they are on the roboRIO, so LEDs that do not follow the below timings may not work correctly. For example, WS2815 & DotStar LEDs are not supported.
 
 .. collapse:: Timing details
 
