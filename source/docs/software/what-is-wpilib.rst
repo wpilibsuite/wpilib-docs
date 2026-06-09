@@ -25,62 +25,6 @@ FIRST\ |reg|, and volunteer developers from the community.
 
 .. raw:: html
 
-   <style>
-   :root { --frc:#009CD7; --frc-light:#e6f6fc; --ftc:#e07000; --ftc-light:#fff3e0;
-     --shared:#2e7d32; --shared-light:#f1f8f1; }
-   .sw-label { display:inline-block; font-size:0.7rem; font-weight:700;
-     text-transform:uppercase; letter-spacing:0.06em;
-     padding:2px 8px; border-radius:4px; margin-bottom:10px; }
-   .sw-label-frc    { background:var(--frc);    color:#fff; }
-   .sw-label-ftc    { background:var(--ftc);    color:#fff; }
-   .sw-label-shared { background:var(--shared); color:#fff; }
-   .sw-label-rec    { background:#1a1a1a;        color:#fff; }
-   .sw-section-h { font-size:0.85rem; font-weight:700; text-transform:uppercase;
-     letter-spacing:0.06em; color:var(--color-foreground-secondary,#555);
-     border-bottom:1px solid var(--color-background-border,#ddd);
-     padding-bottom:7px; margin:32px 0 14px; }
-   .sw-grid { display:grid; gap:12px; margin-bottom:24px; }
-   .sw-grid-2 { grid-template-columns:repeat(2,1fr); }
-   .sw-grid-3 { grid-template-columns:repeat(3,1fr); }
-   .sw-grid-6 { grid-template-columns:repeat(3,1fr); }
-   .sw-card { padding:18px 20px; border-radius:8px;
-     border:2px solid var(--color-background-border,#ddd);
-     background:var(--color-background-primary,#fff);
-     text-decoration:none; color:inherit; display:block;
-     transition:border-color 0.2s, box-shadow 0.2s; }
-   a.sw-card:hover { box-shadow:0 2px 8px rgba(0,0,0,0.08);
-     text-decoration:none; color:inherit; }
-   a.sw-card:visited { color:inherit; text-decoration:none; }
-   .sw-card-frc  { border-color:rgba(0,156,215,0.3); }
-   a.sw-card-frc:hover { border-color:var(--frc); }
-   .sw-card-ftc  { border-color:rgba(224,112,0,0.3); background:var(--ftc-light); }
-   a.sw-card-ftc:hover { border-color:var(--ftc); }
-   .sw-card-shared { border-color:rgba(46,125,50,0.3); background:var(--shared-light); }
-   a.sw-card-shared:hover { border-color:var(--shared); }
-   .sw-card-title { font-weight:700; font-size:0.97rem; margin-bottom:4px; }
-   .sw-card-desc  { font-size:0.85rem; color:var(--color-foreground-secondary,#555);
-     line-height:1.55; }
-   .sw-tip { background:var(--shared-light); border:1px solid rgba(46,125,50,0.3);
-     border-radius:6px; padding:14px 18px; font-size:0.875rem; line-height:1.6;
-     margin-bottom:20px; }
-   .sw-warn { background:#fff8e1; border:1px solid rgba(255,160,0,0.4);
-     border-radius:6px; padding:14px 18px; font-size:0.875rem; line-height:1.6;
-     margin-bottom:20px; }
-   .sw-tbl { width:100%; border-collapse:collapse; font-size:0.85rem;
-     margin-bottom:24px; }
-   .sw-tbl th { background:var(--frc); color:#fff; padding:8px 12px;
-     text-align:left; font-weight:700; }
-   .sw-tbl td { padding:8px 12px;
-     border-bottom:1px solid var(--color-background-border,#ddd);
-     vertical-align:top; }
-   .sw-tbl tr:nth-child(even) td {
-     background:var(--color-background-secondary,#f8f8f8); }
-   .sw-dep { display:inline-block; font-size:0.75rem; font-weight:700;
-     color:#c62828; background:#ffebee; padding:1px 6px; border-radius:3px;
-     margin-left:6px; }
-   @media(max-width:700px) {
-     .sw-grid-2,.sw-grid-3,.sw-grid-6 { grid-template-columns:1fr; } }
-   </style>
 
    <!-- ── PATH SELECTOR ── -->
    <p class="sw-section-h">Which path are you on?</p>

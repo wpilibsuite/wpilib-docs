@@ -7,56 +7,6 @@ Use it as a reference when wiring or troubleshooting your robot.
 
 .. raw:: html
 
-   <style>
-   :root { --frc:#009CD7; --frc-light:#e6f6fc; --ftc:#e07000; --ftc-light:#fff3e0;
-     --shared:#2e7d32; --shared-light:#f1f8f1; }
-   .sw-label { display:inline-block; font-size:0.7rem; font-weight:700;
-     text-transform:uppercase; letter-spacing:0.06em;
-     padding:2px 8px; border-radius:4px; margin-bottom:10px; }
-   .sw-label-frc    { background:var(--frc);    color:#fff; }
-   .sw-label-ftc    { background:var(--ftc);    color:#fff; }
-   .sw-label-shared { background:var(--shared); color:#fff; }
-   .sw-section-h { font-size:0.85rem; font-weight:700; text-transform:uppercase;
-     letter-spacing:0.06em; color:var(--color-foreground-secondary,#555);
-     border-bottom:1px solid var(--color-background-border,#ddd);
-     padding-bottom:7px; margin:32px 0 14px; }
-   .sw-grid { display:grid; gap:12px; margin-bottom:24px; }
-   .sw-grid-2 { grid-template-columns:repeat(2,1fr); }
-   .sw-grid-3 { grid-template-columns:repeat(3,1fr); }
-   .sw-grid-4 { grid-template-columns:repeat(4,1fr); }
-   .sw-card { padding:18px 20px; border-radius:8px;
-     border:2px solid var(--color-background-border,#ddd);
-     background:var(--color-background-primary,#fff);
-     text-decoration:none; color:inherit; display:block;
-     transition:border-color 0.2s, box-shadow 0.2s; }
-   a.sw-card:hover { box-shadow:0 2px 8px rgba(0,0,0,0.08);
-     text-decoration:none; color:inherit; }
-   a.sw-card:visited { color:inherit; text-decoration:none; }
-   .sw-card-frc { border-color:rgba(0,156,215,0.3); }
-   a.sw-card-frc:hover { border-color:var(--frc); }
-   .sw-card-shared { border-color:rgba(46,125,50,0.3); background:var(--shared-light); }
-   .sw-card-title { font-weight:700; font-size:0.97rem; margin-bottom:4px; }
-   .sw-card-desc { font-size:0.85rem; color:var(--color-foreground-secondary,#555);
-     line-height:1.55; }
-   .sw-tip { background:var(--shared-light); border:1px solid rgba(46,125,50,0.3);
-     border-radius:6px; padding:14px 18px; font-size:0.875rem; line-height:1.6;
-     margin-bottom:20px; }
-   .sw-note { background:var(--frc-light); border:1px solid rgba(0,156,215,0.3);
-     border-radius:6px; padding:14px 18px; font-size:0.875rem; line-height:1.6;
-     margin-bottom:20px; }
-   .sw-tbl { width:100%; border-collapse:collapse; font-size:0.85rem;
-     margin-bottom:24px; }
-   .sw-tbl th { background:var(--frc); color:#fff; padding:8px 12px;
-     text-align:left; font-weight:700; }
-   .sw-tbl td { padding:8px 12px; border-bottom:1px solid
-     var(--color-background-border,#ddd); vertical-align:top; }
-   .sw-tbl tr:nth-child(even) td {
-     background:var(--color-background-secondary,#f8f8f8); }
-   @media(max-width:700px) {
-     .sw-grid-2,.sw-grid-3,.sw-grid-4 { grid-template-columns:1fr; } }
-   @media(max-width:900px) {
-     .sw-grid-4 { grid-template-columns:repeat(2,1fr); } }
-   </style>
 
    <div class="sw-note">
      <strong>FRC + FTC:</strong> This page covers the FRC control system.
