@@ -14,10 +14,10 @@ These LEDs can be controlled even when the robot is disabled.
 
 .. collapse:: Timing details
 
-- T0H: 375ns
-- T0L: 875ns
-- T1H: 750ns
-- T1L: 500ns
+   - T0H: 375ns
+   - T0L: 875ns
+   - T1H: 750ns
+   - T1L: 500ns
 
 .. important:: Systemcore supports multiple addressable LED products simultaneously, unlike the roboRIO, and allows LED control while the robot is disabled.
 
