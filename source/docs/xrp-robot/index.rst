@@ -20,7 +20,7 @@ The same tools, language, and code patterns used for full FRC robots work on the
        <div class="sw-card-title">Real WPILib Code</div>
        <div class="sw-card-desc">
          Write the same Java, C++, or Python code you would deploy to
-         a full FRC robot. No special XRP-only API.
+         a full FRC robot.
        </div>
      </div>
 
@@ -65,7 +65,7 @@ The same tools, language, and code patterns used for full FRC robots work on the
 
    <div class="sw-grid sw-grid-3">
      <div class="sw-card">
-       <div class="sw-card-title">Write code in VS Code</div>
+       <div class="sw-card-title">Create an XRP project</div>
        <div class="sw-card-desc">
          Use the WPILib VS Code extension you already installed.
          XRP projects use the same project structure as FRC.

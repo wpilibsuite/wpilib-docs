@@ -53,7 +53,7 @@ WPILib Documentation
        <div id="new-s1">
          <div class="wl-welcome">
            <h2 class="wl-welcome-h">Let us help you find the right starting point.</h2>
-           <p class="wl-welcome-p">WPILib is the standard programming library for FIRST robotics &mdash; supporting both FRC and FTC teams. Built through a partnership between WPI, FIRST, and volunteer developers, it has everything you need to write, test, and deploy robot code.</p>
+           <p class="wl-welcome-p">WPILib is the standard programming library for FIRST robotics &mdash; supporting both FRC and FTC teams. Built through a partnership between WPI, FIRST, and volunteer developers.</p>
          </div>
          <h3 class="wl-sh">How familiar are you with programming?</h3>
          <div class="wl-grid">
@@ -217,7 +217,7 @@ WPILib Documentation
          </div>
          <div class="wl-tip wl-tip-shared">
            <strong>Getting a head start on WPILib?</strong>
-           The <a href="docs/xrp-robot/index.html">XRP Robot Platform</a> lets you learn WPILib programming on real hardware today : the same skills carry straight over now that Systemcore is available.
+           The <a href="docs/xrp-robot/index.html">XRP Robot Platform</a> lets you learn WPILib programming on real hardware today : the same code runs on Systemcore.
          </div>
          <button class="wl-back" onclick="wlBack('new-s2','new-s3-ftc')">Back to program select</button>
        </div>

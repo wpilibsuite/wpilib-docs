@@ -55,8 +55,7 @@ FIRST\ |reg|, and volunteer developers from the community.
        <div class="sw-card-title">FTC Systemcore</div>
        <div class="sw-card-desc">
          WPILib now supports FTC via Systemcore and Motioncore.
-         Same Java/C++/Python toolchain as FRC &mdash; skills
-         transfer directly.
+         Same Java/C++/Python toolchain as FRC.
        </div>
      </div>
 
@@ -127,7 +126,7 @@ FIRST\ |reg|, and volunteer developers from the community.
    <div class="sw-tip">
      <strong>All three languages share the same API design.</strong>
      Class names and method names are kept identical or very close across
-     Java, C++, and Python. Switching languages later is straightforward.
+     Java, C++, and Python.
    </div>
 
    <!-- ── DEV ENVIRONMENT ── -->

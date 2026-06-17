@@ -25,7 +25,7 @@
        <ul class="sw-list">
          <li>Windows 11 (required for 2027+)</li>
          <li>8 GB RAM minimum, 16 GB recommended</li>
-         <li>Driver Station and roboRIO Imaging Tool</li>
+         <li>Driver Station</li>
          <li>All WPILib tools available</li>
        </ul>
      </div>
@@ -36,7 +36,7 @@
        <ul class="sw-list">
          <li>macOS 12+ or modern Linux distro</li>
          <li>WPILib + VS Code for writing and simulating code</li>
-         <li>Cannot run Driver Station or image roboRIO</li>
+         <li>Cannot run Driver Station or image Systemcore</li>
          <li>Deploy code over USB or Wi-Fi (needs network access)</li>
        </ul>
      </div>
@@ -58,7 +58,7 @@
        <div class="sw-card-title">WPILib Installer</div>
        <div class="sw-card-desc">
          Installs Visual Studio Code, WPILib extensions, and all
-         desktop tools (Glass, Elastic, Shuffleboard, OutlineViewer).
+         desktop tools (Glass, Elastic, OutlineViewer).
          Required for Java, C++, and Python teams.
        </div>
      </a>
@@ -67,7 +67,7 @@
        <div class="sw-part-num">Part 2: Windows only</div>
        <div class="sw-card-title">FRC Game Tools</div>
        <div class="sw-card-desc">
-         Installs the FRC Driver Station
+         Installs the FRC Driver Station.
          Required on the laptop that will drive the robot at competition.
        </div>
      </a>

@@ -148,7 +148,7 @@ This guide walks you through everything you need to start driving a robot.
      <a class="sw-card sw-card-frc" href="step-3/index.html">
        <span class="sw-step-num">03</span>
        <div class="sw-card-title">Configure Your Control System</div>
-       <div class="sw-card-desc">Configuire your systemcore and the radio. Required every season before you can deploy code.</div>
+       <div class="sw-card-desc">Configure your Systemcore and radio. Required every season before you can deploy code.</div>
      </a>
 
      <a class="sw-card sw-card-frc" href="step-4/index.html">
@@ -165,13 +165,17 @@ This guide walks you through everything you need to start driving a robot.
    <div class="sw-grid sw-grid-2">
 
      <div class="sw-tip" style="margin-bottom:0;">
-       <strong>A tip</strong><br>
-       An example tip
+       <strong>Get driving first</strong><br>
+       Wire one drive motor per side, deploy arcade drive, and make sure
+       the robot moves before adding anything else. Every mechanism you add
+       before the robot drives is a variable you can&rsquo;t isolate.
      </div>
 
      <div class="sw-tip" style="margin-bottom:0;">
-       <strong>Another tip</strong><br>
-       This is another tip
+       <strong>Check the Driver Station log</strong><br>
+       When something goes wrong on the robot, open the Driver Station log
+       viewer. It records exactly when the robot disconnected, what threw
+       an exception, and why the robot disabled.
      </div>
 
 

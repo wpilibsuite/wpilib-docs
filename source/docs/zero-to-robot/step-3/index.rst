@@ -79,7 +79,7 @@
 
      <a class="sw-card sw-card-frc" href="openmesh.html">
        <div class="sw-part-num">Reference</div>
-       <div class="sw-card-title">Legacy OpemMesh Radios</div>
+       <div class="sw-card-title">Legacy OpenMesh Radios</div>
        <div class="sw-card-desc">
          Hardware specs, indicator LED meanings, and troubleshooting
        </div>

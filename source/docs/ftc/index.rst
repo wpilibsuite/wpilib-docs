@@ -44,7 +44,7 @@
        <div class="sw-card-title">Practice with the XRP</div>
        <div class="sw-card-desc">
          Learn WPILib programming on the $75 XRP desktop robot.
-         The same skills transfer directly to Systemcore.
+         The same code runs on Systemcore.
        </div>
      </a>
      <a class="sw-card sw-card-shared" href="../software/what-is-wpilib.html">
