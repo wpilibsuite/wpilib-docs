@@ -6,177 +6,185 @@ Welcome to WPILib — the standard programming library for *FIRST*\ |reg| Roboti
 (FRC\ |reg|) and FIRST Tech Challenge (FTC).
 This guide walks you through everything you need to start driving a robot.
 
-.. raw:: html
+.. rubric:: Choose Your Programming Language
 
+WPILib supports multiple languages. Pick one: your tools and steps are the same regardless of choice.
 
-   <!-- ── LANGUAGE CHOICE ── -->
-   <p class="sw-section-h">Choose Your Programming Language</p>
-   <p style="font-size:0.9rem;margin-bottom:14px;color:var(--color-foreground-secondary,#444);">
-     WPILib supports multiple languages. Pick one: your tools and steps are the same regardless of choice.
-   </p>
+.. grid:: 1 2 3 5
+   :gutter: 3
 
-   <div class="sw-grid sw-grid-5">
+   .. grid-item-card:: Java
+      :class-card: sw-card-rec
 
-     <div class="sw-card sw-card-rec">
-       <div class="sw-label sw-label-rec">Recommended &mdash; FRC + FTC</div>
-       <div class="sw-card-title">Java</div>
-       <div class="sw-card-desc">Statically typed, and has the most community examples. Best choice if you are unsure.</div>
-     </div>
+      **Recommended — FRC + FTC**
+      ^^^
+      Statically typed, and has the most community examples.
+      Best choice if you are unsure.
 
-     <div class="sw-card sw-card-shared">
-       <div class="sw-label sw-label-shared">FRC + FTC</div>
-       <div class="sw-card-title">C++</div>
-       <div class="sw-card-desc">Highest performance. Good choice if your team already knows C++. Memory management adds complexity for beginners.</div>
-     </div>
+   .. grid-item-card:: C++
+      :class-card: sw-card-shared
 
-     <div class="sw-card sw-card-shared">
-       <div class="sw-label sw-label-shared">FRC + FTC</div>
-       <div class="sw-card-title">Python</div>
-       <div class="sw-card-desc">Easiest syntax. Growing community examples. Best if your team already programs in Python and wants a gentle start.</div>
-     </div>
+      **FRC + FTC**
+      ^^^
+      Highest performance. Good choice if your team already knows C++.
+      Memory management adds complexity for beginners.
 
-     <div class="sw-card sw-card-shared">
-       <div class="sw-label sw-label-shared">FRC + FTC</div>
-       <div class="sw-card-title">Blockly</div>
-       <div class="sw-card-desc">Graphical interface, runs OnBot, outputs Python. Great for beginners with no prior syntax knowledge.</div>
-     </div>
+   .. grid-item-card:: Python
+      :class-card: sw-card-shared
 
-     <div class="sw-card sw-card-shared">
-       <div class="sw-label sw-label-shared">FRC + FTC</div>
-       <div class="sw-card-title">LabVIEW</div>
-       <div class="sw-card-desc">Graphical dataflow programming, runs OnBot. Familiar to teams with a LabVIEW background.</div>
-     </div>
+      **FRC + FTC**
+      ^^^
+      Easiest syntax. Growing community examples. Best if your team
+      already programs in Python and wants a gentle start.
 
-   </div>
+   .. grid-item-card:: Blockly
+      :class-card: sw-card-shared
 
-   <div class="sw-tip">
-     <strong>New to programming entirely?</strong> Check out
-     <a href="https://www.codecademy.com/learn/learn-java">Codecademy Java</a> or
-     <a href="http://docs.python-guide.org/en/latest/intro/learning/">Python learning guides</a>
-     before continuing. You can wire and configure your robot first (Steps 1 and 3) while learning to code in parallel.
-   </div>
+      **FRC + FTC**
+      ^^^
+      Graphical interface, runs OnBot, outputs Python. Great for
+      beginners with no prior syntax knowledge.
 
-   <!-- ── WHAT YOU NEED ── -->
-   <p class="sw-section-h">What You Need</p>
+   .. grid-item-card:: LabVIEW
+      :class-card: sw-card-shared
 
-   <div class="sw-grid sw-grid-2" style="margin-bottom:12px;">
+      **FRC + FTC**
+      ^^^
+      Graphical dataflow programming, runs OnBot. Familiar to teams
+      with a LabVIEW background.
 
-     <div class="sw-card sw-card-frc">
-       <div class="sw-label sw-label-frc">FRC Hardware</div>
-       <div class="sw-card-title">FRC Robot Components</div>
-       <ul class="sw-list">
-         <li>Systemcore controller</li>
-         <li>Power Distribution Hub (PDH) or Panel (PDP)</li>
-         <li>Vivid VH-109 Radio</li>
-         <li>Voltage Regulator Module (VRM) &mdash; for radio power</li>
-         <li>Motor controllers (SPARK MAX, Talon FX, etc.)</li>
-         <li>Drive motors and wheels</li>
-         <li>12 V robot battery and fuse</li>
-         <li>Ethernet cable and USB-A cable</li>
-       </ul>
-     </div>
+.. tip::
 
-     <div class="sw-card sw-card-ftc">
-       <div class="sw-label sw-label-ftc">FTC Hardware</div>
-       <div class="sw-card-title">FTC Robot Components</div>
-       <ul class="sw-list">
-         <li>Systemcore + Motioncore controllers</li>
-         <li>FTC legal motor controllers</li>
-         <li>Drive motors and wheels</li>
-         <li>12 V robot battery</li>
-         <li>USB-C cable for programming</li>
-         <li>Wi-Fi for wireless deploy</li>
-       </ul>
-     </div>
+   **New to programming entirely?** Check out
+   `Codecademy Java <https://www.codecademy.com/learn/learn-java>`_ or
+   `Python learning guides <http://docs.python-guide.org/en/latest/intro/learning/>`_
+   before continuing. You can wire and configure your robot first (Steps 1 and 3)
+   while learning to code in parallel.
 
-   </div>
+.. rubric:: What You Need
 
-   <div class="sw-grid sw-grid-2">
+.. grid:: 1 1 2 2
+   :gutter: 3
 
-     <div class="sw-card">
-       <div class="sw-label sw-label-shared">Software &mdash; All Teams</div>
-       <div class="sw-card-title">What Gets Installed</div>
-       <ul class="sw-list">
-         <li><strong>WPILib</strong> &mdash; robot programming library + VS Code</li>
-         <li><strong>FRC Game Tools</strong> &mdash; Driver Station <em>(Windows only)</em></li>
-         <li><strong>RobotPy</strong> &mdash; Python framework <em>(Python teams only)</em></li>
-         <li>Vendor libraries (REVLib, Phoenix 6, etc.) &mdash; installed per project</li>
-       </ul>
-       <div style="margin-top:12px;font-size:0.82rem;
-          color:var(--color-foreground-secondary,#555);">
-         <strong>OS note:</strong> Driver Station requires Windows.
-         Coding and simulation work on macOS and Linux.
-       </div>
-     </div>
+   .. grid-item-card:: FRC Robot Components
+      :class-card: sw-card-frc
 
-     <div class="sw-card sw-card-shared">
-       <div class="sw-label sw-label-shared">No Full Robot? No Problem.</div>
-       <div class="sw-card-title">Practice with the XRP</div>
-       <div class="sw-card-desc" style="margin-bottom:10px;">
-         The XRP is a desktop robot that runs real WPILib code.
-         Great for learning before build season &mdash; and for FTC teams
-         getting a head start on Systemcore programming.
-       </div>
-       <a href="../xrp-robot/index.html"
-          style="font-size:0.85rem;font-weight:600;color:var(--shared);">
-         XRP docs &rarr;
-       </a>
-     </div>
+      **FRC Hardware**
+      ^^^
+      - Systemcore controller
+      - Power Distribution Hub (PDH) or Panel (PDP)
+      - Vivid VH-109 Radio
+      - Voltage Regulator Module (VRM) — for radio power
+      - Motor controllers (SPARK MAX, Talon FX, etc.)
+      - Drive motors and wheels
+      - 12 V robot battery and fuse
+      - Ethernet cable and USB-A cable
 
-   </div>
+   .. grid-item-card:: FTC Robot Components
+      :class-card: sw-card-ftc
 
-   <!-- ── FOUR STEPS ── -->
-   <p class="sw-section-h">The Four Steps</p>
-   <p style="font-size:0.9rem;margin-bottom:16px;color:var(--color-foreground-secondary,#444);">
-     Complete these in order. You will have a driving robot by the end of Step 4.
-   </p>
+      **FTC Hardware**
+      ^^^
+      - Systemcore + Motioncore controllers
+      - FTC legal motor controllers
+      - Drive motors and wheels
+      - 12 V robot battery
+      - USB-C cable for programming
+      - Wi-Fi for wireless deploy
 
-   <div class="sw-grid sw-grid-4">
+.. grid:: 1 1 2 2
+   :gutter: 3
 
-     <a class="sw-card sw-card-frc" href="step-1/index.html">
-       <span class="sw-step-num">01</span>
-       <div class="sw-card-title">Build Your Robot</div>
-       <div class="sw-card-desc">Wire the control system: power distribution, roboRIO, motor controllers, and radio.</div>
-     </a>
+   .. grid-item-card:: What Gets Installed
 
-     <a class="sw-card sw-card-frc" href="step-2/index.html">
-       <span class="sw-step-num">02</span>
-       <div class="sw-card-title">Install Your Tools</div>
-       <div class="sw-card-desc">Install WPILib and Driver Station on your laptop.</div>
-     </a>
+      **Software — All Teams**
+      ^^^
+      - **WPILib** — robot programming library + VS Code
+      - **FRC Game Tools** — Driver Station *(Windows only)*
+      - **RobotPy** — Python framework *(Python teams only)*
+      - Vendor libraries (REVLib, Phoenix 6, etc.) — installed per project
 
-     <a class="sw-card sw-card-frc" href="step-3/index.html">
-       <span class="sw-step-num">03</span>
-       <div class="sw-card-title">Configure Your Control System</div>
-       <div class="sw-card-desc">Configure your Systemcore and radio. Required every season before you can deploy code.</div>
-     </a>
+      **OS note:** Driver Station requires Windows. Coding and simulation
+      work on macOS and Linux.
 
-     <a class="sw-card sw-card-frc" href="step-4/index.html">
-       <span class="sw-step-num">04</span>
-       <div class="sw-card-title">Write and Drive</div>
-       <div class="sw-card-desc">Create your first robot project, deploy code to the robot, and enable it with the Driver Station.</div>
-     </a>
+   .. grid-item-card:: Practice with the XRP
+      :link: ../xrp-robot/index
+      :link-type: doc
+      :class-card: sw-card-shared
 
-   </div>
+      **No Full Robot? No Problem.**
+      ^^^
+      The XRP is a desktop robot that runs real WPILib code.
+      Great for learning before build season — and for FTC teams
+      getting a head start on Systemcore programming.
 
-   <!-- ── TIPS ── -->
-   <p class="sw-section-h">Tips for New Teams</p>
+.. rubric:: The Four Steps
 
-   <div class="sw-grid sw-grid-2">
+Complete these in order. You will have a driving robot by the end of Step 4.
 
-     <div class="sw-tip" style="margin-bottom:0;">
-       <strong>Get driving first</strong><br>
-       Wire one drive motor per side, deploy arcade drive, and make sure
-       the robot moves before adding anything else. Every mechanism you add
-       before the robot drives is a variable you can&rsquo;t isolate.
-     </div>
+.. grid:: 1 2 2 4
+   :gutter: 3
 
-     <div class="sw-tip" style="margin-bottom:0;">
-       <strong>Check the Driver Station log</strong><br>
-       When something goes wrong on the robot, open the Driver Station log
-       viewer. It records exactly when the robot disconnected, what threw
-       an exception, and why the robot disabled.
-     </div>
+   .. grid-item-card:: Build Your Robot
+      :link: step-1/index
+      :link-type: doc
+      :class-card: sw-card-frc
 
+      **01**
+      ^^^
+      Wire the control system: power distribution, Systemcore,
+      motor controllers, and radio.
 
-   </div>
+   .. grid-item-card:: Install Your Tools
+      :link: step-2/index
+      :link-type: doc
+      :class-card: sw-card-frc
+
+      **02**
+      ^^^
+      Install WPILib and Driver Station on your laptop.
+
+   .. grid-item-card:: Configure Your Control System
+      :link: step-3/index
+      :link-type: doc
+      :class-card: sw-card-frc
+
+      **03**
+      ^^^
+      Configure your Systemcore and radio. Required every season
+      before you can deploy code.
+
+   .. grid-item-card:: Write and Drive
+      :link: step-4/index
+      :link-type: doc
+      :class-card: sw-card-frc
+
+      **04**
+      ^^^
+      Create your first robot project, deploy code to the robot,
+      and enable it with the Driver Station.
+
+.. rubric:: Tips for New Teams
+
+.. grid:: 1 1 2 2
+   :gutter: 3
+
+   .. grid-item::
+
+      .. tip::
+
+         **Get driving first**
+
+         Wire one drive motor per side, deploy arcade drive, and make sure
+         the robot moves before adding anything else. Every mechanism you add
+         before the robot drives is a variable you can't isolate.
+
+   .. grid-item::
+
+      .. tip::
+
+         **Check the Driver Station log**
+
+         When something goes wrong on the robot, open the Driver Station log
+         viewer. It records exactly when the robot disconnected, what threw
+         an exception, and why the robot disabled.
