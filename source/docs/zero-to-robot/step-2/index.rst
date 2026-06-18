@@ -2,140 +2,119 @@
 
 .. raw:: html
 
-
    <!-- Step badge -->
    <div class="sw-step-badge">
      <span class="sw-step-n">02</span>
      <div>
        <div class="sw-step-info-title">Install Your Tools</div>
-       <div class="sw-step-info-sub">
-         Step 2 of 4
-       </div>
+       <div class="sw-step-info-sub">Step 2 of 4</div>
      </div>
    </div>
 
-   <!-- System requirements -->
-   <p class="sw-section-h">System Requirements</p>
+.. rubric:: System Requirements
 
-   <div class="sw-grid sw-grid-2">
+.. grid:: 1 1 2 2
+   :gutter: 3
 
-     <div class="sw-card">
-       <div class="sw-label sw-label-win">Windows</div>
-       <div class="sw-card-title">Required for Driver Station</div>
-       <ul class="sw-list">
-         <li>Windows 11 (required for 2027+)</li>
-         <li>8 GB RAM minimum, 16 GB recommended</li>
-         <li>Driver Station</li>
-         <li>All WPILib tools available</li>
-       </ul>
-     </div>
+   .. grid-item-card:: Required for Driver Station
 
-     <div class="sw-card">
-       <div class="sw-label sw-label-any">macOS / Linux</div>
-       <div class="sw-card-title">Coding and Simulation Only</div>
-       <ul class="sw-list">
-         <li>macOS 12+ or modern Linux distro</li>
-         <li>WPILib + VS Code for writing and simulating code</li>
-         <li>Cannot run Driver Station or image Systemcore</li>
-         <li>Deploy code over USB or Wi-Fi (needs network access)</li>
-       </ul>
-     </div>
+      **Windows**
+      ^^^
+      - Windows 11 (required for 2027+)
+      - 8 GB RAM minimum, 16 GB recommended
+      - Driver Station
+      - All WPILib tools available
 
-   </div>
+   .. grid-item-card:: Coding and Simulation Only
 
-   <div class="sw-warn">
-     <strong>Windows 10 is no longer supported as of 2027.</strong>
-     Upgrade to Windows 11 before installing FRC Game Tools.
-   </div>
+      **macOS / Linux**
+      ^^^
+      - macOS 12+ or modern Linux distro
+      - WPILib + VS Code for writing and simulating code
+      - Cannot run Driver Station or image Systemcore
+      - Deploy code over USB or Wi-Fi (needs network access)
 
-   <!-- Installation parts -->
-   <p class="sw-section-h">Installation Steps</p>
+.. warning::
 
-   <div class="sw-grid sw-grid-2">
+   **Windows 10 is no longer supported as of 2027.**
+   Upgrade to Windows 11 before installing the Driver Station.
 
-     <a class="sw-card sw-card-shared" href="wpilib-setup.html">
-       <div class="sw-part-num">Part 1</div>
-       <div class="sw-card-title">WPILib Installer</div>
-       <div class="sw-card-desc">
-         Installs Visual Studio Code, WPILib extensions, and all
-         desktop tools (Glass, Elastic, OutlineViewer).
-         Required for Java, C++, and Python teams.
-       </div>
-     </a>
+.. rubric:: Installation Steps
 
-     <a class="sw-card sw-card-shared" href="frc-game-tools.html">
-       <div class="sw-part-num">Part 2: Windows only</div>
-       <div class="sw-card-title">FRC Game Tools</div>
-       <div class="sw-card-desc">
-         Installs the FRC Driver Station.
-         Required on the laptop that will drive the robot at competition.
-       </div>
-     </a>
+.. grid:: 1 1 2 2
+   :gutter: 3
 
-     <a class="sw-card sw-card-shared" href="python-setup.html">
-       <div class="sw-part-num">Part 3: Python teams only</div>
-       <div class="sw-card-title">RobotPy Setup</div>
-       <div class="sw-card-desc">
-         Install RobotPy and the required Python packages.
-         Java and C++ teams can skip this part.
-       </div>
-     </a>
+   .. grid-item-card:: WPILib Installer
+      :link: wpilib-setup
+      :link-type: doc
+      :class-card: sw-card-shared
 
-     <a class="sw-card sw-card-shared" href="offline-installation-preparations.html">
-       <div class="sw-part-num">Optional</div>
-       <div class="sw-card-title">Offline Installation</div>
-       <div class="sw-card-desc">
-         Preparing to install without internet access?
-         Download the offline installer packages in advance.
-       </div>
-     </a>
+      **Part 1**
+      ^^^
+      Installs Visual Studio Code, WPILib extensions, and all
+      desktop tools (Glass, Elastic, OutlineViewer).
+      Required for Java, C++, and Python teams.
 
-   </div>
+   .. grid-item-card:: FRC Game Tools
+      :link: first-driver-station
+      :link-type: doc
+      :class-card: sw-card-shared
 
-   <!-- Verify -->
-   <p class="sw-section-h">Verify Your Installation</p>
-   <p style="font-size:0.875rem;margin-bottom:16px;
-      color:var(--color-foreground-secondary,#555);">
-     After completing all parts above, confirm the installation is working:
-   </p>
+      **Part 2** — Windows only
+      ^^^
+      Installs the FRC Driver Station.
+      Required on the laptop that will drive the robot at competition.
 
-   <div class="sw-grid sw-grid-3">
+   .. grid-item-card:: RobotPy Setup
+      :link: python-setup
+      :link-type: doc
+      :class-card: sw-card-shared
 
-     <div class="sw-card">
-       <div class="sw-card-title">Open VS Code</div>
-       <div class="sw-card-desc">
-         Launch the WPILib VS Code shortcut (not the system VS Code).
-         You should see the WPILib icon (W) in the activity bar.
-       </div>
-     </div>
+      **Part 3** — Python teams only
+      ^^^
+      Install RobotPy and the required Python packages.
+      Java and C++ teams can skip this part.
 
-     <div class="sw-card">
-       <div class="sw-card-title">Run WPILib Command</div>
-       <div class="sw-card-desc">
-         Press <strong>Ctrl+Shift+P</strong> (or Cmd+Shift+P on Mac)
-         and type <em>WPILib</em>. You should see WPILib commands in
-         the palette.
-       </div>
-     </div>
+   .. grid-item-card:: Offline Installation
+      :link: offline-installation-preparations
+      :link-type: doc
+      :class-card: sw-card-shared
 
-     <div class="sw-card">
-       <div class="sw-card-title">Check Driver Station</div>
-       <div class="sw-card-desc">
-         Open the FRC Driver Station (Windows only). It should launch
-         without errors. Robot Communication will show
-         &ldquo;No Robot Communication&rdquo; - that is expected.
-       </div>
-     </div>
+      **Optional**
+      ^^^
+      Preparing to install without internet access?
+      Download the offline installer packages in advance.
 
-   </div>
+.. rubric:: Verify Your Installation
 
-   <div class="sw-tip">
-     <strong>Vendor libraries are not installed here.</strong>
-     Libraries like REVLib and Phoenix 6 are added per-project in Step 4
-     using the WPILib Dependency Manager. You do not need them yet.
-   </div>
+After completing all parts above, confirm the installation is working:
 
-   <!-- Nav -->
+.. grid:: 1 2 3 3
+   :gutter: 3
+
+   .. grid-item-card:: Open VS Code
+
+      Launch the WPILib VS Code shortcut (not the system VS Code).
+      You should see the WPILib icon (W) in the activity bar.
+
+   .. grid-item-card:: Run WPILib Command
+
+      Press :kbd:`Ctrl+Shift+P` (or :kbd:`Cmd+Shift+P` on Mac)
+      and type *WPILib*. You should see WPILib commands in the palette.
+
+   .. grid-item-card:: Check Driver Station
+
+      Open the FRC Driver Station (Windows only). It should launch
+      without errors. "No Robot Communication" is expected.
+
+.. tip::
+
+   **Vendor libraries are not installed here.**
+   Libraries like REVLib and Phoenix 6 are added per-project in Step 4
+   using the WPILib Dependency Manager. You do not need them yet.
+
+.. raw:: html
+
    <div class="sw-nav">
      <a class="sw-nav-btn" href="../step-1/index.html">
        &larr; Step 1: Build Your Robot</a>

@@ -2,103 +2,89 @@
 
 .. raw:: html
 
-
    <!-- Step badge -->
    <div class="sw-step-badge">
      <span class="sw-step-n">03</span>
      <div>
        <div class="sw-step-info-title">Configure Your Control System</div>
-       <div class="sw-step-info-sub">
-         Step 3 of 4
-       </div>
+       <div class="sw-step-info-sub">Step 3 of 4</div>
      </div>
    </div>
 
-   <p style="font-size:0.9rem;margin-bottom:20px;
-      color:var(--color-foreground-secondary,#444);">
-     Before you can deploy code, the Systemcore must be configured with the
-     current season&rsquo;s software and the radio must be programmed for your
-     team number. Both tasks require a Windows computer with FRC Game Tools installed.
-   </p>
+Before you can deploy code, the Systemcore must be configured with the
+current season's software and the radio must be programmed for your
+team number. Both tasks require a Windows computer with FRC Game Tools installed.
 
-   <div class="sw-warn">
-     <strong>Re-configure every season.</strong>
-     The Systemcore image is season-specific. A robot that worked last year will
-     not accept code deploys until the Systemcore is updated with the current
-     year&rsquo;s image.
-   </div>
+.. warning::
 
-   <!-- Systemcore -->
-   <p class="sw-section-h">Part 1: Configure the Systemcore</p>
-   <p style="font-size:0.875rem;margin-bottom:14px;
-      color:var(--color-foreground-secondary,#555);">
-     Use the FRC Game Tools to flash the current season&rsquo;s image to your Systemcore.
-   </p>
+   **Re-configure every season.**
+   The Systemcore image is season-specific. A robot that worked last year will
+   not accept code deploys until the Systemcore is updated with the current
+   year's image.
 
-   <div class="sw-grid sw-grid-2">
+.. rubric:: Part 1 — Configure the Systemcore
 
-     <a class="sw-card sw-card-frc" href="imaging-your-roborio.html">
-       <div class="sw-part-num">Systemcore</div>
-       <div class="sw-card-title">Configure Systemcore</div>
-       <div class="sw-card-desc">
-         Use the FRC Game Tools imaging utility to flash the current
-         season&rsquo;s image. Connect via USB or Ethernet.
-       </div>
-     </a>
+Use the FRC Game Tools to flash the current season's image to your Systemcore.
 
-     <div class="sw-card">
-       <div class="sw-part-num">Legacy</div>
-       <div class="sw-card-title">Using a roboRIO?</div>
-       <div class="sw-card-desc">
-         Teams still running a roboRIO should refer to the
-         <a href="https://docs.wpilib.org/en/stable/index.html">2026 WPILib docs</a>
-         for imaging instructions.
-       </div>
-     </div>
+.. grid:: 1 1 2 2
+   :gutter: 3
 
-   </div>
+   .. grid-item-card:: Configure Systemcore
+      :link: imaging-your-systemcore
+      :link-type: doc
+      :class-card: sw-card-frc
 
-   <!-- Radio -->
-   <p class="sw-section-h">Part 2 &mdash; Configure the Radio</p>
-   <p style="font-size:0.875rem;margin-bottom:14px;
-      color:var(--color-foreground-secondary,#555);">
-     The Vivid VH109 radio must be programmed with your team number
-     and the correct firmware before the robot can communicate wirelessly.
-   </p>
+      **Systemcore**
+      ^^^
+      Use the FRC Game Tools imaging utility to flash the current
+      season's image. Connect via USB or Ethernet.
 
-   <div class="sw-grid sw-grid-2">
+   .. grid-item-card:: Using a roboRIO?
+      :link: https://docs.wpilib.org/en/stable/index.html
+      :link-type: url
 
-     <a class="sw-card sw-card-frc" href="radio-programming.html">
-       <div class="sw-part-num">Standard</div>
-       <div class="sw-card-title">Radio Programming</div>
-       <div class="sw-card-desc">
-         Program the Vivid VH109 using the FRC Radio Configuration
-         Utility. Sets team number, SSID, and firmware.
-       </div>
-     </a>
+      **Legacy**
+      ^^^
+      Teams still running a roboRIO should refer to the
+      `2026 WPILib docs <https://docs.wpilib.org/en/stable/index.html>`_
+      for imaging instructions.
 
-     <a class="sw-card sw-card-frc" href="openmesh.html">
-       <div class="sw-part-num">Reference</div>
-       <div class="sw-card-title">Legacy OpenMesh Radios</div>
-       <div class="sw-card-desc">
-         Hardware specs, indicator LED meanings, and troubleshooting
-       </div>
-     </a>
+.. rubric:: Part 2 — Configure the Radio
 
-   </div>
+The Vivid VH109 radio must be programmed with your team number
+and the correct firmware before the robot can communicate wirelessly.
 
-   <!-- Power-up verification -->
-   <p class="sw-section-h">Part 3 &mdash; Verify Power-Up</p>
+.. grid:: 1 1 2 2
+   :gutter: 3
 
-   <ul class="sw-checklist">
-     <li>Systemcore boots and status light cycles</li>
-     <li>Radio powers on </li>
-     <li>Radio SSID appears as < in Wi-Fi list</li>
-     <li>Connect laptop to robot Wi-Fi &mdash; Driver Station shows
-       &ldquo;Robot Communication&rdquo; in green</li>
-   </ul>
+   .. grid-item-card:: Radio Programming
+      :link: radio-programming
+      :link-type: doc
+      :class-card: sw-card-frc
 
-   <!-- Nav -->
+      **Standard**
+      ^^^
+      Program the Vivid VH109 using the FRC Radio Configuration
+      Utility. Sets team number, SSID, and firmware.
+
+   .. grid-item-card:: Legacy OpenMesh Radios
+      :link: openmesh
+      :link-type: doc
+      :class-card: sw-card-frc
+
+      **Reference**
+      ^^^
+      Hardware specs, indicator LED meanings, and troubleshooting.
+
+.. rubric:: Part 3 — Verify Power-Up
+
+- Systemcore boots and status light cycles
+- Radio powers on
+- Radio SSID appears as <TEAM>_Robot in Wi-Fi list
+- Connect laptop to robot Wi-Fi — Driver Station shows "Robot Communication" in green
+
+.. raw:: html
+
    <div class="sw-nav">
      <a class="sw-nav-btn" href="../step-2/index.html">
        &larr; Step 2: Install Your Tools</a>

@@ -430,7 +430,7 @@
    .sw-checklist li { display:flex; align-items:baseline; gap:10px;
      font-size:0.875rem; line-height:1.6; padding:7px 0;
      border-bottom:1px solid var(--color-background-border,#eee); }
-   .sw-checklist li::before { content:"&#9744;"; font-size:1rem;
+   .sw-checklist li::before { content:"\2610"; font-size:1rem;
      flex-shrink:0; color:var(--frc); }
    .sw-tip { background:var(--shared-light);
      border:1px solid rgba(46,125,50,0.3); border-radius:6px;
