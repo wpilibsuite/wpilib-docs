@@ -132,7 +132,7 @@ work on the XRP.
      - REVLib, Phoenix 6, etc.
    * - Cost
      - ~$75
-     - $3,000–$10,000+
+     - $3,000–10,000+
 
 .. rubric:: Prerequisites
 
