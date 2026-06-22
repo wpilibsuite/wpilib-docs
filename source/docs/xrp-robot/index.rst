@@ -3,237 +3,214 @@
 # Getting Started with XRP
 
 The XRP (eXperimental Robot Platform), powered by
-[Worcester Polytechnic Institute](http://wpi.edu), is a small, low-cost robot
+`Worcester Polytechnic Institute <http://wpi.edu>`_, is a small, low-cost robot
 designed for learning WPILib programming without full FRC hardware.
-The same tools, language, and code patterns used for full FRC robots work on the XRP.
+The same tools, language, and code patterns used for full FRC robots
+work on the XRP.
 
-.. raw:: html
+.. rubric:: Why Use the XRP?
 
+.. grid:: 1 2 2 4
+   :gutter: 3
 
-   <!-- ── WHY XRP ── -->
-   <p class="sw-section-h">Why Use the XRP?</p>
+   .. grid-item-card:: Real WPILib Code
+      :class-card: sw-card-shared
 
-   <div class="sw-grid sw-grid-4">
+      **Learn**
+      ^^^
+      Write the same Java, C++, or Python code you would deploy to
+      a full FRC robot.
 
-     <div class="sw-card sw-card-shared">
-       <div class="sw-label sw-label-shared">Learn</div>
-       <div class="sw-card-title">Real WPILib Code</div>
-       <div class="sw-card-desc">
-         Write the same Java, C++, or Python code you would deploy to
-         a full FRC robot.
-       </div>
-     </div>
+   .. grid-item-card:: No Control System Required
+      :class-card: sw-card-shared
 
-     <div class="sw-card sw-card-shared">
-       <div class="sw-label sw-label-shared">Practice</div>
-       <div class="sw-card-title">No Control System Required</div>
-       <div class="sw-card-desc">
-         No roboRIO, no PDH, no radio programming. Just the XRP,
-         a USB cable for initial setup, and your laptop.
-       </div>
-     </div>
+      **Practice**
+      ^^^
+      No roboRIO, no PDH, no radio programming. Just the XRP,
+      a USB cable for initial setup, and your laptop.
 
-     <div class="sw-card sw-card-shared">
-       <div class="sw-label sw-label-shared">Pre-season</div>
-       <div class="sw-card-title">Off-Season Programming</div>
-       <div class="sw-card-desc">
-         Learn command-based programming, encoders, PID, and odometry
-         before build season starts &mdash; on a desk.
-       </div>
-     </div>
+   .. grid-item-card:: Off-Season Programming
+      :class-card: sw-card-shared
 
-     <div class="sw-card sw-card-ftc">
-       <div class="sw-label sw-label-ftc">FTC 2027-2028+</div>
-       <div class="sw-card-title">FTC Prep</div>
-       <div class="sw-card-desc">
-         Systemcore teams use the same WPILib toolchain. XRP skills
-         transfer directly to FTC robot programming.
-       </div>
-     </div>
+      **Pre-season**
+      ^^^
+      Learn command-based programming, encoders, PID, and odometry
+      before build season starts — on a desk.
 
-   </div>
+   .. grid-item-card:: FTC Prep
+      :class-card: sw-card-ftc
 
-   <!-- ── HOW IT WORKS ── -->
-   <p class="sw-section-h">How It Works</p>
+      **FTC 2027-2028+**
+      ^^^
+      Systemcore teams use the same WPILib toolchain. XRP skills
+      transfer directly to FTC robot programming.
 
-   <div class="sw-tip">
-     XRP code runs on your <strong>laptop as a simulation</strong>, communicating
-     with the XRP hardware over Wi-Fi. You use the same
-     <strong>WPILib VS Code tools and Driver Station</strong> as FRC &mdash;
-     the XRP just appears as a simulated robot that drives real motors.
-   </div>
+.. rubric:: How It Works
 
-   <div class="sw-grid sw-grid-3">
-     <div class="sw-card">
-       <div class="sw-card-title">Create an XRP project</div>
-       <div class="sw-card-desc">
-         Use the WPILib VS Code extension you already installed.
-         XRP projects use the same project structure as FRC.
-       </div>
-     </div>
-     <div class="sw-card">
-       <div class="sw-card-title">Run as simulation</div>
-       <div class="sw-card-desc">
-         Launch with <strong>Simulate Robot Code</strong> instead of
-         Deploy. The simulation connects to the XRP over Wi-Fi.
-       </div>
-     </div>
-     <div class="sw-card">
-       <div class="sw-card-title">Drive with Driver Station</div>
-       <div class="sw-card-desc">
-         Open the FRC Driver Station (Windows) and enable TeleOp.
-         Your joystick controls the XRP just like a full robot.
-       </div>
-     </div>
-   </div>
+.. tip::
 
-   <!-- ── HARDWARE SPECS ── -->
-   <p class="sw-section-h">Hardware Specifications</p>
+   XRP code runs on your **laptop as a simulation**, communicating
+   with the XRP hardware over Wi-Fi. You use the same
+   **WPILib VS Code tools and Driver Station** as FRC —
+   the XRP just appears as a simulated robot that drives real motors.
 
-   <table class="sw-tbl">
-     <thead>
-       <tr><th>Component</th><th>Details</th></tr>
-     </thead>
-     <tbody>
-       <tr><td><strong>Processor</strong></td>
-         <td>Raspberry Pi RP2040 dual-core Cortex-M0+ at 133 MHz</td></tr>
-       <tr><td><strong>Wireless</strong></td>
-         <td>Wi-Fi 802.11 b/g/n (2.4 GHz) for host communication</td></tr>
-       <tr><td><strong>Drive motors</strong></td>
-         <td>2 brushed DC gear motors with integrated quadrature encoders</td></tr>
-       <tr><td><strong>IMU</strong></td>
-         <td>Built-in 6-axis LSM6DS3 (gyro + accelerometer)</td></tr>
-       <tr><td><strong>Servo ports</strong></td>
-         <td>2 user servo outputs</td></tr>
-       <tr><td><strong>User I/O</strong></td>
-         <td>Reflectance sensor, ultrasonic distance sensor port</td></tr>
-       <tr><td><strong>Power</strong></td>
-         <td>USB-C or 3xAA battery pack</td></tr>
-       <tr><td><strong>Cost</strong></td>
-         <td>~$75 USD assembled (WPI / SparkFun)</td></tr>
-     </tbody>
-   </table>
+.. grid:: 1 2 3 3
+   :gutter: 3
 
-   <!-- ── XRP vs FRC ── -->
-   <p class="sw-section-h">XRP vs Full FRC Robot</p>
+   .. grid-item-card:: Create an XRP project
 
-   <table class="sw-tbl">
-     <thead>
-       <tr><th>Feature</th><th>XRP</th><th>FRC Robot</th></tr>
-     </thead>
-     <tbody>
-       <tr><td>WPILib API</td>
-         <td>&#10003; Same Java/C++/Python API</td>
-         <td>&#10003; Full API</td></tr>
-       <tr><td>Command-based</td>
-         <td>&#10003; Yes</td><td>&#10003; Yes</td></tr>
-       <tr><td>Encoders</td>
-         <td>&#10003; Integrated</td>
-         <td>External (per motor controller)</td></tr>
-       <tr><td>IMU / gyro</td>
-         <td>&#10003; Built-in</td>
-         <td>External (NavX, Pigeon 2)</td></tr>
-       <tr><td>Driver Station</td>
-         <td>&#10003; Same (Windows)</td>
-         <td>&#10003; Same (Windows)</td></tr>
-       <tr><td>Deploy method</td>
-         <td>Simulate (Wi-Fi to laptop)</td>
-         <td>Deploy to roboRIO/Systemcore</td></tr>
-       <tr><td>CAN bus</td>
-         <td>&#10007; Not available</td>
-         <td>&#10003; Full CAN support</td></tr>
-       <tr><td>Vendor libraries</td>
-         <td>Not applicable</td>
-         <td>REVLib, Phoenix 6, etc.</td></tr>
-       <tr><td>Cost</td>
-         <td>~$75</td><td>$3,000&ndash;$10,000+</td></tr>
-     </tbody>
-   </table>
+      Use the WPILib VS Code extension you already installed.
+      XRP projects use the same project structure as FRC.
 
-   <!-- ── PREREQUISITES ── -->
-   <p class="sw-section-h">Prerequisites</p>
+   .. grid-item-card:: Run as simulation
 
-   <div class="sw-grid sw-grid-2">
-     <div class="sw-card">
-       <div class="sw-card-title">Software (all platforms)</div>
-       <ul style="font-size:0.875rem;line-height:1.8;margin:8px 0 0;padding-left:20px;">
-         <li>WPILib installed (see
-           <a href="../zero-to-robot/step-2/wpilib-setup.html">WPILib setup</a>)
-         </li>
-         <li>FRC Driver Station (Windows &mdash; for enabling)</li>
-         <li>XRP firmware flashed on the board</li>
-       </ul>
-     </div>
-     <div class="sw-card">
-       <div class="sw-card-title">Hardware</div>
-       <ul style="font-size:0.875rem;line-height:1.8;margin:8px 0 0;padding-left:20px;">
-         <li>XRP robot kit (assembled)</li>
-         <li>USB-C cable (for initial firmware flash)</li>
-         <li>3&times;AA batteries or USB-C power bank</li>
-         <li>2.4 GHz Wi-Fi on your laptop</li>
-       </ul>
-     </div>
-   </div>
+      Launch with **Simulate Robot Code** instead of Deploy.
+      The simulation connects to the XRP over Wi-Fi.
 
-   <!-- ── GETTING STARTED ── -->
-   <p class="sw-section-h">Getting Started</p>
+   .. grid-item-card:: Drive with Driver Station
 
-   <div class="sw-grid sw-grid-3">
+      Open the FRC Driver Station (Windows) and enable TeleOp.
+      Your joystick controls the XRP just like a full robot.
 
-     <a class="sw-card sw-card-shared" href="hardware-and-imaging.html">
-       <span class="sw-step-num">01</span>
-       <div class="sw-card-title">Set Up Hardware</div>
-       <div class="sw-card-desc">
-         Flash XRP firmware, insert batteries, and connect to the XRP
-         Wi-Fi network.
-       </div>
-     </a>
+.. rubric:: Hardware Specifications
 
-     <a class="sw-card sw-card-shared" href="getting-to-know-xrp.html">
-       <span class="sw-step-num">02</span>
-       <div class="sw-card-title">Get to Know the XRP</div>
-       <div class="sw-card-desc">
-         Sensor locations, motor wiring, the web UI, and what each
-         I/O port is for.
-       </div>
-     </a>
+.. list-table::
+   :header-rows: 1
+   :widths: 25 75
 
-     <a class="sw-card sw-card-shared" href="programming-xrp.html">
-       <span class="sw-step-num">03</span>
-       <div class="sw-card-title">Write and Run Code</div>
-       <div class="sw-card-desc">
-         Create an XRP project in WPILib VS Code, run the simulation,
-         and drive your robot.
-       </div>
-     </a>
+   * - Component
+     - Details
+   * - **Processor**
+     - Raspberry Pi RP2040 dual-core Cortex-M0+ at 133 MHz
+   * - **Wireless**
+     - Wi-Fi 802.11 b/g/n (2.4 GHz) for host communication
+   * - **Drive motors**
+     - 2 brushed DC gear motors with integrated quadrature encoders
+   * - **IMU**
+     - Built-in 6-axis LSM6DS3 (gyro + accelerometer)
+   * - **Servo ports**
+     - 2 user servo outputs
+   * - **User I/O**
+     - Reflectance sensor, ultrasonic distance sensor port
+   * - **Power**
+     - USB-C or 3×AA battery pack
+   * - **Cost**
+     - ~$75 USD assembled (WPI / SparkFun)
 
-   </div>
+.. rubric:: XRP vs Full FRC Robot
 
-   <!-- ── EXAMPLE PROJECTS ── -->
-   <p class="sw-section-h">Example Projects</p>
+.. list-table::
+   :header-rows: 1
+   :widths: 30 35 35
 
-   <div class="sw-grid sw-grid-2">
-     <a class="sw-card sw-card-frc" href="programming-xrp.html">
-       <div class="sw-card-title">XRP Arcade Drive</div>
-       <div class="sw-card-desc">
-         Basic teleop drive using a joystick. Good first project.
-       </div>
-     </a>
-     <a class="sw-card sw-card-frc" href="hardware-support.html">
-       <div class="sw-card-title">Sensors and Encoders</div>
-       <div class="sw-card-desc">
-         Read encoder distances, gyro heading, and reflectance sensor.
-       </div>
-     </a>
-   </div>
+   * - Feature
+     - XRP
+     - FRC Robot
+   * - WPILib API
+     - ✓ Same Java/C++/Python API
+     - ✓ Full API
+   * - Command-based
+     - ✓ Yes
+     - ✓ Yes
+   * - Encoders
+     - ✓ Integrated
+     - External (per motor controller)
+   * - IMU / gyro
+     - ✓ Built-in
+     - External (NavX, Pigeon 2)
+   * - Driver Station
+     - ✓ Same (Windows)
+     - ✓ Same (Windows)
+   * - Deploy method
+     - Simulate (Wi-Fi to laptop)
+     - Deploy to Systemcore
+   * - CAN bus
+     - ✗ Not available
+     - ✓ Full CAN support
+   * - Vendor libraries
+     - Not applicable
+     - REVLib, Phoenix 6, etc.
+   * - Cost
+     - ~$75
+     - $3,000–$10,000+
 
-   <div class="sw-tip">
-     <strong>FIRST Training courses available.</strong>
-     <a href="https://training.firstinspires.org/catalog?labels=%5B%22Topics%22%5D&values=%5B%22Programming%22%5D">
-     Part 1</a> covers setup, methods, objects, and variables.
-     <a href="https://training.firstinspires.org/courses/java-programming-part-2">
-     Part 2</a> covers command-based programming, drive inputs, and arrays.
-   </div>
+.. rubric:: Prerequisites
+
+.. grid:: 1 1 2 2
+   :gutter: 3
+
+   .. grid-item-card:: Software (all platforms)
+
+      - :doc:`WPILib installed <../zero-to-robot/step-2/wpilib-setup>`
+      - FRC Driver Station (Windows — for enabling)
+      - XRP firmware flashed on the board
+
+   .. grid-item-card:: Hardware
+
+      - XRP robot kit (assembled)
+      - USB-C cable (for initial firmware flash)
+      - 3×AA batteries or USB-C power bank
+      - 2.4 GHz Wi-Fi on your laptop
+
+.. rubric:: Getting Started
+
+.. grid:: 1 2 3 3
+   :gutter: 3
+
+   .. grid-item-card:: Set Up Hardware
+      :link: hardware-and-imaging
+      :link-type: doc
+      :class-card: sw-card-shared
+
+      **01**
+      ^^^
+      Flash XRP firmware, insert batteries, and connect to the XRP
+      Wi-Fi network.
+
+   .. grid-item-card:: Get to Know the XRP
+      :link: getting-to-know-xrp
+      :link-type: doc
+      :class-card: sw-card-shared
+
+      **02**
+      ^^^
+      Sensor locations, motor wiring, the web UI, and what each
+      I/O port is for.
+
+   .. grid-item-card:: Write and Run Code
+      :link: programming-xrp
+      :link-type: doc
+      :class-card: sw-card-shared
+
+      **03**
+      ^^^
+      Create an XRP project in WPILib VS Code, run the simulation,
+      and drive your robot.
+
+.. rubric:: Example Projects
+
+.. grid:: 1 1 2 2
+   :gutter: 3
+
+   .. grid-item-card:: XRP Arcade Drive
+      :link: programming-xrp
+      :link-type: doc
+      :class-card: sw-card-frc
+
+      Basic teleop drive using a joystick. Good first project.
+
+   .. grid-item-card:: Sensors and Encoders
+      :link: hardware-support
+      :link-type: doc
+      :class-card: sw-card-frc
+
+      Read encoder distances, gyro heading, and reflectance sensor.
+
+.. tip::
+
+   **WPI XRP Curriculum available.**
+   `WPI XRP Curriculum <https://wp.wpi.edu/xrp/curriculum/>`_
+   covers setup, programming, and hands-on activities for the XRP robot.
 
 .. toctree::
    :maxdepth: 1
