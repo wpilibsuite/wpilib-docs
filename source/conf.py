@@ -23,7 +23,7 @@ sys.path.append(os.path.abspath("./frc-docs/source"))
 
 # -- Project information -----------------------------------------------------
 
-project = "WPILib Documentation"
+project = "FIRST Robotics"
 copyright = "2026, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License"
 author = "WPILib"
 version = "2027"
@@ -118,7 +118,7 @@ rediraffe_auto_redirect_perc = 80
 
 # Configure OpenGraph support
 ogp_site_url = "https://docs.wpilib.org/en/stable/"
-ogp_site_name = "WPILib Documentation"
+ogp_site_name = "FIRST Robotics Documentation"
 ogp_image = "https://raw.githubusercontent.com/wpilibsuite/branding/main/export/png/wpilib-icon-256.png"
 
 # Configure photofinish ci mode
@@ -142,7 +142,7 @@ hoverxref_role_types = {"term": "tooltip"}
 todo_emit_warnings = False
 
 # TODO Directives are shown in output
-todo_include_todos = True
+todo_include_todos = False
 
 # Disable following anchors in URLS for linkcheck
 linkcheck_anchors = True
@@ -254,6 +254,7 @@ html_favicon = "assets/FIRSTicon_RGB_withTM.ico"
 html_baseurl = "https://docs.wpilib.org/en/stable/"
 
 html_theme_options = {
+    "announcement": "&#x26A0;&#xFE0F; <strong>DRAFT</strong> &mdash; This site is a work in progress and does not reflect final 2027 documentation. Content may be incomplete or inaccurate.",
     "light_css_variables": {
         "color-sidebar-background": "#003974",
         "color-sidebar-brand-text": "#ffffffcc",
@@ -261,7 +262,7 @@ html_theme_options = {
         "color-background-hover": "#023160",
         "color-sidebar-link-text": "#acb1b9",
         "color-sidebar-caption-text": "#81868d",
-    }
+    },
 }
 
 html_sidebars = {
@@ -283,6 +284,7 @@ user_options = [
 
 def setup(app):
     app.add_css_file("css/wpilib-rtd.css")
+    app.add_css_file("css/sw-components.css")
 
     # Local Api Docs support
     app.add_js_file("js/api-docs-redirect.js")
@@ -338,7 +340,17 @@ latex_elements = {
     "printindex": r"\footnotesize\raggedright\printindex",
 }
 
-suppress_warnings = ["epub.unknown_project_files"]
+latex_documents = [
+    (
+        master_doc,
+        "wpilib.tex",
+        "FIRST Robotics Documentation",
+        author,
+        "manual",
+    )
+]
+
+suppress_warnings = ["epub.unknown_project_files", "ref.ref"]
 
 
 # Options for translation support -------------------------------------------

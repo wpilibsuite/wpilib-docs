@@ -3,78 +3,437 @@
 # What is WPILib?
 
 .. figure:: /assets/wpilib-generic.svg
-   :alt: The logo for the WPI Robotics Library.
+   :alt: The WPI Robotics Library logo.
    :target: http://wpilib.org
-   :width: 500
+   :width: 400
 
-The WPI Robotics Library ([WPILib](https://wpilib.org)) is the standard :term:`software library` provided for teams to write code for their FRC\ |reg| or FTC\ |reg| robots. WPILib contains a set of useful classes and subroutines for interfacing with various parts of the control system (such as sensors, motor controllers, and the driver station), as well as an assortment of other utility functions.
+WPILib is the standard software library for programming
+*FIRST*\ |reg| robots.
+It provides the classes and tools needed to control motors, read sensors,
+communicate with the Driver Station, and run autonomous routines — across
+FRC\ |reg| and (from 2027-2028) FTC\ |reg| via Systemcore.
 
 .. image:: /assets/wpi-logo.png
-   :alt: The Worcester Polytechnic Institute (WPI) logo.
+   :alt: Worcester Polytechnic Institute (WPI) logo.
    :target: http://wpi.edu
-   :width: 500
+   :width: 300
+   :align: center
 
-## Supported languages
+WPILib is developed and maintained by a partnership between
+`Worcester Polytechnic Institute (WPI) <http://wpi.edu>`_,
+FIRST\ |reg|, and volunteer developers from the community.
 
-There are three versions of WPILib, one for each of the three officially-supported text-based languages: WPILibJ for Java, and WPILibC for C++, and RobotPy for Python. A considerable effort is made to maintain feature-parity between these languages - library features are not added unless they can be reasonably supported for both Java and C++ (with the C++ able to be wrapped by pybind for Python), and when possible the class and method names are kept identical or highly-similar. Java, C++, and Python were chosen for the officially-supported languages due to their appropriate level-of-abstraction and ubiquity in both industry and high-school computer science classes.
+.. rubric:: Which path are you on?
 
-In general, C++ offers better high-end performance, at the cost of increased user effort (memory must be handled manually, and the C++ compiler does not do much to ensure user code will not crash at runtime). Java and Python offer lesser performance, but much greater convenience. Python users should take care to test their program to ensure that typos and other issues don't cause robot crashes, as Python is interpreted. New/inexperienced users are encouraged to use Java.
+.. grid:: 1 1 3 3
+   :gutter: 3
 
-## Source code and documentation
+   .. grid-item-card:: FIRST Robotics Competition
+      :class-card: sw-card-frc
 
-WPILib is an open-source library - the C++ and Java source code is in the [allwpilib](https://github.com/wpilibsuite/allwpilib) mono-repo and python source code is in the [mostrobotpy](https://github.com/robotpy/mostrobotpy) mono-repo.  The Java and C++ source code can be found in the WPILibJ and WPILibC source directories:
+      **FRC**
+      ^^^
+      Full WPILib support. Java, C++, Python. Deploys to Systemcore.
+      Driver Station on Windows required for competition.
 
-The Java and C++ source code can be found in the WPILibJ and WPILibC source directories:
+   .. grid-item-card:: XRP Practice Robot
+      :class-card: sw-card-shared
 
-- [Java source code](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibj/src/main/java/org/wpilib)
+      **FRC + FTC**
+      ^^^
+      Same WPILib code on a $75 desktop robot. No control system
+      hardware required. Great for off-season learning and
+      FTC Systemcore prep.
 
-- [C++ source code](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibc/src/main/native/cpp)
+   .. grid-item-card:: FTC Systemcore
+      :class-card: sw-card-ftc
 
-- [Python source code](https://github.com/robotpy/mostrobotpy)
+      **FTC 2027-2028+**
+      ^^^
+      WPILib now supports FTC via Systemcore and Motioncore.
+      Same Java/C++/Python toolchain as FRC.
 
-While users are strongly encouraged to read the source code to resolve detailed questions about library functionality, more-concise documentation can be found on the official documentation pages for WPILibJ and WPILibC and RobotPy:
+.. rubric:: What WPILib Includes
 
-- [Java documentation](https://github.wpilib.org/allwpilib/docs/beta/java/)
+.. list-table::
+   :header-rows: 1
+   :widths: 22 46 10 22
 
-- [C++ documentation](https://github.wpilib.org/allwpilib/docs/beta/cpp/)
+   * - Component
+     - Description
+     - FRC
+     - FTC
+   * - **Robot library**
+     - Motor control, sensors, drive classes, kinematics
+     - ✓
+     - ✓ (Systemcore)
+   * - **VS Code extension**
+     - Project templates, deploy, build, vendor manager
+     - ✓
+     - ✓
+   * - **Simulation framework**
+     - Run robot code on laptop without hardware
+     - ✓
+     - ✓ (XRP)
+   * - **Glass dashboard**
+     - Real-time telemetry and field visualization
+     - ✓
+     - ✓
+   * - **Elastic dashboard**
+     - Configurable driver dashboard (replaces Shuffleboard)
+     - ✓
+     - Planned
+   * - **PathPlanner / Choreo**
+     - GUI path planning for autonomous
+     - ✓
+     - Planned
+   * - **OutlineViewer**
+     - NetworkTables browser
+     - ✓
+     - ✓
+   * - **Shuffleboard**
+     - Older dashboard *(Removed 2027)*
+     - ✗
+     - ✗
 
-- [Python documentation](https://robotpy.readthedocs.io/projects/robotpy/en/stable/)
+.. rubric:: Language Comparison
 
-## Development Timeline
+.. list-table::
+   :header-rows: 1
+   :widths: 20 30 20 30
 
-WPILib development happens on branches for individual years, as opposed to one main branch. Development and support for both FRC and FTC happen during different periods to support both FRC and FTC needs. These periods overlap with each other between years, so the following timeline visualizes these overlapping periods to make it easy to understand.
+   * - Language
+     - Recommended for
+     - Performance
+     - Community examples
+   * - **Java** *(Recommended)*
+     - New teams, most teams
+     - Good
+     - Most abundant
+   * - **C++**
+     - Teams with C++ experience
+     - Best
+     - Abundant
+   * - **Python**
+     - Teams already using Python
+     - Good
+     - Growing
 
-.. image:: /assets/dev_timeline.svg
-  :alt: A timeline showing the different periods of WPILib's development for the next 4 years and how the different periods overlap between different, starting with development from FRC Kickoff to September, FRC beta from September to the next FRC Kickoff, FRC Support from FRC Kickoff to Champs, Updates/FTC Beta from Champs to FTC Kickoff, and FTC Support from FTC Kickoff to the next Champs.
+.. tip::
 
-For year N, WPILib will create a branch during year N - 1, and actively do development on it until around October of year N - 1, when it enters the beta testing period for FRC, which continues until FRC Kickoff for year N, which is when the first stable release is published. FRC will receive active support until the FIRST Championship ends, which then begins the FTC beta testing period, which lasts until FTC Kickoff in September of year N. FTC will then receive active support until the next FIRST Championship ends of year N + 1, and then the branch will no longer be supported.
+   **All three languages share the same API design.**
+   Class names and method names are kept identical or very close across
+   Java, C++, and Python.
 
-## Platform Support
+.. rubric:: Development Environments
 
-As a broad rule, WPILib only supports OSes that the OS developer still supports. In general, OS requirements are driven by OS developer support and C++ compiler feature support. Per [the WPILib roadmap](https://static1.squarespace.com/static/5d4b06a67cd3580001ded283/t/6631527dd3db35012eebacb3/1714508413721/WPILib+2024+Long+Term+Roadmap.pdf), we want to closely track future evolution of the supported languages, which often means new C++ features are adopted as soon as all supported platforms have compilers that support it. WPILib *may* continue to build for unsupported platforms, but no official support will be guaranteed, and if newer C++ features are only available in newer OSes, we can choose to adopt them and older OSes with compilers that lack support will no longer be able to build WPILib.
+WPILib supports two families of development environment: a full
+**desktop IDE** and browser-based **OnBot** environments that run
+directly on the Systemcore with no local install.
 
-### Windows Support
+**Desktop Environment — Java, C++, Python**
 
-Only 64-bit Windows 11 versions still in support by Microsoft will be supported.
+.. card:: Visual Studio Code + WPILib Extension
+   :class-card: sw-card-frc
 
-### macOS Support
+   **Desktop**
 
-Apple generally keeps the last three macOS versions in support, and releases a new version annually, so WPILib also only supports the last three macOS versions.
+   All three languages use VS Code as the IDE, with the WPILib extension
+   providing project templates, build tools, simulation, and vendor library
+   management. Works on Windows, macOS, and Linux.
 
-### Linux Support
+   .. list-table::
+      :header-rows: 1
 
-For Linux, we follow the [Debian release cycle](https://wiki.debian.org/DebianReleases#Release_statistics). Debian releases a new version every two years. The version released two summers before a year's release will become the minimum required OS for that year. This also aligns with Ubuntu LTS releases, so only the last Ubuntu LTS will be supported at a given time.
+      * - Feature
+        - Java
+        - C++
+        - Python
+      * - **IDE**
+        - VS Code
+        - VS Code
+        - VS Code
+      * - **Build system**
+        - GradleRIO
+        - GradleRIO (open to change)
+        - More integrated experience
+      * - **Desktop simulation**
+        - ✓
+        - ✓
+        - ✓
+      * - **Offline install**
+        - ✓
+        - ✓
+        - ✓
+      * - **Deploy**
+        - USB or Wi-Fi to Systemcore
+        - USB or Wi-Fi to Systemcore
+        - USB or Wi-Fi to Systemcore
 
-### Minimum required OS versions
+.. tip::
 
-+----------+--------+-------------------------+-------+-------+-------+
-| OS       | 2027   | 2028                    | 2029  | 2030  | 2031  |
-+==========+========+=========================+=======+=======+=======+
-| Windows  | 11     | 11                      | 11    | 11    | 11    |
-+----------+--------+-------------------------+-------+-------+-------+
-| Debian   | Trixie | Trixie                  | Forky | Forky | Duke  |
-+----------+--------+-------------------------+-------+-------+-------+
-| Ubuntu   | 26.04  | 26.04                   | 28.04 | 28.04 | 30.04 |
-+----------+--------+-------------------------+-------+-------+-------+
-| macOS    | 15     | 26 (Last Intel release) | 27    | 28    | 29    |
-+----------+--------+-------------------------+-------+-------+-------+
+   **Python install experience:** WPILib is actively working to
+   provide a more integrated Python setup — reducing the number of
+   separate steps compared to Java/C++.
+   **C++ build system:** GradleRIO is the baseline; transitioning
+   to an alternative build system is possible depending on community contributions.
+
+**OnBot Environments — Blockly, Java, Python, LabVIEW**
+
+.. card:: VS Code-derived editor hosted on Systemcore
+   :class-card: sw-card-frc
+
+   **OnBot (Browser-based)**
+
+   OnBot environments run entirely in the browser — no local
+   installation required. Code is written, saved, and deployed directly
+   on the Systemcore. Supports multiple saved Workspaces with a Deploy
+   button to choose which one runs.
+
+   .. list-table::
+      :header-rows: 1
+
+      * - Feature
+        - Blockly
+        - Java
+        - Python
+        - LabVIEW
+      * - **Editor**
+        - Block visual editor
+        - VS Code-derived
+        - VS Code-derived
+        - Graphical (browser)
+      * - **Backed by**
+        - Python
+        - Java
+        - Python
+        - LabVIEW
+      * - **Desktop install**
+        - None required
+        - None required
+        - None required
+        - None required
+      * - **Multi-user**
+        - Single-user (under investigation)
+        - Single-user (under investigation)
+        - Single-user (under investigation)
+        - Single-user (under investigation)
+
+.. warning::
+
+   **C++ is not supported in OnBot environments.**
+   The browser-based toolchain does not provide a good enough C++ experience
+   to ship. Use the desktop VS Code environment for C++ development.
+
+   **OnBot notes:** Currently planned as single-user access
+   (multi-user being investigated). Supports multiple saved
+   *Workspaces* with a Deploy button to select which one runs on
+   the Systemcore. Simulation is not planned for OnBot environments.
+
+**FTC REV Duo**
+
+.. grid:: 1 1 2 2
+   :gutter: 3
+
+   .. grid-item-card:: OnBot Java / Android Studio
+      :class-card: sw-card-ftc
+
+      **FTC (REV Duo)**
+      ^^^
+      REV Duo teams use the FTC SDK with OnBot Java (browser-based)
+      or Android Studio. Documented at
+      `ftc-docs.firstinspires.org <https://ftc-docs.firstinspires.org>`_.
+
+   .. grid-item-card:: Blocks (FTC SDK)
+      :class-card: sw-card-ftc
+
+      **FTC (REV Duo)**
+      ^^^
+      Visual block-based programming via the FTC SDK OnBot interface.
+      Documented at
+      `ftc-docs.firstinspires.org <https://ftc-docs.firstinspires.org>`_.
+
+.. rubric:: Build and Deploy Comparison
+
+.. list-table::
+   :header-rows: 1
+   :widths: 22 26 30 22
+
+   * - Feature
+     - Desktop (VS Code)
+     - OnBot (Java / Python / Blockly / LabVIEW)
+     - FTC REV Duo
+   * - **Languages**
+     - Java, C++, Python
+     - Java, Python, Blockly, LabVIEW
+     - Java, Blocks
+   * - **C++ support**
+     - ✓
+     - ✗ Not supported
+     - ✗
+   * - **Build system**
+     - GradleRIO
+     - On-device (browser)
+     - FTC SDK / Gradle
+   * - **Deploy**
+     - USB or Wi-Fi to Systemcore
+     - Deploy button in browser (Workspace-based)
+     - ADB over USB or Wi-Fi
+   * - **Simulation**
+     - ✓ Full desktop sim
+     - ✗ Not planned
+     - ✗ None
+   * - **Offline install**
+     - ✓
+     - N/A — runs on Systemcore
+     - ✓
+   * - **Multi-user**
+     - N/A
+     - Single-user (under investigation)
+     - N/A
+   * - **Driver Station**
+     - FRC DS (Windows)
+     - FRC DS (Windows)
+     - Driver Hub / phone
+
+.. rubric:: Dashboards
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 35 45
+
+   * - Dashboard
+     - Status
+     - Best for
+   * - **Elastic**
+     - ✓ Current — recommended
+     - Competition driver dashboard. Highly configurable.
+   * - **AdvantageScope**
+     - ✓ Current — recommended
+     - Log review, 3D field visualization, mechanism replay.
+   * - **Glass**
+     - ✓ Current
+     - Built-in simulation UI and lightweight telemetry.
+   * - **SmartDashboard**
+     - *(Removed 2027)*
+     - Use Elastic instead.
+   * - **Shuffleboard**
+     - *(Removed 2027)*
+     - Use Elastic instead.
+
+.. rubric:: Vendor Libraries
+
+.. grid:: 1 1 2 2
+   :gutter: 3
+
+   .. grid-item-card:: What are vendor libraries?
+
+      Hardware vendors (REV, CTRE, etc.) ship WPILib extension
+      libraries that add support for their specific motor controllers,
+      sensors, and accessories. They are installed
+      **per project** via the VS Code Dependency Manager
+      and do not carry over on project import.
+
+   .. grid-item-card:: Common libraries
+
+      - **REVLib** — SPARK MAX, SPARK Flex
+      - **Phoenix 6** — Talon FX, CANcoder
+      - **PathplannerLib** — auto trajectories
+      - **PhotonLib** — PhotonVision cameras
+      - **Limelight** — Limelight cameras
+
+.. rubric:: Path Planning
+
+.. grid:: 1 1 2 2
+   :gutter: 3
+
+   .. grid-item-card:: PathPlanner / Choreo
+      :link: pathplanning/index
+      :link-type: doc
+      :class-card: sw-card-frc
+
+      **FRC**
+      ^^^
+      GUI tools for drawing autonomous paths. Both generate
+      trajectory commands that slot into command-based robot programs.
+      PathPlanner is more beginner-friendly; Choreo optimizes
+      for time.
+
+   .. grid-item-card:: Road Runner
+      :class-card: sw-card-ftc
+
+      **FTC REV Duo**
+      ^^^
+      The standard FTC path planning library for REV Duo teams.
+      Separate from WPILib. FTC Systemcore teams will use
+      PathPlanner/Choreo (planned for 2028).
+
+.. rubric:: Shared Concepts Across Programs
+
+These programming concepts are identical whether you are writing FRC,
+FTC Systemcore, or XRP code.
+
+.. grid:: 1 1 1 1
+   :gutter: 3
+
+   .. grid-item-card:: PID Control
+      :class-card: sw-card-shared
+
+      Proportional-Integral-Derivative feedback loop for precise
+      motor velocity and position control.
+
+   .. grid-item-card:: Odometry
+      :class-card: sw-card-shared
+
+      Track robot position on the field using encoder and gyro data.
+      Used for autonomous navigation.
+
+   .. grid-item-card:: State Machines
+      :class-card: sw-card-shared
+
+      Command-based programming uses a state machine model:
+      subsystems, commands, and triggers.
+
+   .. grid-item-card:: AprilTags
+      :class-card: sw-card-shared
+
+      WPILib includes built-in AprilTag detection for field
+      localization and target tracking.
+
+   .. grid-item-card:: Motor Control
+      :class-card: sw-card-shared
+
+      DifferentialDrive, MecanumDrive, and swerve kinematics
+      classes work identically across all platforms.
+
+   .. grid-item-card:: Java Fundamentals
+      :class-card: sw-card-shared
+
+      WPILib Java code uses standard Java: classes, interfaces,
+      lambdas. No framework-specific syntax to learn separately.
+
+.. rubric:: Source Code and API Docs
+
+.. grid:: 1 2 3 3
+   :gutter: 3
+
+   .. grid-item-card:: Java API Reference
+      :link: https://github.wpilib.org/allwpilib/docs/release/java/
+      :link-type: url
+      :class-card: sw-card-frc
+
+      Full Javadoc for WPILibJ classes and methods.
+
+   .. grid-item-card:: C++ API Reference
+      :link: https://github.wpilib.org/allwpilib/docs/release/cpp/
+      :link-type: url
+      :class-card: sw-card-frc
+
+      Doxygen documentation for WPILibC.
+
+   .. grid-item-card:: Python API Reference
+      :link: https://robotpy.readthedocs.io/projects/robotpy/en/stable/
+      :link-type: url
+      :class-card: sw-card-frc
+
+      RobotPy documentation for Python-based robot programs.
