@@ -1,6 +1,6 @@
 # FTC with WPILib
 
-.. admonition:: 🚧 FTC Documentation Coming Soon
+.. admonition:: FTC Documentation Coming Soon
 
    Full WPILib support for FIRST Tech Challenge arrives with the
    **Systemcore** and **Motioncore** controllers.
