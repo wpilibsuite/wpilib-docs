@@ -88,14 +88,10 @@ The Motor Safety interface of motor controllers can be interacted with by the us
         :language: c++
         :lines: 49-52
 
-    ```python
-        m_motorRight.setSafetyEnabled(True)
-        m_motorRight.setSafetyEnabled(False)
-        m_motorRight.setExpiration(.1)
-        m_motorRight.feed()
-    ```
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/011945f5752f8f8faf66e9176a58339639833b5d/snippets/robot/MotorControl/robot.py
+        :language: python
+        :lines: 49-52
 
-.. todo:: Add RLI for python example above.
 
 By default all Drive objects enable Motor Safety. Depending on the mechanism and the structure of your program, you may wish to configure the timeout length of the motor safety (in seconds). The timeout length is configured on a per actuator basis and is not a global setting. The default (and minimum useful) value is 100ms.
 
