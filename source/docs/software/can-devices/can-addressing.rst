@@ -51,8 +51,8 @@ Manufacturer
 ===================== ==========
 Broadcast             0
 NI                    1
-Luminary Micro        2
-DEKA                  3
+Limelight             2
+FIRST                 3
 CTR Electronics       4
 REV Robotics          5
 Grapple               6
@@ -78,7 +78,7 @@ Reserved              21-255
 The API or Message Identifier is a 10-bit value that identifies a
 particular command or message type. These identifiers are unique for
 each Manufacturer + Device Type combination (so an API identifier that
-may be a "Voltage Set" for a Luminary Micro Motor Controller may be a
+may be a "Voltage Set" for a REV Robotics Motor Controller may be a
 "Status Get" for a CTR Electronics Motor Controller or ``Current Get``
 for a CTR Power Distribution Module).
 
