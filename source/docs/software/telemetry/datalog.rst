@@ -87,7 +87,7 @@ DataLogManager by default does not record joystick data.  The ``DriverStation`` 
 
 ## Custom Data Logging using DataLog
 
-The ``DataLog`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/datalog/DataLog.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1log_1_1_data_log.html), :external:py:class:`Python <wpiutil.log.DataLog>`) and its associated LogEntry classes (e.g. ``BooleanLogEntry``, ``DoubleLogEntry``, etc) provides low-level access for writing data logs.
+The ``DataLog`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/datalog/DataLog.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1log_1_1_data_log.html), :external:py:class:`Python <wpilog.DataLog>`) and its associated LogEntry classes (e.g. ``BooleanLogEntry``, ``DoubleLogEntry``, etc) provides low-level access for writing data logs.
 
 .. note:: Unlike NetworkTables, there is no change checking performed.  **Every** call to a ``LogEntry.append()`` function will result in a record being written to the data log.  Checking for changes and only appending to the log when necessary is the responsibility of the caller.
 
