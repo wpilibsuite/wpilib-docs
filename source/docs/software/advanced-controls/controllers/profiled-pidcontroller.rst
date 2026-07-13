@@ -71,7 +71,7 @@ A major difference between a standard ``PIDController`` and a ``ProfiledPIDContr
   ```python
   # Calculates the output of the PID algorithm based on the sensor reading
   # and sends it to a motor
-  motor.set(controller.calculate(encoder.getDistance(), goal))
+  motor.set(controller.calculate(encoder.get_distance(), goal))
   ```
 
 The specified ``goal`` value (which can be either a position value or a ``TrapezoidProfile.State``, if nonzero velocity is desired) is *not* necessarily the *current* setpoint of the loop - rather, it is the *eventual* setpoint once the generated profile terminates.
@@ -104,11 +104,11 @@ The returned setpoint might then be used as in the following example:
           # Assuming feedforward is a SimpleMotorFeedforward object
           self.feedforward = SimpleMotorFeedforward(ks=0.0, kv=0.0, ka=0.0)
       def goToPosition(self, goalPosition: float):
-          pidVal = self.controller.calculate(self.encoder.getDistance(), goalPosition)
-          self.motor.setVoltage(
+          pidVal = self.controller.calculate(self.encoder.get_distance(), goalPosition)
+          self.motor.set_voltage(
               pidVal
-              + self.feedforward.calculate(self.lastSpeed, self.controller.getSetpoint().velocity))
-          self.lastSpeed = self.controller.getSetpoint().velocity
+              + self.feedforward.calculate(self.lastSpeed, self.controller.get_setpoint().velocity))
+          self.lastSpeed = self.controller.get_setpoint().velocity
 
 ## Complete Usage Example
 

@@ -50,7 +50,7 @@ Using a bang-bang controller is easy:
 
   ```python
   # Controls a motor with the output of the BangBang controller
-  motor.set(controller.calculate(encoder.getRate(), setpoint))
+  motor.set(controller.calculate(encoder.get_rate(), setpoint))
   ```
 
 ## Combining Bang Bang Control with Feedforward
@@ -73,6 +73,6 @@ Like a PID controller, best results are obtained in conjunction with a :ref:`fee
 
   ```python
   # Controls a motor with the output of the BangBang controller and a feedforward
-  motor.setVoltage(controller.calculate(encoder.getRate(), setpoint) * 12.0 + 0.9 * feedforward.calculate(setpoint))
+  motor.set_voltage(controller.calculate(encoder.get_rate(), setpoint) * 12.0 + 0.9 * feedforward.calculate(setpoint))
   ```
 

@@ -73,10 +73,10 @@ To be able to run the tests, SysIdRoutine exposes test "factories", or functions
   ```
 
   ```python
-  def sysIdQuasistatic(self, direction:commands2.sysid.SysIdRoutine.Direction) -> commands2.Command:
+  def sys_id_quasistatic(self, direction:commands2.sysid.SysIdRoutine.Direction) -> commands2.Command:
     return commands2.sysid.SysIdRoutine.quasistatic(direction)
 
-  def sysIdDynamic(self, direction:commands2.sysid.SysIdRoutine.Direction) -> commands2.Command:
+  def sys_id_dynamic(self, direction:commands2.sysid.SysIdRoutine.Direction) -> commands2.Command:
     return commands2.sysid.SysIdRoutine.dynamic(direction)
   ```
 

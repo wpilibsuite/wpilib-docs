@@ -166,7 +166,7 @@ To create a ``ElevatorFeedforward``, simply construct it with the required gains
 
   ```python
   from wpimath.controller import ElevatorFeedforward
-    # Create a new ElevatorFeedforward with gains kS, kV, and kA
+    # Create a new ElevatorFeedforward with gains kS, kG, kV, and kA
   # Distance is measured in meters
   feedforward = ElevatorFeedforward(kS, kG, kV, kA)
   ```
@@ -200,7 +200,7 @@ To calculate the feedforward, simply call the ``calculate()`` method with the de
 
 ## Using Feedforward to Control Mechanisms
 
-.. note:: Since feedforward voltages are physically meaningful, it is best to use the ``setVoltage()`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/hardware/motor/MotorController.html#setVoltage(double)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_motor_controller.html#a48ce22a1b262d8f4ddf36f6c48f14feb), :external:py:meth:`Python <wpilib.interfaces.MotorController.setVoltage>`) method when applying them to motors to compensate for "voltage sag" from the battery.
+.. note:: Since feedforward voltages are physically meaningful, it is best to use the ``setVoltage()`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/hardware/motor/MotorController.html#setVoltage(double)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_motor_controller.html#a48ce22a1b262d8f4ddf36f6c48f14feb), :external:py:meth:`Python <wpilib.interfaces.MotorController.set_voltage>`) method when applying them to motors to compensate for "voltage sag" from the battery.
 
 Feedforward control can be used entirely on its own, without a feedback controller.  This is known as "open-loop" control, and for many mechanisms (especially robot drives) can be perfectly satisfactory.  A ``SimpleMotorFeedforward`` might be employed to control a robot drive as follows:
 
@@ -222,8 +222,8 @@ Feedforward control can be used entirely on its own, without a feedback controll
   ```
 
   ```python
-  def tankDriveWithFeedforward(self, leftVelocity: float, rightVelocity: float):
-      self.leftMotor.setVoltage(feedForward.calculate(leftVelocity))
-      self.rightMotor.setVoltage(feedForward.calculate(rightVelocity))
+  def tank_drive_with_feedforward(self, left_velocity: float, right_velocity: float):
+      self.left_motor.set_voltage(feedforward.calculate(left_velocity))
+      self.right_motor.set_voltage(feedforward.calculate(right_velocity))
   ```
 

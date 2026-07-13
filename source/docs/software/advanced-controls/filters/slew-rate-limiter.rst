@@ -79,8 +79,8 @@ A typical use of a SlewRateLimiter is to limit the acceleration of a robot's dri
 
   ```python
   # Ordinary call with no ramping applied
-  drivetrain.arcadeDrive(forward, turn)
+  drivetrain.arcade_drive(forward, turn)
   # Slew-rate limits the forward/backward input, limiting forward/backward acceleration
-  drivetrain.arcadeDrive(filter.calculate(forward), turn)
+  drivetrain.arcade_drive(filter.calculate(forward), turn)
   ```
 

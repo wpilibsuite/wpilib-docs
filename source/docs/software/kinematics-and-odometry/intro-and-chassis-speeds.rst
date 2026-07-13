@@ -86,7 +86,7 @@ The static ``ChassisSpeeds.fromFieldRelativeSpeeds`` (Java / Python) / ``Chassis
    # is a quarter of a rotation per second counterclockwise. The current
    # robot angle is 45 degrees.
    speeds = ChassisSpeeds.fromFieldRelativeSpeeds(
-     2.0, 2.0, math.pi / 2.0, Rotation2d.fromDegrees(45.0))
+     2.0, 2.0, math.pi / 2.0, Rotation2d.from_degrees(45.0))
    ```
 
 .. note:: The angular velocity is not explicitly stated to be "relative to the field" because the angular velocity is the same as measured from a field perspective or a robot perspective.

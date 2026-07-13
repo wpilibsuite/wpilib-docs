@@ -122,9 +122,9 @@ Motor controllers should be declared as member variables in your ``Robot`` class
            self.intake_motor = wpilib.Spark(0)
            self.joystick = wpilib.Joystick(0)
 
-       def teleopPeriodic(self):
+       def teleop_periodic(self):
            # Run intake when button is pressed
-           if self.joystick.getRawButton(1):
+           if self.joystick.get_raw_button(1):
                self.intake_motor.set(0.8)
            else:
                self.intake_motor.set(0.0)

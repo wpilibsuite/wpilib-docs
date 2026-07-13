@@ -150,8 +150,8 @@ The ``calculate`` method returns a ``TrapezoidProfile.State`` class (the same on
   ```
 
   ```python
-  setpoint = profile.calculate(elapsedTime, initialState, goalState)
-  controller.calculate(encoder.getDistance(), setpoint.position)
+  setpoint = profile.calculate(elapsed_time, initial_state, goal_state)
+  controller.calculate(encoder.get_distance(), setpoint.position)
   ```
 
 ## Complete Usage Example

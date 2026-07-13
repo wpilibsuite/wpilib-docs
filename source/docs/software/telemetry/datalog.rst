@@ -80,9 +80,9 @@ DataLogManager by default does not record joystick data.  The ``DriverStation`` 
     # Starts recording to data log
     DataLogManager.start()
     # Record both DS control and joystick data
-    DriverStation.startDataLog(DataLogManager.getLog())
+    DriverStation.start_data_log(DataLogManager.get_log())
     # (alternatively) Record only DS control data
-    DriverStation.startDataLog(DataLogManager.getLog(), False)
+    DriverStation.start_data_log(DataLogManager.get_log(), False)
     ```
 
 ## Custom Data Logging using DataLog
@@ -163,11 +163,11 @@ The LogEntry classes can be used in conjunction with DataLogManager to record va
             # Starts recording to data log
             DataLogManager.start()
             # Set up custom log entries
-            log = DataLogManager.getLog()
+            log = DataLogManager.get_log()
             self.myBooleanLog = BooleanLogEntry(log, "/my/boolean")
             self.myDoubleLog = DoubleLogEntry(log, "/my/double")
             self.myStringLog = StringLogEntry(log, "/my/string")
-        def teleopPeriodic(self):
+        def teleop_periodic(self):
             if ...:
                 # Only log when necessary
                 self.myBooleanLog.append(True)
