@@ -47,7 +47,8 @@ It is the responsibility of the user to manage proper inversions for their drive
    ```
 
    ```python
-   def robotInit(self):
+   def __init__(self):
+       super().__init__()
        self.motorRight = wpilib.PWMSparkMax(0)
        self.motorRight.setInverted(True)
    ```
@@ -139,9 +140,9 @@ DifferentialDrive is a method provided for the control of "skid-steer" or "West 
     .. tab-item:: Python
         :sync: Python
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/examples/d89b0587a1e1111239728140466c7dc4324d4005/TankDrive/robot.py
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/TankDrive/robot.py
            :language: python
-           :lines: 18-23,27-30
+           :lines: 17-24,27-30
 
 
 ### Multi-Motor DifferentialDrive
@@ -185,7 +186,8 @@ Many FRC\ |reg| drivetrains have more than 1 motor on each side. Classes derived
         :sync: Python
 
         ```python
-        def robotInit(self):
+        def __init__(self):
+            super().__init__()
             leftLeader = wpilib.Spark(1)
             leftFollower = wpilib.Spark(2)
             leftLeader.addFollower(leftFollower)
@@ -262,9 +264,9 @@ MecanumDrive is a method provided for the control of holonomic drivetrains with 
         :language: c++
         :lines: 36-40, 43-53, 16, 22-26
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/examples/d89b0587a1e1111239728140466c7dc4324d4005/MecanumDrive/robot.py
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/MecanumDrive/robot.py
       :language: python
-      :lines: 18-22, 26-42
+      :lines: 18-22, 25-42
 
 ### Mecanum Drive Modes
 .. note::

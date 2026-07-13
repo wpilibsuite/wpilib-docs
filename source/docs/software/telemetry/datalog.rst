@@ -158,7 +158,8 @@ The LogEntry classes can be used in conjunction with DataLogManager to record va
         StringLogEntry,
     )
    class MyRobot(TimedRobot):
-        def robotInit(self):
+        def __init__(self):
+            super().__init__()
             # Starts recording to data log
             DataLogManager.start()
             # Set up custom log entries

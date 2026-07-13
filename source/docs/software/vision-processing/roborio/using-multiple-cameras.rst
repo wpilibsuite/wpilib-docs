@@ -130,7 +130,8 @@ By default, the cscore library is pretty aggressive in turning off cameras not i
     import wpilib
     from ntcore import NetworkTableInstance
     class MyRobot(wpilib.TimedRobot):
-        def robotInit(self):
+        def __init__(self):
+            super().__init__()
             self.joy1 = wpilib.Joystick(0)
             self.cameraSelection = NetworkTableInstance.getDefault().getTable("").getEntry("CameraSelection")
             wpilib.CameraServer.launch("vision.py:main")

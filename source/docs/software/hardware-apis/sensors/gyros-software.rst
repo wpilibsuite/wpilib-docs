@@ -103,7 +103,8 @@ Shuffleboard includes a widget for displaying heading data from a gyro in the fo
 
     ```python
     from wpilib.shuffleboard import Shuffleboard
-    def robotInit(self):
+    def __init__(self):
+        super().__init__()
         # Use gyro declaration from above here
         # Places a compass indicator for the gyro heading on the dashboard
         Shuffleboard.getTab("Example tab").add(self.gyro)
@@ -186,7 +187,8 @@ The following example shows how to stabilize heading using a simple P loop close
     from wpilib.drive import DifferentialDrive
 
 
-    def robotInit(self):
+    def __init__(self):
+        super().__init__()
         # Use gyro declaration from above here
         # The gain for a simple P loop
         self.kP = 1
@@ -283,7 +285,8 @@ The following example shows how to stabilize heading using a simple P loop close
     from wpilib.drive import DifferentialDrive
 
 
-    def robotInit(self):
+    def __init__(self):
+        super().__init__()
         # Use gyro declaration from above here
         # The gain for a simple P loop
         self.kP = 1
@@ -374,7 +377,8 @@ Much like with heading stabilization, this is often accomplished with a PID loop
     from wpilib.drive import DifferentialDrive
 
 
-    def robotInit(self):
+    def __init__(self):
+        super().__init__()
         # Use gyro declaration from above here
         # The gain for a simple P loop
         self.kP = 0.05
