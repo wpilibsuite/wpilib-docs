@@ -6,7 +6,7 @@
 
 ## What is kinematics?
 
-The kinematics suite contains classes for differential drive, swerve drive, and mecanum drive kinematics and odometry. The kinematics classes help convert between a universal ``ChassisSpeeds`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/math/kinematics/ChassisVelocities.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/structwpi_1_1math_1_1_chassis_velocities.html), :external:py:class:`Python <wpimath.kinematics.ChassisSpeeds>`)object, containing linear and angular velocities for a robot to usable speeds for each individual type of drivetrain i.e. left and right wheel speeds for a differential drive, four wheel speeds for a mecanum drive, or individual module states (speed and angle) for a swerve drive.
+The kinematics suite contains classes for differential drive, swerve drive, and mecanum drive kinematics and odometry. The kinematics classes help convert between a universal ``ChassisSpeeds`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/math/kinematics/ChassisVelocities.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/structwpi_1_1math_1_1_chassis_velocities.html), :external:py:class:`Python <wpimath.ChassisVelocities>`)object, containing linear and angular velocities for a robot to usable speeds for each individual type of drivetrain i.e. left and right wheel speeds for a differential drive, four wheel speeds for a mecanum drive, or individual module states (speed and angle) for a swerve drive.
 
 ## What is odometry?
 Odometry involves using sensors on the robot to create an estimate of the position of the robot on the field. In FRC, these sensors are typically several encoders (the exact number depends on the drive type) and a gyroscope to measure robot angle. The odometry classes utilize the kinematics classes along with periodic user inputs about speeds (and angles in the case of swerve) to create an estimate of the robot's location on the field.
@@ -86,7 +86,7 @@ The static ``ChassisSpeeds.fromFieldRelativeSpeeds`` (Java / Python) / ``Chassis
    # is a quarter of a rotation per second counterclockwise. The current
    # robot angle is 45 degrees.
    speeds = ChassisSpeeds.fromFieldRelativeSpeeds(
-     2.0, 2.0, math.pi / 2.0, Rotation2d.fromDegrees(45.0))
+     2.0, 2.0, math.pi / 2.0, Rotation2d.from_degrees(45.0))
    ```
 
 .. note:: The angular velocity is not explicitly stated to be "relative to the field" because the angular velocity is the same as measured from a field perspective or a robot perspective.

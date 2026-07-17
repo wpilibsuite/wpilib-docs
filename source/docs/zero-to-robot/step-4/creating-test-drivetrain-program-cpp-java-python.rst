@@ -290,11 +290,11 @@ Our code needs to reference the components of WPILib that are used. In C++ this 
          .. tab-item:: Python
             :sync: python
 
-            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/examples/c6d0540b01e138725fad7366ff4e317e9994b78b/GettingStarted/robot.py
+            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/GettingStarted/robot.py
                :language: python
                :linenos:
-               :lines: 12-29
-               :lineno-start: 12
+               :lines: 11-28
+               :lineno-start: 11
 
    .. tab-item:: CTRE-Phoenix6
       :sync: ctre6
@@ -334,22 +334,23 @@ Our code needs to reference the components of WPILib that are used. In C++ this 
 
             ```python
             class MyRobot(wpilib.TimedRobot):
-              def robotInit(self):
+              def __init__(self):
                  """
                  This function is called upon program startup and
                  should be used for any initialization code.
                  """
-                 self.leftDrive = phoenix6.hardware.TalonFX(1)
-                 self.rightDrive = phoenix6.hardware.TalonFX(2)
-                 self.robotDrive = wpilib.drive.DifferentialDrive(
-                     self.leftDrive, self.rightDrive
+                 super().__init__()
+                 self.left_drive = phoenix6.hardware.TalonFX(1)
+                 self.right_drive = phoenix6.hardware.TalonFX(2)
+                 self.robot_drive = wpilib.drive.DifferentialDrive(
+                     self.left_drive, self.right_drive
                  )
                  self.controller = wpilib.Gamepad(0)
                  self.timer = wpilib.Timer()
                  # We need to invert one side of the drivetrain so that positive voltages
                  # result in both sides moving forward. Depending on how your robot's
                  # gearbox is constructed, you might have to invert the left side instead.
-                 self.rightDrive.setInverted(True)
+                 self.right_drive.set_inverted(True)
             ```
 
    .. tab-item:: REV
@@ -468,7 +469,8 @@ The sample robot in our examples will have an Xbox Controller (or other Gamepad)
       :sync: python
 
       ```python
-      def robotInit(self):
+      def __init__(self):
+          super().__init__()
       ```
 
 The ``Robot`` constructor for our sample program inverts the right side of the drivetrain. Depending on your drive setup, you might need to invert the left side instead.

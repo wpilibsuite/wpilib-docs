@@ -85,9 +85,9 @@ The code snippet below uses the ``DifferentialDrive`` and ``Joystick`` classes t
     ```
 
     ```python
-    def teleopPeriodic(self):
+    def teleop_periodic(self):
         # Arcade drive with a given forward and turn rate
-        self.myDrive.arcadeDrive(-self.driveStick.getY(), -self.driveStick.getX())
+        self.myDrive.arcade_drive(-self.driveStick.get_y(), -self.driveStick.get_x())
     ```
 
 The code calls the ``DifferentialDrive.arcadeDrive(xSpeed, zRotation)`` method, with values it gets from the ``Joystick`` class:
@@ -123,9 +123,9 @@ Mecanum drivetrains are holonomic, meaning they have the ability to move side-to
     ```
 
     ```python
-    def teleopPeriodic(self):
+    def teleop_periodic(self):
         // Drive using the X, Y, and Z axes of the joystick.
-        self.robotDrive.driveCartesian(-self.stick.getY(), -self.stick.getX(), -self.stick.getZ())
+        self.robot_drive.drive_cartesian(-self.stick.get_y(), -self.stick.get_x(), -self.stick.get_z())
     ```
 
 The code calls the ``MecanumDrive.driveCartesian(xSpeed, ySpeed, zRotation)`` method, with values it gets from the ``Joystick`` class:
@@ -164,7 +164,7 @@ Like mecanum drivetrains, swerve drivetrains are holonomic and have the ability 
 
    ```python
    # Drive using the X, Y, and Z axes of the joystick.
-   speeds = ChassisSpeeds(-self.stick.getY(), -self.stick.getX(), -self.stick.getZ())
+   speeds = ChassisSpeeds(-self.stick.get_y(), -self.stick.get_x(), -self.stick.get_z())
    ```
 
 The three arguments to the ``ChassisSpeeds`` constructor are the same as ``driveCartesian`` in the mecanum section above; ``xSpeed``, ``ySpeed``, and ``zRotation``. See the description of the arguments, and their joystick input in the section above.
@@ -273,14 +273,14 @@ A simple way to deal with field oriented driving is to check the alliance color 
    ```python
    # The origin is always blue. When our alliance is red, X and Y need to be inverted
    invert = 1
-   if wpilib.DriverStation.getAlliance() == wpilib.DriverStation.Alliance.kRed:
+   if wpilib.DriverStation.get_alliance() == wpilib.DriverStation.Alliance.kRed:
        invert = -1
    # Create field relative ChassisSpeeds for controlling Swerve
    chassis_speeds = wpilib.ChassisSpeeds.FromFieldRelativeSpeeds(
-       xSpeed * invert, ySpeed * invert, zRotation, self.imu.GetAngle()
+       x_speed * invert, y_speed * invert, z_rotation, self.imu.GetAngle()
    )
    # Control a mecanum drivetrain
-   self.robotDrive.driveCartesian(xSpeed * invert, ySpeed * invert, zRotation, self.imu.GetAngle())
+   self.robot_drive.drive_cartesian(x_speed * invert, y_speed * invert, z_rotation, self.imu.GetAngle())
    ```
 
 #### Origin follows your alliance

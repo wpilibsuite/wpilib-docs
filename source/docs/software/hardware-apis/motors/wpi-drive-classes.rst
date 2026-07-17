@@ -47,9 +47,10 @@ It is the responsibility of the user to manage proper inversions for their drive
    ```
 
    ```python
-   def robotInit(self):
+   def __init__(self):
+       super().__init__()
        self.motorRight = wpilib.PWMSparkMax(0)
-       self.motorRight.setInverted(True)
+       self.motorRight.set_inverted(True)
    ```
 
 ### Squaring Inputs
@@ -91,9 +92,9 @@ The Motor Safety interface of motor controllers can be interacted with by the us
     ```
 
     ```python
-    m_motorRight.setSafetyEnabled(True)
-    m_motorRight.setSafetyEnabled(False)
-    m_motorRight.setExpiration(.1)
+    m_motorRight.set_safety_enabled(True)
+    m_motorRight.set_safety_enabled(False)
+    m_motorRight.set_expiration(.1)
     m_motorRight.feed()
     ```
 
@@ -139,9 +140,9 @@ DifferentialDrive is a method provided for the control of "skid-steer" or "West 
     .. tab-item:: Python
         :sync: Python
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/examples/d89b0587a1e1111239728140466c7dc4324d4005/TankDrive/robot.py
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/TankDrive/robot.py
            :language: python
-           :lines: 18-23,27-30
+           :lines: 17-24,27-30
 
 
 ### Multi-Motor DifferentialDrive
@@ -185,17 +186,18 @@ Many FRC\ |reg| drivetrains have more than 1 motor on each side. Classes derived
         :sync: Python
 
         ```python
-        def robotInit(self):
-            leftLeader = wpilib.Spark(1)
-            leftFollower = wpilib.Spark(2)
-            leftLeader.addFollower(leftFollower)
-            leftLeader.setInverted(
+        def __init__(self):
+            super().__init__()
+            left_leader = wpilib.Spark(1)
+            left_follower = wpilib.Spark(2)
+            left_leader.add_follower(left_follower)
+            left_leader.set_inverted(
                 True
             )  # if you want to invert the entire side you can do so here
-            rightLeader = wpilib.Spark(3)
-            rightFollower = wpilib.Spark(4)
-            rightLeader.addFollower(rightFollower)
-            self.drive = wpilib.drive.DifferentialDrive(leftLeader, rightLeader)
+            right_leader = wpilib.Spark(3)
+            right_follower = wpilib.Spark(4)
+            right_leader.add_follower(right_follower)
+            self.drive = wpilib.drive.DifferentialDrive(left_leader, right_leader)
         ```
 
 ### Drive Modes
@@ -239,13 +241,13 @@ Like Arcade Drive, the Curvature Drive mode is used to control the drivetrain us
     ```
 
     ```python
-    def teleopPeriodic(self):
+    def teleop_periodic(self):
         # Tank drive with a given left and right rates
-        self.myDrive.tankDrive(-self.leftStick.getY(), -self.rightStick.getY())
+        self.myDrive.tank_drive(-self.left_stick.get_y(), -self.right_stick.get_y())
         # Arcade drive with a given forward and turn rate
-        self.myDrive.arcadeDrive(-self.driveStick.getY(), -self.driveStick.getX())
+        self.myDrive.arcade_drive(-self.driveStick.get_y(), -self.driveStick.get_x())
         # Curvature drive with a given forward and turn rate, as well as a button for turning in-place.
-        self.myDrive.curvatureDrive(-self.driveStick.getY(), -self.driveStick.getX(), self.driveStick.getButton(1))
+        self.myDrive.curvature_drive(-self.driveStick.get_y(), -self.driveStick.get_x(), self.driveStick.getButton(1))
     ```
 
 ## Using the MecanumDrive class to control Mecanum Drive robots
@@ -262,9 +264,9 @@ MecanumDrive is a method provided for the control of holonomic drivetrains with 
         :language: c++
         :lines: 36-40, 43-53, 16, 22-26
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/examples/d89b0587a1e1111239728140466c7dc4324d4005/MecanumDrive/robot.py
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/MecanumDrive/robot.py
       :language: python
-      :lines: 18-22, 26-42
+      :lines: 18-22, 25-42
 
 ### Mecanum Drive Modes
 .. note::
@@ -297,11 +299,11 @@ The MecanumDrive class contains two different default modes of driving your robo
     ```
 
     ```python
-    def teleopPeriodic(self):
+    def teleop_periodic(self):
         # Drive using the X, Y, and Z axes of the joystick.
-        self.robotDrive.driveCartesian(-self.stick.getY(), -self.stick.getX(), -self.stick.getZ())
+        self.robot_drive.drive_cartesian(-self.stick.get_y(), -self.stick.get_x(), -self.stick.get_z())
         # Drive at 45 degrees relative to the robot, at the speed given by the Y axis of the joystick, with no rotation.
-        self.robotDrive.drivePolar(-self.stick.getY(), Rotation2d.fromDegrees(45), 0)
+        self.robot_drive.drive_polar(-self.stick.get_y(), Rotation2d.from_degrees(45), 0)
     ```
 
 ### Field-Oriented Driving

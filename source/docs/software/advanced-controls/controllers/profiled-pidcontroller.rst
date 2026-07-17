@@ -4,7 +4,7 @@
 
 In the previous article, we saw how to use the ``TrapezoidProfile`` class to create and use a trapezoidal motion profile.  The example code from that article demonstrates manually composing the ``TrapezoidProfile`` class with the external PID control feature of a "smart" motor controller.
 
-This combination of functionality (a motion profile for generating setpoints combined with a PID controller for following them) is extremely common.  To facilitate this, WPILib comes with a ``ProfiledPIDController`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/math/controller/ProfiledPIDController.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1math_1_1_profiled_p_i_d_controller.html), :external:py:class:`Python <wpimath.controller.ProfiledPIDController>`) that does most of the work of combining these two functionalities.  The API of the ``ProfiledPIDController`` is very similar to that of the ``PIDController``, allowing users to add motion profiling to a PID-controlled mechanism with very few changes to their code.
+This combination of functionality (a motion profile for generating setpoints combined with a PID controller for following them) is extremely common.  To facilitate this, WPILib comes with a ``ProfiledPIDController`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/math/controller/ProfiledPIDController.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1math_1_1_profiled_p_i_d_controller.html), :external:py:class:`Python <wpimath.ProfiledPIDController>`) that does most of the work of combining these two functionalities.  The API of the ``ProfiledPIDController`` is very similar to that of the ``PIDController``, allowing users to add motion profiling to a PID-controlled mechanism with very few changes to their code.
 
 ## Using the ProfiledPIDController class
 
@@ -71,7 +71,7 @@ A major difference between a standard ``PIDController`` and a ``ProfiledPIDContr
   ```python
   # Calculates the output of the PID algorithm based on the sensor reading
   # and sends it to a motor
-  motor.set(controller.calculate(encoder.getDistance(), goal))
+  motor.set(controller.calculate(encoder.get_distance(), goal))
   ```
 
 The specified ``goal`` value (which can be either a position value or a ``TrapezoidProfile.State``, if nonzero velocity is desired) is *not* necessarily the *current* setpoint of the loop - rather, it is the *eventual* setpoint once the generated profile terminates.
@@ -104,11 +104,11 @@ The returned setpoint might then be used as in the following example:
           # Assuming feedforward is a SimpleMotorFeedforward object
           self.feedforward = SimpleMotorFeedforward(ks=0.0, kv=0.0, ka=0.0)
       def goToPosition(self, goalPosition: float):
-          pidVal = self.controller.calculate(self.encoder.getDistance(), goalPosition)
-          self.motor.setVoltage(
+          pidVal = self.controller.calculate(self.encoder.get_distance(), goalPosition)
+          self.motor.set_voltage(
               pidVal
-              + self.feedforward.calculate(self.lastSpeed, self.controller.getSetpoint().velocity))
-          self.lastSpeed = self.controller.getSetpoint().velocity
+              + self.feedforward.calculate(self.lastSpeed, self.controller.get_setpoint().velocity))
+          self.lastSpeed = self.controller.get_setpoint().velocity
 
 ## Complete Usage Example
 

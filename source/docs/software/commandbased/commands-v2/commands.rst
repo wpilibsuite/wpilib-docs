@@ -20,7 +20,7 @@ The ``end(bool interrupted)`` method ([Java](https://github.wpilib.org/allwpilib
 
 ### Specifying end conditions
 
-The ``isFinished()`` method ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Command.html#end(boolean)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command.html#a7082630601e4b249933c972b028ec705), :external:py:meth:`Python <commands2.Command.isFinished>`) is called repeatedly while the command is scheduled, whenever the scheduler’s ``run()`` method is called. As soon as it returns true, the command’s ``end()`` method is called and it ends. The ``isFinished()`` method is called after the ``execute()`` method, so the command will execute once on the same iteration that it ends.
+The ``isFinished()`` method ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Command.html#end(boolean)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command.html#a7082630601e4b249933c972b028ec705), :external:py:meth:`Python <commands2.Command.is_finished>`) is called repeatedly while the command is scheduled, whenever the scheduler’s ``run()`` method is called. As soon as it returns true, the command’s ``end()`` method is called and it ends. The ``isFinished()`` method is called after the ``execute()`` method, so the command will execute once on the same iteration that it ends.
 
 ## Command Properties
 
@@ -50,11 +50,11 @@ As a rule, command compositions require all subsystems their components require.
 
 ### runsWhenDisabled
 
-The ``runsWhenDisabled()`` method ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Command.html#runsWhenDisabled()), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command.html#aad3c4611e89a022a0806fa76240aeccb), :external:py:meth:`Python <commands2.Command.runsWhenDisabled>`) returns a ``boolean``/``bool`` specifying whether the command may run when the robot is disabled. With the default of returning ``false``, the command will be canceled when the robot is disabled and attempts to schedule it will do nothing. Returning ``true`` will allow the command to run and be scheduled when the robot is disabled.
+The ``runsWhenDisabled()`` method ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Command.html#runsWhenDisabled()), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command.html#aad3c4611e89a022a0806fa76240aeccb), :external:py:meth:`Python <commands2.Command.runs_when_disabled>`) returns a ``boolean``/``bool`` specifying whether the command may run when the robot is disabled. With the default of returning ``false``, the command will be canceled when the robot is disabled and attempts to schedule it will do nothing. Returning ``true`` will allow the command to run and be scheduled when the robot is disabled.
 
 .. important::  When the robot is disabled, :term:`PWM` outputs are disabled and CAN motor controllers may not apply voltage, regardless of ``runsWhenDisabled``!
 
-This property can be set either by overriding the ``runsWhenDisabled()`` method in the relevant command class, or by using the ``ignoringDisable`` decorator ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Command.html#ignoringDisable(boolean)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command.html#aad3c4611e89a022a0806fa76240aeccb), :external:py:meth:`Python <commands2.Command.ignoringDisable>`):
+This property can be set either by overriding the ``runsWhenDisabled()`` method in the relevant command class, or by using the ``ignoringDisable`` decorator ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Command.html#ignoringDisable(boolean)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command.html#aad3c4611e89a022a0806fa76240aeccb), :external:py:meth:`Python <commands2.Command.ignoring_disable>`):
 
 .. tab-set-code::
 
@@ -74,11 +74,11 @@ As a rule, command compositions may run when disabled if all their component com
 
 ### getInterruptionBehavior
 
-The ``getInterruptionBehavior()`` method ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Command.html#getInterruptionBehavior()), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command.html#aad3c4611e89a022a0806fa76240aeccb), :external:py:meth:`Python <commands2.Command.getInterruptionBehavior>`) defines what happens if another command sharing a requirement is scheduled while this one is running. In the default behavior, ``kCancelSelf``, the current command will be canceled and the incoming command will be scheduled successfully. If ``kCancelIncoming`` is returned, the incoming command's scheduling will be aborted and this command will continue running. Note that ``getInterruptionBehavior`` only affects resolution of requirement conflicts: all commands can be canceled, regardless of ``getInterruptionBehavior``.
+The ``getInterruptionBehavior()`` method ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Command.html#getInterruptionBehavior()), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command.html#aad3c4611e89a022a0806fa76240aeccb), :external:py:meth:`Python <commands2.Command.get_interruption_behavior>`) defines what happens if another command sharing a requirement is scheduled while this one is running. In the default behavior, ``kCancelSelf``, the current command will be canceled and the incoming command will be scheduled successfully. If ``kCancelIncoming`` is returned, the incoming command's scheduling will be aborted and this command will continue running. Note that ``getInterruptionBehavior`` only affects resolution of requirement conflicts: all commands can be canceled, regardless of ``getInterruptionBehavior``.
 
 .. note:: This was previously controlled by the ``interruptible`` parameter passed when scheduling a command, and is now a property of the command object.
 
-This property can be set either by overriding the ``getInterruptionBehavior`` method in the relevant command class, or by using the `withInterruptBehavior()` decorator ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Command.html#withInterruptBehavior(org.wpilib.command2.Command.InterruptionBehavior)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command.html#aad3c4611e89a022a0806fa76240aeccb), :external:py:meth:`Python <commands2.Command.withInterruptBehavior>`)
+This property can be set either by overriding the ``getInterruptionBehavior`` method in the relevant command class, or by using the `withInterruptBehavior()` decorator ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Command.html#withInterruptBehavior(org.wpilib.command2.Command.InterruptionBehavior)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command.html#aad3c4611e89a022a0806fa76240aeccb), :external:py:meth:`Python <commands2.Command.with_interrupt_behavior>`)
 
 .. tab-set-code::
 
@@ -91,7 +91,7 @@ This property can be set either by overriding the ``getInterruptionBehavior`` me
   ```
 
   ```python
-  non_interruptible = commands2.cmd.run(intake.activate, intake).with_interrupt_behavior(Command.InterruptBehavior.kCancelIncoming)
+  non_interruptible = commands2.cmd.run(intake.activate, intake).with_interrupt_behavior(Command.InterruptBehavior.CANCEL_INCOMING)
   ```
 
 As a rule, command compositions are ``kCancelIncoming`` if all their components are ``kCancelIncoming`` as well.
@@ -249,11 +249,11 @@ The ``startEnd`` factory, backed by the ``StartEndCommand`` ([Java](https://gith
       # Reset encoders on command start
       lambda: robot_drive.reset_encoders(),
       # Start driving forward at the start of the command
-      lambda: robot_drive.arcade_drive(ac.kAutoDriveSpeed, 0),
+      lambda: robot_drive.arcade_drive(ac.AUTO_DRIVE_SPEED, 0),
       # Stop driving at the end of the command
       lambda interrupted: robot_drive.arcade_drive(0, 0),
       # End the command when the robot's driven distance exceeds the desired value
-      lambda: robot_drive.get_average_encoder_distance() >= ac.kAutoDriveDistanceInches,
+      lambda: robot_drive.get_average_encoder_distance() >= ac.AUTO_DRIVE_DISTANCE_INCHES,
       # Require the drive subsystem
       robot_drive)
   ```
