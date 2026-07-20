@@ -86,14 +86,6 @@ Individual opmodes extend ``PeriodicOpMode`` ([Java](https://github.wpilib.org/a
            - Background color in the DS (CSS color string)
            - (default)
 
-      A class can carry multiple annotations to appear in more than one mode list:
-
-      .. code-block:: java
-
-         @Autonomous
-         @Teleop(name = "Test Drive")
-         public class DriveStraight extends PeriodicOpMode { ... }
-
    .. tab-item:: C++
       :sync: C++
 
