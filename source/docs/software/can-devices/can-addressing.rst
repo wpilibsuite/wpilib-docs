@@ -196,7 +196,9 @@ The roboRIO provides a universal CAN heartbeat that any device on the bus can li
 +-----------------------+------+--------------+
 | Match number          | 6-7  | 10           |
 +-----------------------+------+--------------+
-| Replay number         | 6    | 6            |
+| Replay number         | 6    | 5            |
++-----------------------+------+--------------+
+| FTC Motor Override    | 6    | 1            |
 +-----------------------+------+--------------+
 | Red alliance          | 5    | 1            |
 +-----------------------+------+--------------+
@@ -227,7 +229,8 @@ The roboRIO provides a universal CAN heartbeat that any device on the bus can li
 struct [[gnu::packed]] RobotState {
   uint64_t matchTimeSeconds : 8;
   uint64_t matchNumber : 10;
-  uint64_t replayNumber : 6;
+  uint64_t replayNumber : 5;
+  uint64_t ftcMotorOverride : 1;
   uint64_t redAlliance : 1;
   uint64_t enabled : 1;
   uint64_t autonomous : 1;
@@ -245,4 +248,6 @@ struct [[gnu::packed]] RobotState {
 
 If the ``System watchdog`` flag is set, motor controllers are enabled. If 100 ms has passed since this packet was received, the robot program can be considered hung, and devices should act as if the robot has been disabled.
 
-Note that all fields except ``Enabled``, ``Autonomous mode``, ``Test mode``, and ``System watchdog`` will contain invalid values until an arbitrary time after the Driver Station connects.
+Note that all fields except ``Enabled``, ``Autonomous mode``, ``Test mode``, ``FTC Motor Override`` and ``System watchdog`` will contain invalid values until an arbitrary time after the Driver Station connects.
+
+The ``FTC Motor Override`` flag is set when the a motor controller hardware client is allowing enablement of FTC motors without a DS connected. In this state, the robot code will be disabled.
