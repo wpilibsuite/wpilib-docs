@@ -107,10 +107,6 @@ WPILib Documentation
              </div>
            </div>
          </div>
-         <div class="wl-tip wl-tip-shared" style="margin-bottom:8px;">
-           <strong>Want to just focus on code?</strong>
-           The <a href="docs/xrp-robot/index.html">XRP Robot Platform</a> lets you write and test real WPILib code on a low-cost robot. The robot runs off of a Rasberry Pi, so no control system required.
-         </div>
        </div>
 
        <!-- Screen 2: Which program -->
@@ -341,28 +337,6 @@ WPILib Documentation
    </script>
 
 .. raw:: html
-
-   <hr style="margin:32px 0 28px;"/>
-   <h2 style="font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--color-foreground-secondary,#555);border-bottom:1px solid var(--color-background-border,#ddd);padding-bottom:7px;margin-bottom:16px;">Choose Your Program</h2>
-
-   <div class="wl-program-grid">
-     <a class="wl-prog-card wl-prog-frc" href="docs/zero-to-robot/introduction.html">
-       <div class="wl-prog-tag wl-frc-label">FRC</div>
-       <div class="wl-prog-title">FIRST Robotics Competition</div>
-       <div class="wl-prog-desc">Industrial sized robots, Built to play a court sized game. High school program. Now uses Systemcore (as of 2027) and supports Java, C++, or Python.</div>
-     </a>
-     <a class="wl-prog-card wl-prog-ftc" href="docs/ftc/index.html">
-       <div class="wl-prog-tag wl-ftc-label">FTC</div>
-       <div class="wl-prog-title">FIRST Tech Challenge</div>
-       <div class="wl-prog-desc">WPILib is expanding to FTC via the Systemcore and Motioncore controllers. REV Duo teams can program today using the FTC SDK.</div>
-     </a>
-   </div>
-
-   <a class="wl-xrp-blurb" href="docs/xrp-robot/index.html">
-     <span class="wl-xrp-tag">XRP</span>
-     <span class="wl-xrp-text"><strong>Practicing before build season?</strong> The XRP Robot Platform lets you write and test real WPILib code on a low-cost desktop robot : no roboRIO required.</span>
-     <span class="wl-xrp-link">XRP docs &rarr;</span>
-   </a>
 
    <hr style="margin:28px 0;"/>
    <h2 style="font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--color-foreground-secondary,#555);border-bottom:1px solid var(--color-background-border,#ddd);padding-bottom:7px;margin-bottom:6px;">Core Documentation</h2>

@@ -7,6 +7,7 @@ Welcome to WPILib — the standard programming library for *FIRST*\ |reg| Roboti
 This guide walks you through everything you need to start driving a robot.
 
 .. rubric:: Choose Your Programming Language
+   :class: wl-shared-text
 
 WPILib supports multiple languages. Pick one: your tools and steps are the same regardless of choice.
 
@@ -62,6 +63,7 @@ WPILib supports multiple languages. Pick one: your tools and steps are the same 
    while learning to code in parallel.
 
 .. rubric:: What You Need
+   :class: wl-shared-text
 
 .. grid:: 1 1 2 2
    :gutter: 3
@@ -119,8 +121,16 @@ WPILib supports multiple languages. Pick one: your tools and steps are the same 
       getting a head start on Systemcore programming.
 
 .. rubric:: The Four Steps
+   :class: wl-frc-text
 
 Complete these in order. You will have a driving robot by the end of Step 4.
+
+.. note::
+
+   **FTC teams:** Full hardware setup guides arrive with Systemcore and Motioncore
+   in the 2027-2028 season. For now, **start at Step 2** (Install Your Tools) and
+   practice with the :doc:`XRP robot <../xrp-robot/index>` — the same WPILib code
+   runs on Systemcore when your hardware is ready.
 
 .. grid:: 1 2 2 4
    :gutter: 3
@@ -165,6 +175,7 @@ Complete these in order. You will have a driving robot by the end of Step 4.
       and enable it with the Driver Station.
 
 .. rubric:: Tips for New Teams
+   :class: wl-shared-text
 
 .. grid:: 1 1 2 2
    :gutter: 3
@@ -188,3 +199,13 @@ Complete these in order. You will have a driving robot by the end of Step 4.
          When something goes wrong on the robot, open the Driver Station log
          viewer. It records exactly when the robot disconnected, what threw
          an exception, and why the robot disabled.
+
+   .. grid-item::
+
+      .. tip::
+
+         **FTC teams: start with the XRP**
+
+         Systemcore hardware arrives in 2027-2028. Use the $75 XRP desktop
+         robot now — it runs real WPILib code and the same programs transfer
+         directly to Systemcore.
