@@ -24,9 +24,13 @@ See :doc:`/docs/software/basic-programming/opmodes` for full documentation, incl
 
    .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/templates/opmode/Robot.java
       :language: java
+      :lines: 5-33
+      :lineno-match:
 
    .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/templates/opmode/cpp/Robot.cpp
       :language: c++
+      :lines: 5-25
+      :lineno-match:
 
 ### TimedRobot
 

@@ -1,15 +1,25 @@
 # OpMode Framework
 
-The OpMode framework is a robot code structure where each mode of operation (autonomous, teleoperated, utility) is represented by its own class. The Driver Station displays a drop-down list of the available opmodes for each mode, letting operators select routines before enabling the robot.
+## What is an OpMode?
+
+An opmode is an operator-selectable program that defines what the robot does during a particular mode of operation (autonomous, teleoperated, or utility). Robot code registers one or more opmodes for each mode; these appear in drop-down selectors on the Driver Station, filtered by the active mode. When the operator selects an opmode, a fresh instance of the corresponding class is constructed. The library then manages the full lifecycle: calling into it while disabled for pre-match setup, starting it when the robot is enabled, and tearing it down cleanly when the robot disables or the operator switches to a different opmode.
+
+Common use cases include:
+
+- Multiple autonomous routines: follow different paths or perform different actions depending on match strategy
+- Multiple teleoperated behaviors: switch between drive styles (e.g. tank vs. arcade), different button mappings, or restricted controls for robot demonstrations or guest drivers
+- Testing and diagnostics: test the whole robot, an individual subsystem, a motor, or a sensor without modifying match code
+
+These use cases apply equally during competition matches and off-field testing.
+
+Here's an example of what opmode selection looks like on the Driver Station:
 
 .. image:: images/opmodes/opmodes.png
    :alt: OpMode selection drop-downs in the Driver Station.
 
-The OpMode framework is the recommended starting point for new teams. Teams already using ``TimedRobot`` can continue to do so; the two approaches coexist in WPILib.
-
 ## The Robot Class
 
-In an opmode project the ``Robot`` class extends ``OpModeRobot`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/framework/OpModeRobot.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_op_mode_robot_base.html)) instead of ``TimedRobot``. Hardware objects, subsystems, and any state shared across all opmodes are declared as members here, exactly as they would be in a ``TimedRobot`` project.
+In an opmode project the ``Robot`` class extends ``OpModeRobot`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/framework/OpModeRobot.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_op_mode_robot_base.html)). Hardware objects, subsystems, and any state shared across all opmodes are declared as members here.
 
 .. tab-set::
 
@@ -18,26 +28,32 @@ In an opmode project the ``Robot`` class extends ``OpModeRobot`` ([Java](https:/
 
       .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/templates/opmode/Robot.java
          :language: java
+         :lines: 5-33
+         :lineno-match:
 
    .. tab-item:: C++ (Header)
       :sync: C++ (Header)
 
       .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/templates/opmode/include/Robot.hpp
          :language: c++
+         :lines: 5-14
+         :lineno-match:
 
    .. tab-item:: C++ (Source)
       :sync: C++ (Source)
 
       .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/templates/opmode/cpp/Robot.cpp
          :language: c++
+         :lines: 5-25
+         :lineno-match:
 
 ``OpModeRobot`` provides several overrideable lifecycle methods for robot-wide behavior:
 
-- ``driverStationConnected()`` — called once when the Driver Station first connects
-- ``robotPeriodic()`` — called every loop iteration regardless of enabled state or selected opmode
-- ``disabledInit()`` / ``disabledPeriodic()`` / ``disabledExit()`` — called when entering, during, and exiting disabled state
-- ``nonePeriodic()`` — called periodically when no opmode is selected (including when the DS is disconnected)
-- ``simulationInit()`` / ``simulationPeriodic()`` — called during simulation
+- ``driverStationConnected()``: called once when the Driver Station first connects
+- ``robotPeriodic()``: called every loop iteration regardless of enabled state or selected opmode
+- ``disabledInit()`` / ``disabledPeriodic()`` / ``disabledExit()``: called when entering, during, and exiting disabled state
+- ``nonePeriodic()``: called periodically when no opmode is selected (including when the DS is disconnected)
+- ``simulationInit()`` / ``simulationPeriodic()``: called during construction and every loop if simulation is running
 
 ## Creating OpModes
 
@@ -56,11 +72,15 @@ Individual opmodes extend ``PeriodicOpMode`` ([Java](https://github.wpilib.org/a
 
             .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/templates/opmode/opmode/MyTeleop.java
                :language: java
+               :lines: 5-44
+               :lineno-match:
 
          .. tab-item:: MyAuto.java
 
             .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/templates/opmode/opmode/MyAuto.java
                :language: java
+               :lines: 5-30
+               :lineno-match:
 
       All annotation attributes are optional:
 
@@ -97,26 +117,36 @@ Individual opmodes extend ``PeriodicOpMode`` ([Java](https://github.wpilib.org/a
 
             .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/templates/opmode/cpp/Robot.cpp
                :language: c++
+               :lines: 5-25
+               :lineno-match:
 
          .. tab-item:: MyTeleop.hpp
 
             .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/templates/opmode/include/opmode/MyTeleop.hpp
                :language: c++
+               :lines: 5-23
+               :lineno-match:
 
          .. tab-item:: MyTeleop.cpp
 
             .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/templates/opmode/cpp/opmode/MyTeleop.cpp
                :language: c++
+               :lines: 5-26
+               :lineno-match:
 
          .. tab-item:: MyAuto.hpp
 
             .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/templates/opmode/include/opmode/MyAuto.hpp
                :language: c++
+               :lines: 5-23
+               :lineno-match:
 
          .. tab-item:: MyAuto.cpp
 
             .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/templates/opmode/cpp/opmode/MyAuto.cpp
                :language: c++
+               :lines: 5-33
+               :lineno-match:
 
 ## OpMode Lifecycle
 
@@ -128,11 +158,11 @@ Individual opmodes extend ``PeriodicOpMode`` ([Java](https://github.wpilib.org/a
 
 **While the robot is enabled**, ``periodic()`` is called repeatedly at ``OpModeRobot#getPeriod()`` (default 20 ms). Additional callbacks registered via ``addPeriodic()`` run at their own configured rates.
 
-**When the robot disables or a different opmode is selected while enabled**, ``end()`` is called first, then ``close()`` (Java) or the object is destroyed (C++/Python). The object is never reused.
+**When the robot disables**, ``end()`` is called first, then ``close()`` (Java) or the object is destroyed (C++/Python). The object is never reused.
 
 .. note:: Selecting a different opmode while the robot is enabled automatically disables the robot first, so ``end()`` is always called before the switch.
 
-**If a different opmode is selected while the robot is already disabled**, ``close()`` is called (or the object is destroyed) with no ``end()`` call, since the opmode was never enabled.
+**If a different opmode is selected while the robot is already disabled**, only ``close()`` is called, as the opmode was never started.
 
 After the old opmode is closed, a fresh opmode object is constructed based on the current DS selection. In teleop, autonomous, and utility modes the drop-down stays the same, so the same class is typically constructed again. In match mode (or when FMS-connected), only the selected autonomous opmode is constructed initially; once autonomous completes, the selected teleop opmode object is then constructed. Only one opmode object is ever alive at a time.
 
@@ -234,11 +264,6 @@ Callbacks are registered immediately at opmode construction and run even while t
 
 ## Migration from TimedRobot
 
-Teams switching from ``TimedRobot`` to ``OpModeRobot``:
-
-- Replace per-mode methods in ``Robot`` (``autonomousInit``, ``teleopPeriodic``, etc.) with separate ``@Autonomous`` and ``@Teleop`` opmode classes.
-- Replace ``SendableChooser`` with multiple ``@Autonomous`` classes.
-- Replace ``utilityInit``/``utilityPeriodic`` with ``@Utility`` opmode classes.
-
+To switch to the OpMode framework from TimedRobot, replace per-mode methods in ``Robot`` (``autonomousInit``, ``teleopPeriodic``, ``utilityInit``, ``utilityPeriodic`` etc.) with separate ``@Autonomous``, ``@Teleop``, and ``@Utility`` opmode classes. Multiple opmodes of the same type replace ``SendableChooser``.
 
 ``TimedRobot`` remains fully supported. Migration is not required.
