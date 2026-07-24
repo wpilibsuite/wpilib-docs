@@ -6,6 +6,32 @@ Once everything is installed, we're ready to create a robot program.  WPILib com
 
 To start a project using one of the WPILib robot program templates, users must first choose a base class for their robot.  Users subclass these base classes to create their primary :code:`Robot` class, which controls the main flow of the robot program.  There are various choices available for the base class:
 
+### OpModeRobot
+
+Documentation:
+[Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/framework/OpModeRobot.html)
+- [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_op_mode_robot_base.html)
+
+Source:
+[Java](https://github.com/wpilibsuite/allwpilib/blob/v2027.0.0-alpha-6/wpilibj/src/main/java/org/wpilib/framework/OpModeRobot.java)
+- [C++](https://github.com/wpilibsuite/allwpilib/blob/v2027.0.0-alpha-6/wpilibc/src/main/native/include/wpi/framework/OpModeRobot.hpp)
+
+``OpModeRobot`` is the recommended base class for most users.  It structures robot code around individual *opmode* classes — one per autonomous routine, one per teleoperated configuration, and so on — annotated with ``@Autonomous``, ``@Teleop``, or ``@Utility`` (Java) or registered manually (C++).  The Driver Station displays a drop-down list of available opmodes for each mode, so operators can select routines without recompiling the robot program.  The ``Robot`` class holds shared hardware and subsystems, which opmodes receive through their constructors.
+
+See :doc:`/docs/software/basic-programming/opmodes` for full documentation, including the opmode lifecycle, multiple opmode selection, and DS integration.
+
+.. tab-set-code::
+
+   .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/templates/opmode/Robot.java
+      :language: java
+      :lines: 5-33
+      :lineno-match:
+
+   .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/templates/opmode/cpp/Robot.cpp
+      :language: c++
+      :lines: 5-25
+      :lineno-match:
+
 ### TimedRobot
 
 Documentation:
@@ -16,7 +42,7 @@ Source:
 [Java](https://github.com/wpilibsuite/allwpilib/blob/v2027.0.0-alpha-6/wpilibj/src/main/java/org/wpilib/framework/TimedRobot.java)
 - [C++](https://github.com/wpilibsuite/allwpilib/blob/v2027.0.0-alpha-6/wpilibc/src/main/native/cpp/framework/TimedRobot.cpp)
 
-The :code:`TimedRobot` class is the base class recommended for most users.  It provides control of the robot program through a collection of :code:`init()`, :code:`periodic()`, and :code:`exit()` methods, which are called by WPILib during specific robot states (e.g. autonomous or teleoperated). During these calls, your code typically polls each input device and acts according to the data it receives.  For instance, you would typically determine the position of the joystick and state of the joystick buttons on each call and act accordingly.  The ``TimedRobot`` class also provides an example of retrieving autonomous routines through SendableChooser ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/smartdashboard/SendableChooser.html)/ [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_sendable_chooser.html))
+The :code:`TimedRobot` class is an alternative base class that structures robot code around a single :code:`Robot` class with :code:`init()`, :code:`periodic()`, and :code:`exit()` methods for each mode (autonomous, teleoperated, utility), which are called by WPILib during the corresponding robot states. During these calls, your code typically polls each input device and acts according to the data it receives.  For instance, you would typically determine the position of the joystick and state of the joystick buttons on each call and act accordingly.  ``TimedRobot`` uses ``SendableChooser`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/smartdashboard/SendableChooser.html)/ [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_sendable_chooser.html)) for autonomous routine selection via the dashboard.
 
 .. note:: A `TimedRobot Skeleton` template is available that removes some informative comments and the autonomous example. You can use this if you're already familiar with `TimedRobot`. The example shown below is of `TimedRobot Skeleton`.
 
