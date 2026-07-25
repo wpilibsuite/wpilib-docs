@@ -2,7 +2,7 @@
 
 ## What is an OpMode?
 
-An opmode is an operator-selectable program that defines what the robot does during a particular mode of operation (autonomous, teleoperated, or utility). Robot code registers one or more opmodes for each mode; these appear in drop-down selectors on the Driver Station, filtered by the active mode. When the operator selects an opmode, a fresh instance of the corresponding class is constructed. The library then manages the full lifecycle: calling into it while disabled for pre-match setup, starting it when the robot is enabled, and tearing it down cleanly when the robot disables or the operator switches to a different opmode.
+An opmode is an operator-selectable program that defines what the robot does during a particular mode of operation (autonomous, teleoperated, or utility).
 
 Common use cases include:
 
@@ -10,7 +10,7 @@ Common use cases include:
 - Multiple teleoperated behaviors: switch between drive styles (e.g. tank vs. arcade), different button mappings, or restricted controls for robot demonstrations or guest drivers
 - Testing and diagnostics: test the whole robot, an individual subsystem, a motor, or a sensor without modifying match code
 
-These use cases apply equally during competition matches and off-field testing.
+You can select an autonomous, teleop, or utility opmode directly on the DS, or use match mode to select both an autonomous and teleop opmode with match timing.
 
 Here's an example of what opmode selection looks like on the Driver Station:
 
@@ -47,11 +47,11 @@ In an opmode project the ``Robot`` class extends ``OpModeRobot`` ([Java](https:/
          :lines: 5-25
          :lineno-match:
 
-``OpModeRobot`` provides several overrideable lifecycle methods for robot-wide behavior:
+The following methods in ``OpModeRobot`` run no matter the selected opmode:
 
 - ``driverStationConnected()``: called once when the Driver Station first connects
 - ``robotPeriodic()``: called every loop iteration regardless of enabled state or selected opmode
-- ``disabledInit()`` / ``disabledPeriodic()`` / ``disabledExit()``: called when entering, during, and exiting disabled state
+- ``disabledInit()`` / ``disabledPeriodic()`` / ``disabledExit()``: called when entering, during, and exiting the disabled state. The robot is disabled whenever the DS has not enabled it or communication is lost; while disabled, actuators (motors, solenoids, etc.) cannot be commanded.
 - ``nonePeriodic()``: called periodically when no opmode is selected (including when the DS is disconnected)
 - ``simulationInit()`` / ``simulationPeriodic()``: called during construction and every loop if simulation is running
 
@@ -150,25 +150,25 @@ Individual opmodes extend ``PeriodicOpMode`` ([Java](https://github.wpilib.org/a
 
 ## OpMode Lifecycle
 
-**When the operator selects an opmode on the Driver Station**, a new instance of the opmode class is constructed. This is a fresh object — any state can be initialized in the constructor.
+**When the operator selects an opmode on the Driver Station**, a new instance of the opmode class is constructed. There is no separate initialization function; any necessary state and hardware setup can happen in the constructor directly.
 
-**While an opmode is selected but the robot is disabled**, ``disabledPeriodic()`` is called regularly at ``OpModeRobot#getPeriod()``. This is useful for updating dashboard displays, reading sensors, or previewing what the opmode is about to do. The library guarantees that ``disabledPeriodic()`` will be called at least once before the robot transitions to enabled, so any initialization logic placed here is guaranteed to run.
+**While an opmode is selected but the robot is disabled**, ``disabledPeriodic()`` is called periodically at ``OpModeRobot#getPeriod()`` (default 20 ms). This is useful for updating dashboard displays, reading sensors, or previewing what the opmode is about to do. The library guarantees that ``disabledPeriodic()`` will be called at least once before the robot transitions to enabled, so any initialization logic placed here is guaranteed to run.
 
-**When the robot transitions from disabled to enabled**, ``start()`` is called exactly once.
+**When the robot transitions from disabled to enabled**, ``start()`` is called exactly once. Use it to start timers, reset accumulators, or prepare anything that needs to be fresh at the start of each enable. ``start()`` should return quickly and not have any blocking actions; ongoing work belongs in ``periodic()``.
 
-**While the robot is enabled**, ``periodic()`` is called repeatedly at ``OpModeRobot#getPeriod()`` (default 20 ms). Additional callbacks registered via ``addPeriodic()`` run at their own configured rates.
+**While the robot is enabled**, ``periodic()`` is called repeatedly at ``OpModeRobot#getPeriod()`` (default 20 ms / 50 Hz). This is where most robot logic runs: reading sensors, computing outputs, and commanding actuators. Additional callbacks registered with ``addPeriodic()`` run at their own configured rates.
 
-**When the robot disables**, ``end()`` is called first, then ``close()`` (Java) or the object is destroyed (C++/Python). The object is never reused.
+**When the robot disables**, ``end()`` is called first. Use it to stop motors, retract mechanisms, or send any final state updates. Then ``close()`` is called (Java) or the object is destroyed (C++/Python); use ``close()`` to release resources like open file handles. The object is never reused after this point.
 
 .. note:: Selecting a different opmode while the robot is enabled automatically disables the robot first, so ``end()`` is always called before the switch.
 
 **If a different opmode is selected while the robot is already disabled**, only ``close()`` is called, as the opmode was never started.
 
-After the old opmode is closed, a fresh opmode object is constructed based on the current DS selection. In teleop, autonomous, and utility modes the drop-down stays the same, so the same class is typically constructed again. In match mode (or when FMS-connected), only the selected autonomous opmode is constructed initially; once autonomous completes, the selected teleop opmode object is then constructed. Only one opmode object is ever alive at a time.
+Immediately after the old opmode is destroyed, a fresh instance is constructed based on the current DS selection. If the same opmode is still selected, the same class is instantiated again from scratch, so its constructor and ``disabledPeriodic()`` run again before the next enable. In match mode (when selected manually on the DS or when FMS-connected), only the selected autonomous opmode is constructed initially; once autonomous completes, the selected teleop opmode is then constructed. Only one opmode object is ever alive at a time.
 
 ## Accessing Robot Hardware
 
-Opmodes receive the ``Robot`` instance through their constructor. The library detects a single-argument constructor that accepts the ``Robot`` type and calls it automatically, passing the ``Robot`` object. If no such constructor exists, the no-argument constructor is used instead.
+Opmodes receive the ``Robot`` instance through their constructor. Declare a field to store it and assign it in the constructor so all methods can use it.
 
 .. tab-set::
 
@@ -230,11 +230,11 @@ public class ScoreCone extends PeriodicOpMode { ... }
 public class ScoreCube extends PeriodicOpMode { ... }
 ```
 
-The operator selects the desired routine in the DS before enabling. In match mode and while connected to the FMS, the operator selects both an autonomous and a teleop opmode. The driver station will automatically send the autonomous selection to the robot at the start of the match, and then send the teleop selection when autonomous ends.
+The operator selects the desired OpMode in the DS before enabling. In match mode (selected manually in the DS, or when connected to the FMS), the operator selects both an autonomous and a teleop OpMode before the match; the DS transitions between them automatically.
 
 ## Custom Periodic Callbacks
 
-``PeriodicOpMode`` has an additional method, ``addPeriodic()``, allowing callbacks to run at rates different from the main loop:
+``PeriodicOpMode`` has an additional method, ``addPeriodic()``, for running callbacks at rates other than the main loop period. This is useful when a task needs to run more frequently than 20 ms, such as high-rate odometry integration or sensor polling. The optional offset parameter staggers the callback relative to the start of the main loop, which prevents it from executing at the exact same moment as ``periodic()`` and ensures the most recent sensor data is available when ``periodic()`` runs:
 
 .. tab-set::
 
@@ -261,6 +261,8 @@ The operator selects the desired routine in the DS before enabling. In match mod
       ```
 
 Callbacks are registered immediately at opmode construction and run even while the robot is disabled.
+
+.. warning:: Callbacks run regardless of enabled state. Any actuator commands inside a callback must be guarded with an ``isEnabled()`` check, or they will silently have no effect while the robot is disabled.
 
 ## Migration from TimedRobot
 

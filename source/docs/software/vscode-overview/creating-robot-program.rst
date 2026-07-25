@@ -16,7 +16,7 @@ Source:
 [Java](https://github.com/wpilibsuite/allwpilib/blob/v2027.0.0-alpha-6/wpilibj/src/main/java/org/wpilib/framework/OpModeRobot.java)
 - [C++](https://github.com/wpilibsuite/allwpilib/blob/v2027.0.0-alpha-6/wpilibc/src/main/native/include/wpi/framework/OpModeRobot.hpp)
 
-``OpModeRobot`` is the recommended base class for most users.  It structures robot code around individual *opmode* classes — one per autonomous routine, one per teleoperated configuration, and so on — annotated with ``@Autonomous``, ``@Teleop``, or ``@Utility`` (Java) or registered manually (C++).  The Driver Station displays a drop-down list of available opmodes for each mode, so operators can select routines without recompiling the robot program.  The ``Robot`` class holds shared hardware and subsystems, which opmodes receive through their constructors.
+``OpModeRobot`` is the recommended base class for most users.  It structures robot code around individual *opmode* classes, one per autonomous routine, one per teleoperated configuration, and so on, annotated with ``@Autonomous``, ``@Teleop``, or ``@Utility`` (Java) or registered manually (C++).  The Driver Station displays a drop-down list of available opmodes for each mode, so operators can select routines without recompiling the robot program.  The ``Robot`` class holds shared hardware and subsystems, which opmodes receive through their constructors.
 
 See :doc:`/docs/software/basic-programming/opmodes` for full documentation, including the opmode lifecycle, multiple opmode selection, and DS integration.
 
