@@ -39,4 +39,4 @@ Translations are pulled from Transifex and published automatically each day.
 
 ## Accuracy
 
-Translations should be accurate to the original text. If improvements to the English text can be made, open a PR or issue on the [wpilib-docs](https://github.com/wpilibsuite/frc-docs) repository. These can then get translated on merge.
+Translations should be accurate to the original text. If improvements to the English text can be made, open a PR or issue on the [wpilib-docs](https://github.com/wpilibsuite/wpilib-docs) repository. These can then get translated on merge.

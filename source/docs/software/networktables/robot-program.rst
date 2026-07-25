@@ -83,7 +83,8 @@ The example robot program below publishes incrementing X and Y values to a table
     import ntcore
     import wpilib
     class EasyNetworkTableExample(wpilib.TimedRobot):
-        def robotInit(self) -> None:
+        def __init__(self) -> None:
+            super().__init__()
             # Get the default instance of NetworkTables that was created automatically
             # when the robot program starts
             inst = ntcore.NetworkTableInstance.getDefault()

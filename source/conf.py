@@ -75,14 +75,14 @@ if os.getenv("READTHEDOCS") == "True":
 extensions += local_extensions
 
 versionwarning_messages = {
+    # "latest": """
+    #    The documentation you are currently viewing is for upcoming changes to WPILib.
+    #    Please see the <a href="https://docs.wpilib.org" id="versionwarning_href">stable</a> version for the current release of WPILib.
+    #    <script>
+    #        document.getElementById("versionwarning_href").setAttribute("href", location.href.replace("/latest/", "/stable/"))
+    #    </script>
+    #    """,
     "latest": """
-        The documentation you are currently viewing is for upcoming changes to WPILib.
-        Please see the <a href="https://docs.wpilib.org" id="versionwarning_href">stable</a> version for the current release of WPILib.
-        <script>
-            document.getElementById("versionwarning_href").setAttribute("href", location.href.replace("/latest/", "/stable/"))
-        </script>
-        """,
-    "2027": """
         The documentation you are currently viewing is for the SystemCore Alpha Test.
         Please see the <a href="https://docs.wpilib.org" id="versionwarning_href">stable</a> version for the current release of WPILib.
         <script>
@@ -151,7 +151,7 @@ linkcheck_anchors = True
 linkcheck_ignore = [
     #    r".*kauailabs.com.*",
     r".*wpilibpi.local.*",
-    #    r".*andymark.com.*",
+    r".*andymark.com.*",
     #    r".*ti.com/lit/an/spma033a/spma033a.pdf.*",
     r".*java.com.*",
     r".*playingwithfusion.com/contactus.php.*",
@@ -174,12 +174,17 @@ linkcheck_ignore = [
     r".*strawberryperl.com.*",
     r".*docutils.sourceforge.io.*",
     r".*cppreference.com.*",
+    r".*thriftybot.com.*",
+    r".*wcproducts.com.*",
+    r".*store.ctr-electronics.com.*",
+    r".*calib.io.*",
+    r".*limelightvision.io.*",
+    r".*https://wiki.debian.org.*",
 ]
 
 linkcheck_anchors_ignore_for_url = [
     r".*github.com.*",
     r".*ni.com/en/support/downloads/drivers/download.frc-game-tools.html.*",
-    r".*ni.com/en/support/downloads/software-products/download.package-manager.html.*",
 ]
 
 # Sets linkcheck timeout in seconds
@@ -189,7 +194,7 @@ linkcheck_workers = 1
 linkcheck_report_timeouts_as_broken = False
 
 # Specify a standard user agent, as Sphinx default is blocked on some sites
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
 
 # Autosection labels prefix document path and filename
 autosectionlabel_prefix_document = True
@@ -304,8 +309,8 @@ def setup(app):
 html_context = {
     "display_github": True,  # Integrate GitHub
     "github_user": "wpilibsuite",  # Username
-    "github_repo": "frc-docs",  # Repo name
-    "github_version": "2027",  # Version, set to 2027 so edit on github makes PRs to 2027 instead of main/stable
+    "github_repo": "wpilib-docs",  # Repo name
+    "github_version": "main",  # Version
     "conf_py_path": "/source/",  # Path in the checkout to the docs root
 }
 

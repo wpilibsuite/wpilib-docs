@@ -450,5 +450,5 @@ Community translations can be found in a variety of languages in the menu toward
    :caption: Issues
    :hidden:
 
-   Report a Documentation Issue <https://github.com/wpilibsuite/frc-docs/issues>
+   Report a Documentation Issue <https://github.com/wpilibsuite/wpilib-docs/issues>
 
