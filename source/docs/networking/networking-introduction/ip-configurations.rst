@@ -87,7 +87,7 @@ The table below outlines the general static IP address allocations and reserved 
 +---------------------------------------+---------------------------------------+-------------------+-----------------+
 | Network Gateway / Field AP            | ``10.TE.AM.4``                        | ``255.255.255.0`` | ``10.TE.AM.4``  |
 +---------------------------------------+---------------------------------------+-------------------+-----------------+
-| Driver Station                        | ``10.TE.AM.5``                        | ``255.0.0.0``*    | ``10.TE.AM.4``  |
+| Driver Station                        | ``10.TE.AM.5``                        | ``255.0.0.0`` (1) | ``10.TE.AM.4``  |
 +---------------------------------------+---------------------------------------+-------------------+-----------------+
 | Additional On-Robot Devices           | ``10.TE.AM.6`` to ``10.TE.AM.19``     | ``255.255.255.0`` | ``10.TE.AM.4``  |
 +---------------------------------------+---------------------------------------+-------------------+-----------------+
@@ -97,4 +97,4 @@ The table below outlines the general static IP address allocations and reserved 
 +---------------------------------------+---------------------------------------+-------------------+-----------------+
 
 .. note::
-   *The Driver Station static subnet mask **must** be set to ``255.0.0.0`` to enable the Driver Station to reach both the robot and :term:`FMS` Server without additionally configuring the default gateway. If the subnet mask is set to ``255.255.255.0``, the default gateway must be configured to ``10.TE.AM.4``.
+   (1) The Driver Station static subnet mask **must** be set to ``255.0.0.0`` to enable the Driver Station to reach both the robot and :term:`FMS` Server without additionally configuring the default gateway. If the subnet mask is set to ``255.255.255.0``, the default gateway must be configured to ``10.TE.AM.4``.
