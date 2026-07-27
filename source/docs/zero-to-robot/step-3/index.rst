@@ -1,19 +1,25 @@
 # Step 3: Configure Your Control System
 
-.. raw:: html
+.. container:: sw-step-badge
 
-   <!-- Step badge -->
-   <div class="sw-step-badge">
-     <span class="sw-step-n">03</span>
-     <div>
-       <div class="sw-step-info-title">Configure Your Control System</div>
-       <div class="sw-step-info-sub">Step 3 of 4</div>
-     </div>
-   </div>
+   .. container:: sw-step-n
+
+      03
+
+   .. container::
+
+      .. container:: sw-step-info-title
+
+         Configure Your Control System
+
+      .. container:: sw-step-info-sub
+
+         Step 3 of 4
 
 Before you can deploy code, the Systemcore must be configured with the
 current season's software and the radio must be programmed for your
-team number. Both tasks require a Windows computer with FRC Game Tools installed.
+team number. Both tasks require a Windows computer with
+FRC Game Tools installed.
 
 .. warning::
 
@@ -81,16 +87,16 @@ and the correct firmware before the robot can communicate wirelessly.
 - Systemcore boots and status light cycles
 - Radio powers on
 - Radio SSID appears as <TEAM>_Robot in Wi-Fi list
-- Connect laptop to robot Wi-Fi — Driver Station shows "Robot Communication" in green
+- Connect laptop to robot Wi-Fi — Driver Station shows
+  "Robot Communication" in green
 
-.. raw:: html
+.. container:: sw-nav
 
-   <div class="sw-nav">
-     <a class="sw-nav-btn" href="../step-2/index.html">
-       &larr; Step 2: Install Your Tools</a>
-     <a class="sw-nav-btn sw-next" href="../step-4/index.html">
-       Step 4: Write and Drive &rarr;</a>
-   </div>
+   :doc:`← Step 2: Install Your Tools <../step-2/index>`
+
+   .. container:: sw-next
+
+      :doc:`Step 4: Write and Drive → <../step-4/index>`
 
 .. toctree::
    :maxdepth: 1

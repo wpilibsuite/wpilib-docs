@@ -703,9 +703,31 @@
      .sw-grid-2,.sw-grid-3,.sw-grid-6 { grid-template-columns:1fr; } }
 
 
+/* ── RST CONTAINER COMPAT: step badge — remove <p> margins from nested containers ── */
+.sw-step-n p, .sw-step-info-title p, .sw-step-info-sub p { margin:0; }
+.sw-success-h p { margin:0; }
+.sw-success p { font-size:0.875rem; line-height:1.6; margin:0; }
+
+/* ── RST CONTAINER COMPAT: nav bar — style <p><a> links like .sw-nav-btn ── */
+.sw-nav p { margin:0; }
+.sw-nav p a {
+  padding:9px 20px; border-radius:6px; font-size:0.875rem;
+  font-weight:600; text-decoration:none; border:2px solid var(--frc);
+  color:var(--frc); background:var(--color-background-primary,#fff);
+  transition:all 0.2s; display:inline-block; }
+.sw-nav p a:hover { background:var(--frc); color:#fff; text-decoration:none; }
+.sw-nav p a:visited { color:var(--frc); }
+.sw-nav .sw-next p a { background:var(--frc); color:#fff; }
+.sw-nav .sw-next p a:hover { background:#007ab0; border-color:#007ab0; }
+.sw-nav .sw-next p a:visited { color:#fff; }
+
 /* ── DARK MODE: replace light solid backgrounds with dark tinted versions ── */
 body[data-theme="dark"] .sw-card-ftc    { background: rgba(224, 112,   0, 0.12); }
 body[data-theme="dark"] .sw-card-shared { background: rgba( 46, 125,  50, 0.12); }
 body[data-theme="dark"] .sw-card-rec    { background: rgba(  0, 156, 215, 0.12); }
+body[data-theme="dark"] .sw-card-frc    { background: rgba(  0, 156, 215, 0.12); }
+body[data-theme="dark"] .sw-step-badge  { background: rgba(  0, 156, 215, 0.12); }
+body[data-theme="dark"] .sw-success     { background: rgba( 46, 125,  50, 0.12); }
 body[data-theme="dark"] .sw-tip         { background: rgba( 46, 125,  50, 0.12); border-color: rgba(46, 125, 50, 0.3); }
 body[data-theme="dark"] .sw-warn        { background: rgba(255, 160,   0, 0.12); border-color: rgba(255, 160, 0, 0.3); }
+body[data-theme="dark"] .sw-nav p a     { background: var(--color-background-primary, #1a1a1a); }

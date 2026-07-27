@@ -1,15 +1,20 @@
 # Step 2: Install Your Tools
 
-.. raw:: html
+.. container:: sw-step-badge
 
-   <!-- Step badge -->
-   <div class="sw-step-badge">
-     <span class="sw-step-n">02</span>
-     <div>
-       <div class="sw-step-info-title">Install Your Tools</div>
-       <div class="sw-step-info-sub">Step 2 of 4</div>
-     </div>
-   </div>
+   .. container:: sw-step-n
+
+      02
+
+   .. container::
+
+      .. container:: sw-step-info-title
+
+         Install Your Tools
+
+      .. container:: sw-step-info-sub
+
+         Step 2 of 4
 
 .. rubric:: System Requirements
 
@@ -113,14 +118,13 @@ After completing all parts above, confirm the installation is working:
    Libraries like REVLib and Phoenix 6 are added per-project in Step 4
    using the WPILib Dependency Manager. You do not need them yet.
 
-.. raw:: html
+.. container:: sw-nav
 
-   <div class="sw-nav">
-     <a class="sw-nav-btn" href="../step-1/index.html">
-       &larr; Step 1: Build Your Robot</a>
-     <a class="sw-nav-btn sw-next" href="../step-3/index.html">
-       Step 3: Configure Your Control System &rarr;</a>
-   </div>
+   :doc:`← Step 1: Build Your Robot <../step-1/index>`
+
+   .. container:: sw-next
+
+      :doc:`Step 3: Configure Your Control System → <../step-3/index>`
 
 .. toctree::
    :maxdepth: 1

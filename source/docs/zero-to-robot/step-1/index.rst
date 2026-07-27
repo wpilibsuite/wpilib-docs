@@ -1,22 +1,35 @@
 # Step 1: Build Your Robot
 
-.. raw:: html
+.. container:: sw-step-badge
 
-   <!-- Step badge -->
-   <div class="sw-step-badge">
-     <span class="sw-step-n">01</span>
-     <div>
-       <div class="sw-step-info-title">Build Your Robot</div>
-       <div class="sw-step-info-sub">Step 1 of 4</div>
-     </div>
-   </div>
+   .. container:: sw-step-n
+
+      01
+
+   .. container::
+
+      .. container:: sw-step-info-title
+
+         Build Your Robot
+
+      .. container:: sw-step-info-sub
+
+         Step 1 of 4
 
 Choose the wiring guide for your program below.
 
-.. rubric:: FRC
-
 .. grid:: 1 1 2 2
    :gutter: 3
+
+   .. grid-item::
+
+      .. rubric:: FRC
+         :class: wl-frc-text
+
+   .. grid-item::
+
+      .. rubric:: FTC
+         :class: wl-ftc-text
 
    .. grid-item-card:: Basic Robot Wiring
       :link: basic-robot-wiring
@@ -28,6 +41,14 @@ Choose the wiring guide for your program below.
       Simplified wiring reference for drivetrain-only builds.
       Good starting point for rookie teams.
 
+   .. grid-item-card:: Basic FTC Robot Wiring
+      :class-card: sw-card-ftc
+
+      **FTC Coming 2027-2028**
+      ^^^
+      Simplified wiring guide for Systemcore and Motioncore.
+      Good starting point for rookie FTC teams.
+
    .. grid-item-card:: FRC Robot Wiring Overview
       :link: intro-to-frc-robot-wiring
       :link-type: doc
@@ -38,6 +59,14 @@ Choose the wiring guide for your program below.
       Full walkthrough of control system wiring with diagrams:
       PDH, Systemcore, radio, motor controllers, and pneumatics.
 
+   .. grid-item-card:: FTC Robot Wiring Overview
+      :class-card: sw-card-ftc
+
+      **FTC Coming 2027-2028**
+      ^^^
+      Full walkthrough of FTC control system wiring with diagrams:
+      Systemcore, Motioncore, motor controllers, and power.
+
 .. tip::
 
    **Not sure which PDH or PDP you have?**
@@ -47,34 +76,13 @@ Choose the wiring guide for your program below.
    (oval shape, 16 slots). Both are legal — wiring diagrams for each are in
    the wiring overview above.
 
-.. rubric:: FTC
+.. container:: sw-nav
 
-.. grid:: 1 1 2 2
-   :gutter: 3
+   :doc:`← Introduction <../introduction>`
 
-   .. grid-item-card:: Basic FTC Robot Wiring
-      :class-card: sw-card-ftc
+   .. container:: sw-next
 
-      **FTC — Coming Soon**
-      ^^^
-      Simplified wiring guide for Systemcore and Motioncore.
-      Good starting point for rookie FTC teams.
-
-   .. grid-item-card:: FTC Robot Wiring Overview
-      :class-card: sw-card-ftc
-
-      **FTC — Coming Soon**
-      ^^^
-      Full walkthrough of FTC control system wiring with diagrams:
-      Systemcore, Motioncore, motor controllers, and power.
-
-.. raw:: html
-
-   <div class="sw-nav">
-     <a class="sw-nav-btn" href="../introduction.html">&larr; Introduction</a>
-     <a class="sw-nav-btn sw-next" href="../step-2/index.html">
-       Step 2: Install Your Tools &rarr;</a>
-   </div>
+      :doc:`Step 2: Install Your Tools → <../step-2/index>`
 
 .. toctree::
    :maxdepth: 1

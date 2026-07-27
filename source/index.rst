@@ -230,77 +230,81 @@ WPILib Documentation
 
        <div class="wl-ret-grid">
 
-         <div class="wl-ret-card wl-ret-frc">
-           <div class="wl-ret-label wl-frc-label">FRC</div>
-           <h3 class="wl-ret-h">Pre-Season Checklist</h3>
-           <ul>
-             <li>Download and run the <strong>2027 WPILib installer</strong></li>
-             <li>Flash your Systemcore using <strong>FRC 2027 Game Tools</strong></li>
-             <li>Use <strong>Import Project</strong> in VS Code to migrate your 2026 code</li>
-             <li>Re-add all vendor libraries : they do not carry over on import</li>
-             <li>Check for vendor library updates in the Dependency Manager</li>
-             <li>Test with the simulator before deploying to hardware</li>
-           </ul>
-         </div>
+         <!-- ── FRC column ── -->
+         <div style="display:flex;flex-direction:column;gap:14px;">
 
-         <div class="wl-ret-card wl-ret-frc">
-           <div class="wl-ret-label wl-frc-label">FRC</div>
-           <h3 class="wl-ret-h">Removed in 2027 : No Longer Available</h3>
-           <p style="font-size:0.875rem;margin-bottom:8px;">These tools were <strong>removed in the 2027 season</strong>. If you have not yet migrated, you need to do so now.</p>
-           <ul>
-             <li><strong>Shuffleboard</strong> : migrate to <a href="https://github.com/Gold872/elastic-dashboard">Elastic</a> or AdvantageScope</li>
-             <li><strong>SmartDashboard</strong> : migrate to Glass or Elastic (uses deprecated NT v3)</li>
-             <li><strong>PathWeaver</strong> : migrate to <a href="https://github.com/mjansen4857/pathplanner">PathPlanner</a> or <a href="https://sleipnirgroup.github.io/Choreo/">Choreo</a></li>
-             <li><strong>RobotBuilder</strong> : will be removed with control system change in 2027</li>
-           </ul>
-         </div>
-
-         <div class="wl-ret-card wl-ret-frc">
-           <div class="wl-ret-label wl-frc-label">FRC</div>
-           <h3 class="wl-ret-h">What is New for 2027</h3>
-           <ul>
-             <li>FRC now uses Systemcore: see the hardware migration guide</li>
-             <li>2027 field images and AprilTag layout data included in WPILib</li>
-             <li>Windows 10 is no longer supported: Windows 11 is required</li>
-             <li>Vendor library updates required: check the Dependency Manager</li>
-           </ul>
-           <a href="docs/yearly-overview/index.html" class="wl-frc-text" style="font-size:0.875rem;">Full 2027 changelog</a>
-         </div>
-
-         <div class="wl-ret-card wl-ret-shared">
-           <div class="wl-ret-label wl-shared-label">FRC + FTC</div>
-           <h3 class="wl-ret-h">Looking Ahead to 2028</h3>
-           <ul>
-             <li>Continued improvements to <strong>Systemcore</strong> and <strong>Motioncore</strong> toolchains</li>
-             <li>Expanded <strong>FTC</strong> WPILib documentation and library support</li>
-             <li>Watch the WPILib blog for 2028 season previews</li>
-           </ul>
-           <a href="https://wpilib.org/blog" class="wl-shared-text" style="font-size:0.875rem;">Follow the WPILib blog for previews</a>
-         </div>
-
-         <div class="wl-ret-card wl-ret-ftc" style="grid-column:1/-1;">
-           <div class="wl-ret-label wl-ftc-label">FTC</div>
-           <h3 class="wl-ret-h">FTC Teams : Your Options Right Now</h3>
-           <p style="font-size:0.875rem;margin-bottom:12px;">WPILib FTC support is now available with Systemcore. Here is where things stand for the 2027-2028 season:</p>
-           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-             <div>
-               <strong style="font-size:0.875rem;">Using REV Control Hub / Expansion Hub (REV Duo)?</strong>
-               <ul style="font-size:0.82rem;margin-top:6px;">
-                 <li>Continue programming with the <strong>FTC SDK</strong> as normal : Java or Blocks</li>
-                 <li>Full documentation at <a href="https://ftc-docs.firstinspires.org">ftc-docs.firstinspires.org</a></li>
-                 <li>REV Duo hardware remains legal and fully supported for the current season</li>
-               </ul>
-             </div>
-             <div>
-               <strong style="font-size:0.875rem;">Using Systemcore with WPILib?</strong>
-               <ul style="font-size:0.82rem;margin-top:6px;">
-                 <li>Systemcore and Motioncore bring full WPILib support to FTC</li>
-                 <li>Same Java / C++ / Python toolchain as FRC : skills transfer directly</li>
-                 <li>Try the <a href="docs/xrp-robot/index.html">XRP Platform</a> to start learning WPILib today</li>
-                 <li><a href="docs/ftc/index.html">WPILib FTC overview</a></li>
-               </ul>
-             </div>
+           <div class="wl-ret-card wl-ret-frc">
+             <div class="wl-ret-label wl-frc-label">FRC</div>
+             <h3 class="wl-ret-h">Pre-Season Checklist</h3>
+             <ul>
+               <li>Download and run the <strong>2027 WPILib installer</strong></li>
+               <li>Flash your Systemcore using <strong>FRC 2027 Game Tools</strong></li>
+               <li>Use <strong>Import Project</strong> in VS Code to migrate your 2026 code</li>
+               <li>Re-add all vendor libraries : they do not carry over on import</li>
+               <li>Check for vendor library updates in the Dependency Manager</li>
+               <li>Test with the simulator before deploying to hardware</li>
+             </ul>
            </div>
+
+           <div class="wl-ret-card wl-ret-frc">
+             <div class="wl-ret-label wl-frc-label">FRC</div>
+             <h3 class="wl-ret-h">Removed in 2027 : No Longer Available</h3>
+             <p style="font-size:0.875rem;margin-bottom:8px;">These tools were <strong>removed in the 2027 season</strong>. If you have not yet migrated, you need to do so now.</p>
+             <ul>
+               <li><strong>Shuffleboard</strong> : migrate to <a href="https://github.com/Gold872/elastic-dashboard">Elastic</a> or AdvantageScope</li>
+               <li><strong>SmartDashboard</strong> : migrate to Glass or Elastic (uses deprecated NT v3)</li>
+               <li><strong>PathWeaver</strong> : migrate to <a href="https://github.com/mjansen4857/pathplanner">PathPlanner</a> or <a href="https://sleipnirgroup.github.io/Choreo/">Choreo</a></li>
+               <li><strong>RobotBuilder</strong> : will be removed with control system change in 2027</li>
+             </ul>
+           </div>
+
+           <div class="wl-ret-card wl-ret-frc">
+             <div class="wl-ret-label wl-frc-label">FRC</div>
+             <h3 class="wl-ret-h">What is New for 2027</h3>
+             <ul>
+               <li>FRC now uses Systemcore: see the hardware migration guide</li>
+               <li>2027 field images and AprilTag layout data included in WPILib</li>
+               <li>Windows 10 is no longer supported: Windows 11 is required</li>
+               <li>Vendor library updates required: check the Dependency Manager</li>
+             </ul>
+             <a href="docs/yearly-overview/index.html" class="wl-frc-text" style="font-size:0.875rem;">Full 2027 changelog</a>
+           </div>
+
+         </div>
+
+         <!-- ── FTC + shared column ── -->
+         <div style="display:flex;flex-direction:column;gap:14px;">
+
+           <div class="wl-ret-card wl-ret-ftc">
+             <div class="wl-ret-label wl-ftc-label">FTC</div>
+             <h3 class="wl-ret-h">FTC Teams : Your Options Right Now</h3>
+             <p style="font-size:0.875rem;margin-bottom:10px;">WPILib FTC support is now available with Systemcore. Here is where things stand for the 2027-2028 season:</p>
+             <strong style="font-size:0.875rem;">Using REV Control Hub / Expansion Hub (REV Duo)?</strong>
+             <ul style="font-size:0.82rem;margin-top:6px;">
+               <li>Continue programming with the <strong>FTC SDK</strong> as normal : Java or Blocks</li>
+               <li>Full documentation at <a href="https://ftc-docs.firstinspires.org">ftc-docs.firstinspires.org</a></li>
+               <li>REV Duo hardware remains legal and fully supported for the current season</li>
+             </ul>
+             <strong style="font-size:0.875rem;display:block;margin-top:12px;">Using Systemcore with WPILib?</strong>
+             <ul style="font-size:0.82rem;margin-top:6px;">
+               <li>Systemcore and Motioncore bring full WPILib support to FTC</li>
+               <li>Same Java / C++ / Python toolchain as FRC : skills transfer directly</li>
+               <li>Try the <a href="docs/xrp-robot/index.html">XRP Platform</a> to start learning WPILib today</li>
+               <li><a href="docs/ftc/index.html">WPILib FTC overview</a></li>
+             </ul>
+           </div>
+
+           <div class="wl-ret-card wl-ret-shared">
+             <div class="wl-ret-label wl-shared-label">FRC + FTC</div>
+             <h3 class="wl-ret-h">Looking Ahead to 2028</h3>
+             <ul>
+               <li>Continued improvements to <strong>Systemcore</strong> and <strong>Motioncore</strong> toolchains</li>
+               <li>Expanded <strong>FTC</strong> WPILib documentation and library support</li>
+               <li>Watch the WPILib blog for 2028 season previews</li>
+             </ul>
+             <a href="https://wpilib.org/blog" class="wl-shared-text" style="font-size:0.875rem;">Follow the WPILib blog for previews</a>
+           </div>
+
          </div>
 
        </div>

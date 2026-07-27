@@ -1,14 +1,20 @@
 # Step 4: Write and Drive
 
-.. raw:: html
+.. container:: sw-step-badge
 
-   <div class="sw-step-badge">
-     <span class="sw-step-n">04</span>
-     <div>
-       <div class="sw-step-info-title">Write and Drive</div>
-       <div class="sw-step-info-sub">Step 4 of 4 &mdash; Estimated time: 45 min</div>
-     </div>
-   </div>
+   .. container:: sw-step-n
+
+      04
+
+   .. container::
+
+      .. container:: sw-step-info-title
+
+         Write and Drive
+
+      .. container:: sw-step-info-sub
+
+         Step 4 of 4 — Estimated time: 45 min
 
 .. rubric:: Part 1 — Create Your Robot Project
 
@@ -40,7 +46,8 @@ Open the WPILib VS Code and create a new project from the template.
 .. rubric:: Part 2 — Install Vendor Libraries
 
 Vendor libraries add support for motor controllers and sensors.
-They are per-project and must be added each time you create or import a project.
+They are per-project and must be added each time you create or import a
+project.
 
 .. grid:: 1 1 2 2
    :gutter: 3
@@ -61,7 +68,8 @@ They are per-project and must be added each time you create or import a project.
 
 .. rubric:: Part 3 — Basic Arcade Drive (Java)
 
-A minimal working drivetrain. Replace ``PWMSparkMax`` with your actual controller class.
+A minimal working drivetrain. Replace ``PWMSparkMax`` with your actual
+controller class.
 
 .. code-block:: java
 
@@ -157,25 +165,23 @@ A minimal working drivetrain. Replace ``PWMSparkMax`` with your actual controlle
       Invert one motor controller in code (``motor.setInverted(true)``)
       or flip the motor power leads on the controller.
 
-.. raw:: html
+.. container:: sw-success
 
-   <div class="sw-success">
-     <div class="sw-success-h">&#10003; You have a driving robot.</div>
-     <p class="sw-success-p">
-       Explore the
-       <a href="../../software/commandbased/index.html">Command-Based framework</a>
-       for structured programs,
-       <a href="../../software/pathplanning/index.html">path planning</a>
-       for autonomous, and
-       <a href="../../software/wpilib-tools/robot-simulation/index.html">simulation</a>
-       to test code without hardware.
-     </p>
-   </div>
+   .. container:: sw-success-h
 
-   <div class="sw-nav">
-     <a class="sw-nav-btn" href="../step-3/index.html">
-       &larr; Step 3: Configure Your Control System</a>
-   </div>
+      ✓ You have a driving robot.
+
+   Explore the
+   :doc:`Command-Based framework <../../software/commandbased/index>`
+   for structured programs,
+   :doc:`path planning <../../software/pathplanning/index>`
+   for autonomous, and
+   :doc:`simulation <../../software/wpilib-tools/robot-simulation/index>`
+   to test code without hardware.
+
+.. container:: sw-nav
+
+   :doc:`← Step 3: Configure Your Control System <../step-3/index>`
 
 .. toctree::
    :maxdepth: 1
