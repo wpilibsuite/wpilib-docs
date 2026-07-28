@@ -13,7 +13,7 @@ Navigate to the [Systemcore Releases Page](https://github.com/LimelightVision/sy
 
 ## Step 2: Connect to Systemcore
 
-Connect to your Systemcore via Wi-Fi or USB. 
+Connect to your Systemcore via Wi-Fi or USB.
 
 ## Step 3: Flashing Systemcore
 
@@ -27,6 +27,6 @@ Navigate to the configure and update tab as shown above.
 .. image:: images/imaging-systemcore/findos.png
     :alt: Image of Systemcore configuration page at the OS Update section.
 
-Scroll down to the OS Update section, click :guilabel:`Select File`, and select the ``.llupdate`` file you just downloaded. Then, click the :guilabel:`Flash Update` button and wait until the process finishes, it will take a few minutes. 
+Scroll down to the OS Update section, click :guilabel:`Select File`, and select the ``.llupdate`` file you just downloaded. Then, click the :guilabel:`Flash Update` button and wait until the process finishes, it will take a few minutes.
 
 .. note:: If you are connected to your Systemcore using Wi-Fi, you will need to reconnect to your Systemcore and refresh the page after it reboots (the last step of the flashing process).
