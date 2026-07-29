@@ -32,7 +32,9 @@ Navigate to the configure and update tab as shown above.
 Scroll down to the OS Update section, click :guilabel:`Select File`, and select the ``.llupdate`` file you just downloaded. Then, click the :guilabel:`Flash Update` button and wait until the process finishes, it will take a few minutes. If you are connected to your Systemcore through USB, you should see a success message when the process finishes.
 
 .. note::
+
     .. image:: images/imaging-systemcore/rebootfinished.png
         :align: center
         :alt: Image of finished OS Update page with all processes marked with a check mark
+
     If you are connected to your Systemcore using Wi-Fi, you will need to reconnect to your Systemcore and refresh the page after it reboots (the last step of the flashing process), the image above shows what the OS Update page should look like.
