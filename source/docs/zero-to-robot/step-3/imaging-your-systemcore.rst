@@ -9,7 +9,7 @@ Navigate to the [Systemcore Releases Page](https://github.com/LimelightVision/sy
 .. image:: images/imaging-systemcore/llupdate.png
     :alt: Image of the LimelightVision Systemcore Release Page with the ``.llupdate`` file download link indicated by with a yellow box.
 
-.. note:: Make sure to download an update for the correct Systemcore unit. If your Systemcore came unlabled, download the ``.llupdate`` file for an alpha unit, otherwise download the ``.llupdate`` for a beta unit.
+.. note:: Make sure to download the alpha or beta update for the your Systemcore unit. If your Systemcore came unlabled, download the ``.llupdate`` file for an alpha unit, otherwise download the ``.llupdate`` for a beta unit.
 
 ## Step 2: Connect to Systemcore
 
