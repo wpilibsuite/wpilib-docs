@@ -8,7 +8,7 @@ WPILib Documentation
 
 .. raw:: html
 
-   <div style="text-align:center;padding:36px 0 32px;">
+   <div style="text-align:center;padding:36px 0 8px;">
      <h1 style="font-size:2rem;font-weight:800;margin:0 0 12px;
         color:var(--color-foreground-primary,#1a1a1a);">
        Welcome!
@@ -17,22 +17,11 @@ WPILib Documentation
         max-width:560px;margin:0 auto 20px;line-height:1.6;">
        WPILib is the standard programming library for <em>FIRST</em> Robotics,
        supporting teams in
-       <strong style="color:#009CD7;">FRC</strong>
+       <strong style="color:#009CD7;"><em>FIRST</em> Robotics Competition</strong>
        and
-       <strong style="color:#e07000;">FTC</strong>.
+       <strong style="color:#e07000;"><em>FIRST</em> Tech Challenge</strong>.
      </p>
-     <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
-       <span style="background:#009CD7;color:#fff;font-size:0.8rem;font-weight:700;
-          text-transform:uppercase;letter-spacing:0.06em;
-          padding:5px 16px;border-radius:20px;">
-         FRC &mdash; FIRST Robotics Competition
-       </span>
-       <span style="background:#e07000;color:#fff;font-size:0.8rem;font-weight:700;
-          text-transform:uppercase;letter-spacing:0.06em;
-          padding:5px 16px;border-radius:20px;">
-         FTC &mdash; FIRST Tech Challenge
-       </span>
-     </div>
+     
    </div>
 
    <div id="landing-tab-root">
@@ -237,12 +226,12 @@ WPILib Documentation
              <div class="wl-ret-label wl-frc-label">FRC</div>
              <h3 class="wl-ret-h">Pre-Season Checklist</h3>
              <ul>
-               <li>Download and run the <strong>2027 WPILib installer</strong></li>
-               <li>Flash your Systemcore using <strong>FRC 2027 Game Tools</strong></li>
-               <li>Use <strong>Import Project</strong> in VS Code to migrate your 2026 code</li>
-               <li>Re-add all vendor libraries : they do not carry over on import</li>
-               <li>Check for vendor library updates in the Dependency Manager</li>
-               <li>Test with the simulator before deploying to hardware</li>
+               <li>Download and run the <strong><a href="docs/zero-to-robot/step-2/wpilib-setup.html">2027 WPILib installer</a></strong></li>
+               <li><strong><a href="docs/software/systemcore-info/index.html">Update your Systemcore</a></strong> if needed</li>
+               <li>Use <strong><a href="docs/software/vscode-overview/importing-last-years-robot-code.html">Import Project</a></strong> in VS Code to migrate your 2026 code</li>
+               <li><strong><a href="docs/software/vscode-overview/3rd-party-libraries.html">Re-add all vendor libraries</a></strong> : they do not carry over on import</li>
+               <li>Check for <strong><a href="docs/software/vscode-overview/3rd-party-libraries.html">vendor library updates</a></strong> in the Dependency Manager</li>
+               <li>Test with the <strong><a href="docs/software/wpilib-tools/robot-simulation/simulation-gui.html">simulator</a></strong> before deploying to hardware</li>
              </ul>
            </div>
 
@@ -354,7 +343,7 @@ WPILib Documentation
      <a class="wl-core-card" href="docs/software/dashboards/index.html"><div class="wl-core-title">Dashboards</div><div class="wl-core-desc">Elastic, AdvantageScope, Glass, and NetworkTables for real-time telemetry.</div></a>
      <a class="wl-core-card" href="docs/software/advanced-controls/index.html"><div class="wl-core-title">Advanced Controls</div><div class="wl-core-desc">PID, feedforward, state-space, kinematics, and system identification.</div></a>
      <a class="wl-core-card" href="docs/software/wpilib-tools/robot-simulation/index.html"><div class="wl-core-title">Simulation</div><div class="wl-core-desc">Test robot code on your laptop : no hardware required.</div></a>
-     <a class="wl-core-card" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html"><div class="wl-core-title">API Reference</div><div class="wl-core-desc">Java, C++, and Python class and method documentation.</div></a>
+     <a class="wl-core-card" href="docs/api-reference.html"><div class="wl-core-title">API Reference</div><div class="wl-core-desc">Java, C++, and Python class and method documentation.</div></a>
    </div>
 
    <div style="margin-top:8px;padding:14px 18px;
@@ -459,9 +448,7 @@ WPILib Documentation
    :caption: API Reference
    :hidden:
 
-   WPILib Java API Docs <https://github.wpilib.org/allwpilib/docs/release/java/index.html>
-   WPILib C++ API Docs <https://github.wpilib.org/allwpilib/docs/release/cpp/index.html>
-   WPILib Python API Docs <https://robotpy.readthedocs.io/projects/robotpy/en/stable/>
+   docs/api-reference
 
 .. toctree::
    :maxdepth: 1

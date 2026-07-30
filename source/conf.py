@@ -23,7 +23,7 @@ sys.path.append(os.path.abspath("./frc-docs/source"))
 
 # -- Project information -----------------------------------------------------
 
-project = "FIRST Robotics"
+project = "WPILib Documentation"
 copyright = "2026, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License"
 author = "WPILib"
 version = "2027"
@@ -119,7 +119,7 @@ rediraffe_auto_redirect_perc = 80
 
 # Configure OpenGraph support
 ogp_site_url = "https://docs.wpilib.org/en/stable/"
-ogp_site_name = "FIRST Robotics Documentation"
+ogp_site_name = "WPILib Documentation"
 ogp_image = "https://raw.githubusercontent.com/wpilibsuite/branding/main/export/png/wpilib-icon-256.png"
 
 # Configure photofinish ci mode

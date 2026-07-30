@@ -13,7 +13,7 @@
 
    /* ── TAB SELECTOR ── */
    #landing-tab-root { max-width: 900px; }
-   .wl-tab-selector { text-align:center; padding:36px 0 28px; }
+   .wl-tab-selector { text-align:center; padding:12px 0 28px; }
    .wl-tab-prompt { font-size:1.1rem; font-weight:600; margin-bottom:16px; }
    .wl-tab-buttons { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; }
    .wl-tab-btn {
@@ -23,8 +23,8 @@
      cursor:pointer; transition:all 0.2s;
      color:var(--color-foreground-primary,#1a1a1a);
    }
-   .wl-tab-btn:hover { border-color:var(--frc); color:var(--frc); }
-   .wl-tab-btn.active { background:var(--frc); border-color:var(--frc); color:#fff; }
+   .wl-tab-btn:hover { border-color:var(--shared); color:var(--shared); }
+   .wl-tab-btn.active { background:var(--shared); border-color:var(--shared); color:#fff; }
    .wl-tab-btn:visited { color: inherit; }
 
    /* ── PANELS ── */
