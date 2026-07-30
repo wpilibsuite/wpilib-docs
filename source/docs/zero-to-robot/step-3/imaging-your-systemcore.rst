@@ -21,6 +21,8 @@ Go to your Systemcore home page (robot.local).
 
 .. note:: If the current image of your Systemcore is **below** alpha/beta version 11, you will need to update your Systemcore using Limelight Hardware Client, following [these instructions](https://github.com/wpilibsuite/SystemcoreTesting/blob/main/README.md#flash-mode).
 
+.. todo:: Remove the above note once units are shipped with the minimum version.
+
 .. image:: images/imaging-systemcore/configuretab.png
     :alt: Image of Systemcore home page with a box around the settings wheel tab that leads to the configure & update tab.
 
