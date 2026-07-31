@@ -17,11 +17,10 @@ WPILib Documentation
         max-width:560px;margin:0 auto 20px;line-height:1.6;">
        WPILib is the standard programming library for <em>FIRST</em> Robotics,
        supporting teams in
-       <strong style="color:#009CD7;"><em>FIRST</em> Robotics Competition</strong>
+       <strong style="color:#009CD7;"><em>FIRST</em> Robotics Competition (FRC)</strong>
        and
-       <strong style="color:#e07000;"><em>FIRST</em> Tech Challenge</strong>.
+       <strong style="color:#e07000;"><em>FIRST</em> Tech Challenge (FTC)</strong>.
      </p>
-     
    </div>
 
    <div id="landing-tab-root">
