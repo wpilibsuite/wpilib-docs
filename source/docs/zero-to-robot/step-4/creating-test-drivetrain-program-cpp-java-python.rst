@@ -115,7 +115,7 @@ This will create a ``robot.py`` and ``pyproject.toml`` file, but will not overwr
 * The ``pyproject.toml`` file contains the requirements for your project, which are downloaded and installed via the ``robotpy sync`` command.
 * The ``robot.py`` file is where you will put the your Robot class.
 
-.. seealso:: :ref:`docs/zero-to-robot/step-2/python-setup:Download RobotPy for roboRIO`
+.. seealso:: :ref:`docs/zero-to-robot/step-2/python-setup:Download RobotPy for Systemcore`
 
 
 ## Basic Drivetrain example
