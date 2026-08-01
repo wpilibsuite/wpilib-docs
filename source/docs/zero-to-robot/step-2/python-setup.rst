@@ -4,7 +4,7 @@ This guide is intended for Python teams. Java and C++ teams can skip to :doc:`wp
 
 ## Prerequisites
 
-You must install a supported version of Python on a supported operating system. Every year we upgrade RobotPy to the latest available version of Python. In 2027 we support Python 3.10/3.11/3.12/3.13/3.14, but only 3.14 is available for the Systemcore.
+You must install a supported version of Python on a supported operating system. Every year we upgrade RobotPy to the latest available version of Python. In 2027 we support Python 3.11/3.12/3.13/3.14, but only 3.14 is available for the Systemcore.
 
 Supported Operating Systems and Architectures:
  * Windows 11, 64 bit only. Arm-based Windows 11 is unsupported.
