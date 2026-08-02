@@ -4,7 +4,7 @@ Apart from autonomous commands, which are scheduled at the start of the autonomo
 
 As mentioned earlier, command-based is a :term:`declarative programming` paradigm. Accordingly, binding buttons to commands is done declaratively; the association of a button and a command is "declared" once, during robot initialization. The library then does all the hard work of checking the button state and scheduling (or canceling) the command as needed, behind-the-scenes. Users only need to worry about designing their desired UI setup - not about implementing it!
 
-Command binding is done through the ``Trigger`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/Trigger.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_trigger.html), :external:py:class:`Python <commands2.button.Trigger>`).
+Command binding is done through the ``Trigger`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/Trigger.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_trigger.html), [Python](https://robotpy.readthedocs.io/projects/commands-v2/en/stable/commands2.button/Trigger.html)).
 
 ## Getting a Trigger Instance
 
@@ -14,7 +14,7 @@ To bind commands to conditions, we need a ``Trigger`` object. There are three wa
 
 .. todo:: Update for CommandGamepad
 
-The command-based HID classes contain factory methods returning a ``Trigger`` for a given button. ``CommandGenericHID`` has an index-based ``button(int)`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/CommandGenericHID.html#button(int)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_generic_h_i_d.html#a5d8367128251961432905706b8060181), :external:py:class:`Python <commands2.button.CommandGenericHID>`), and its subclasses ``CommandGamepad`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/CommandGamepad.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_gamepad.html), :external:py:class:`Python <commands2.button.CommandGamepad>`), and ``CommandJoystick`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/CommandJoystick.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_joystick.html), :external:py:class:`Python <commands2.button.CommandJoystick>`) have named factory methods for each button.
+The command-based HID classes contain factory methods returning a ``Trigger`` for a given button. ``CommandGenericHID`` has an index-based ``button(int)`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/CommandGenericHID.html#button(int)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_generic_h_i_d.html#a5d8367128251961432905706b8060181), [Python](https://robotpy.readthedocs.io/projects/commands-v2/en/stable/commands2.button/CommandGenericHID.html)), and its subclasses ``CommandGamepad`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/CommandGamepad.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_gamepad.html), [Python](https://robotpy.readthedocs.io/projects/commands-v2/en/stable/commands2.button/CommandGamepad.html)), and ``CommandJoystick`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/CommandJoystick.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_joystick.html), [Python](https://robotpy.readthedocs.io/projects/commands-v2/en/stable/commands2.button/CommandJoystick.html)) have named factory methods for each button.
 
 .. tab-set-code::
 
@@ -35,7 +35,7 @@ The command-based HID classes contain factory methods returning a ``Trigger`` fo
 
 ### JoystickButton
 
-Alternatively, the :ref:`regular HID classes <docs/software/basic-programming/joystick:Joysticks>` can be used and passed to create an instance of ``JoystickButton`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/JoystickButton.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_joystick_button.html), :external:py:class:`Python <commands2.button.JoystickButton>`), a constructor-only subclass of ``Trigger``:
+Alternatively, the :ref:`regular HID classes <docs/software/basic-programming/joystick:Joysticks>` can be used and passed to create an instance of ``JoystickButton`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/JoystickButton.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_joystick_button.html), [Python](https://robotpy.readthedocs.io/projects/commands-v2/en/stable/commands2.button/JoystickButton.html)), a constructor-only subclass of ``Trigger``:
 
 .. tab-set-code::
 
