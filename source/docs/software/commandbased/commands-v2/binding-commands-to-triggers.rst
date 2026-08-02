@@ -4,7 +4,7 @@ Apart from autonomous commands, which are scheduled at the start of the autonomo
 
 As mentioned earlier, command-based is a :term:`declarative programming` paradigm. Accordingly, binding buttons to commands is done declaratively; the association of a button and a command is "declared" once, during robot initialization. The library then does all the hard work of checking the button state and scheduling (or canceling) the command as needed, behind-the-scenes. Users only need to worry about designing their desired UI setup - not about implementing it!
 
-Command binding is done through the ``Trigger`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/Trigger.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_trigger.html)).
+Command binding is done through the ``Trigger`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/Trigger.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_trigger.html), :external:py:class:`Python <commands2.button.Trigger>`).
 
 ## Getting a Trigger Instance
 
@@ -14,7 +14,7 @@ To bind commands to conditions, we need a ``Trigger`` object. There are three wa
 
 .. todo:: Update for CommandGamepad
 
-The command-based HID classes contain factory methods returning a ``Trigger`` for a given button. ``CommandGenericHID`` has an index-based ``button(int)`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/CommandGenericHID.html#button(int)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_generic_h_i_d.html#a5d8367128251961432905706b8060181)), and its subclasses ``CommandGamepad`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/CommandGamepad.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_gamepad.html)), and ``CommandJoystick`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/CommandJoystick.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_joystick.html)) have named factory methods for each button.
+The command-based HID classes contain factory methods returning a ``Trigger`` for a given button. ``CommandGenericHID`` has an index-based ``button(int)`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/CommandGenericHID.html#button(int)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_generic_h_i_d.html#a5d8367128251961432905706b8060181), :external:py:class:`Python <commands2.button.CommandGenericHID>`), and its subclasses ``CommandGamepad`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/CommandGamepad.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_gamepad.html), :external:py:class:`Python <commands2.button.CommandGamepad>`), and ``CommandJoystick`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/CommandJoystick.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_joystick.html), :external:py:class:`Python <commands2.button.CommandJoystick>`) have named factory methods for each button.
 
 .. tab-set-code::
 
@@ -28,9 +28,14 @@ The command-based HID classes contain factory methods returning a ``Trigger`` fo
   wpi::cmd::Trigger xButton = exampleCommandController.X() // Creates a new Trigger object for the `X` button on exampleCommandController
   ```
 
+  ```python
+  example_command_controller = commands2.button.CommandXboxController(1) # Creates a CommandXboxController on port 1.
+  x_button = example_command_controller.x() # Creates a new Trigger object for the `X` button on example_command_controller
+  ```
+
 ### JoystickButton
 
-Alternatively, the :ref:`regular HID classes <docs/software/basic-programming/joystick:Joysticks>` can be used and passed to create an instance of ``JoystickButton`` [Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/JoystickButton.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_joystick_button.html)), a constructor-only subclass of ``Trigger``:
+Alternatively, the :ref:`regular HID classes <docs/software/basic-programming/joystick:Joysticks>` can be used and passed to create an instance of ``JoystickButton`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/JoystickButton.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_joystick_button.html), :external:py:class:`Python <commands2.button.JoystickButton>`), a constructor-only subclass of ``Trigger``:
 
 .. tab-set-code::
 
@@ -42,6 +47,11 @@ Alternatively, the :ref:`regular HID classes <docs/software/basic-programming/jo
   ```c++
   wpi::XboxController exampleController{2} // Creates an XboxController on port 2
   wpi::cmd::JoystickButton yButton(&exampleStick, wpi::XboxController::Button::kY); // Creates a new JoystickButton object for the `Y` button on exampleController
+  ```
+
+  ```python
+  example_controller = wpilib.XboxController(2) # Creates an XboxController on port 2.
+  y_button = commands2.button.JoystickButton(example_controller, wpilib.XboxController.Button.kY) # Creates a new JoystickButton object for the `Y` button on example_controller
   ```
 
 ### Arbitrary Triggers
@@ -58,6 +68,11 @@ While binding to HID buttons is by far the most common use case, users may want 
   ```c++
   wpi::DigitalInput limitSwitch{3}; // Limit switch on DIO 3
   wpi::cmd::Trigger exampleTrigger([&limitSwitch] { return limitSwitch.Get(); });
+  ```
+
+  ```python
+  limit_switch = wpilib.DigitalInput(3) # Limit switch on DIO 3
+  example_trigger = commands2.button.Trigger(limit_switch.get)
   ```
 
 ## Trigger Bindings
@@ -86,6 +101,11 @@ This binding schedules a command when a trigger changes from ``false`` to ``true
       :lines: 27-28
       :lineno-match:
 
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/HatchbotInlined/robotcontainer.py
+      :language: python
+      :lines: 50-51
+      :lineno-match:
+
 The ``onFalse`` binding is identical, only that it schedules on ``false`` instead of on ``true``.
 
 ### whileTrue
@@ -104,6 +124,11 @@ This binding schedules a command when a trigger changes from ``false`` to ``true
     :lines: 26-28
     :lineno-match:
 
+  .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/HatchbotInlined/robotcontainer.py
+    :language: python
+    :lines: 44-46
+    :lineno-match:
+
 The ``whileFalse`` binding is identical, only that it schedules on ``false`` and cancels on ``true``.
 
 ### toggleOnTrue
@@ -120,6 +145,11 @@ This binding toggles a command, scheduling it when a trigger changes from ``fals
     .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/RapidReactCommandBot/cpp/RapidReactCommandBot.cpp
       :language: c++
       :lines: 39-40
+      :lineno-match:
+
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/HatchbotTraditional/robotcontainer.py
+      :language: python
+      :lines: 41-42
       :lineno-match:
 
 The ``toggleOnFalse`` binding is identical, only that it toggles on ``false`` instead of on ``true``.
@@ -146,6 +176,14 @@ It is useful to note that the command binding methods all return the trigger tha
       .OnFalse(BarCommand().ToPtr());
   ```
 
+  ```python
+  example_button \
+      # Binds a FooCommand to be scheduled when the button is pressed
+      .onTrue(FooCommand()) \
+      # Binds a BarCommand to be scheduled when that same button is released
+      .onFalse(BarCommand())
+  ```
+
 ## Composing Triggers
 
 The ``Trigger`` class can be composed to create composite triggers through the ``and()``, ``or()``, and ``negate()`` methods (or, in C++, the ``&&``, ``||``, and ``!`` operators). For example:
@@ -166,6 +204,13 @@ The ``Trigger`` class can be composed to create composite triggers through the `
       .OnTrue(ExampleCommand().ToPtr());
   ```
 
+  ```python
+  # Binds an ExampleCommand to be scheduled when both the 'X' and 'Y' buttons of the driver gamepad are pressed
+  (example_command_controller.x()
+      .and_(example_command_controller.y())
+      .onTrue(ExampleCommand()))
+  ```
+
 ## Debouncing Triggers
 
 To avoid rapid repeated activation, triggers (especially those originating from digital inputs) can be debounced with the :ref:`WPILib Debouncer class <docs/software/advanced-controls/filters/debouncer:Debouncer>` using the `debounce` method:
@@ -184,5 +229,12 @@ To avoid rapid repeated activation, triggers (especially those originating from 
   exampleButton.Debounce(100_ms).OnTrue(ExampleCommand().ToPtr());
   // debounces exampleButton with a 100ms debounce time, both rising and falling edges
   exampleButton.Debounce(100_ms, Debouncer::DebounceType::Both).OnTrue(ExampleCommand().ToPtr());
+  ```
+
+  ```python
+  # debounces example_button with a 0.1s debounce time, rising edges only
+  example_button.debounce(0.1).onTrue(ExampleCommand())
+  # debounces example_button with a 0.1s debounce time, both rising and falling edges
+  example_button.debounce(0.1, wpimath.filter.Debouncer.DebounceType.kBoth).onTrue(ExampleCommand())
   ```
 
