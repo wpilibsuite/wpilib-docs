@@ -1,12 +1,12 @@
-# Addressable LEDs
+﻿# Addressable LEDs
 
 Addressable LEDs are widely used by teams for debugging, visual markers, and aesthetic appeal.
 
 WPILib provides an API for controlling WS2811, WS2812B, SK6812, and other LEDs that use similar protocols, often called NeoPixels, without the need for an external LED controller.
 
-Commonly they are in strips, but bars, circles, matrices, and other form factors are also available. These LEDs are individually controllable, allowing for a wide variety of patterns and effects.
+Commonly they are in strips, but bars, circles, matrices, and other form factors are also available. These LEDs are individually controllable (or controllable by groups on some strips), allowing for a wide variety of patterns and effects.
 
-Wiring addressable LEDs is simple: the strip's (or other product's) DATA pin is connected to the SIGNAL pin of a SMART I/O connector, with power and ground connected to a good-quality external 5V regulator.
+Wiring addressable LEDs is simple: the DATA pin on the addressable LED product is connected to the SIGNAL pin of a SMART I/O connector, with power and ground connected to a good-quality external 5V regulator.
 
 These LEDs can be controlled even when the robot is disabled.
 
@@ -345,7 +345,7 @@ The solid color pattern sets the target LED buffer to a single solid color.
 The gradient pattern sets the target buffer to display a smooth gradient between the specified colors. The gradient wraps around so scrolling effects can be seamless.
 
 .. image:: images/continuous-gradient.png
-   :alt: A contiuous red-to-blue-to-red gradient
+   :alt: A continuous red-to-blue-to-red gradient
    :width: 900
 
 .. tab-set::
@@ -388,7 +388,7 @@ The gradient pattern sets the target buffer to display a smooth gradient between
 The gradient pattern sets the target buffer to display a smooth gradient between the specified colors. The gradient does not wrap around so it can be used for non-scrolling patterns that don't care about continuity.
 
 .. image:: images/discontinuous-gradient.png
-   :alt: A discontiuous red-to-blue gradient
+   :alt: A discontinuous red-to-blue gradient
    :width: 900
 
 .. tab-set::
@@ -761,7 +761,7 @@ A breathing modifier will make the base pattern brighten and dim in a sinusoidal
 Blinking can be done in one of three ways:
 
 1. Symmetrically, where an equal amount of time is spent in the "on" and "off" states per cycle
-2. Asymetrically, where the time spent "on" can be configured independently from the time spent "off"
+2. Asymmetrically, where the time spent "on" can be configured independently from the time spent "off"
 3. Synchronously, where the time spent on and off is synchronized with an external source (for example, the state of the RSL)
 
 .. tab-set::
@@ -780,7 +780,7 @@ Blinking can be done in one of three ways:
       LEDPattern asymmetric = base.blink(Seconds.of(2), Seconds.of(1));
 
       // Turn the base pattern on when the RSL is on, and off when the RSL is off
-      LEDPattern sycned = base.synchronizedBlink(RobotController::getRSLState);
+      LEDPattern synced = base.synchronizedBlink(RobotController::getRSLState);
 
       // Apply the LED pattern to the data buffer
       pattern.applyTo(m_ledBuffer);
@@ -819,7 +819,7 @@ Blinking can be done in one of three ways:
    :alt: A discontinuous gradient at half brightness
    :width: 900
 
-Patterns can be brightened and dimmed relative to their original brightness; a brightness value of 100% is identical to the original pattern, a value of 200% is twice as bright, and a value of 0% is completely turned off. This can be useful in a pinch to tone down patterns that are too bright (apologies to the 2024 NE Greater Boston district event staff, who were subjected to a maximimum brightness white flashing pattern with a precursor version of this library before the brightness modifier was added).
+Patterns can be brightened and dimmed relative to their original brightness; a brightness value of 100% is identical to the original pattern, a value of 200% is twice as bright, and a value of 0% is completely turned off. This can be useful in a pinch to tone down patterns that are too bright (apologies to the 2024 NE Greater Boston district event staff, who were subjected to a maximum brightness white flashing pattern with a precursor version of this library before the brightness modifier was added).
 
 .. note:: For speed, brightness calculations are done naively in the RGB color space instead of HSL/HSV/Lab. This sacrifices accuracy, so large changes in brightness may look undersaturated.
 
