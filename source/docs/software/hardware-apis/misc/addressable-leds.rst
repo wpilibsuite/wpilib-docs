@@ -1,21 +1,37 @@
 # Addressable LEDs
 
-LED strips have been commonly used by teams for several years for a variety of reasons. They allow teams to debug robot functionality from the audience, provide a visual marker for their robot, and can simply add some visual appeal. WPILib has an API for controlling WS2812, WS2812B, and WS2815 LEDs with their data pin connected via :term:`PWM`.
+Addressable LEDs are widely used by teams for debugging, visual markers, and aesthetic appeal.
 
-.. note:: LEDs can be controlled through this API while the robot is disabled.
+WPILib provides an API for controlling WS2811, WS2812B, SK6812, and other LEDs that use similar protocols, often called NeoPixels, without the need for an external LED controller.
 
-.. important:: The roboRIO can only control **one** ``AddressableLED`` object at a time through its PWM ports. Attempting to create multiple ``AddressableLED`` objects will result in a HAL allocation error. If you need to control multiple physical LED strips, you have several options:
+Commonly they are in strips, but bars, circles, matrices, and other form factors are also available. These LEDs are individually controllable, allowing for a wide variety of patterns and effects.
 
-   - **Daisy-chain strips in series**: Connect multiple LED strips end-to-end as a single long strip, then use :ref:`buffer views <docs/software/hardware-apis/misc/addressable-leds:Controlling Sections of an LED Strip>` to control different sections independently
-   - **Use PWM Y-cables**: If you need identical patterns on multiple strips, use PWM Y-cables to send the same signal to multiple strips simultaneously
+Wiring addressable LEDs is simple: the strip's (or other product's) DATA pin is connected to the SIGNAL pin of a SMART I/O connector, with power and ground connected to a good-quality external 5V regulator.
 
-.. seealso:: For detailed information about powering and best practices for addressable LEDs, see the [Adafruit NeoPixel Überguide](https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels).
+These LEDs can be controlled even when the robot is disabled.
 
-.. warning:: WS2812B LEDs are designed for 5V, but roboRIO PWM/Servo ports output 6V. While the LEDs will function, this may reduce their lifespan. Consider using a voltage regulator or level shifter if longevity is a concern.
+.. note:: This library supports only WS2812B-compliant LEDs. The LED timings are fixed and not user-configurable like they are on the roboRIO, so LEDs that do not follow the below timings may not work correctly. For example, WS2815 & DotStar LEDs are not supported.
+
+.. collapse:: Timing details
+
+   - T0H: 375ns
+   - T0L: 875ns
+   - T1H: 750ns
+   - T1L: 500ns
+
+.. important:: Systemcore supports multiple addressable LED products simultaneously, unlike the roboRIO, and allows LED control while the robot is disabled.
+
+.. seealso:: For more detailed information about powering and best practices for addressable LEDs, see the [Adafruit NeoPixel Überguide](https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels).
+
+.. note:: **Power and Signal Considerations**
+
+   - WS281x LEDs are designed for **5V**, but Systemcore ports output **3.3V**. A logic level shifter, like the [Adafruit Pixel Shifter](https://www.adafruit.com/product/6066), is necessary if there is flickering or incorrect behavior.
+   - Use a **good-quality appropriately sized external 5V regulator** (e.g. [Redux Zinc-V+](https://shop.reduxrobotics.com/products/zinc-v), [Pololu S13VxF5](https://www.pololu.com/product/4082) or [CTRE VRM 5V output](https://store.ctr-electronics.com/products/voltage-regulator-module)) to power the LEDs, ensuring the grounds are tied together.
+   - If you have a lot of LEDs, a 300-500 Ohm data line resistor and a 1000μF capacitor across the power pins are recommended. Too much resistance (>500 Ohm) can degrade the signal and cause flickering or communication failures. Power may need to be [distributed throughout the strip](https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels#distributing-power-2894492).
 
 ## Instantiating the AddressableLED Object
 
-You first create an ``AddressableLED`` object that takes the PWM port as an argument. It *must* be a PWM header on the roboRIO. Then you set the number of LEDs located on your LED strip, which can be done with the ``setLength()`` function.
+You first create an ``AddressableLED`` object that takes the SMART I/O port as an argument. Then you set the number of LEDs that are connected, which can be done with the ``setLength()`` function.
 
 .. warning:: It is important to note that setting the length of the LED header is an expensive task and it's **not** recommended to run this periodically.
 
@@ -49,7 +65,7 @@ After the length of the strip has been set, you'll have to create an ``Addressab
 
 ## Controlling Sections of an LED Strip
 
-The roboRIO can only control a single addressable LED output at a time, but there are often multiple physical LED strips daisy-chained around a robot, or a single flexible LED strip wrapped around structures on a robot. Individual sections can be accessed in Java using ``AddressableLEDBufferView``. Buffer views behave like subsections of the larger buffer, and can be accessed using indices in the typical [0, length) range. They can also be reversed, to allow for parallel serpentine sections to be animated in the same physical orientation (i.e. both sections would animate "forward" in the same direction, even if the strips are physically tip-to-tail).
+Individual sections can be accessed in Java using ``AddressableLEDBufferView``. Buffer views behave like subsections of the larger buffer, and can be accessed using indices in the typical [0, length) range. They can also be reversed, to allow for parallel serpentine sections to be animated in the same physical orientation (i.e. both sections would animate "forward" in the same direction, even if the strips are physically tip-to-tail).
 
 .. tab-set::
 
