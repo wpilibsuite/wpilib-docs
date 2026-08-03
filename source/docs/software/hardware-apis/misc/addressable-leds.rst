@@ -19,7 +19,7 @@ These LEDs can be controlled even when the robot is disabled.
    - T1H: 750ns
    - T1L: 500ns
 
-.. important:: Systemcore supports multiple addressable LED products simultaneously, unlike the roboRIO, and allows LED control while the robot is disabled.
+.. important:: Systemcore supports multiple addressable LED products simultaneously, unlike the roboRIO, and allows LED control while the robot is disabled. Addressable LED data is stored in one shared buffer (up to 1024 LEDs total), so configure each product with a distinct starting position using ``setStart()`` in Java or ``SetStart()`` in C++.
 
 .. seealso:: For more detailed information about powering and best practices for addressable LEDs, see the [Adafruit NeoPixel Überguide](https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels).
 
@@ -65,7 +65,7 @@ After the length of the strip has been set, you'll have to create an ``Addressab
       :sync: C++
 
       ```C++
-      class Robot : public frc::TimedRobot {
+      class Robot : public wpi::TimedRobot {
        public:
         Robot();
         void RobotPeriodic() override;
@@ -74,8 +74,8 @@ After the length of the strip has been set, you'll have to create an ``Addressab
         static constexpr int kLength = 60;
 
         // SMART I/O port 0
-        frc::AddressableLED m_led{0};
-        std::array<frc::AddressableLED::LEDData, kLength>
+        wpi::AddressableLED m_led{0};
+        std::array<wpi::AddressableLED::LEDData, kLength>
             m_ledBuffer;  // Reuse the buffer
       };
       ```
@@ -486,7 +486,7 @@ Steps are specified as a combination of the *starting position* of that color, a
       LEDPattern steps = LEDPattern.Steps(colorSteps);
 
       // Apply the LED pattern to the data buffer
-      gradient.ApplyTo(m_ledBuffer);
+      steps.ApplyTo(m_ledBuffer);
 
       // Write the data to the LED strip
       m_led.SetData(m_ledBuffer);
@@ -586,7 +586,7 @@ Offsets can be used to bias patterns forward of backward by a certain number of 
       LEDPattern negative = base.OffsetBy(-20); // Equivalent to the above when applied to a 60-LED buffer
 
       // Apply the LED pattern to the data buffer
-      heightDisplay.ApplyTo(m_ledBuffer);
+      pattern.ApplyTo(m_ledBuffer);
 
       // Write the data to the LED strip
       m_led.SetData(m_ledBuffer);
@@ -627,7 +627,7 @@ Patterns and animations can be reversed to flip the direction that patterns are 
       LEDPattern pattern = base.Reversed();
 
       // Apply the LED pattern to the data buffer
-      heightDisplay.ApplyTo(m_ledBuffer);
+      pattern.ApplyTo(m_ledBuffer);
 
       // Write the data to the LED strip
       m_led.SetData(m_ledBuffer);
@@ -694,7 +694,7 @@ Scrolling can be controlled in two different ways: either at a speed as a functi
       LEDPattern absolute = base.ScrollAtAbsoluteSpeed(0.125_mps, units::meter_t{1/120.0});
 
       // Apply the LED pattern to the data buffer
-      heightDisplay.ApplyTo(m_ledBuffer);
+      pattern.ApplyTo(m_ledBuffer);
 
       // Write the data to the LED strip
       m_led.SetData(m_ledBuffer);
@@ -746,7 +746,7 @@ A breathing modifier will make the base pattern brighten and dim in a sinusoidal
       LEDPattern pattern = base.Breathe(2_s);
 
       // Apply the LED pattern to the data buffer
-      heightDisplay.ApplyTo(m_ledBuffer);
+      pattern.ApplyTo(m_ledBuffer);
 
       // Write the data to the LED strip
       m_led.SetData(m_ledBuffer);
@@ -823,10 +823,10 @@ Blinking can be done in one of three ways:
       LEDPattern pattern = base.Blink(1.5_s);
 
       // 2 seconds on, 1 second off, for a total period of 3 seconds
-      LEDPattern asymmetric = base.Blink(2_s, 1_s));
+      LEDPattern asymmetric = base.Blink(2_s, 1_s);
 
       // Turn the base pattern on when the RSL is on, and off when the RSL is off
-      LEDPattern sycned = base.SynchronizedBlink([]() { return RobotController.GetRSLState(); });
+      LEDPattern synced = base.SynchronizedBlink(wpi::RobotController::GetRSLState);
 
       // Apply the LED pattern to the data buffer
       pattern.ApplyTo(m_ledBuffer);
@@ -932,7 +932,7 @@ Masks work by combining the RGB values of two patterns and keeping only the valu
       // that end will be solid black when the elevator is at lower heights.
       std::array<Color, 2> colors{Color::kRed, Color::kBlue};
       LEDPattern base = LEDPattern::DiscontinuousGradient(colors);
-      LEDPattern mask = LEDPattern::ProgressMaskLayer([&]() { m_elevator.GetHeight() / m_elevator.GetMaxHeight() });
+      LEDPattern mask = LEDPattern::ProgressMaskLayer([&]() { return m_elevator.GetHeight() / m_elevator.GetMaxHeight(); });
       LEDPattern heightDisplay = base.Mask(mask);
 
       // Apply the LED pattern to the data buffer
