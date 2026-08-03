@@ -44,19 +44,41 @@ After the length of the strip has been set, you'll have to create an ``Addressab
    .. tab-item:: Java
       :sync: Java
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-1/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/addressableled/Robot.java
-         :language: java
-         :lines: 32-47
-         :lineno-match:
+      ```Java
+      public Robot() {
+        // SMART I/O port 0
+        m_led = new AddressableLED(0);
+
+        // Reuse buffer
+        // Default to a length of 60, start empty output
+        // Length is expensive to set, so only set it once, then just update data
+        m_ledBuffer = new AddressableLEDBuffer(60);
+        m_led.setLength(m_ledBuffer.getLength());
+
+        // Set the data
+        m_led.setData(m_ledBuffer);
+        m_led.start();
+      }
+      ```
 
    .. tab-item:: C++
       :sync: C++
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-1/wpilibcExamples/src/main/cpp/examples/AddressableLED/include/Robot.h
-         :language: c++
-         :lines: 12-12, 18-27
-         :linenos:
-         :lineno-start: 12
+      ```C++
+      class Robot : public frc::TimedRobot {
+       public:
+        Robot();
+        void RobotPeriodic() override;
+
+       private:
+        static constexpr int kLength = 60;
+
+        // SMART I/O port 0
+        frc::AddressableLED m_led{0};
+        std::array<frc::AddressableLED::LEDData, kLength>
+            m_ledBuffer;  // Reuse the buffer
+      };
+      ```
 
       .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-1/wpilibcExamples/src/main/cpp/examples/AddressableLED/cpp/Robot.cpp
          :language: c++
@@ -218,7 +240,7 @@ Use commands. The command framework is specifically built for managing when acti
 
       ```Java
       public class LEDSubsystem extends SubsystemBase {
-        private static final int kPort = 9;
+        private static final int kPort = 0;
         private static final int kLength = 120;
 
         private final AddressableLED m_led;
@@ -267,7 +289,7 @@ Use commands. The command framework is specifically built for managing when acti
         wpi::cmd::CommandPtr RunPattern(wpi::LEDPattern pattern);
 
        private:
-        static constexpr int kPort = 9;
+        static constexpr int kPort = 0;
         static constexpr int kLength = 120;
         wpi::AddressableLED m_led{kPort};
         std::array<wpi::AddressableLED::LEDData, kLength> m_ledBuffer;
