@@ -32,7 +32,7 @@ For more detailed information on trigger types, combining triggers, and advanced
 
 ## Manually running a command
 
-While triggers are the most common way to start commands in response to external events, you often need to start a command directly from within another command or when an OpMode starts. This is done using the ``Coroutine.fork()`` or ``Coroutine.await()`` methods, or rarely a direct call to ``Scheduler.getDefault().schedule()``. The scheduler will ensure that the command does not outlive the :doc:`scope` that scheduled it, regardless of the method used.
+While triggers are the most common way to start commands in response to external events, you often need to start a command directly from within another command or when an OpMode starts. This is done using the ``Coroutine.fork()`` or ``Coroutine.await()`` methods, or rarely a direct call to ``Scheduler.getDefault().schedule()``. Regardless of the method used, the scheduler will ensure that the command does not outlive the :doc:`scope <scopes>` that scheduled it.
 
 ### Forking (Asynchronous)
 
