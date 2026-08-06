@@ -39,7 +39,7 @@ Commands in the pending set have been requested, but they have not necessarily s
 In the final phase, the scheduler iterates through all running commands and gives each one a chance to execute.
 
 1.  **Mounting**: Before a command runs, its coroutine is mounted. This sets up the execution context and unthaws the coroutine's stack and register data.
-2.  **Running**: The command's logic executes until it either finishes or calls a yielding method (like ``coroutine.yield()`` or ``await()```).
+2.  **Running**: The command's logic executes until it either finishes or calls a yielding method (like ``coroutine.yield()`` or ``await()``).
 3.  **Completion**: If the command finishes, it is removed from the running set and its requirements are released.
 4.  **Yielding**: If the command yields, it remains in the running set and will resume from the yield point in the next scheduler cycle.
 
