@@ -2,7 +2,7 @@
 
 Commands can be created in one of three ways:
 
-1. Using a :term:`factory method` on a :term:`Mechanism` object
+1. Using a :term:`factory method` on a :term:`Mechanism` object. These factory methods make heavy use of :doc:`lambda functions <lambda-functions>`
 2. Using a static factory method from the ``Command`` interface
 3. Creating a class that implements the ``Command`` interface. This approach is only recommended for very complex logic or for programmers who are uncomfortable with :term:`lambda functions`
 
@@ -15,7 +15,7 @@ A key idea in the commands framework is that of requirements: every command requ
 The requirement system can only protect hardware that is controlled through commands. If other classes can reach into a mechanism and set motor outputs directly, those calls bypass the scheduler entirely. It is therefore *strongly* recommended to use the following system when writing code that controls physical hardware:
 
 1. Write a class that implements the ``Mechanism`` interface
-2. Make all fields in the class ``private`` to prevent external access
+2. Most fields in the class should be ``private`` to prevent external access. :doc:`Trigger <triggers>` fields can be ``public`` so other mechanisms or external code can check on the state of the mechanism. Constants can also be public.
 3. Make all methods that use those fields to control hardware also ``private``
 4. Write public ``Command``-returning methods for all control of the mechanism
 
@@ -151,7 +151,7 @@ One-shot commands generally do one very simple thing and immediately exit withou
 
 ```java
 Command.noRequirements(_ -> gyro.reset()).named("Reset Gyro");
-Command.noRequirements(_ -> field = 0).named("Reset Field");
+Command.noRequirements(_ -> someVariable = 0).named("Reset Variable");
 ```
 
 One-shot commands are not bad. They are the right tool for small pieces of immediate work. The important rule is that "does not yield" also means "does not share time". If the action might take a noticeable amount of time, write it as a yielding command or move the expensive work somewhere that will not block robot control.
