@@ -10,7 +10,7 @@ In commands v2, command behavior is commonly split across lifecycle methods such
 
 v3 commands are primarily expected to be created using builder objects, similar to the v2 fluent API where methods are chained together to configure the command object. A key change in the fluent API is that command names are now **required**; it's impossible to create a command without a name. Names are used in the v3 telemetry data (see :doc:`telemetry`) and are crucial for debugging.
 
-The v3 command function is free-form and flexible and promotes standard Java language features instead of a custom DSL. If a command needs to run something repeatedly, use a standard Java ``while`` loop; if a command needs to do just one thing and exit, then just don't use ``yield``.
+The v3 command function is free-form and flexible and promotes standard Java language features instead of a custom domain-specific language (DSL). If a command needs to run something repeatedly, use a standard Java ``while`` loop; if a command needs to do just one thing and exit, then just don't use ``yield``.
 
 .. tab-set::
 
