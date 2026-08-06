@@ -22,7 +22,7 @@ Commands v3 command logic is written as ordinary Java code. If a command needs t
 
 Because multiple commands need to be able to run simultaneously, commands use a :term:`coroutine` to manage concurrency. Coroutines allow commands to say when they have reached a pause point in their work by calling ``Coroutine.yield()``. This pauses the command and lets the scheduler run another command until *it* reaches a pause point, and so on until every running command has had a chance to make progress. Most importantly, coroutines let us write command logic using standard Java with ``while`` loops, ``if`` statements, local variables, and helper methods, with the addition of ``coroutine.yield()`` in loops to allow other commands to run.
 
-.. warning:: Calling ``coroutine.yield()`` is required to prevent commands from being greedy - if a command never yields, no other commands will be able to run and driver inputs will not be read until the command exits. WPILib will check ``while`` loops at compile-time to ensure that loops inside of command code will yield, and issue a compiler error if any greedy loops are found.
+.. note:: Commands v3 relies on specific APIs in the Java language. It is only available for Java teams. Teams using C++ or Python can continue to use Commands v2. Future work may be done to bring v3 to C++ and Python using those language's specific coroutine APIs.
 
 Core APIs
 ---------

@@ -78,6 +78,8 @@ public class ExampleArm implements Mechanism {
 
 Most commands need to run for more than a single loop cycle. This is done by using a loop (like ``while``) and calling ``coroutine.yield()`` at the end of every loop to allow other commands to run.
 
+.. warning:: Calling ``coroutine.yield()`` is required to prevent commands from being greedy - if a command never yields, no other commands will be able to run and driver inputs will not be read until the command exits. WPILib will check ``while`` loops at compile-time to ensure that loops inside of command code will yield, and issue a compiler error if any greedy loops are found.
+
 ```java
 public Command driveForward() {
   return run(coroutine -> {
