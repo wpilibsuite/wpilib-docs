@@ -44,7 +44,7 @@ OpMode constructors are generally all that's needed. WPILib will automatically c
 
 Commands that only interact with a single mechanism should be defined as methods in that mechanism's class using the ``run`` or ``runRepeatedly`` builder methods provided by the ``Mechanism`` interface. These builder methods make the created command automatically require the mechanism so you can't forget to set the requirement.
 
-.. warning:: Command methods are designed to create a ``Command`` object that will be run at a later point in the program. Only the code in the lambda function passed to ``run`` or ``runRepeatedly`` will execute when the command is running. All code
+.. warning:: Command methods are designed to create a ``Command`` object that will be run at a later point in the program. Only the code in the lambda function passed to ``run`` or ``runRepeatedly`` will execute when the command is running.
 
 ```java
 package first.robot.mechanisms;
