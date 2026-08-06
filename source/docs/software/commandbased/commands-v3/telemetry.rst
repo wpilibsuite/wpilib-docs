@@ -6,7 +6,7 @@ The commands library provides built-in support for telemetry and logging. This a
 
 The ``Scheduler`` and its running commands can be serialized using Google Protocol Buffers (Protobuf). This is the primary way that command state is sent to external tools like AdvantageScope or the WPILib Dashboards.
 
-The ``Scheduler`` implements the ``ProtobufSerializable`` interface, which means it can be sent over NetworkTables and logged using the ``ProtobufLogEntry`` API.
+The ``Scheduler`` implements the ``ProtobufSerializable`` interface, which means it can be sent over NetworkTables and logged using the ``ProtobufLogEntry`` API or :doc:`Epilogue <../../telemetry/robot-telemetry-with-annotations>` if assigned to a field in a logged class.
 
 Scheduler state is a snapshot. It answers questions like "which commands are running right now?" and "which mechanisms do they require?" Scheduler events are a timeline. They answer questions like "why did this command stop?" and "what interrupted it?" In practice, teams often want both.
 
@@ -71,48 +71,80 @@ While printing to the console is useful for quick debugging, it is not recommend
 
 You can log individual scheduler events to a data log using a ``StringLogEntry``. This is particularly useful for tracking the exact sequence of command lifecycle events during a match. The event stream is often the fastest way to explain a command that "randomly stopped": look for an ``Interrupted`` event, then inspect the interrupter command and the mechanisms both commands required.
 
-.. tab-set-code::
+.. tab-set::
 
-  ```java
-  import org.wpilib.command3.Scheduler;
-  import org.wpilib.command3.SchedulerEvent;
-  import org.wpilib.datalog.StringLogEntry;
-  import org.wpilib.system.DataLogManager;
+  .. tab-item:: Manual Data Logging
+    :sync: datalog
 
-  // Create a log entry for scheduler events
-  StringLogEntry eventLog = new StringLogEntry(DataLogManager.getLog(), "SchedulerEvents");
+    ```java
+    import org.wpilib.command3.Scheduler;
+    import org.wpilib.command3.SchedulerEvent;
+    import org.wpilib.datalog.StringLogEntry;
+    import org.wpilib.system.DataLogManager;
 
-  // Register a listener to log every event
-  Scheduler.getDefault().addEventListener(event -> {
-    // Log the string representation of the event
-    eventLog.append(event.toString());
-  });
-  ```
+    // Create a log entry for scheduler events
+    StringLogEntry eventLog = new StringLogEntry(DataLogManager.getLog(), "SchedulerEvents");
+
+    // Register a listener to log every event
+    Scheduler.getDefault().addEventListener(event -> {
+      // Log the string representation of the event
+      eventLog.append(event.toString());
+    });
+    ```
 
 ### Logging Scheduler State
 
-Because the ``Scheduler`` class implements ``ProtobufSerializable``, you can log the entire state of the scheduler, including running commands and their mechanisms, using a ``ProtobufLogEntry``. This allows tools like AdvantageScope to visualize the state of the command scheduler over time.
+Because the ``Scheduler`` class implements ``ProtobufSerializable``, you can log the entire state of the scheduler, including running commands and their mechanisms, using a ``ProtobufLogEntry``. This allows tools like AdvantageScope to visualize the state of the command scheduler over time. Epilogue supports logging protobuf-serializable objects, so storing the scheduler object in a field in the ``Robot`` class is an easy way to get automatic logging.
 
-Because the scheduler state changes every loop cycle, you should append the current state to the log in your ``robotPeriodic`` method.
+Because the scheduler state changes every loop cycle, you should append the current state to the log or call ``Epilogue.update`` in  ``robotPeriodic`` to ensure telemetry is always updated.
 
-```java
-import org.wpilib.command3.Scheduler;
-import org.wpilib.datalog.ProtobufLogEntry;
-import org.wpilib.system.DataLogManager;
-import org.wpilib.framework.TimedRobot;
+.. tab-set::
 
-public class Robot extends TimedRobot {
-  // Create a log entry for the scheduler state
-  private final ProtobufLogEntry<Scheduler> schedulerLog =
-      ProtobufLogEntry.create(DataLogManager.getLog(), "Scheduler", Scheduler.proto);
+  .. tab-item:: Epilogue
+    :sync: epilogue
 
-  @Override
-  public void robotPeriodic() {
-    // Run the scheduler
-    Scheduler.getDefault().run();
+    ```java
+    import org.wpilib.command3.Scheduler;
+    import org.wpilib.epilogue.Epilogue;
+    import org.wpilib.epilogue.Logged;
+    import org.wpilib.framework.TimedRobot;
 
-    // Log the current state of the scheduler
-    schedulerLog.append(Scheduler.getDefault());
-  }
-}
-```
+    @Logged
+    public class Robot extends TimedRobot {
+      private final Scheduler scheduler = Scheduler.getDefault();
+
+      @Override
+      public void robotPeriodic() {
+        // Run the scheduler
+        scheduler.run();
+
+        // Update telemetry
+        Epilogue.update(this);
+      }
+    }
+    ```
+
+  .. tab-item:: Manual Data Logging
+    :sync: datalog
+
+    ```java
+    import org.wpilib.command3.Scheduler;
+    import org.wpilib.datalog.ProtobufLogEntry;
+    import org.wpilib.system.DataLogManager;
+    import org.wpilib.framework.TimedRobot;
+
+    public class Robot extends TimedRobot {
+      // Create a log entry for the scheduler state
+      private final ProtobufLogEntry<Scheduler> schedulerLog =
+          ProtobufLogEntry.create(DataLogManager.getLog(), "Scheduler", Scheduler.proto);
+
+      @Override
+      public void robotPeriodic() {
+        // Run the scheduler
+        Scheduler.getDefault().run();
+
+        // Log the current state of the scheduler
+        schedulerLog.append(Scheduler.getDefault());
+      }
+    }
+    ```
