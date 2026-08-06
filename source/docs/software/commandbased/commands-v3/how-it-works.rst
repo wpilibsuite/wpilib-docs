@@ -10,13 +10,13 @@ The scheduler does not run commands on separate operating-system threads. Each c
 
 ### Phase 1: Cleanup
 
-In the cleanup phase, the scheduler removes any trigger bindings or sideloaded functions that are no longer active. This happens when the :doc:`scopes` in which they were created (such as a command or an opmode) has finished or exited.
+In the cleanup phase, the scheduler removes any trigger bindings or custom periodic functions that are no longer active. This happens when the :doc:`scopes` in which they were created (such as a command or an opmode) has finished or exited.
 
 Cleanup is what prevents old bindings from continuing to affect the robot after the context that created them is gone. When a scoped trigger binding is removed, the command attached to that binding is canceled as well.
 
 ### Phase 2: Sideloads
 
-Sideloads are periodic functions that are registered with the scheduler but are not commands. These functions are run once every scheduler cycle. They are useful for tasks that need to happen regardless of which commands are running, such as updating telemetry or processing sensor data.
+Sideloads are custom periodic functions that are registered with the scheduler but are not commands. These functions are run once every scheduler cycle. They are useful for tasks that need to happen regardless of which commands are running, such as updating telemetry or processing sensor data.
 
 Because sideloads are not commands, they do not own mechanisms and should not be used as a back door for actuator control. Hardware-changing behavior belongs in commands so the requirement system can reason about conflicts.
 
