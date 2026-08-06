@@ -132,6 +132,14 @@ FRC: Java, Python, Blockly, and LabVIEW.
       Overview of WPILib tools, languages, and how FTC fits into
       the broader WPILib ecosystem.
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   ftc-kitbot-assembly
+   basic-ftc-robot-wiring
+   ftc-robot-wiring-overview
+
 .. note::
 
    **Currently using REV Duo?**

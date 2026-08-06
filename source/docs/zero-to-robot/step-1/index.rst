@@ -16,7 +16,42 @@
 
          Step 1 of 4
 
-Choose the wiring guide for your program below.
+.. rubric:: Robot Assembly
+
+.. grid:: 1 1 2 2
+   :gutter: 3
+
+   .. grid-item::
+
+      .. rubric:: FRC
+         :class: wl-frc-text
+
+   .. grid-item::
+
+      .. rubric:: FTC
+         :class: wl-ftc-text
+
+   .. grid-item-card:: FRC Kitbot Assembly
+      :link: frc-kitbot-assembly
+      :link-type: doc
+      :class-card: sw-card-frc
+
+      **FRC**
+      ^^^
+      Step-by-step guide to assembling the Kit of Parts chassis into
+      a drive-ready robot.
+
+   .. grid-item-card:: FTC Starter Robot Assembly
+      :link: ../../ftc/ftc-kitbot-assembly
+      :link-type: doc
+      :class-card: sw-card-ftc
+
+      **FTC Coming 2027-2028**
+      ^^^
+      Guide to assembling the FTC starter robot with Systemcore
+      and Motioncore hardware.
+
+.. rubric:: Wiring
 
 .. grid:: 1 1 2 2
    :gutter: 3
@@ -42,6 +77,8 @@ Choose the wiring guide for your program below.
       Good starting point for rookie teams.
 
    .. grid-item-card:: Basic FTC Robot Wiring
+      :link: ../../ftc/basic-ftc-robot-wiring
+      :link-type: doc
       :class-card: sw-card-ftc
 
       **FTC Coming 2027-2028**
@@ -60,6 +97,8 @@ Choose the wiring guide for your program below.
       PDH, Systemcore, radio, motor controllers, and pneumatics.
 
    .. grid-item-card:: FTC Robot Wiring Overview
+      :link: ../../ftc/ftc-robot-wiring-overview
+      :link-type: doc
       :class-card: sw-card-ftc
 
       **FTC Coming 2027-2028**
@@ -88,5 +127,6 @@ Choose the wiring guide for your program below.
    :maxdepth: 1
    :hidden:
 
+   FRC Kitbot Assembly <frc-kitbot-assembly>
    FRC Robot Wiring Overview <intro-to-frc-robot-wiring>
    Basic Robot Wiring <basic-robot-wiring>

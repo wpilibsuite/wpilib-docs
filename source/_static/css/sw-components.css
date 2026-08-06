@@ -731,3 +731,16 @@ body[data-theme="dark"] .sw-success     { background: rgba( 46, 125,  50, 0.12);
 body[data-theme="dark"] .sw-tip         { background: rgba( 46, 125,  50, 0.12); border-color: rgba(46, 125, 50, 0.3); }
 body[data-theme="dark"] .sw-warn        { background: rgba(255, 160,   0, 0.12); border-color: rgba(255, 160, 0, 0.3); }
 body[data-theme="dark"] .sw-nav p a     { background: var(--color-background-primary, #1a1a1a); }
+
+/* ── DARK MODE: landing page components ── */
+body[data-theme="dark"] .wl-card        { background: var(--color-background-secondary, #1e1e1e); border-color: rgba(255,255,255,0.08); }
+body[data-theme="dark"] .wl-card-frc   { border-color: rgba(0,156,215,0.35); }
+body[data-theme="dark"] .wl-card-ftc   { border-color: rgba(224,112,0,0.35); }
+body[data-theme="dark"] .wl-card-shared { border-color: rgba(46,125,50,0.35); }
+body[data-theme="dark"] .wl-tab-btn    { background: var(--color-background-secondary, #1e1e1e); border-color: rgba(255,255,255,0.15); color: var(--color-foreground-primary, #e8e8e8); }
+body[data-theme="dark"] .wl-tab-btn:hover { border-color: var(--shared); color: var(--shared); }
+body[data-theme="dark"] .wl-tab-btn.active { background: var(--shared); border-color: var(--shared); color: #fff; }
+body[data-theme="dark"] .wl-ret-card   { background: var(--color-background-secondary, #1e1e1e); border-color: rgba(255,255,255,0.08); }
+body[data-theme="dark"] .wl-ret-frc    { border-color: rgba(0,156,215,0.35); }
+body[data-theme="dark"] .wl-ret-ftc    { border-color: rgba(224,112,0,0.35); }
+body[data-theme="dark"] .wl-core-card  { background: var(--color-background-secondary, #1e1e1e); border-color: rgba(255,255,255,0.08); color: var(--color-foreground-primary, #e8e8e8); }
