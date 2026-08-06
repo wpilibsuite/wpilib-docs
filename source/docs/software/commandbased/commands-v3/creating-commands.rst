@@ -156,6 +156,43 @@ Command.noRequirements(_ -> someVariable = 0).named("Reset Variable");
 
 One-shot commands are not bad. They are the right tool for small pieces of immediate work. The important rule is that "does not yield" also means "does not share time". If the action might take a noticeable amount of time, write it as a yielding command or move the expensive work somewhere that will not block robot control.
 
+.. warning:: One-shot commands should **never** control motors or actuators.
+
+### Not For Actuation
+
+1. One-shot commands don't appear in the default :doc:`telemetry <telemetry>`, making them harder to debug.
+2. If a one-shot command is awaited by a parent command, it finishes immediately and the parent may assume that the controlled mechanism has reached the state or position set by the one-shot command.
+
+For example, if a robot has a pneumatic slap-down intake that's prone to jams if the rollers start spinning before it's fully extended, you may want a command sequence that deploys the intake (waiting for it to fully deploy), and only then start spinning the rollers. If the deploy command is a one-shot, the sequence will *immediately* start to spin the rollers instead of waiting like it's supposed to.
+
+```java
+Command startIntaking() {
+  return Command.noRequirements(coroutine -> {
+    coroutine.await(intakeWrist.deployIntake());
+    coroutine.await(intakeRollers.run());
+  }).named("Start Intaking");
+}
+
+// Bad: returns immediately, and a sequence using it immediately moves to the next command
+public Command deployIntake() {
+  return run(_ -> solenoid.set(FORWARD)).named("Bad Intake Deploy");
+}
+
+public Command deployIntake() {
+  return run(coroutine -> {
+    solenoid.set(FORWARD);
+
+    // Good: wait until a sensor tells you the intake is down
+    coroutine.waitUntil(() -> wristEncoder.getPosition() <= WRIST_DEPLOYED_ANGLE);
+
+    // Decent: If there's no sensor, wait for about as much time as it takes to deploy
+    // This can be inconsistent depending on available air pressure and load on the intake,
+    // so it's not as good as using sensor feedback
+    coroutine.wait(Seconds.of(0.35));
+  }).nameD("Better Intake Deploy")
+}
+```
+
 ## Complex Command Logic
 
 For more complex logic, you can use the various methods on the ``Coroutine`` object to coordinate multiple actions.
