@@ -70,8 +70,7 @@ The v3 command function is free-form and flexible and promotes standard Java lan
         setVoltage(4);
         coroutine.waitUntil(this::atTop);
         stop();
-      }).whenCanceled(this::stop)
-        .named("Arm Up");
+      }).named("Arm Up");
     }
     ```
 
@@ -167,13 +166,12 @@ However, there is no similar API to the subsystem-level ``periodic()`` function.
           setVoltage(6);
           coroutine.waitUntil(this::atTop);
           setVoltage(0);
-        }).whenCanceled(() -> setVoltage(0))
-          .named("Elevator Up");
+        }).named("Elevator Up");
       }
 
       public Command holdPosition() {
         return runRepeatedly(() -> setVoltage(feedforwardForCurrentHeight()))
-          .withPriority(Command.LOWEST_PRIORITY + 1)
+          .withPriority(Command.LOWEST_PRIORITY)
           .named("Hold Elevator");
       }
     }
@@ -287,8 +285,7 @@ Like v2, a command created with a mechanism's ``run()`` or ``runRepeatedly()`` h
         motor.set(0.8);
         coroutine.waitUntil(hasGamePiece);
         motor.set(0);
-      }).whenCanceled(() -> motor.set(0))
-        .named("Intake");
+      }).named("Intake");
     }
     ```
 
@@ -327,7 +324,7 @@ The differences worth remembering are:
       public Drive(CommandGamepad controller) {
         setDefaultCommand(
           runRepeatedly(() -> arcadeDrive(controller.getLeftY(), controller.getRightX()))
-            .withPriority(Command.LOWEST_PRIORITY + 1)
+            .withPriority(Command.LOWEST_PRIORITY)
             .named("Teleop Drive"));
       }
     }
@@ -367,8 +364,7 @@ For a command that runs until a condition is met, use ``waitUntil(...)``:
         spinUp();
         coroutine.waitUntil(this::atSpeed);
         feedNote();
-      }).whenCanceled(this::stop)
-        .named("Shoot When Ready");
+      }).named("Shoot When Ready");
     }
     ```
 
@@ -404,8 +400,7 @@ For a command that updates every scheduler cycle, use a loop and yield:
           coroutine.yield();
         }
         stop();
-      }).whenCanceled(this::stop)
-        .named("Drive Distance");
+      }).named("Drive Distance");
     }
     ```
 
@@ -557,17 +552,44 @@ In v3, an inner command scheduled via with a coroutine's ``fork``, ``await``, ``
 
 Use ``coroutine.await(...)`` to run a child command and wait until it finishes.
 
-.. tab-set-code::
+.. tab-set::
 
-  ```java
-  public Command scoreSequence() {
-    return Command.noRequirements(coroutine -> {
-      coroutine.await(drive.driveToScoringLocation());
-      coroutine.await(elevator.moveToScoringHeight());
-      coroutine.await(gripper.release());
-    }).named("Score Sequence");
-  }
-  ```
+  .. tab-item:: v2 Sequence
+    :sync: v2
+
+    ```java
+    public Command scoreSequence() {
+      return Commands.sequence(
+        drive.driveToScoringLocation(),
+        elevator.moveToScoringHeight(),
+        gripper.release()
+      ).withName("Score Sequence");
+    }
+    ```
+
+  .. tab-item:: v3 Sequence (builders)
+
+    ```java
+    public Command scoreSequence() {
+      return drive.driveToScoringLocation()
+        .andThen(elevator.moveToScoringHeight())
+        .andThen(gripper.release())
+        .named("Score Sequence")
+    }
+    ```
+
+  .. tab-item:: v3 Sequence (coroutines)
+    :sync: v3
+
+    ```java
+    public Command scoreSequence() {
+      return Command.noRequirements(coroutine -> {
+        coroutine.await(drive.driveToScoringLocation());
+        coroutine.await(elevator.moveToScoringHeight());
+        coroutine.await(gripper.release());
+      }).named("Score Sequence");
+    }
+    ```
 
 The parent command above requires no mechanisms. The drivetrain, elevator, and gripper are only owned while their own commands are running, which allows other commands to control them when the scoring sequence doesn't actively control them. This can be a strength because it allows default commands to run, but it also allows other commands to run that would break the sequence (such as moving the drivebase out of the scoring location while the elevator is moving, possibly tipping the robot). Care should be taken to avoid running sequence-breaking commands, or set default commands within the command
 
@@ -576,39 +598,77 @@ The parent command above requires no mechanisms. The drivetrain, elevator, and g
 
 Use ``fork(...)`` to start child commands that should run in the background, or ``await``, ``awaitAll``, or ``awaitAny`` to fork and then wait for the child commands to finish.
 
-.. tab-set-code::
+.. tab-set::
 
-  ```java
-  public Command prepareToScore() {
-    return Command.noRequirements(coroutine -> {
-      // Start the turret and shooter commands, and wait for both to finish.
-      coroutine.awaitAll(turret.aimAtGoal(), shooter.spinUp());
+  .. tab-item:: v2 Parallel Group
+    :sync: v2
 
-      // Feed a ball into the shooter only after the turret and shooter are ready
-      coroutine.await(feeder.feed());
-    }).named("Prepare To Score");
-  }
-  ```
+    ```java
+    public Command prepareToScore() {
+      return turret.aimAtGoal().alongWith(shooter.spinUp()).withName("Prepare To Score");
+    }
+    ```
+
+  .. tab-item:: v3 Parallel Group (builders)
+
+
+    ```java
+    public Command prepareToScore() {
+      return turret.aimAtGoal().alongWith(shooter.spinUp()).named("Prepare To Score");
+    }
+    ```
+
+  .. tab-item:: v3 Parallel (awaitAll)
+    :sync: v3
+
+    ```java
+    public Command prepareToScore() {
+      return Command.noRequirements(coroutine -> {
+        coroutine.awaitAll(turret.aimAtGoal(), shooter.spinUp());
+      }).named("Prepare To Score");
+    }
+    ```
 
 ### Race Work
 
 Use ``awaitAny(...)`` when several child commands should start and the parent should continue after the first one finishes. The remaining commands are canceled.
 
-.. tab-set-code::
+.. tab-set::
 
-  ```java
-  public Command intakeUntilPieceOrTimeout() {
-    return Command.noRequirements(coroutine -> {
-      coroutine.awaitAny(
+  .. tab-item:: v2 Race Group
+    :sync: v2
+
+    ```java
+    Command intakeUntilPieceOrTimeout() {
+      return intake.intake()
+        .raceWith(Commands.waitTime(Seconds.of(2))
+        .withName("Intake Until Piece Or Timeout");
+    }
+    ```
+
+  .. tab-item:: v3 Race (builders)
+
+    ```java
+    public Command intakeUntilPieceOrTimeout() {
+      return Command.race(
         intake.intake(),
-        Command.waitFor(Seconds.of(2)).named("Intake Timeout"));
+        Command.waitFor(Seconds.of(2)).named("Intake Timeout")
+      ).named("Intake Until Piece Or Timeout");
+    }
+    ```
 
-      if (!intake.hasGamePiece()) {
-        intake.setNoPieceAlert();
-      }
-    }).named("Intake Until Piece Or Timeout");
-  }
-  ```
+  .. tab-item:: v3 Race (awaitAny)
+    :sync: v3
+
+    ```java
+    public Command intakeUntilPieceOrTimeout() {
+      return Command.noRequirements(coroutine -> {
+        coroutine.awaitAny(
+          intake.intake(),
+          Command.waitFor(Seconds.of(2)).named("Intake Timeout"));
+      }).named("Intake Until Piece Or Timeout");
+    }
+    ```
 
 For simple race groups, ``Command.race(...)`` is also available. Use explicit coroutine logic when the next step depends on which condition won or when you need additional fallback behavior.
 
@@ -657,22 +717,20 @@ This is often the cleanest replacement for v2 proxy-heavy code. The requirements
 
 Most trigger bindings carry over by name or by intent: ``onTrue``, ``onFalse``, ``whileTrue``, ``whileFalse``, and toggle bindings all exist in v3. The important new idea is :doc:`scopes`: a binding created in the robot constructor is global and will always be active; a binding created while an OpMode is running is only active while that OpMode is selected on the driverstation, and will be deleted when the OpMode changes; and a binding created inside a running command is removed when that command exits, and any command attached to that binding is canceled.
 
-.. tab-set-code::
+```java
+public Command aimAndShootWhenReady() {
+  return Command.noRequirements(coroutine -> {
+    // This binding only exists while aimAndShootWhenReady is running.
+    shooter.atSpeed.onTrue(feeder.feedOnce());
 
-  ```java
-  public Command aimAndShootWhenReady() {
-    return Command.noRequirements(coroutine -> {
-      // This binding only exists while aimAndShootWhenReady is running.
-      shooter.atSpeed.onTrue(feeder.feedOnce());
+    // shooter.spinUp() only runs while aimAndShootWhenReady is running,
+    // and will be canceled when aimAndShootWhenReady exits
+    coroutine.fork(shooter.spinUp());
 
-      // shooter.spinUp() only runs while aimAndShootWhenReady is running,
-      // and will be canceled when aimAndShootWhenReady exits
-      coroutine.fork(shooter.spinUp());
-
-      coroutine.await(turret.aimAtGoal());
-    }).named("Aim And Shoot When Ready");
-  }
-  ```
+    coroutine.await(turret.aimAtGoal());
+  }).named("Aim And Shoot When Ready");
+}
+```
 
 New in v3 are the ``retryWhileTrue`` and ``retryWhileFalse`` bindings. A retry binding restarts its command if the command finishes while the trigger signal is still active, unlike ``whileTrue`` or ``whileFalse`` which will not restart the the command if it finishes or is interrupted before the trigger condition changes. They act similar to a v2-style ``whileTrue(command.repeatedly())`` binding.
 
@@ -682,18 +740,16 @@ The same cancellation and interruption concepts carry over from v2 in v3: cancel
 
 Use ``whenCanceled(...)`` for cleanup that must happen when a command is canceled. Note that this runs regardless of *why* the command was canceled.
 
-.. tab-set-code::
-
-  ```java
-  public Command runRollerUntilLoaded() {
-    return run(coroutine -> {
-      roller.set(0.6);
-      coroutine.waitUntil(hasGamePiece);
-      roller.set(0);
-    }).whenCanceled(() -> roller.set(0))
-      .named("Run Roller Until Loaded");
-  }
-  ```
+```java
+public Command runRollerUntilLoaded() {
+  return run(coroutine -> {
+    roller.set(0.6);
+    coroutine.waitUntil(hasGamePiece);
+    roller.set(0);
+  }).whenCanceled(() -> roller.set(0))
+    .named("Run Roller Until Loaded");
+}
+```
 
 Do not put long loops in cancellation cleanup. Cancellation cleanup should be short and single-shot: stop a motor, clear a flag, or close a resource.
 
@@ -703,80 +759,88 @@ Scheduler telemetry reports these cases separately. A command that finishes norm
 
 ### Default Drive Command
 
-.. tab-set-code::
+.. tab-set::
 
-  ```java
-  public class Drive implements Mechanism {
-    public Command teleopDrive(CommandGamepad controller) {
-      return runRepeatedly(() ->
-        arcadeDrive(controller.getLeftY(), controller.getRightX()))
-        .withPriority(Command.LOWEST_PRIORITY + 1)
-        .named("Teleop Drive");
+  .. tab-item:: v2
+    :sync: v2
+
+    ```java
+    public class Drive extends SubsystemBase {
+      public Command teleopDrive(CommandGamepad controller) {
+        return run(() -> arcadeDrive(controller.getLeftY(), controller.getRightX())
+          .withName("Teleop Drive");
+      }
     }
-  }
-  ```
+    ```
+
+  .. tab-item:: v3
+    :sync: v3
+
+    ```java
+    public class Drive implements Mechanism {
+      public Command teleopDrive(CommandGamepad controller) {
+        return runRepeatedly(() -> arcadeDrive(controller.getLeftY(), controller.getRightX()))
+          .withPriority(Command.LOWEST_PRIORITY)
+          .named("Teleop Drive");
+      }
+    }
+    ```
 
 ### Timed Command
 
-.. tab-set-code::
+.. tab-set::
 
-  ```java
-  public Command outtakeFor(Time duration) {
-    return run(coroutine -> {
-      motor.set(-0.7);
-      coroutine.wait(duration);
-      motor.set(0);
-    }).whenCanceled(() -> motor.set(0))
-      .named("Timed Outtake");
-  }
-  ```
+  .. tab-item:: v2
+    :sync: v2
+
+    ```java
+    public Command outtakeFor(Time duration) {
+      return startEnd(
+          () -> motor.set(-0.7),
+          () -> motor.set(0)
+        ).withTimeout(duration)
+          .withName("Timed Outtake");
+    }
+    ```
+
+  .. tab-item:: v3
+    :sync: v3
+
+    ```java
+    public Command outtakeFor(Time duration) {
+      return run(coroutine -> {
+        motor.set(-0.7);
+        coroutine.wait(duration);
+        motor.set(0);
+      }).named("Timed Outtake");
+    }
+    ```
 
 For a timeout around an existing command, use ``withTimeout(...)``:
 
-.. tab-set-code::
-
-  ```java
-  Command safeMoveToTop = elevator.up().withTimeout(Seconds.of(1.5));
+```java
+Command safeMoveToTop = elevator.up().withTimeout(Seconds.of(1.5));
   ```
 
 ### Conditional Wait With Fallback
 
-.. tab-set-code::
+The coroutine ``waitUntil`` method takes an optional timeout parameter so the wait doesn't last forever. For example, an elevator may be jammed if it doesn't reach a set position within the expected timeframe.
 
-  ```java
-  public Command safeMoveToTop() {
-    return run(coroutine -> {
-      motor.setVoltage(6);
-      var result = coroutine.waitUntil(this::atTop, Seconds.of(1.5));
-      motor.setVoltage(0);
+```java
+public Command safeMoveToTop() {
+  return run(coroutine -> {
+    motor.setVoltage(6);
+    WaitResult result = coroutine.waitUntil(this::atTop, Seconds.of(1.5));
+    motor.setVoltage(0);
 
-      if (result.timedOut()) {
-        setJamAlert();
-      } else {
-        clearJamAlert();
-      }
-    }).whenCanceled(() -> motor.setVoltage(0))
-      .named("Safe Move To Top");
-  }
-  ```
-
-### Autonomous Routine
-
-.. tab-set-code::
-
-  ```java
-  public Command autoScoreAndLeave() {
-    return Command.noRequirements(coroutine -> {
-      coroutine.await(drive.followPath("ScorePath"));
-
-      coroutine.fork(shooter.spinUp());
-      coroutine.await(elevator.moveToScoringHeight());
-      coroutine.await(gripper.release());
-
-      coroutine.await(drive.followPath("LeaveCommunity"));
-    }).named("Auto Score And Leave");
-  }
-  ```
+    if (result.timedOut()) {
+      setJamAlert();
+    } else {
+      clearJamAlert();
+    }
+  }).named("Safe Move To Top");
+}
+```
 
 ## What Not To Carry Over
 
