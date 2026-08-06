@@ -39,31 +39,29 @@ Events often occur in specific sequences or together within the same scheduler c
 
 Do not treat every ``Canceled`` event as a bug. Commands are canceled when they are interrupted by newer or higher-priority commands, when their enclosing scope exits, when a ``whileTrue`` binding goes false, or when user code cancels them manually. The surrounding events and the command requirements usually tell you which case happened.
 
-.. tab-set-code::
+```java
+import org.wpilib.command3.Scheduler;
+import org.wpilib.command3.SchedulerEvent;
 
-  ```java
-  import org.wpilib.command3.Scheduler;
-  import org.wpilib.command3.SchedulerEvent;
-
-  Scheduler.getDefault().addEventListener(event -> {
-    if (event instanceof SchedulerEvent.Scheduled e) {
-      System.out.println("Command " + e.command().name() + " was scheduled");
-    } else if (event instanceof SchedulerEvent.Mounted e) {
-      // Mounted events occur every cycle - we might not want to log them all!
-      // System.out.println("Command " + e.command().name() + " mounted");
-    } else if (event instanceof SchedulerEvent.Yielded e) {
-      // System.out.println("Command " + e.command().name() + " yielded");
-    } else if (event instanceof SchedulerEvent.Completed e) {
-      System.out.println("Command " + e.command().name() + " completed naturally");
-    } else if (event instanceof SchedulerEvent.CompletedWithError e) {
-      System.err.println("Command " + e.command().name() + " failed with error: " + e.error());
-    } else if (event instanceof SchedulerEvent.Interrupted e) {
-      System.out.println("Command " + e.command().name() + " was interrupted by " + e.interrupter().name());
-    } else if (event instanceof SchedulerEvent.Canceled e) {
-      System.out.println("Command " + e.command().name() + " was canceled");
-    }
-  });
-  ```
+Scheduler.getDefault().addEventListener(event -> {
+  if (event instanceof SchedulerEvent.Scheduled e) {
+    System.out.println("Command " + e.command().name() + " was scheduled");
+  } else if (event instanceof SchedulerEvent.Mounted e) {
+    // Mounted events occur every cycle - we might not want to log them all!
+    // System.out.println("Command " + e.command().name() + " mounted");
+  } else if (event instanceof SchedulerEvent.Yielded e) {
+    // System.out.println("Command " + e.command().name() + " yielded");
+  } else if (event instanceof SchedulerEvent.Completed e) {
+    System.out.println("Command " + e.command().name() + " completed naturally");
+  } else if (event instanceof SchedulerEvent.CompletedWithError e) {
+    System.err.println("Command " + e.command().name() + " failed with error: " + e.error());
+  } else if (event instanceof SchedulerEvent.Interrupted e) {
+    System.out.println("Command " + e.command().name() + " was interrupted by " + e.interrupter().name());
+  } else if (event instanceof SchedulerEvent.Canceled e) {
+    System.out.println("Command " + e.command().name() + " was canceled");
+  }
+});
+```
 
 ## Data Logging
 
@@ -97,26 +95,24 @@ Because the ``Scheduler`` class implements ``ProtobufSerializable``, you can log
 
 Because the scheduler state changes every loop cycle, you should append the current state to the log in your ``robotPeriodic`` method.
 
-.. tab-set-code::
+```java
+import org.wpilib.command3.Scheduler;
+import org.wpilib.datalog.ProtobufLogEntry;
+import org.wpilib.system.DataLogManager;
+import org.wpilib.framework.TimedRobot;
 
-  ```java
-  import org.wpilib.command3.Scheduler;
-  import org.wpilib.datalog.ProtobufLogEntry;
-  import org.wpilib.system.DataLogManager;
-  import org.wpilib.framework.TimedRobot;
+public class Robot extends TimedRobot {
+  // Create a log entry for the scheduler state
+  private final ProtobufLogEntry<Scheduler> schedulerLog =
+      ProtobufLogEntry.create(DataLogManager.getLog(), "Scheduler", Scheduler.proto);
 
-  public class Robot extends TimedRobot {
-    // Create a log entry for the scheduler state
-    private final ProtobufLogEntry<Scheduler> schedulerLog =
-        ProtobufLogEntry.create(DataLogManager.getLog(), "Scheduler", Scheduler.proto);
+  @Override
+  public void robotPeriodic() {
+    // Run the scheduler
+    Scheduler.getDefault().run();
 
-    @Override
-    public void robotPeriodic() {
-      // Run the scheduler
-      Scheduler.getDefault().run();
-
-      // Log the current state of the scheduler
-      schedulerLog.append(Scheduler.getDefault());
-    }
+    // Log the current state of the scheduler
+    schedulerLog.append(Scheduler.getDefault());
   }
-  ```
+}
+```

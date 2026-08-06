@@ -73,22 +73,20 @@ Commands prevent conflicting hardware requests from being made by using a requir
 
 We recommend users define commands using the builders provided by the ``Command`` and ``Mechanism`` classes. The builders keep command code dense, which typically helps readability, and allow user code to hide direct hardware access from other classes, which prevents another class from bypassing requirements and sending unsafe actuator commands directly. Users who prefer object-oriented programming may implement the ``Command`` interface directly, but such class-based commands need to handle requirements, names, priorities, and cancellation behavior with care.
 
-.. tab-set-code::
+```java
+public class Arm implements Mechanism {
+  // All hardware is private.
+  // Anything that wants to move the arm should be done through commands.
+  private final MotorController motor = ...;
 
-  ```java
-  public class Arm implements Mechanism {
-    // All hardware is private.
-    // Anything that wants to move the arm should be done through commands.
-    private final MotorController motor = ...;
-
-    /**
-     * Creates a command that moves the arm up.
-     */
-    public Command up() {
-      // .run() will automatically require the arm mechanism
-      return run(coroutine -> {
-        // ... logic to move the arm up to a predetermined angle ...
-      }).named("Arm Up");
-    }
+  /**
+   * Creates a command that moves the arm up.
+   */
+  public Command up() {
+    // .run() will automatically require the arm mechanism
+    return run(coroutine -> {
+      // ... logic to move the arm up to a predetermined angle ...
+    }).named("Arm Up");
   }
-  ```
+}
+```

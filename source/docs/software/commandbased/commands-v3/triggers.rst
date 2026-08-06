@@ -8,18 +8,16 @@ Triggers cache their signal when they are polled. Calling ``getAsBoolean()`` rea
 
 A ``Trigger`` is created by providing a ``BooleanSupplier`` (a function that returns ``true`` or ``false``) or by combining existing triggers.
 
-.. tab-set-code::
+```java
+// A trigger for a gamepad button
+Trigger button = xboxController.a();
 
-  ```java
-  // A trigger for a gamepad button
-  Trigger button = xboxController.a();
+// A trigger for a limit switch
+Trigger limitSwitch = new Trigger(limitSwitch::get);
 
-  // A trigger for a limit switch
-  Trigger limitSwitch = new Trigger(limitSwitch::get);
-
-  // A trigger for a complex condition by combining two triggers
-  Trigger isReady = new Trigger(arm::isAtTarget).and(shooter::isAtSpeed);
-  ```
+// A trigger for a complex condition by combining two triggers
+Trigger isReady = new Trigger(arm::isAtTarget).and(shooter::isAtSpeed);
+```
 
 ## Trigger Bindings
 
@@ -43,6 +41,32 @@ Use ``onTrue`` and ``onFalse`` for commands that should start once and then mana
 
 Retry bindings continuously attempt to schedule their command while the signal remains in the requested state. If the command ends naturally, it will be started again. If it was interrupted by another same-priority command that requires the same mechanism, the retry binding may immediately schedule it again and interrupt the would-be interrupter. Use retry bindings when repeated attempts are intentional, not as a default replacement for ``whileTrue``.
 
+Retry bindings are particularly useful for suspend-like behavior when combined with command priorities. Multiple retry bindings for the same mechanism can be created at once; higher priority commands will take precedence over lower priority ones. This approach can  be simpler than a :doc:`state machine <state-machines>` when states don't interact with each other.
+
+For example, if a robot has an LED strip to indicate robot state and error conditions to the drivers or spectators, the commands for indicating more severe errors can have higher priorities than those for less severe errors. The triggers and bindings for coordinating the LED state can be configured in a single command:
+
+```java
+Command ledControl = leds.run(coroutine -> {
+  // Highest severity error: continually set the comms warning while the DS is disconnected.
+  new Trigger(RobotState::isDSAttached).retryWhileFalse(leds.flashCommsWarning());
+
+  // Medium severity error: continually set the intake warning while the intake is broken.
+  // If interrupted by the comms warning, it will resume when DS connection is restored.
+  new Trigger(intake::isJammed).retryWhileTrue(leds.flashIntakeWarning());
+
+  // Lowest priority, not even an error: continually indicate the alliance color.
+  // NOTE: Because ledControl is the default command, we can't set a command-scoped
+  // default command; it'll override the external setting and immediately cancel ledControl.
+  new Trigger(() -> true).retryWhileTrue(leds.showAllianceColor());
+
+  // All the logic is in the triggers. Park the coroutine to keep the command
+  // alive, but there's nothing to do otherwise.
+  coroutine.park();
+}).named("LED Control");
+
+leds.setDefaultCommand(ledControl);
+```
+
 ### Toggle Bindings
 
 *   ``toggleOnTrue(Command)``: Schedules the command on a ``false`` to ``true`` transition, and cancels it on the next ``false`` to ``true`` transition.
@@ -64,13 +88,11 @@ Triggers can be combined using standard boolean operators to create more complex
 *   ``Trigger.or(BooleanSupplier)``: High when **either** signal is high.
 *   ``Trigger.negate()``: High when the original signal is low.
 
-.. tab-set-code::
-
-  ```java
-  Trigger bothButtons = buttonA.and(buttonB);
-  Trigger eitherButton = buttonA.or(buttonB);
-  Trigger notButton = buttonA.negate();
-  ```
+```java
+Trigger bothButtons = buttonA.and(buttonB);
+Trigger eitherButton = buttonA.or(buttonB);
+Trigger notButton = buttonA.negate();
+```
 
 ## Modifying Trigger Behavior
 
@@ -102,41 +124,37 @@ For a full list of available controller classes and their methods, see the `org.
 
 You can also use axis values (like the analog sticks or analog triggers) to create triggers by using the ``axisGreaterThan``, ``axisLessThan``, or ``axisMagnitudeGreaterThan`` methods, or by providing a custom ``BooleanSupplier``. Axis-based triggers usually need a threshold and sometimes a debounce so small joystick noise does not repeatedly schedule and cancel commands.
 
-.. tab-set-code::
+```java
+// Trigger when the left Y axis is pushed more than 50% forward
+Trigger highThrottle = new Trigger(() -> driverController.getLeftY() > 0.5);
 
-  ```java
-  // Trigger when the left Y axis is pushed more than 50% forward
-  Trigger highThrottle = new Trigger(() -> driverController.getLeftY() > 0.5);
+highThrottle.onTrue(Command.print("High Throttle!"));
+```
 
-  highThrottle.onTrue(Command.print("High Throttle!"));
-  ```
+```java
+import org.wpilib.framework.TimedRobot;
+import org.wpilib.command3.button.RobotModeTriggers;
 
-.. tab-set-code::
-
-  ```java
-  import org.wpilib.framework.TimedRobot;
-  import org.wpilib.command3.button.RobotModeTriggers;
-
-  public class Robot extends TimedRobot {
-    public Robot() {
-      // GLOBAL SCOPE: This binding is always active
-      driverController.a().onTrue(arm.up());
-    }
-
-    @Override
-    public void autonomousInit() {
-      // OPMODE SCOPE: This binding only exists during autonomous
-      RobotModeTriggers.autonomous().onTrue(drive.followPath("AutoPath"));
-    }
+public class Robot extends TimedRobot {
+  public Robot() {
+    // GLOBAL SCOPE: This binding is always active
+    driverController.a().onTrue(arm.up());
   }
 
-  // COMMAND SCOPE example
-  public Command sweepAndScore() {
-    return Command.noRequirements(coroutine -> {
-      // This binding only exists while the 'sweepAndScore' command is running
-      intakeTrigger.onTrue(intake.runOnce());
-
-      coroutine.await(drive.followPath("SweepPath"));
-    }).named("Sweep and Score");
+  @Override
+  public void autonomousInit() {
+    // OPMODE SCOPE: This binding only exists during autonomous
+    RobotModeTriggers.autonomous().onTrue(drive.followPath("AutoPath"));
   }
-  ```
+}
+
+// COMMAND SCOPE example
+public Command sweepAndScore() {
+  return Command.noRequirements(coroutine -> {
+    // This binding only exists while the 'sweepAndScore' command is running
+    intakeTrigger.onTrue(intake.runOnce());
+
+    coroutine.await(drive.followPath("SweepPath"));
+  }).named("Sweep and Score");
+}
+```

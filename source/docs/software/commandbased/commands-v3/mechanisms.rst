@@ -13,42 +13,40 @@ The abstraction part and the ownership part are meant to work together. If a mot
 
 To create a mechanism, write a class that implements the ``Mechanism`` interface. Hardware fields and low-level actuator helpers should usually be private. Public methods should either read state or return commands that perform safe actions.
 
-.. tab-set-code::
+```java
+import org.wpilib.command3.Command;
+import org.wpilib.command3.Mechanism;
+import org.wpilib.command3.Trigger;
+import org.wpilib.hardware.discrete.DigitalInput;
+import org.wpilib.hardware.motor.PWMSparkMax;
 
-  ```java
-  import org.wpilib.command3.Command;
-  import org.wpilib.command3.Mechanism;
-  import org.wpilib.command3.Trigger;
-  import org.wpilib.hardware.discrete.DigitalInput;
-  import org.wpilib.hardware.motor.PWMSparkMax;
+public class Intake implements Mechanism {
+  private final PWMSparkMax motor = new PWMSparkMax(1);
+  private final DigitalInput beamBreak = new DigitalInput(2);
 
-  public class Intake implements Mechanism {
-    private final PWMSparkMax motor = new PWMSparkMax(1);
-    private final DigitalInput beamBreak = new DigitalInput(2);
+  public final Trigger hasGamePiece = new Trigger(() -> !beamBreak.get());
 
-    public final Trigger hasGamePiece = new Trigger(() -> !beamBreak.get());
-
-    public Intake() {
-      setDefaultCommand(stop());
-    }
-
-    private void setSpeed(double speed) {
-      motor.set(speed);
-    }
-
-    public Command intake() {
-      return run(coroutine -> {
-        setSpeed(0.75);
-        coroutine.waitUntil(hasGamePiece);
-        setSpeed(0);
-      }).named("Intake");
-    }
-
-    public Command stop() {
-      return runRepeatedly(() -> setSpeed(0)).named("Stop Intake");
-    }
+  public Intake() {
+    setDefaultCommand(stop());
   }
-  ```
+
+  private void setSpeed(double speed) {
+    motor.set(speed);
+  }
+
+  public Command intake() {
+    return run(coroutine -> {
+      setSpeed(0.75);
+      coroutine.waitUntil(hasGamePiece);
+      setSpeed(0);
+    }).named("Intake");
+  }
+
+  public Command stop() {
+    return runRepeatedly(() -> setSpeed(0)).named("Stop Intake");
+  }
+}
+```
 
 This style gives other code useful tools without giving it raw control. Other classes can bind to ``hasGamePiece`` or schedule ``intake()``, but they cannot accidentally leave the motor running outside the requirement system.
 
@@ -72,21 +70,19 @@ The default command is initially an ``idle()`` command. That means a mechanism w
 
 Default commands also have priorities. A default command effectively sets the minimum priority needed to take over the mechanism, so defaults should usually have lower priority than ordinary user commands. A high-priority default command can accidentally prevent other low-priority behavior from ever starting.
 
-.. tab-set-code::
-
-  ```java
-  public class Elevator implements Mechanism {
-    public Elevator() {
-      // Set the default command to stay at the current position
-      setDefaultCommand(holdPosition());
-    }
-
-    public Command holdPosition() {
-      return runRepeatedly(() -> motor.setVoltage(feedforwardForCurrentHeight()))
-        .withPriority(Command.LOWEST_PRIORITY + 1)
-        .named("Hold Position");
-    }
+```java
+public class Elevator implements Mechanism {
+  public Elevator() {
+    // Set the default command to stay at the current position
+    setDefaultCommand(holdPosition());
   }
-  ```
+
+  public Command holdPosition() {
+    return runRepeatedly(() -> motor.setVoltage(feedforwardForCurrentHeight()))
+      .withPriority(Command.LOWEST_PRIORITY + 1)
+      .named("Hold Position");
+  }
+}
+```
 
 Setting a default command does not immediately run it. The scheduler starts the default command during its normal scheduling phase when the mechanism is otherwise idle. If a command temporarily changes a default command from inside its own logic, the previous default command is restored when that command's scope exits.

@@ -25,18 +25,16 @@ The command scope is tied to the lifetime of a specific running command. Any res
 
 Command scope is useful for temporary controls. For example, an aiming command can create a binding that fires only while the robot is actively aimed at the target. Once the aiming command completes or is canceled, the binding disappears and any command it started is canceled.
 
-.. tab-set-code::
+```java
+public Command sweepAndScore(Robot robot) {
+  return Command.noRequirements(coroutine -> {
+    // This binding only exists while sweepAndScore is running
+    intakeTrigger.onTrue(robot.intake.intake());
 
-  ```java
-  public Command sweepAndScore(Robot robot) {
-    return Command.noRequirements(coroutine -> {
-      // This binding only exists while sweepAndScore is running
-      intakeTrigger.onTrue(robot.intake.intake());
-
-      coroutine.await(robot.drive.followPath("SweepPath"));
-    }).named("Sweep and Score");
-  }
-  ```
+    coroutine.await(robot.drive.followPath("SweepPath"));
+  }).named("Sweep and Score");
+}
+```
 
 ## The OpMode Scope
 
@@ -46,26 +44,24 @@ When the robot transitions to a different mode, all commands and bindings scoped
 
 OpMode scope is where mode-specific setup belongs. Autonomous path commands, autonomous-only safety bindings, and autonomous default commands can be created in an autonomous OpMode without needing manual cleanup in teleop.
 
-.. tab-set-code::
+```java
+import org.wpilib.command3.Command;
+import org.wpilib.command3.Trigger;
+import org.wpilib.command3.button.RobotModeTriggers;
 
-  ```java
-  import org.wpilib.command3.Command;
-  import org.wpilib.command3.Trigger;
-  import org.wpilib.command3.button.RobotModeTriggers;
+@Autonomous
+public class SweepAuto implements OpMode {
+  public SweepAuto(Robot robot) {
+    // Start the intake stowed
+    robot.intake.setDefaultCommand(robot.intake.stow());
 
-  @Autonomous
-  public class SweepAuto implements OpMode {
-    public SweepAuto(Robot robot) {
-      // Start the intake stowed
-      robot.intake.setDefaultCommand(robot.intake.stow());
-
-      // Once the robot is enabled, start following a sweep path through the
-      // left trench, into the neutral zone, then back over the bump.
-      // When we return to the alliance zone, aim at the hub and start shooting.
-      RobotModeTriggers.enabled().onTrue(sweepAndScore(robot));
-    }
+    // Once the robot is enabled, start following a sweep path through the
+    // left trench, into the neutral zone, then back over the bump.
+    // When we return to the alliance zone, aim at the hub and start shooting.
+    RobotModeTriggers.enabled().onTrue(sweepAndScore(robot));
   }
-  ```
+}
+```
 
 ## The Global Scope
 
@@ -77,18 +73,16 @@ The global scope is the widest scope and is active for the entire duration of th
 
 Global resources are never automatically cleaned up by the scheduler. Use the global scope for things that should always be available, such as default commands for mechanisms, driver controls, and basic safety bindings. Avoid putting mode-specific behavior in global scope unless it explicitly checks the current mode or enable state.
 
-.. tab-set-code::
+```java
+import org.wpilib.command3.Command;
+import org.wpilib.command3.Trigger;
+import org.wpilib.framework.TimedRobot;
 
-  ```java
-  import org.wpilib.command3.Command;
-  import org.wpilib.command3.Trigger;
-  import org.wpilib.framework.TimedRobot;
-
-  public class Robot extends TimedRobot {
-    public Robot() {
-      // GLOBAL SCOPE: These are always active
-      arm.setDefaultCommand(arm.holdPosition());
-      driverController.a().onTrue(arm.up());
-    }
+public class Robot extends TimedRobot {
+  public Robot() {
+    // GLOBAL SCOPE: These are always active
+    arm.setDefaultCommand(arm.holdPosition());
+    driverController.a().onTrue(arm.up());
   }
-  ```
+}
+```

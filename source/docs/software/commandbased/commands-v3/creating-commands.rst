@@ -21,88 +21,82 @@ The requirement system can only protect hardware that is controlled through comm
 
 Public sensor accessors and triggers are fine, and are often useful. Reading a sensor does not fight with a command that owns the mechanism, but directly commanding an actuator does. The goal is not to hide all information from the rest of the robot program; the goal is to make every hardware-changing action pass through the scheduler's ownership rules to ensure every mechanism is only trying to do one thing at a time.
 
-.. tab-set-code::
+```java
+import org.wpilib.command3.Command;
+import org.wpilib.command3.Mechanism;
+import org.wpilib.hardware.motor.PWMSparkMax;
 
-  ```java
-  import org.wpilib.command3.Command;
-  import org.wpilib.command3.Mechanism;
-  import org.wpilib.hardware.motor.PWMSparkMax;
+public class ExampleArm implements Mechanism {
+  // This motor controller is declared private to guarantee that it can't be used
+  // dangerously, outside of the command requirements system
+  private final PWMSparkMax pivotMotor = new PWMSparkMax(1);
 
-  public class ExampleArm implements Mechanism {
-    // This motor controller is declared private to guarantee that it can't be used
-    // dangerously, outside of the command requirements system
-    private final PWMSparkMax pivotMotor = new PWMSparkMax(1);
+  // Triggers can be and are encouraged to be public. They can't control the mechanism,
+  // and make it easier to coordinate complex actions
+  public final Trigger isUp = new Trigger(() -> pivotMotor.getPosition() >= 90);
+  public final Trigger isDown = new Trigger(() -> pivotMotor.getPosition() <= 0);
 
-    // Triggers can be and are encouraged to be public. They can't control the mechanism,
-    // and make it easier to coordinate complex actions
-    public final Trigger isUp = new Trigger(() -> pivotMotor.getPosition() >= 90);
-    public final Trigger isDown = new Trigger(() -> pivotMotor.getPosition() <= 0);
-
-    public ExampleArm() {
-      setDefaultCommand(stop());
-    }
-
-    // This method controls the motor directly.
-    // It's private for the same reason the field is - to prevent dangerous usage
-    private void stopMotor() {
-      pivotMotor.setVoltage(0);
-    }
-
-    // This factory method returns a Command.
-    // It's public because all hardware control should go through commands
-    // instead of unsafe method calls.
-    public Command stop() {
-      // `run` and `runRepeatedly` will automatically require the mechanism
-      // so we don't need to manually spell it out every time
-      return runRepeatedly(this::stopMotor).named("Stop Arm");
-    }
-
-    public Command up() {
-      return run(coroutine -> {
-        pivotMotor.set(0.5);
-        coroutine.waitUntil(isUp);
-        pivotMotor.set(0);
-      }).named("Arm Up");
-    }
-
-    public Command down() {
-      return run(coroutine -> {
-        pivotMotor.set(-0.5);
-        coroutine.waitUntil(isDown);
-        pivotMotor.set(0);
-      }).named("Arm Down");
-    }
+  public ExampleArm() {
+    setDefaultCommand(stop());
   }
-  ```
+
+  // This method controls the motor directly.
+  // It's private for the same reason the field is - to prevent dangerous usage
+  private void stopMotor() {
+    pivotMotor.setVoltage(0);
+  }
+
+  // This factory method returns a Command.
+  // It's public because all hardware control should go through commands
+  // instead of unsafe method calls.
+  public Command stop() {
+    // `run` and `runRepeatedly` will automatically require the mechanism
+    // so we don't need to manually spell it out every time
+    return runRepeatedly(this::stopMotor).named("Stop Arm");
+  }
+
+  public Command up() {
+    return run(coroutine -> {
+      pivotMotor.set(0.5);
+      coroutine.waitUntil(isUp);
+      pivotMotor.set(0);
+    }).named("Arm Up");
+  }
+
+  public Command down() {
+    return run(coroutine -> {
+      pivotMotor.set(-0.5);
+      coroutine.waitUntil(isDown);
+      pivotMotor.set(0);
+    }).named("Arm Down");
+  }
+}
+```
 
 
 ## Looping Commands
 
 Most commands need to run for more than a single loop cycle. This is done by using a loop (like ``while``) and calling ``coroutine.yield()`` at the end of every loop to allow other commands to run.
 
-.. tab-set-code::
-
-  ```java
-  public Command driveForward() {
-    return run(coroutine -> {
-      while (distance < 10) {
-        drive.setSpeed(0.5);
-        coroutine.yield(); // Required to allow other commands to run!
-      }
-      drive.setSpeed(0);
-    }).named("Drive Forward");
-  }
-  ```
+```java
+public Command driveForward() {
+  return run(coroutine -> {
+    while (distance < 10) {
+      drive.setSpeed(0.5);
+      coroutine.yield(); // Required to allow other commands to run!
+    }
+    drive.setSpeed(0);
+  }).named("Drive Forward");
+}
+```
 
 If you have a command that only needs to run the same piece of code every loop cycle, you can use the ``runRepeatedly`` factory method on a mechanism. This method automatically handles the loop and the yield for you.
 
-.. tab-set-code::
-
-  ```java
-  public Command stop() {
-    return runRepeatedly(() -> motor.set(0)).named("Stop");
-  }
-  ```
+```java
+public Command stop() {
+  return runRepeatedly(() -> motor.set(0)).named("Stop");
+}
+```
 
 Use ``runRepeatedly`` for simple "do this every scheduler cycle" behavior, such as a default command that continuously applies joystick drive output or holds a motor at zero volts. Use ``run`` when the command has a beginning, a middle, and an end: start the motor, wait for a condition, then stop the motor. If a loop appears in a ``run`` command, that loop must include a call to a yielding method; otherwise, it's a greedy loop and will lock up the robot program. WPILib will report compilation errors any any non-yielding ``while`` loops in command code.
 
@@ -110,44 +104,40 @@ Use ``runRepeatedly`` for simple "do this every scheduler cycle" behavior, such 
 
 The ``Coroutine`` class provides methods to pause a command until a condition is met. The most basic of these is ``waitUntil(BooleanSupplier)``, which pauses until the given condition returns ``true``.
 
-.. tab-set-code::
-
-  ```java
-  public Command waitForButton() {
-    return run(coroutine -> {
-      coroutine.waitUntil(driverController.a());
-      System.out.println("Button A pressed!");
-    }).named("Wait for Button");
-  }
-  ```
+```java
+public Command waitForButton() {
+  return run(coroutine -> {
+    coroutine.waitUntil(driverController.a());
+    System.out.println("Button A pressed!");
+  }).named("Wait for Button");
+}
+```
 
 #### Timeouts and WaitResult
 
 Sometimes, a condition might never be met (for example, if a sensor fails or a mechanism jams). To prevent your robot from getting stuck indefinitely, you can provide a timeout to ``waitUntil``. When a timeout is provided, ``waitUntil`` returns a ``WaitResult`` object that you can use to check whether the condition was met or if the command timed out.
 
-.. tab-set-code::
+```java
+import static org.wpilib.units.Units.Seconds;
+import org.wpilib.command3.Coroutine;
 
-  ```java
-  import static org.wpilib.units.Units.Seconds;
-  import org.wpilib.command3.Coroutine;
+public Command safeElevatorUp() {
+  return run(coroutine -> {
+    coroutine.fork(elevator.up());
 
-  public Command safeElevatorUp() {
-    return run(coroutine -> {
-      coroutine.fork(elevator.up());
+    // Wait for the elevator to reach the top, but only for 1.25 seconds at most
+    Coroutine.WaitResult result = coroutine.waitUntil(elevator::atTop, Seconds.of(1.25));
 
-      // Wait for the elevator to reach the top, but only for 1.25 seconds at most
-      Coroutine.WaitResult result = coroutine.waitUntil(elevator::atTop, Seconds.of(1.25));
+    if (result.timedOut()) {
+      // The elevator took too long! It might be jammed. Bail early.
+      elevator.setJamAlert();
+      return;
+    }
 
-      if (result.timedOut()) {
-        // The elevator took too long! It might be jammed. Bail early.
-        elevator.setJamAlert();
-        return;
-      }
-
-      // ... do more things, confident that the elevator is in place
-    }).named("Safe Elevator Up");
-  }
-  ```
+    // ... do more things, confident that the elevator is in place
+  }).named("Safe Elevator Up");
+}
+```
 
 Timeouts are most useful around physical state changes: elevators reaching a height, arms hitting a limit, flywheels reaching speed, or drivetrains arriving at a pose. A timeout should normally lead to an explicit fallback such as stopping the mechanism, retrying a safer action, or exiting the larger routine early. It may be dangerous to ignore a timeout
 
@@ -157,12 +147,10 @@ A command that never yields is called a *one-shot* command. It will be mounted a
 
 One-shot commands generally do one very simple thing and immediately exit without taking much time. Good examples of one-shot commands are zeroing a sensor or assigning a new value to a variable.
 
-.. tab-set-code::
-
-  ```java
-  Command.noRequirements(_ -> gyro.reset()).named("Reset Gyro");
-  Command.noRequirements(_ -> field = 0).named("Reset Field");
-  ```
+```java
+Command.noRequirements(_ -> gyro.reset()).named("Reset Gyro");
+Command.noRequirements(_ -> field = 0).named("Reset Field");
+```
 
 One-shot commands are not bad. They are the right tool for small pieces of immediate work. The important rule is that "does not yield" also means "does not share time". If the action might take a noticeable amount of time, write it as a yielding command or move the expensive work somewhere that will not block robot control.
 
@@ -174,21 +162,19 @@ For more complex logic, you can use the various methods on the ``Coroutine`` obj
 
 You can pause a command for a certain amount of time or until a condition is met.
 
-.. tab-set-code::
+```java
+public Command waitAndThen() {
+  return run(coroutine -> {
+    System.out.println("Starting...");
 
-  ```java
-  public Command waitAndThen() {
-    return run(coroutine -> {
-      System.out.println("Starting...");
+    coroutine.wait(Seconds.of(2));
+    System.out.println("2 seconds later!");
 
-      coroutine.wait(Seconds.of(2));
-      System.out.println("2 seconds later!");
-
-      coroutine.waitUntil(trigger);
-      System.out.println("Triggered!");
-    }).named("Wait Example");
-  }
-  ```
+    coroutine.waitUntil(trigger);
+    System.out.println("Triggered!");
+  }).named("Wait Example");
+}
+```
 
 The resolution of ``coroutine.wait()`` is the scheduler loop period. With a 20 ms robot loop, a wait for 1 ms and a wait for 19 ms both resume on a later scheduler cycle, not exactly at the requested timestamp. This is normally fine for robot actions, but it is worth remembering when writing tests or when building routines with very short delays.
 
@@ -196,17 +182,15 @@ The resolution of ``coroutine.wait()`` is the scheduler loop period. With a 20 m
 
 If you want to start multiple actions at once, you can use ``coroutine.fork()``. Forking schedules a child command and immediately returns to the parent command. The child then runs alongside the parent until it completes, is canceled, or the parent exits.
 
-.. tab-set-code::
-
-  ```java
-  public Command parallelActions() {
-    return run(coroutine -> {
-      coroutine.fork(arm.up());
-      coroutine.fork(intake.spin());
-      coroutine.await(drive.followPath("ScorePath"));
-    }).named("Parallel Actions");
-  }
-  ```
+```java
+public Command parallelActions() {
+  return run(coroutine -> {
+    coroutine.fork(arm.up());
+    coroutine.fork(intake.spin());
+    coroutine.await(drive.followPath("ScorePath"));
+  }).named("Parallel Actions");
+}
+```
 
 Note that forking a command from within a command creates a parent-child relationship with the following properties:
 
@@ -222,19 +206,17 @@ Use ``coroutine.await()`` when the parent needs to wait for a child command befo
 
 Consider an autonomous command that forks two sub-tasks: one to control the arm and one to control the intake.
 
-.. tab-set-code::
+```java
+public Command autoScore(Robot robot) {
+  return run(coroutine -> {
+    // Fork two sibling commands
+    coroutine.fork(robot.arm.moveUp().named("Arm Task"));
+    coroutine.fork(robot.intake.spin().named("Intake Task"));
 
-  ```java
-  public Command autoScore(Robot robot) {
-    return run(coroutine -> {
-      // Fork two sibling commands
-      coroutine.fork(robot.arm.moveUp().named("Arm Task"));
-      coroutine.fork(robot.intake.spin().named("Intake Task"));
-
-      coroutine.await(robot.drive.followPath("ScorePath"));
-    }).named("Auto Score");
-  }
-  ```
+    coroutine.await(robot.drive.followPath("ScorePath"));
+  }).named("Auto Score");
+}
+```
 
 If an external command (like a safety trigger) interrupts the **Arm Task**, the entire **Auto Score** composition (including the **Intake Task** and the path following) will be canceled.
 
@@ -242,22 +224,20 @@ If an external command (like a safety trigger) interrupts the **Arm Task**, the 
 
 In this example, the parent command forks two siblings that both require the same mechanism. The second sibling will interrupt the first one, but the parent command will continue running.
 
-.. tab-set-code::
+```java
+public Command siblingConflict(Robot robot) {
+  return run(coroutine -> {
+    // Both of these require robot.arm
+    coroutine.fork(robot.arm.moveUp().named("First Sibling"));
+    coroutine.fork(robot.arm.moveDown().named("Second Sibling"));
 
-  ```java
-  public Command siblingConflict(Robot robot) {
-    return run(coroutine -> {
-      // Both of these require robot.arm
-      coroutine.fork(robot.arm.moveUp().named("First Sibling"));
-      coroutine.fork(robot.arm.moveDown().named("Second Sibling"));
-
-      // "Second Sibling" will interrupt "First Sibling".
-      // Because they are siblings, the parent command ("siblingConflict")
-      // and other forked siblings will NOT be canceled.
-      coroutine.park();
-    }).named("Sibling Conflict");
-  }
-  ```
+    // "Second Sibling" will interrupt "First Sibling".
+    // Because they are siblings, the parent command ("siblingConflict")
+    // and other forked siblings will NOT be canceled.
+    coroutine.park();
+  }).named("Sibling Conflict");
+}
+```
 
 ### Forking vs. Default Commands
 
@@ -267,40 +247,36 @@ It is important to understand the difference between forking a command and setti
 
 **Setting a default command** does not start the command immediately. Instead, it tells the scheduler to run that command whenever no other command is requiring the mechanism. If you want a default command to start immediately, fork or schedule it immediately after assigning it.
 
-.. tab-set-code::
+```java
+// Forking: runs in the background immediately
+coroutine.fork(arm.holdLastPosition());
 
-  ```java
-  // Forking: runs in the background immediately
-  coroutine.fork(arm.holdLastPosition());
+// Move the elevator up; the arm continues to hold position because it was forked
+coroutine.await(elevator.up());
 
-  // Move the elevator up; the arm continues to hold position because it was forked
-  coroutine.await(elevator.up());
+// Move the arm down; if an outer scope set a default command for the elevator,
+// it runs; otherwise, the elevator is uncommanded
+coroutine.await(arm.down());
 
-  // Move the arm down; if an outer scope set a default command for the elevator,
-  // it runs; otherwise, the elevator is uncommanded
-  coroutine.await(arm.down());
+// After the arm is down, there's no command in this scope that controls it.
+// If an outer scope set a default command, it runs; otherwise, the arm is uncommanded.
+```
 
-  // After the arm is down, there's no command in this scope that controls it.
-  // If an outer scope set a default command, it runs; otherwise, the arm is uncommanded.
-  ```
+```java
+// Setting a default command: it will only start if the arm is uncommanded
+arm.setDefaultCommand(arm.holdLastPosition());
 
-.. tab-set-code::
+// If you want the new default command to start immediately (if the arm is idle),
+// you can fork its getter.
+coroutine.fork(arm.getDefaultCommand());
 
-  ```java
-  // Setting a default command: it will only start if the arm is uncommanded
-  arm.setDefaultCommand(arm.holdLastPosition());
+// Move the elevator up; the arm continues to hold position
+coroutine.await(elevator.up());
 
-  // If you want the new default command to start immediately (if the arm is idle),
-  // you can fork its getter.
-  coroutine.fork(arm.getDefaultCommand());
+// Move the arm down; if an outer scope set a default command for the elevator,
+// it runs; otherwise, the elevator is uncommanded
+coroutine.await(arm.down());
 
-  // Move the elevator up; the arm continues to hold position
-  coroutine.await(elevator.up());
-
-  // Move the arm down; if an outer scope set a default command for the elevator,
-  // it runs; otherwise, the elevator is uncommanded
-  coroutine.await(arm.down());
-
-  // Once arm.down() completes, the arm is uncommanded in this scope,
-  // so its default command (holdLastPosition) starts automatically.
-  ```
+// Once arm.down() completes, the arm is uncommanded in this scope,
+// so its default command (holdLastPosition) starts automatically.
+```

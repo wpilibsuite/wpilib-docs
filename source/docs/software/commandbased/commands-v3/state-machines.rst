@@ -8,28 +8,26 @@ State machines are commands themselves, so they have a name and can be scheduled
 
 To define a state machine, create an instance of ``StateMachine``, add all of its states, choose an initial state, and then add transitions. Defining states first makes global transitions easier to reason about because ``switchFromAny()`` without arguments only applies to states that already exist.
 
-.. tab-set-code::
+```java
+import org.wpilib.command3.StateMachine;
 
-  ```java
-  import org.wpilib.command3.StateMachine;
+StateMachine sm = new StateMachine("Example State Machine");
 
-  StateMachine sm = new StateMachine("Example State Machine");
+// 1. Define all states
+var idleState = sm.addState(arm.idle());
+var upState = sm.addState(arm.up());
+var downState = sm.addState(arm.down());
 
-  // 1. Define all states
-  var idleState = sm.addState(arm.idle());
-  var upState = sm.addState(arm.up());
-  var downState = sm.addState(arm.down());
+// 2. Define transitions
+idleState.switchTo(upState).when(driverController.y());
+idleState.switchTo(downState).when(driverController.a());
 
-  // 2. Define transitions
-  idleState.switchTo(upState).when(driverController.y());
-  idleState.switchTo(downState).when(driverController.a());
+upState.switchTo(idleState).whenComplete();
+downState.switchTo(idleState).whenComplete();
 
-  upState.switchTo(idleState).whenComplete();
-  downState.switchTo(idleState).whenComplete();
-
-  // 3. Set the initial state
-  sm.setInitialState(idleState);
-  ```
+// 3. Set the initial state
+sm.setInitialState(idleState);
+```
 
 .. note::
   Calling `setInitialState() <https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command3/StateMachine.html#setInitialState(org.wpilib.command3.StateMachine.State)>`__ is **required** - otherwise the state machine wouldn't know where to start. If you forget to set an initial state, the WPILib compiler plugin will detect it and issue an error.
@@ -44,12 +42,10 @@ If a state's command finishes and no completion transition is configured, the st
 
 You can also add enter and exit callbacks to states:
 
-.. tab-set-code::
-
-  ```java
-  upState.onEnter(() -> System.out.println("Entering UP state"));
-  upState.onExit(() -> System.out.println("Exiting UP state"));
-  ```
+```java
+upState.onEnter(() -> System.out.println("Entering UP state"));
+upState.onExit(() -> System.out.println("Exiting UP state"));
+```
 
 Enter callbacks run immediately after the state's command is scheduled. Exit callbacks run immediately before the state's command is canceled during a transition, or immediately after it completes naturally. If an enter callback schedules commands, those commands are scoped to the lifetime of the state machine, not to the lifetime of just that state.
 
@@ -65,27 +61,23 @@ Conditional transitions are treated as rising-edge conditions to prevent a state
 
 You can also define transitions for multiple states at once, which can help make your code more readable.
 
-.. tab-set-code::
-
-  ```java
-  sm.switchFromAny(upState, downState).to(idleState).when(driverController.b());
-  ```
+```java
+sm.switchFromAny(upState, downState).to(idleState).when(driverController.b());
+```
 
 ### Global Transitions with `switchFromAny()`
 
 If you call `switchFromAny() <https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command3/StateMachine.html#switchFromAny(org.wpilib.command3.StateMachine.State...)>`__ without any arguments, it creates a transition that applies to **all** states in the state machine. This is useful for "global" transitions, such as returning to an initial or home state from anywhere in the state graph.
 
-.. tab-set-code::
+```java
+// Any state will transition to idle if the X button is pressed
+sm.switchFromAny().to(idleState).when(driverController.x());
 
-  ```java
-  // Any state will transition to idle if the X button is pressed
-  sm.switchFromAny().to(idleState).when(driverController.x());
-
-  // Any state will exit the state machine if a safety sensor is tripped
-  sm.switchFromAny().toExitStateMachine().when(safetySensor::get);
-  ```
+// Any state will exit the state machine if a safety sensor is tripped
+sm.switchFromAny().toExitStateMachine().when(safetySensor::get);
+```
 
 .. warning::
   `switchFromAny()` with no arguments only applies to the states that have **already been defined** on the state machine at the time the method is called. Any states added with `addState() <https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command3/StateMachine.html#addState(org.wpilib.command3.Command)>`__ *after* the call to `switchFromAny()` will not have this transition applied to them.
 
-  For this reason, it is recommended to add all of your states first, and then define transitions after all states have been added.
+For this reason, it is recommended to add all of your states first, and then define transitions after all states have been added.

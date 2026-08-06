@@ -42,6 +42,85 @@ OpMode constructors are generally all that's needed. WPILib will automatically c
 
 ## Mechanism-level Commands
 
+Commands that only interact with a single mechanism should be defined as methods in that mechanism's class using the ``run`` or ``runRepeatedly`` builder methods provided by the ``Mechanism`` interface. These builder methods make the created command automatically require the mechanism so you can't forget to set the requirement.
+
+.. warning:: Command methods are designed to create a ``Command`` object that will be run at a later point in the program. Only the code in the lambda function passed to ``run`` or ``runRepeatedly`` will execute when the command is running. All code
+
+```java
+package first.robot.mechanisms;
+
+import static org.wpilib.units.Units.*;
+
+import module wpilib;
+import module wpilib.command3;
+
+public class Arm implements Mechanism {
+  // ... hardware definitions, constructors, PID controllers and so on ...
+
+  // Good example:
+  public Command stop() {
+    return runRepeatedly(() -> motor.stop()).named("Stop Arm");
+  }
+
+  public Command incorrectStop() {
+    // Incorrect: This will print to console when the command is created, not when it actually runs
+    System.out.println("Stopping the arm motor! (but not really)");
+
+    return runRepeatedly(() -> motor.stop()).named("Incorrect Stop Arm");
+  }
+}
+```
+
+Highly complicated commands with a lot of logic can harm readability of a mechanism class, and can optionally be implemented as standalone class-based commands in the same package as the mechanism. The mechanism class should still have a method to create and return these commands.
+
+As a rule of thumb, commands with more than 15-20 lines of code are good candidates for being moved to class-based commands. Bits of logic can be more easily split into smaller helper methods, but you will need to implement all of the required ``Command`` methods yourself.
+
+```java
+package first.robot.mechanisms;
+
+import module wpilib.command3;
+import first.robot.commands.drivetrain.VeryComplicatedCommand;
+
+public class Drivetrain implements Mechanism {
+  // ... hardware definitions, constructors, PID controllers and so on ...
+
+  public Command veryComplicatedCommand() {
+    return new VeryComplicatedCommand(this);
+  }
+}
+```
+
+```java
+package first.robot.commands.drivetrain;
+
+import module java.base;
+import module wpilib.command3;
+
+public class VeryComplicatedCommand implements Command {
+  private final Drivetrain drivetrain;
+  private final Set<Mechanism> requirements;
+
+  public FollowPathPartsCommand(Drivetrain drivetrain) {
+    this.drivetrain = drivetrain;
+    this.requirements = Set.of(drivetrain);
+  }
+
+  @Override
+  public void run(Coroutine coroutine) {
+    // ... lots of complicated logic ...
+  }
+
+  @Override
+  public Set<Mechanism> requirements() {
+    return requirements;
+  }
+
+  @Override
+  public String name() {
+    return "VeryComplicatedCommand";
+  }
+}
+```
 
 
 ## Multi-Mechanism Commands
