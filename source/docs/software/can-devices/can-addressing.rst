@@ -154,7 +154,7 @@ below:
 ================= ==
 Description
 ================= ==
-Disable	         0
+Disable	          0
 System Reset      1
 System Resume     10
 ================= ==
