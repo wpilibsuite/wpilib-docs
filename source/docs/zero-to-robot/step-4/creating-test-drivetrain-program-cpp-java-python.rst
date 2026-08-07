@@ -2,14 +2,9 @@
 
 Once everything is installed, we're ready to create a robot program.  WPILib comes with several templates for robot programs.  Use of these templates is highly recommended for new users; however, advanced users are free to write their own robot code from scratch. This article walks through creating a project from one of the provided examples which has some code already written to drive a basic robot.
 
-* :ref:`create_java_cpp_project`
-* :ref:`create_python_project`
-
 .. important:: This guide includes code examples that involve vendor hardware for the convenience of the user. In this document, :term:`PWM` refers to the motor controller included in the KOP. The CTRE tab references the Talon FX motor controller (Falcon 500 motor), but usage is similar for TalonSRX and VictorSPX. The REV tab references the CAN SPARK MAX controlling a brushless motor, but it's similar for brushed motor. There is an assumption that the user has already installed the required :doc:`vendordeps </docs/software/vscode-overview/3rd-party-libraries>` and configured the device(s) (update firmware, assign CAN IDs, etc) according to the manufacturer documentation ([CTRE](https://docs.ctr-electronics.com/) / [REV](https://docs.revrobotics.com/brushless/spark-max/gs)).
 
-.. _create_java_cpp_project:
-
-## Creating a New WPILib Project (Java/C++)
+## Creating a New WPILib Project (Java/C++/Python)
 
 In Visual Studio Code, click the WPILib logo in the top right to launch the WPILib Command Palette. Select :guilabel:`Create a new project`:
 
@@ -28,7 +23,7 @@ This will bring up the language and base selection window.
 .. image:: /docs/software/vscode-overview/images/creating-robot-program/new-project-creator-language.png
    :alt: The language and base page of the WPILib New Project Creator
 
-1. **Language**: This is the language (C++ or Java) that will be used for this project.
+1. **Language**: This is the language (C++, Java or Python) that will be used for this project.
 2. **Project Base**: This box is used to select the base class or example to generate the project from. For this example, select **Getting Started**
 
 After making the selections, click :guilabel:`Next`.
@@ -80,42 +75,6 @@ For C++ projects, there is one more step to set up IntelliSense.  Whenever we op
 
 .. image:: /docs/software/vscode-overview/images/importing-previous-project/cpp-configurations.png
     :alt: You must choose "Yes" to refresh the C++ configurations.
-
-.. _create_python_project:
-
-## Creating a New WPILib Project (Python)
-
-Running the ``robotpy init`` command will initialize a new robot project:
-
-.. tab-set::
-
-   .. tab-item:: Windows
-      :sync: windows
-
-      ```sh
-      py -3 -m robotpy init
-      ```
-
-   .. tab-item:: macOS
-      :sync: macos
-
-      ```sh
-      python3 -m robotpy init
-      ```
-
-   .. tab-item:: Linux
-      :sync: linux
-
-      ```sh
-      python3 -m robotpy init
-      ```
-
-This will create a ``robot.py`` and ``pyproject.toml`` file, but will not overwrite an existing file.
-
-* The ``pyproject.toml`` file contains the requirements for your project, which are downloaded and installed via the ``robotpy sync`` command.
-* The ``robot.py`` file is where you will put the your Robot class.
-
-.. seealso:: :ref:`docs/zero-to-robot/step-2/python-setup:Download RobotPy for roboRIO`
 
 
 ## Basic Drivetrain example
@@ -196,9 +155,9 @@ Now let's look at various parts of the code.
          ```
 
          ```python
-         import wpilib               # Used to get the joysticks
-         import wpilib.drive         # Used for the DifferentialDrive class
-         import phoenix6             # CTRE library
+         import wpilib                            # Used to get the joysticks
+         from wpilib import DifferentialDrive     # Used for the DifferentialDrive class
+         import phoenix6                          # CTRE library
          ```
 
    .. tab-item:: REV
@@ -224,9 +183,9 @@ Now let's look at various parts of the code.
             ```
 
             ```python
-            import wpilib           # Used to get the joysticks
-            import wpilib.drive     # Used for the DifferentialDrive class
-            import rev              # REV library
+            import wpilib                            # Used to get the joysticks
+            from wpilib import DifferentialDrive     # Used for the DifferentialDrive class
+            import rev                               # REV library
             ```
 
    .. tab-item:: CTRE-Phoenix5
@@ -253,9 +212,9 @@ Now let's look at various parts of the code.
          ```
 
          ```python
-         import wpilib           # Used to get the joysticks
-         import wpilib.drive     # Used for the DifferentialDrive class
-         import ctre             # CTRE library
+         import wpilib                            # Used to get the joysticks
+         from wpilib import DifferentialDrive     # Used for the DifferentialDrive class
+         import ctre                              # CTRE library
          ```
 
 Our code needs to reference the components of WPILib that are used. In C++ this is accomplished using ``#include`` statements; in Java and Python it is done with ``import`` statements. The program references classes for ``Gamepad`` (for driving), ``PWMSparkMax`` / ``TalonFX`` / ``CANSparkMax`` / ``WPI_TalonSRX`` (for controlling motors), ``TimedRobot`` (the base class used for the example), ``Timer`` (used for autonomous), and ``DifferentialDrive`` (for connecting the Gamepad to the motors).
@@ -342,7 +301,7 @@ Our code needs to reference the components of WPILib that are used. In C++ this 
                  super().__init__()
                  self.leftDrive = phoenix6.hardware.TalonFX(1)
                  self.rightDrive = phoenix6.hardware.TalonFX(2)
-                 self.robotDrive = wpilib.drive.DifferentialDrive(
+                 self.robotDrive = DifferentialDrive(
                      self.leftDrive, self.rightDrive
                  )
                  self.controller = wpilib.Gamepad(0)
@@ -389,11 +348,24 @@ Our code needs to reference the components of WPILib that are used. In C++ this 
          .. tab-item:: Python
             :sync: python
 
-            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/robotpy-rev/bc3ebc4/examples/getting-started/robot.py
-               :language: python
-               :linenos:
-               :lines: 13-30
-               :lineno-start: 13
+            ```python
+            class MyRobot(wpilib.TimedRobot):
+               def robotInit(self):
+                  """
+                  This function is called upon program startup and
+                  should be used for any initialization code.
+                  """
+                  self.leftDrive = rev.SparkMax(0, 1, rev.SparkMax.MotorType.kBrushless)
+                  self.rightDrive = rev.SparkMax(0, 2, rev.SparkMax.MotorType.kBrushless)
+                  self.robotDrive = DifferentialDrive(self.leftDrive, self.rightDrive)
+                  self.controller = wpilib.Gamepad(0)
+                  self.timer = wpilib.Timer()
+
+                  # We need to invert one side of the drivetrain so that positive voltages
+                  # result in both sides moving forward. Depending on how your robot's
+                  # gearbox is constructed, you might have to invert the left side instead.
+                  self.rightDrive.setInverted(True)
+            ```
 
    .. tab-item:: CTRE-Phoenix5
       :sync: ctre5
@@ -430,11 +402,24 @@ Our code needs to reference the components of WPILib that are used. In C++ this 
          .. tab-item:: Python
             :sync: python
 
-            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/robotpy-ctre/5b8d33f/examples/getting-started/robot.py
-               :language: python
-               :linenos:
-               :lines: 13-30
-               :lineno-start: 13
+            ```python
+            class MyRobot(wpilib.TimedRobot):
+               def robotInit(self):
+                  """
+                  This function is called upon program startup and
+                  should be used for any initialization code.
+                  """
+                  self.leftDrive = ctre.WPI_TalonFX(1)
+                  self.rightDrive = ctre.WPI_TalonFX(2)
+                  self.robotDrive = DifferentialDrive(self.leftDrive, self.rightDrive)
+                  self.controller = wpilib.Gamepad(0)
+                  self.timer = wpilib.Timer()
+
+                  # We need to invert one side of the drivetrain so that positive voltages
+                  # result in both sides moving forward. Depending on how your robot's
+                  # gearbox is constructed, you might have to invert the left side instead.
+                  self.rightDrive.setInverted(True)
+            ```
 
 The sample robot in our examples will have an Xbox Controller (or other Gamepad) on USB port 0 for arcade drive and two motors on PWM ports 0 and 1 (Vendor examples use CAN with IDs 1 and 2). Here we create objects of type ``DifferentialDrive`` (robotDrive), ``Gamepad`` (controller) and ``Timer`` (timer). This section of the code does three things:
 
@@ -540,44 +525,14 @@ Like in Autonomous, the Teleop mode has a ``TeleopInit`` and ``TeleopPeriodic`` 
 
 Utility Mode is used for testing robot functionality or running other code that shouldn't be run in a match. Similar to ``TeleopInit``, the ``UtilityInit`` and ``UtilityPeriodic`` methods are provided here for illustrative purposes only.
 
+## Sync Code (Python only)
+
+For Python project, make sure to run the WPILib Command Palette command :guilabel:`RobotPy: Sync Robot Code` while online before connecting to your robot and deploying.
+
 ## Deploying the Project to a Robot
 
-.. tab-set::
+In Visual Studio Code, click the WPILib logo in the top right to launch the WPILib Command Palette. Select :guilabel:`Deploy Robot Code` to deploy the code to the robot.
 
-   .. tab-item:: Java/C++
+.. note:: The run button in VS Code's debug view is not used to run robot code. Instead, use the :guilabel:`Deploy Robot Code` command as described above. The debug view's run button is used for running and debugging code on the local machine in simulation, which is not applicable for robot code that runs on Systemcore.
 
-      In Visual Studio Code, click the WPILib logo in the top right to launch the WPILib Command Palette. Select :guilabel:`Deploy Robot Code` to deploy the code to the robot.
-
-      .. note:: The run button in VS Code's debug view is not used to run robot code. Instead, use the :guilabel:`Deploy Robot Code` command as described above. The debug view's run button is used for running and debugging code on the local machine in simulation, which is not applicable for robot code that runs on Systemcore.
-
-      For more detailed instructions, see :ref:`Deploy Java/C++ code <docs/software/vscode-overview/deploying-robot-code:Building and Deploying Robot Code>`.
-
-   .. tab-item:: Python
-
-      In the terminal, run the following command to deploy the code to the robot:
-
-      .. tab-set::
-
-         .. tab-item:: Windows
-            :sync: windows
-
-            ```sh
-            py -3 -m robotpy deploy
-            ```
-
-         .. tab-item:: macOS
-            :sync: macos
-
-            ```sh
-            python3 -m robotpy deploy
-            ```
-
-         .. tab-item:: Linux
-            :sync: linux
-
-            ```sh
-            python3 -m robotpy deploy
-            ```
-
-      For more detailed instructions, see :doc:`Deploy Python code </docs/software/python/subcommands/deploy>`.
-
+For more detailed instructions, see :ref:`Deploy Java/C++ code <docs/software/vscode-overview/deploying-robot-code:Building and Deploying Robot Code>` or :doc:`Deploy Python code </docs/software/python/subcommands/deploy>`.
