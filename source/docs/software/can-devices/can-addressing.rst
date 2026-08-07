@@ -46,33 +46,33 @@ Currently assigned values can be found in the table below. If you wish
 to have a manufacturer ID assigned from the ``Reserved``\ pool, please
 submit a request to FIRST.
 
-===================== ==========
+============================== ==========
 Manufacturer
-===================== ==========
-Broadcast             0
-NI                    1
-Limelight             2
-FIRST                 3
-CTR Electronics       4
-REV Robotics          5
-Grapple               6
-MindSensors           7
-Team Use              8
-Kauai Labs            9
-Copperforge           10
-Playing With Fusion   11
-Studica               12
-The Thrifty Bot       13
-Redux Robotics        14
-AndyMark              15
-Vivid Hosting         16
-Vertos Robotics       17
-SWYFT Robotics        18
-Lumyn Labs            19
-Brushland Labs        20
-Reserved              21-254
-Control System (Low Priority) 255
-===================== ==========
+============================== ==========
+Broadcast                      0
+NI                             1
+Limelight                      2
+FIRST                          3
+CTR Electronics                4
+REV Robotics                   5
+Grapple                        6
+MindSensors                    7
+Team Use                       8
+Kauai Labs                     9
+Copperforge                    10
+Playing With Fusion            11
+Studica                        12
+The Thrifty Bot                13
+Redux Robotics                 14
+AndyMark                       15
+Vivid Hosting                  16
+Vertos Robotics                17
+SWYFT Robotics                 18
+Lumyn Labs                     19
+Brushland Labs                 20
+Reserved                       21-254
+Control System (Low Priority)  255
+============================== ==========
 
 #### API/Message Identifier
 
