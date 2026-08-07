@@ -366,7 +366,14 @@ directly on the Systemcore with no local install.
       ^^^
       The standard FTC path planning library for REV Duo teams.
       Separate from WPILib. FTC Systemcore teams will use
-      PathPlanner/Choreo (planned for 2028).
+   .. grid-item-card:: RoadRunner and PedroPathing
+      :class-card: sw-card-ftc
+
+      **FTC REV Duo**
+      ^^^
+      Libraries for generating autonomous paths and trajectories. 
+      RoadRunner focuses on time consistency, while Pedro Pathing
+      focuses on maximizing speed. 
 
 .. rubric:: Shared Concepts Across Programs
 
