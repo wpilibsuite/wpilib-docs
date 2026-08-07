@@ -264,3 +264,7 @@ Systemcore provides an information packet that can be used to read match state a
 +-----------------------+------+--------------+
 
 This packet is _not_ forwarded by Motioncore to other buses. This packet is only sent on the bus that the robot controller is connected to. This means that if a vendor is expecting to need this information while connected to Motioncore, they must send it themselves from their vendor library.
+
+This packet is sent once a second.
+
+When the bus is configured for FD, this packet is sent as a CAN FD frame with the bit rate shift enabled. When the bus is not configured for FD, this packet is sent as a standard CAN frame. The content and arbitration ID does not change between the modes.
