@@ -70,7 +70,8 @@ Vertos Robotics       17
 SWYFT Robotics        18
 Lumyn Labs            19
 Brushland Labs        20
-Reserved              21-255
+Reserved              21-254
+Control System (Low Priority) 255
 ===================== ==========
 
 #### API/Message Identifier
@@ -142,7 +143,7 @@ device specific broadcast messages.
 FIRST CAN Nodes which implement actuator control capability (motor
 controllers, relays, pneumatics controllers, etc.) must implement a way
 to verify that the robot is enabled and that commands originate with the
-main robot controller (i.e. the roboRIO).
+main robot controller (i.e. Systemcore).
 
 ## Broadcast Messages
 
@@ -187,63 +188,39 @@ For CAN Nodes to be accepted for use in the FIRST System, they must:
 
 ## Universal Heartbeat
 
-The roboRIO provides a universal CAN heartbeat that any device on the bus can listen and react to. This heartbeat is sent every 20 ms. The heartbeat has a full CAN ID of ``0x01011840`` (which is the NI Manufacturer ID, RobotController type, Device ID 0 and API ID ``0x061``). It is an 8 byte CAN packet with the following bitfield layout.
+Systemcore provides a universal CAN heartbeat that any device on the bus can listen and react to. This heartbeat is sent every 20 ms. The heartbeat has a full CAN ID of ``0x01011840`` (which is the NI Manufacturer ID, RobotController type, Device ID 0 and API ID ``0x061``). It is an 8 byte CAN packet with the following bitfield layout.
 
 +-----------------------+------+--------------+
 | Description           | Byte | Width (bits) |
 +=======================+======+==============+
-| Match time (seconds)  | 8    | 8            |
+| High Reserved Bits    | 7-5  | 23           |
 +-----------------------+------+--------------+
-| Match number          | 6-7  | 10           |
+| FTC Motor Override    | 5    | 1            |
 +-----------------------+------+--------------+
-| Replay number         | 6    | 5            |
+| Red alliance          | 4    | 1            |
 +-----------------------+------+--------------+
-| FTC Motor Override    | 6    | 1            |
+| Enabled               | 4    | 1            |
 +-----------------------+------+--------------+
-| Red alliance          | 5    | 1            |
+| Autonomous mode       | 4    | 1            |
 +-----------------------+------+--------------+
-| Enabled               | 5    | 1            |
+| Test mode             | 4    | 1            |
 +-----------------------+------+--------------+
-| Autonomous mode       | 5    | 1            |
+| System watchdog       | 4    | 1            |
 +-----------------------+------+--------------+
-| Test mode             | 5    | 1            |
-+-----------------------+------+--------------+
-| System watchdog       | 5    | 1            |
-+-----------------------+------+--------------+
-| Tournament type       | 5    | 3            |
-+-----------------------+------+--------------+
-| Time of day (year)    | 4    | 6            |
-+-----------------------+------+--------------+
-| Time of day (month)   | 3-4  | 4            |
-+-----------------------+------+--------------+
-| Time of day (day)     | 3    | 5            |
-+-----------------------+------+--------------+
-| Time of day (seconds) | 2-3  | 6            |
-+-----------------------+------+--------------+
-| Time of day (minutes) | 1-2  | 6            |
-+-----------------------+------+--------------+
-| Time of day (hours)   | 1    | 5            |
+| Low Reserved Bits     | 4-0  | 35           |
 +-----------------------+------+--------------+
 
 ```c++
 struct [[gnu::packed]] RobotState {
-  uint64_t matchTimeSeconds : 8;
-  uint64_t matchNumber : 10;
-  uint64_t replayNumber : 5;
+  uint64_t reserved_high : 23;
   uint64_t ftcMotorOverride : 1;
   uint64_t redAlliance : 1;
   uint64_t enabled : 1;
   uint64_t autonomous : 1;
   uint64_t testMode : 1;
   uint64_t systemWatchdog : 1;
-  uint64_t tournamentType : 3;
-  uint64_t timeOfDay_yr : 6;
-  uint64_t timeOfDay_month : 4;
-  uint64_t timeOfDay_day : 5;
-  uint64_t timeOfDay_sec : 6;
-  uint64_t timeOfDay_min : 6;
-  uint64_t timeOfDay_hr : 5;
-};
+  uint64_t reserved_low : 35;
+}; // This definition only works on GCC linux little endian systems.
 ```
 
 If the ``System watchdog`` flag is set, motor controllers are enabled. If 100 ms has passed since this packet was received, the robot program can be considered hung, and devices should act as if the robot has been disabled.
@@ -251,3 +228,39 @@ If the ``System watchdog`` flag is set, motor controllers are enabled. If 100 ms
 Note that all fields except ``Enabled``, ``Autonomous mode``, ``Test mode``, ``FTC Motor Override`` and ``System watchdog`` will contain invalid values until an arbitrary time after the Driver Station connects.
 
 The ``FTC Motor Override`` flag is set when the a motor controller hardware client is allowing enablement of FTC motors without a DS connected. In this state, the robot code will be disabled.
+
+When the bus is configured for FD, this packet is sent as a CAN FD frame with the bit rate shift enabled. This allows devices to detect if the bus has been configured for FD, and that they can safely send FD frames. If the bus is not configured for FD, this packet is sent as a standard CAN frame. The content and arbitration ID does not change between the modes.
+
+These packets are forwarded by Motioncore to all 20 Motioncore CAN buses. The forwarded packets are always CAN 2.0.
+
+## System Information Packets
+
+Systemcore provides an information packet that can be used to read match state and system time. Additionally, this packet contains the bus number, which can be used to determine if buses are crossed. This information is encoded into the arbitration ID. The arbitration ID for this packet is ``0x01FF10XX`` (which is the Control System (Low Priority) ID, RobotController type, Device ID bus number and API ID ``0x100``). The bus id is encoded as the device number in the arbitration ID. This means that if vendors want to be able to read this packet on any bus, they should mask out the device ID, and treat any device ID as this packet. It is an 8 byte CAN packet with the following bitfield layout.
+
++-----------------------+------+--------------+
+| Description           | Byte | Width (bits) |
++=======================+======+==============+
+| Match time (seconds)  | 7    | 8            |
++-----------------------+------+--------------+
+| Match number          | 5-6  | 10           |
++-----------------------+------+--------------+
+| Replay number         | 5    | 5            |
++-----------------------+------+--------------+
+| Tournament type       | 4-5  | 3            |
++-----------------------+------+--------------+
+| Reserved.             | 4    | 5            |
++-----------------------+------+--------------+
+| Time of day (year)    | 3    | 6            |
++-----------------------+------+--------------+
+| Time of day (month)   | 2-3  | 4            |
++-----------------------+------+--------------+
+| Time of day (day)     | 2    | 5            |
++-----------------------+------+--------------+
+| Time of day (seconds) | 1-2  | 6            |
++-----------------------+------+--------------+
+| Time of day (minutes) | 0-1  | 6            |
++-----------------------+------+--------------+
+| Time of day (hours)   | 0    | 5            |
++-----------------------+------+--------------+
+
+This packet is _not_ forwarded by Motioncore to other buses. This packet is only sent on the bus that the robot controller is connected to. This means that if a vendor is expecting to need this information while connected to Motioncore, they must send it themselves from their vendor library.
