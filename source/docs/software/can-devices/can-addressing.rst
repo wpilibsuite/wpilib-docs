@@ -168,7 +168,7 @@ Only Disable is currently sent by Systemcore. The System Reset and System Resume
 
 These packets are forwarded over Motioncore to all Motioncore buses.
 
-When the bus is configured for FD, this packet is sent as a CAN FD frame with the bit rate shift enabled. When the bus is not configured for FD, this packet is sent as a standard CAN frame. The content and arbitration ID does not change between the modes.
+This packet is always sent as a CAN 2.0 frame, it is never sent as an FD frame.
 
 ## Requirements for FIRST CAN Nodes
 For CAN Nodes to be accepted for use in the FIRST System, they must:
