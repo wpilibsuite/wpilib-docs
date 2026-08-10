@@ -1,21 +1,19 @@
 .. include:: <isonum.txt>
 
-# FRC Driver Station Powered by NI LabVIEW
+# FIRST Driver Station
 
-This article describes the use and features of the FRC\ |reg| Driver Station Powered by NI LabVIEW.
+This article describes the use and features of the FIRST\ |reg| Driver Station.
 
 For information on installing the Driver Station software see :doc:`/docs/zero-to-robot/step-2/first-driver-station`.
 
-## Starting the FRC Driver Station
+## Starting the FIRST Driver Station
 
-.. image:: images/driver-station/ds-icon.png
-  :alt: This is the FRC Driver Station icon.
+.. image:: images/driver-station/first-ds-icon.png
+  :alt: This is the FIRST Driver Station icon.
 
-The FRC Driver Station can be launched by double-clicking the icon on the Desktop or by selecting Start->All Apps->FRC Driver Station.
+The FIRST Driver Station can be launched by double-clicking the icon on the Desktop or by selecting Start->All Apps->FIRST Driver Station.
 
-.. todo:: Update for new DS
-
-.. note:: By default the FRC Driver Station launches :doc:`/docs/software/dashboards/elastic`.  It can also be configured on :ref:`docs/software/driverstation/driver-station:Setup Tab` to launch other dashboards, including ones not listed by following the instructions in :doc:`/docs/software/driverstation/manually-setting-the-driver-station-to-start-custom-dashboard`. WPILib must be :ref:`installed <docs/zero-to-robot/step-2/wpilib-setup:WPILib Installation Guide>` to use Elastic.
+.. note:: By default the FIRST Driver Station does not launch a dashboard, but it can be configured on :ref:`docs/software/firstdriverstation/driver-station:Settings Tab` to launch a dashboard, including ones not listed by following the instructions in :doc:`/docs/software/firstdriverstation/manually-setting-the-driver-station-to-start-custom-dashboard`. WPILib must be :ref:`installed <docs/zero-to-robot/step-2/wpilib-setup:WPILib Installation Guide>` to use Elastic.
 
 ## Driver Station Key Shortcuts
 
@@ -24,25 +22,8 @@ The FRC Driver Station can be launched by double-clicking the icon on the Deskto
 * :kbd:`Enter` - Disable the Robot. If in match mode, will stop the match. Otherwise will just disable the robot.
 * :kbd:`Space` - Emergency Stop the robot. After an emergency stop is triggered the roboRIO will need to be rebooted before the robot can be enabled again.
 * :kbd:`Backspace` - A-Stops the robot. In match mode, this will disable the robot for the rest of autonomous. In auto mode, this will disable the robot.
-* :kbd:`LeftControl` - Will refresh the currently connected joystick lists. Newly connected joysticks are not enumerated unless the robot is disabled or the DS is on the gamepad screen. This is because enumerating a newly connected joystick can hang the joystick thread, which we don't want to occur while enabled. This shortcut allows you to force a reenumeration on any screen on the DS. If on the gamepad screen, enumeration will always occur.
+* :kbd:`Left_Control` - Will refresh the currently connected joystick lists. Newly connected joysticks are not enumerated unless the robot is disabled or the DS is on the gamepad screen. This is because enumerating a newly connected joystick can hang the joystick thread, which we don't want to occur while enabled. This shortcut allows you to force a reenumeration on any screen on the DS. If on the gamepad screen, enumeration will always occur.
 * :kbd:`Esc` + :kbd:`I` - When held for 1 second, will reset an E-Stop.
-
-
-.. only:: html
-
-   .. video:: images/driver-station/ds-astop.mp4
-      :loop:
-      :width: 900
-      :autoplay:
-      :muted:
-      :alt: Driver Station flashing orange in A-Stop mode
-
-.. only:: not html
-
-    .. figure:: images/driver-station/ds-astop.png
-       :alt: Driver Station flashing orange in A-Stop mode
-
-       View this page in the web documentation for an animation of the A-Stop behavior
 
 .. note:: Space bar will E-Stop the robot regardless of if the Driver Station window has focus or not
 
@@ -51,9 +32,9 @@ The FRC Driver Station can be launched by double-clicking the icon on the Deskto
 ## Setting Up the Driver Station
 
 .. image:: images/driver-station/ds-setup.png
-  :alt: The team number box on the setup (gear) tab.
+  :alt: The team number box on the settings (gear) tab.
 
-The DS should be set to your team number in order to connect to your robot. In order to do this click the Setup tab then enter your team number in the team number box. Press return or click outside the box for the setting to take effect.
+The DS should be set to your team number in order to connect to your robot. In order to do this click the Settings tab then enter your team number in the team number box. Press return or click outside the box for the setting to take effect.
 
 PCs will typically have the correct network settings for the DS to connect to the robot already, but if not, make sure your Network adapter is set to :term:`DHCP`.
 
@@ -71,138 +52,117 @@ The Status Pane of the Driver Station is located in the center of the display an
 
 ## Operation Tab
 
-.. image:: images/driver-station/ds-operation-tab.png
+.. image:: images/driver-station/control-tab.png
   :alt: This is the first tab from the top on the left hand side.
 
-The Operations Tab is used to control the mode of the robot and provide additional key status indicators while the robot is running.
+The Control Tab is used to control the mode of the robot and provide additional key status indicators while the robot is running.
 
-1. Robot Mode - This section controls the Robot Mode.
-
+1. OpMode (operational mode) - This section allows you to select an existing Op Mode to run during a specific match period.
+2. Robot Mode - This section controls the Robot Mode.
    - Teleoperated Mode causes the robot to run the code in the Teleoperated portion of the match.
    - Autonomous Mode causes the robot to run the code in the Autonomous portion of the match.
-   - Practice Mode causes the robot to cycle through the same transitions as an FRC match after the Enable button is pressed (timing for practice mode can be found on the setup tab). When Practice Mode is in use, the DS will flash the background orange to indicate a pending enable (either the start of Autonomous or the start of Teleop after an A-Stop).
-   - Test Mode is an additional mode where test code that doesn't run in a regular match can be tested.
+   - Utility Mode is an additional mode where code that doesn't run in a regular match can be tested.
+   - Match Mode (formerly called Practice Mode) causes the robot to cycle through the same transitions as an FRC match after the Enable button is pressed (timing for match mode can be found on the setup tab). When Match Mode is in use, the DS will flash the background orange to indicate a pending enable (either the start of Autonomous or the start of Teleop after an A-Stop).
+3. Elapsed Time & Team Station - Indicates the amount of time the robot has been enabled, and when not connected to FMS, sets the team station to transmit to the robot.
+4. Enable/Disable - These controls enable and disable the robot. See also `Driver Station Key Shortcuts`_.
 
-2. Enable/Disable - These controls enable and disable the robot. See also `Driver Station Key Shortcuts`_.
-3. Elapsed Time - Indicates the amount of time the robot has been enabled.
-4. PC Battery - Indicates current state of DS PC battery and whether the PC is plugged in.
-5. PC CPU% - Indicates the CPU Utilization of the DS PC.
-6. Window Mode - When not on the Driver account on the Classmate allows the user to toggle between floating (arrow) and docked (rectangle).
-7. Team Station - When not connected to FMS, sets the team station to transmit to the robot.
+.. note:: When connected to the Field Management System the team station control in Section 3 will be greyed out.
 
-.. note:: When connected to the Field Management System the controls in sections 1 and 2 will be replaced by the words FMS Connected and the control in Section 7 will be greyed out.
+## Gamepad Tab
 
-## Diagnostics Tab
-
-.. image:: images/driver-station/ds-diagnostics-tab.png
+.. image:: images/driver-station/gamepad-tab.png
   :alt: This is the second tab from the top on the left hand side.
 
-The Diagnostics Tab contains additional status indicators that teams can use to diagnose issues with their robot:
+The Gamepad Tab includes information about all of the Gamepads connected to the DS.
 
-1. DS Version - Indicates the Driver Station Version number.
-2. roboRIO Image Version - String indicating the version of the roboRIO Image.
-3. WPILib Version - String indicating the version of WPILib in use.
-4. :term:`CAN` Device Versions - String indicating the firmware version of devices connected to the CAN bus. These items may not be present if the CTRE Phoenix Framework has not been loaded.
-5. Memory Stats - This section shows stats about the roboRIO memory.
-6. Connection Indicators - The top half of these indicators show connection status to various components.
+1. Connected Devices - Shows the list of connected Gamepads/devices, there is an option to lock a device to a specific slot. The DS will save the slot assignment and use in future connections (this can be unreliable if the gamepad is not **uniquely identifiable**).
+2. Gamepad Mapping - Built-in button mappings for common controllers using [SDL](https://www.libsdl.org/).
 
-   - "Enet Link" indicates the computer has something connected to the ethernet port.
-   - "Robot Radio" indicates the ping status to the robot wireless bridge at 10.XX.YY.1.
-   - "Robot" indicates the ping status to the roboRIO using mDNS (with a fallback of a static 10.TE.AM.2 address).
-   - "FMS" indicates if the DS is receiving packets from FMS (this is NOT a ping indicator).
+### Re-Arranging and Locking Devices
 
-7. Network Indicators - The second section of indicators indicates status of network adapters and firewalls. These are provided for informational purposes; communication may be established even with one or more unlit indicators in this section.
+.. image:: images/driver-station/gamepad-locking.png
+  :alt: USB Order box where you can click and drag to rearrange the joysticks.
 
-   - "Enet" indicates the IP address of the detected Ethernet adapter
-   - "WiFi" indicates if a wireless adapter has been detected as enabled
-   - "USB" indicates if a roboRIO USB connection has been detected
-   - "Firewall" indicates if any firewalls are detected as enabled. Enabled firewalls will show in orange (Dom = Domain, Pub = Public, Prv = Private)
+The Driver Station has the capability of "locking" a USB device into a specific slot. This is done automatically if the device is dragged to a new position and can also be triggered by checking the locked option. "Locked" devices will show up with an underline under the device. A locked device will reserve its slot even when the device is not connected to the computer (shown crossed out). Devices can be unlocked (and unconnected devices removed) by unchecking the locked box.
 
-8. :guilabel:`Reboot roboRIO` - This button attempts to perform a remote reboot of the roboRIO (after clicking through a confirmation dialog).
-9. :guilabel:`Restart Robot Code` - This button attempts to restart the code running on the robot (but not restart the OS).
+.. note:: If you have two or more of the same device, they should maintain their position as long as all devices remain plugged into the computer in the same ports they were locked in. If you switch the ports of two identical devices the lock should follow the port, not the device. If you re-arrange the ports (take one device and plug it into a new port instead of swapping) the behavior is not determinate (the devices may swap slots). If you unplug one or more of the set of devices, the positions of the others may move; they should return to the proper locked slots when all devices are reconnected.
 
-## Setup Tab
+## Settings Tab
 
-.. image:: images/driver-station/ds-setup-tab.png
+.. image:: images/driver-station/settings-tab(1).png
   :alt: This is the third tab from the top on the left hand side.
 
 The Setup Tab contains a number of buttons teams can use to control the operation of the Driver Station:
 
-1. :guilabel:`Team Number` - Should contain your FRC Team Number. This controls the mDNS name that the DS expects the robot to be at. Shift clicking on the dropdown arrow will show all roboRIO names detected on the network for troubleshooting purposes.
-2. :guilabel:`Dashboard Type` - Controls what Dashboard is launched by the Driver Station. :guilabel:`Default` launches the file pointed to by the "FRC DS Data Storage.ini" (for more information about setting a :ref:`custom dashboard <docs/software/driverstation/manually-setting-the-driver-station-to-start-custom-dashboard:Manually Setting the Driver Station to Start Custom Dashboard>`). By default this is Dashboard.exe in the Program Files (x86)\\FRC Dashboard folder. :guilabel:`LabVIEW` attempts to launch a dashboard at the default location for a custom built LabVIEW dashboard, but will fall back to the default if no dashboard is found. :guilabel:`SmartDashboard` and :guilabel:`Shuffleboard` launch the respective dashboards included with the C++ and Java WPILib installation.  :guilabel:`Remote` forwards LabVIEW dashboard data to the IP specified in :guilabel:`Dashboard IP` field.
+1. :guilabel:`Team Number` - Should contain your FRC Team Number. This controls the mDNS name that the DS expects the robot to be at.
+2. :guilabel:`Window Mode` - Controls how the DS window is displayed, either Windowed (floating window) or Docked (attached to the screen edge).
 3. :guilabel:`Game Data` - This box can be used for at home testing of the Game Data API. Text entered into this box will appear in the Game Data API on the Robot Side. When connected to FMS, this data will be populated by the field automatically.
-4. Practice Mode Timing - These boxes control the timing of each portion of the practice mode sequence. When the robot is enabled in practice mode the DS automatically proceeds through the modes indicated from top to bottom.
-5. Audio Control - This button controls whether audio tones are sounded when the Practice Mode is used.
+4. :guilabel:`Team Number Required` - When true, the DS requires a team number to be set before it will attempt to connect to the robot.
+5. :guilabel:`Disable Sounds` - When true, the DS will not play any audio notifications.
+6. :guilabel:`Allow Joysticks in Auto` - When true, joystick input from the driver station is forwarded to the robot during the autonomous period.
+7. :guilabel:`Use WiFi Static Address` - When true, the DS uses a static IP address for the WiFi interface when connecting to the robot, when unchecked, the DS uses the default network configuration.
 
-## USB Devices Tab
+.. image:: images/driver-station/settings-tab(2).png
+  :alt: This is the third tab from the top on the left hand side.
 
-.. image:: images/driver-station/ds-usb-tab.png
-  :alt: This is the fourth tab from the top on the left hand side.
+1. :guilabel:`Restart Robot Code` - This button attempts to restart the code running on the robot (but not restart the OS).
+2. :guilabel:`Reboot Robot` - This button attempts to perform a remote reboot of the Systemcore (after clicking through a confirmation dialog).
+3. :guilabel:`Reset Times To FTC` - This button resets the times to FTC.
+4. :guilabel:`Reset Times To FRC` - This button resets the times to FRC.
+5. :guilabel:`About FIRST Driver Station` - This button launches a window with information about the DS.
 
-The USB Devices tab includes the information about the USB Devices connected to the DS
+.. image:: images/driver-station/settings-tab(3).png
+  :alt: This is the third tab from the top on the left hand side.
 
-1. USB Setup List - This contains a list of all compatible USB devices connected to the DS. Pressing a button on a device will highlight the name in green and put 2 \*s before the device name
-2. :guilabel:`Rescan` - This button will force a Rescan of the USB devices. While the robot is disabled, the DS will automatically scan for new devices and add them to the list. To force a complete re-scan or to re-scan while the robot is Enabled (such as when connected to FMS during a match) press F1 or use this button.
-3. Device indicators - These indicators show the current status of the Axes, buttons, and POV of the joystick.
-4. Rumble - For XInput devices (such as X-Box controllers) the Rumble control will appear. This can be used to test the rumble functionality of the device. The top bar is "Right Rumble" and the bottom bar is "Left Rumble". Clicking and holding anywhere along the bar will activate the rumble proportionally (left is no rumble = 0, right is full rumble = 1). This is a control only and will not indicate the Rumble value set in robot code.
+1. :guilabel:`Automatically Enable Teleop In Match Mode` - When true, match mode automatically enables teleop after auto.
+2. Match Mode Timing - Set the duration of each match period.
+3. :guilabel:`Dashboard` - The dashboard application to launch alongside the DS, defaults to none.
 
-### Re-Arranging and Locking Devices
+.. image:: images/driver-station/settings-tab(4).png
+  :alt: This is the third tab from the top on the left hand side.
 
-.. image:: images/driver-station/ds-usb-rearrange.png
-  :alt: USB Order box where you can click and drag to rearrange the joysticks.
+1. :guilabel:`Show Debug Graph` - When true, the debug graph is visable on the Graph tab.
+2. :guilabel:`Open Log Viewer In Browser` - Opens AdvantageScope Lite in a browser tab.
+3. Web Server API Key - Displays the API key for the Web Server
 
-The Driver Station has the capability of "locking" a USB device into a specific slot. This is done automatically if the device is dragged to a new position and can also be triggered by double clicking on the device. "Locked" devices will show up with an underline under the device. A locked device will reserve its slot even when the device is not connected to the computer (shown as grayed out and underlined). Devices can be unlocked (and unconnected devices removed) by double clicking on the entry.
+## Reporting Tab
 
-.. note:: If you have two or more of the same device, they should maintain their position as long as all devices remain plugged into the computer in the same ports they were locked in. If you switch the ports of two identical devices the lock should follow the port, not the device. If you re-arrange the ports (take one device and plug it into a new port instead of swapping) the behavior is not determinate (the devices may swap slots). If you unplug one or more of the set of devices, the positions of the others may move; they should return to the proper locked slots when all devices are reconnected.
+.. image:: images/driver-station/reporting-tab.png
+  :alt: This is the forth tab from the top on the left hand side.
 
-Example: The image above shows 4 devices:
+1. Versions - Shows versions of Drive Station, WPI, and Systemcore
+2. Additional reporting information - Displays information about CAN devices.
+3. :guilabel:`Renew DHCP Lease` - Renews DHCP lease and gets a new IP address.
 
-- A Locked "Logitech Attack 3" joystick. This device will stay in this position unless dragged somewhere else or unlocked
-- An unlocked "Logitech Extreme 3D" joystick
-- An unlocked "Gamepad F310 (Controller)" which is a Logitech F310 gamepad
-- A Locked, but disconnected "MadCatz GamePad (Controller)" which is a MadCatz Xbox 360 Controller
+## Graph Tab
 
-In this example, unplugging the Logitech Extreme 3D joystick will result in the F310 Gamepad moving up to slot 1. Plugging in the MadCatz Gamepad (even if the devices in Slots 1 and 2 are removed and those slots are empty) will result in it occupying Slot 3.
-
-## CAN/Power Tab
-
-.. image:: images/driver-station/ds-can-power-tab.png
-  :alt: This is the fifth tab from the top on the left hand side.
-
-The last tab on the left side of the DS is the CAN/Robot Power Tab. This tab contains information about the power status of the roboRIO and the status of the CAN bus:
-
-1. Comms Faults - Indicates the number of Comms faults that have occurred since the DS has been connected
-2. 12V Faults - Indicates the number of input power faults (Brownouts) that have occurred since the DS has been connected
-3. 6V/5V/3.3V Faults - Indicates the number of faults (typically caused by short circuits) that have occurred on the User Voltage Rails since the DS has been connected
-4. CAN Bus Utilization - Indicates the percentage utilization of the CAN bus
-5. CAN faults - Indicates the counts of each of the 4 types of CAN faults since the DS has been connected
-
-If a fault is detected, the indicator for this tab (shown in blue in the image above) will turn red.
-
-## Messages Tab
-
-.. image:: images/driver-station/ds-messages-tab.png
+.. image:: images/driver-station/graph-tab.png
   :alt: This is the first tab from the top on the right hand side.
 
-The Messages tab displays diagnostic messages from the DS, WPILib, User Code, and/or the roboRIO.
+The Graph tab plots and displays advanced indicators of robot status to help teams diagnose robot issues:
 
-To access settings for the Messages tab, click the Gear icon. This will display a menu that will allow you to clear the box, launch a larger Console window for viewing messages, launch the DS Log Viewer, launch a viewer for program timing, or download log files from the robot.
+1. The yellow line displays battery voltage.
+2. The orange line displays lost packets.
+3. The green line displays a graph of the ping.
+4. The red line displays a graph of the CPU.
 
-## Charts Tab
+## Logs Tab
 
-.. image:: images/driver-station/ds-charts-tab.png
+.. image:: images/driver-station/logs-tab.png
   :alt: This is the second tab from the top on the right hand side.
 
-The Charts tab plots and displays advanced indicators of robot status to help teams diagnose robot issues:
+The Logs tab displays diagnostic messages from the DS, WPILib, User Code, and/or the Systemcore.
 
-1. The top graph charts trip time in milliseconds in green (against the axis on the right) and lost packets per second in orange (against the axis on the left).
-2. The bottom graph plots battery voltage in yellow (against the axis on the left), roboRIO CPU in red (against the axis on the right), DS Requested mode as a continuous line on the bottom of the chart and robot mode as a discontinuous line above it.
-3. This key shows the colors used for the DS Requested and Robot Reported modes in the bottom chart.
-4. Chart scale - These controls change the time scale of the DS Charts.
-5. This button launches the :doc:`DS Log File Viewer <driver-station-log-viewer>`.
+## Display Tab
 
-The DS Requested mode is the mode that the Driver Station is commanding the robot to be in. The Robot Reported mode is what code is actually running based on reporting methods contained in the coding frameworks for each language.
+.. image:: images/driver-station/display-tab.png
+  :alt: This is the third tab from the top on the right hand side.
 
-## Both Tab
+The Display tab.
 
-The last tab on the right side is the Both tab which displays Messages and Charts side by side.
+## Alerts Tab
+
+.. image:: images/driver-station/alerts-tab.png
+  :alt: This is the forth tab from the top on the right hand side.
+
+The Alerts tab, it displays any alert text.

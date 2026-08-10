@@ -377,7 +377,6 @@ Community translations can be found in a variety of languages in the menu toward
    :caption: Software Tools
    :hidden:
 
-   docs/software/driverstation/index
    docs/software/firstdriverstation/index
    docs/software/wpilib-tools/robot-simulation/index
    docs/software/wpilib-tools/outlineviewer/index

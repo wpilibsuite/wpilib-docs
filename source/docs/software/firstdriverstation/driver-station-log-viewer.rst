@@ -2,10 +2,10 @@
 
 # Driver Station Log File Viewer
 
-In an effort to provide information to aid in debugging, the FRC\ |reg| Driver Station creates log files of important diagnostic data while running. These logs can be reviewed later using the FRC Driver Station Log Viewer. The Log Viewer can be found via the shortcut installed in the Start menu, in the FRC Driver Station folder in Program Files, or via the Gear icon in the Driver Station.
+In an effort to provide information to aid in debugging, the FRC\ |reg| Driver Station creates log files of important diagnostic data while running. These logs can be viewed using the Browser Log Viewer. The Browser Log Viewer can be openned via the :guilabel:`Open Log Viewer In Browser` in the Settings tab of the DS.
 
-.. image:: images/driver-station-log-viewer/open_ds_log_viewer_from_driver_station.png
-   :alt: Showing how to open the Log Viewer screen using the right console icon.
+.. image:: images/driver-station-log-viewer/logging.png
+   :alt: Showing how to launch the Log Viewer Webpage using the settings tab and view the log output from the logging tab on the right hand side.
 
 .. note:: Several alternative tools exist that provide similar functionality to the FRC Driver Station Log Viewer. :ref:`AdvantageScope <docs/software/dashboards/advantagescope:AdvantageScope>` is an option included in WPILib, and [DSLOG Reader](https://github.com/orangelight/DSLOG-Reader) is a third-party option. Note that WPILib offers no support for third-party projects.
 
