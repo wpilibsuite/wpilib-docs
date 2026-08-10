@@ -193,7 +193,9 @@ Systemcore provides a universal CAN heartbeat that any device on the bus can lis
 +-----------------------+------+--------------+
 | Description           | Byte | Width (bits) |
 +=======================+======+==============+
-| High Reserved Bits    | 7-5  | 23           |
+| Match Time (seconds)  | 7    | 8            |
++-----------------------+------+--------------+
+| High Reserved Bits    | 5-6  | 15           |
 +-----------------------+------+--------------+
 | FTC Motor Override    | 5    | 1            |
 +-----------------------+------+--------------+
@@ -212,7 +214,8 @@ Systemcore provides a universal CAN heartbeat that any device on the bus can lis
 
 ```c++
 struct [[gnu::packed]] RobotState {
-  uint64_t reserved_high : 23;
+  uint64_t match_time : 8;
+  uint64_t reserved_high : 15;
   uint64_t ftcMotorOverride : 1;
   uint64_t redAlliance : 1;
   uint64_t enabled : 1;
@@ -240,15 +243,13 @@ Systemcore provides an information packet that can be used to read match state a
 +-----------------------+------+--------------+
 | Description           | Byte | Width (bits) |
 +=======================+======+==============+
-| Match time (seconds)  | 7    | 8            |
+| Match number          | 6-7  | 10           |
 +-----------------------+------+--------------+
-| Match number          | 5-6  | 10           |
+| Replay number         | 6    | 3            |
 +-----------------------+------+--------------+
-| Replay number         | 5    | 5            |
+| Tournament type       | 6    | 3            |
 +-----------------------+------+--------------+
-| Tournament type       | 4-5  | 3            |
-+-----------------------+------+--------------+
-| Reserved.             | 4    | 5            |
+| Reserved.             | 4-5  | 16            |
 +-----------------------+------+--------------+
 | Time of day (year)    | 3    | 6            |
 +-----------------------+------+--------------+
@@ -262,6 +263,21 @@ Systemcore provides an information packet that can be used to read match state a
 +-----------------------+------+--------------+
 | Time of day (hours)   | 0    | 5            |
 +-----------------------+------+--------------+
+
+```c++
+struct [[gnu::packed]] SystemInformation {
+  uint64_t match_number : 10;
+  uint64_t replay_number : 3;
+  uint64_t tournament_type : 3;
+  uint64_t reserved : 16;
+  uint64_t time_of_day_year : 6;
+  uint64_t time_of_day_month : 4;
+  uint64_t time_of_day_day : 5;
+  uint64_t time_of_day_seconds : 6;
+  uint64_t time_of_day_minutes : 6;
+  uint64_t time_of_day_hours : 5;
+}; // This definition only works on GCC linux little endian systems.
+```
 
 This packet is _not_ forwarded by Motioncore to other buses. This packet is only sent on the bus that the robot controller is connected to. This means that if a vendor is expecting to need this information while connected to Motioncore, they must send it themselves from their vendor library.
 
