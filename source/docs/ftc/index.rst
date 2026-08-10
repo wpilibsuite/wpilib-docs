@@ -32,13 +32,13 @@ FRC: Java, Python, Blockly, and LabVIEW.
       Upgrading to Systemcore? Full WPILib documentation arrives for
       the 2027-2028 season. Start with the XRP to get ahead.
 
-   .. grid-item-card:: Returning FTC: REV Duo
+   .. grid-item-card:: Returning FTC: Android Based
       :link: https://ftc-docs.firstinspires.org/en/latest/
       :link-type: url
       :class-card: sw-card-ftc
 
-      Still programming with REV Duo? Continue with the FTC SDK as
-      normal. Full documentation at ftc-docs.firstinspires.org.
+      Still programming with FTC Legacy (Android Based)? Continue with the FTC SDK as normal.
+      Full documentation at ftc-docs.firstinspires.org.
 
    .. grid-item-card:: Coach / Mentor
       :class-card: sw-card-ftc
@@ -142,7 +142,7 @@ FRC: Java, Python, Blockly, and LabVIEW.
 
 .. note::
 
-   **Currently using REV Duo?**
+   **Currently using FTC Legacy (Android Based)?**
    Continue programming with the FTC SDK as normal.
    Full documentation at
    `ftc-docs.firstinspires.org <https://ftc-docs.firstinspires.org>`_.

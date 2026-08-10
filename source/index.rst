@@ -116,7 +116,7 @@ WPILib Documentation
              <span class="wl-num wl-ftc-text">FTC</span>
              <div>
                <div class="wl-card-title">FIRST Tech Challenge</div>
-               <div class="wl-card-desc">Smaller robots. WPILib support is now available via the Systemcore controller. REV Duo teams can still program with the FTC SDK.</div>
+               <div class="wl-card-desc">Smaller robots. WPILib support is available via the Systemcore controller. FTC Legacy (Android Based) teams can still program with the FTC SDK.</div>
              </div>
            </button>
          </div>
@@ -185,7 +185,7 @@ WPILib Documentation
            <div class="wl-card wl-card-shared">
              <span class="wl-num wl-shared-text" style="font-size:0.85rem;">NOW</span>
              <div>
-               <div class="wl-card-title">REV Control Hub / Expansion Hub (REV Duo)</div>
+               <div class="wl-card-title">FTC Legacy (Android based)</div>
                <div class="wl-card-desc">The current standard FTC control system. Program today using the FTC SDK with Java or Blocks. Fully supported for the current season.</div>
                <a href="https://ftc-docs.firstinspires.org" class="wl-card-link wl-shared-text" style="margin-top:10px;display:inline-block;">FTC SDK Docs (ftc-docs.firstinspires.org)</a>
              </div>
@@ -267,7 +267,7 @@ WPILib Documentation
              <div class="wl-ret-label wl-ftc-label">FTC</div>
              <h3 class="wl-ret-h">FTC Teams : Your Options Right Now</h3>
              <p style="font-size:0.875rem;margin-bottom:10px;">WPILib FTC support is now available with Systemcore. Here is where things stand for the 2027-2028 season:</p>
-             <strong style="font-size:0.875rem;">Using REV Control Hub / Expansion Hub (REV Duo)?</strong>
+             <strong style="font-size:0.875rem;">Using REV Control Hub / Expansion Hub (FTC Legacy (Android Based))?</strong>
              <ul style="font-size:0.82rem;margin-top:6px;">
                <li>Continue programming with the <strong>FTC SDK</strong> as normal : Java or Blocks</li>
                <li>Full documentation at <a href="https://ftc-docs.firstinspires.org">ftc-docs.firstinspires.org</a></li>

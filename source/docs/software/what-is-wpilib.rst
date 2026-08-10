@@ -10,7 +10,7 @@
 WPILib is the standard software library for programming
 *FIRST*\ |reg| robots.
 It provides the classes and tools needed to control motors, read sensors,
-communicate with the Driver Station, and run autonomous routines — across
+communicate with the Driver Station, and run autonomous routines across
 FRC\ |reg| and (from 2027-2028) FTC\ |reg| via Systemcore.
 
 .. image:: /assets/wpi-logo.png
@@ -91,10 +91,6 @@ FIRST\ |reg|, and volunteer developers from the community.
      - NetworkTables browser
      - ✓
      - ✓
-   * - **Shuffleboard**
-     - Older dashboard *(Removed 2027)*
-     - ✗
-     - ✗
 
 .. rubric:: Language Comparison
 
@@ -230,7 +226,7 @@ directly on the Systemcore with no local install.
    *Workspaces* with a Deploy button to select which one runs on
    the Systemcore. Simulation is not planned for OnBot environments.
 
-**FTC REV Duo**
+**FTC Legacy (Android Based)**
 
 .. grid:: 1 1 2 2
    :gutter: 3
@@ -238,16 +234,16 @@ directly on the Systemcore with no local install.
    .. grid-item-card:: OnBot Java / Android Studio
       :class-card: sw-card-ftc
 
-      **FTC (REV Duo)**
+      **FTC Legacy (Android Based)**
       ^^^
-      REV Duo teams use the FTC SDK with OnBot Java (browser-based)
+      Teams using the Android Based FTC SDK with OnBot Java (browser-based)
       or Android Studio. Documented at
       `ftc-docs.firstinspires.org <https://ftc-docs.firstinspires.org>`_.
 
    .. grid-item-card:: Blocks (FTC SDK)
       :class-card: sw-card-ftc
 
-      **FTC (REV Duo)**
+      **FTC Legacy (Android Based)**
       ^^^
       Visual block-based programming via the FTC SDK OnBot interface.
       Documented at
@@ -262,7 +258,7 @@ directly on the Systemcore with no local install.
    * - Feature
      - Desktop (VS Code)
      - OnBot (Java / Python / Blockly / LabVIEW)
-     - FTC REV Duo
+     - FTC Legacy (Android Based)
    * - **Languages**
      - Java, C++, Python
      - Java, Python, Blockly, LabVIEW
@@ -292,10 +288,13 @@ directly on the Systemcore with no local install.
      - Single-user (under investigation)
      - N/A
    * - **Driver Station**
-     - FRC DS (Windows)
-     - FRC DS (Windows)
+     - _FIRST_ DS (Windows, Mac, Linux)
+     - _FIRST_ DS (Windows, Mac, Linux)
      - Driver Hub / phone
 
+.. note::
+
+  Only the Windows Version of the _FIRST_ DS is competiton legal
 .. rubric:: Dashboards
 
 .. list-table::
@@ -314,12 +313,6 @@ directly on the Systemcore with no local install.
    * - **Glass**
      - ✓ Current
      - Built-in simulation UI and lightweight telemetry.
-   * - **SmartDashboard**
-     - *(Removed 2027)*
-     - Use Elastic instead.
-   * - **Shuffleboard**
-     - *(Removed 2027)*
-     - Use Elastic instead.
 
 .. rubric:: Vendor Libraries
 
@@ -330,7 +323,8 @@ directly on the Systemcore with no local install.
 
       Hardware vendors (REV, CTRE, etc.) ship WPILib extension
       libraries that add support for their specific motor controllers,
-      sensors, and accessories. They are installed
+      sensors, and accessories. In addition, software vendors (PhotonLib, PathPlannerLib, etc.)
+      ship libraries to support autonomous routines, trajectory and vision. They are installed
       **per project** via the VS Code Dependency Manager
       and do not carry over on project import.
 
@@ -352,28 +346,21 @@ directly on the Systemcore with no local install.
       :link-type: doc
       :class-card: sw-card-frc
 
-      **FRC**
+      **FRC and FTC + Systemcore**
       ^^^
       GUI tools for drawing autonomous paths. Both generate
       trajectory commands that slot into command-based robot programs.
       PathPlanner is more beginner-friendly; Choreo optimizes
       for time.
 
-   .. grid-item-card:: Road Runner
+   .. grid-item-card:: Road Runner and PedroPathing
       :class-card: sw-card-ftc
 
-      **FTC REV Duo**
+      **FTC Legacy (Android Based)**
       ^^^
-      The standard FTC path planning library for REV Duo teams.
-      Separate from WPILib. FTC Systemcore teams will use
-   .. grid-item-card:: RoadRunner and PedroPathing
-      :class-card: sw-card-ftc
-
-      **FTC REV Duo**
-      ^^^
-      Libraries for generating autonomous paths and trajectories. 
+      Libraries for generating autonomous paths and trajectories.
       RoadRunner focuses on time consistency, while Pedro Pathing
-      focuses on maximizing speed. 
+      focuses on maximizing speed.
 
 .. rubric:: Shared Concepts Across Programs
 
