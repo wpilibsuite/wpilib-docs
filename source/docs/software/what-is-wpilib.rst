@@ -294,7 +294,7 @@ directly on the Systemcore with no local install.
 
 .. note::
 
-  Only the Windows Version of the _FIRST_ DS is competiton legal
+  Only the Windows Version of the _FIRST_ DS is competition legal
 .. rubric:: Dashboards
 
 .. list-table::
