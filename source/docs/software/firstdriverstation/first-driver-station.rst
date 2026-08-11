@@ -13,7 +13,7 @@ For information on installing the Driver Station software see :doc:`/docs/zero-t
 
 The FIRST Driver Station can be launched by double-clicking the icon on the Desktop or by selecting Start->All Apps->FIRST Driver Station.
 
-.. note:: By default the FIRST Driver Station does not launch a dashboard, but it can be configured on :ref:`docs/software/firstdriverstation/driver-station:Settings Tab` to launch a dashboard, including ones not listed by following the instructions in :doc:`/docs/software/firstdriverstation/manually-setting-the-driver-station-to-start-custom-dashboard`. WPILib must be :ref:`installed <docs/zero-to-robot/step-2/wpilib-setup:WPILib Installation Guide>` to use Elastic.
+.. note:: By default the FIRST Driver Station does not launch a dashboard, but it can be configured on the :ref:`settings tab <docs/software/firstdriverstation/first-driver-station:Settings Tab>` to launch a dashboard, including ones not listed by following the instructions in :doc:`/docs/software/firstdriverstation/manually-setting-the-first-driver-station-to-start-custom-dashboard`. WPILib must be :ref:`installed <docs/zero-to-robot/step-2/wpilib-setup:WPILib Installation Guide>` to use Elastic.
 
 ## Driver Station Key Shortcuts
 
@@ -158,11 +158,13 @@ The Logs tab displays diagnostic messages from the DS, WPILib, User Code, and/or
 .. image:: images/driver-station/display-tab.png
   :alt: This is the third tab from the top on the right hand side.
 
-The Display tab.
+The DS Display tab.
 
 ## Alerts Tab
 
 .. image:: images/driver-station/alerts-tab.png
   :alt: This is the forth tab from the top on the right hand side.
 
-The Alerts tab, it displays any alert text.
+The Alerts tab displays any alert text.
+
+.. todo:: Add more information about the Display and Alerts tab
