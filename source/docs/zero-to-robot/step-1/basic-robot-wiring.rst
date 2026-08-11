@@ -1,6 +1,6 @@
 .. include:: <isonum.txt>
 
-# Introduction to FRC Robot Wiring
+# FRC Robot Wiring Walkthrough
 
 .. note::
 
@@ -11,11 +11,7 @@
 ## Overview
 .. warning:: The video shown below contains the OM5P radio used through the 2024 season. Teams outside China and Chinese Taipei should see :ref:`docs/zero-to-robot/step-1/basic-robot-wiring:Radio Power` for wiring info for the VH-109 radio used this season.
 
-.. raw:: html
-
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="https://www.youtube-nocookie.com/embed/lGgIhxYuSHM" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-    </div>
+.. youtube:: lGgIhxYuSHM
 
 ----
 
@@ -48,7 +44,7 @@
         Diagram courtesy of FRC\ |reg| Team 3161 and Stefen Acepcion.
 
 
-## Gather Materials
+## Step 1: Gather Materials
 
 Locate the following control system components and tools
 
@@ -85,11 +81,11 @@ Locate the following control system components and tools
       - For CTR PDP only: 5 mm Hex key (3/16" may work if metric is unavailable)
       - For CTR PDP only: 1/16" Hex key
 
-## Create the Base for the Control System
+## Step 2: Create the Base for the Control System
 
 For a test board, cut piece of 1/4" or 1/2" (6-12 mm) material (wood or plastic) approximately 24" x 16" (60 x 40 cm). For a Robot Quick Build control board see the supporting documentation for the proper size board for the chosen chassis configuration.
 
-## Layout the Core Control System Components
+## Step 3: Layout the Core Control System Components
 .. tab-set::
 
    .. tab-item:: REV
@@ -108,14 +104,14 @@ Lay out the components on the board. An example layout is shown in the image abo
 
 .. note:: A Vivid-Hosting has a [guide](https://frc-radio.vivid-hosting.net/getting-started/usage/mounting-your-radio) for mounting the VH-109 radio.
 
-## Fasten Components
+## Step 4: Fasten Components
 
 .. image:: images/how-to-wire-a-simple-robot/ziptie.png
   :alt: Using zipties to secure components down.
 
 Using the Dual Lock or hardware, fasten all components to the board. Note that in many FRC games robot-to-robot contact may be substantial and Dual Lock alone is unlikely to stand up as a fastener for many electronic components. Teams may wish to use nut and bolt fasteners or (as shown in the image above) cable ties, with or without Dual Lock to secure devices to the board.
 
-## Attach Robot Side Battery Connector
+## Step 5: Attach Robot Side Battery Connector
 
 .. tab-set::
 
@@ -157,7 +153,7 @@ Using the Dual Lock or hardware, fasten all components to the board. Note that i
       3. Using a 7/16" (11 mm) box end wrench, remove the nut on the "Batt" side of the main breaker and secure the positive terminal of the battery connector
 
 
-## Wire Breaker to Power Distribution
+## Step 6: Wire Breaker to Power Distribution
 
 .. tab-set::
 
@@ -192,7 +188,7 @@ Using the Dual Lock or hardware, fasten all components to the board. Note that i
       3. Using the 5 mm Allen wrench, secure the other end to the PDP positive terminal.
 
 
-## Insulate power connections
+## Step 7: Insulate Power Connections
 
 .. tab-set::
 
@@ -218,7 +214,7 @@ Using the Dual Lock or hardware, fasten all components to the board. Note that i
       2. Using the 1/16" Allen wrench, replace the PDP terminal cover
 
 
-## Motor Controller Power
+## Step 8: Motor Controller Power
 
 .. tab-set::
 
@@ -248,11 +244,7 @@ Using the Dual Lock or hardware, fasten all components to the board. Note that i
    .. tab-item:: CTR
       :sync: CTR
 
-      .. raw:: html
-
-       <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-           <iframe src="https://www.youtube-nocookie.com/embed/t-zb7j4ikHM" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-       </div>
+      .. youtube:: t-zb7j4ikHM
 
       The next step will involve using the Wago connectors on the PDP. To use the Wago connectors, insert a small flat blade screwdriver into the rectangular hole at a shallow angle then angle the screwdriver upwards as you continue to press in to actuate the lever, opening the terminal. Two sizes of Wago connector are found on the PDP:
 
@@ -282,13 +274,10 @@ Using the Dual Lock or hardware, fasten all components to the board. Note that i
       4. Attach the terminal to the motor controller input terminals (red to +, black to -)
 
 
-## Weidmuller Connectors
+## Step 9: Weidmuller Connectors
 
-.. raw:: html
-
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="https://www.youtube-nocookie.com/embed/SfkmyN9mYLA?si=dMHW1JCVkbpDjbu6&amp;start=39" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-    </div>
+.. youtube:: SfkmyN9mYLA
+   :url_parameters: ?start=39
 
 
 A number of the CAN and power connectors in the system use a Weidmuller LSF series wire-to-board connector. There are a few things to keep in mind when using this connector for best results:
@@ -303,7 +292,7 @@ After making the connection check to be sure that it is clean and secure:
 - Verify that there are no "whiskers" outside the connector that may cause a short circuit
 - Tug on the wire to verify that it is seated fully. If the wire comes out and is the correct gauge it needs to be inserted further and/or stripped back further. Occasionally the terminal may remain stuck open with the wire inserted and the button released even if the wire is stripped and inserted properly; in these cases wiggling the wire in and out a small amount will often allow the connector to latch shut and grip the wire.
 
-## roboRIO Power
+## Step 10: roboRIO Power
 .. tab-set::
 
    .. tab-item:: REV
@@ -338,7 +327,7 @@ After making the connection check to be sure that it is clean and secure:
       5. Using a very small flat screwdriver connect the wires to the power input connector of the roboRIO (red to V, black to C). Also make sure that the power connector is screwed down securely to the roboRIO.
 
 
-## Radio Power
+## Step 11: Radio Power
 
 [Vivid-Hosting Wiring Guide](https://frc-radio.vivid-hosting.net/getting-started/usage/wiring-your-radio)
 
@@ -377,7 +366,7 @@ After making the connection check to be sure that it is clean and secure:
 
 .. warning:: If powering the radio this way, the roboRIO must be connected via a PoE injector, modified ethernet cable, or to one of the `AUX` ports of the VH-109 with the corresponding DIP switch in the off (default) position.
 
-## Pneumatics Power (Optional)
+## Step 12: Pneumatics Power (Optional)
 
 .. tab-set::
 
@@ -418,7 +407,7 @@ After making the connection check to be sure that it is clean and secure:
       4. Cut and strip ~5/16" (~8 mm) from the end of the wire.
       5. Connect the wire to the PCM 12Vin terminals.
 
-## Ethernet Cables
+## Step 13: Ethernet Cables
 
 .. image:: images/how-to-wire-a-simple-robot/rio-port.png
   :alt: Power going from the PDP to the PCM.
@@ -433,7 +422,7 @@ Requires: an Ethernet cable
 
 .. warning:: DO NOT connect the Rev passive :term:`PoE` injector cable directly to the roboRIO. The roboRIO MUST connect to the socket end of the cable using an additional Ethernet cable as shown in the next step.
 
-## CAN Devices
+## Step 14: CAN Devices
 
 ### roboRIO to Pneumatics CAN
 
@@ -514,7 +503,7 @@ Requires: an Ethernet cable
       .. note:: See the :ref:`CAN Wiring Basics<docs/hardware/hardware-basics/can-wiring-basics:Termination>` if you need to terminate the CAN bus somewhere other than the PDP.
 
 
-## Motor Controller Signal Wires
+## Step 15: Motor Controller Signal Wires
 
 .. tab-set ::
 
@@ -550,7 +539,7 @@ Requires: an Ethernet cable
 
       When chaining controllers together using the provided connectors, make sure to use the provided retaining clip. If unavailable, secure the connection with a small ziptie, electrical tape, or other similar method.
 
-## Robot Signal Light
+## Step 16: Robot Signal Light
 
 .. image:: images/how-to-wire-a-simple-robot/rsl.jpg
   :alt: Robot Signal Light (rsl) wiring from roboRIO to RSL
@@ -566,7 +555,7 @@ Requires: Wire stripper, 2 pin cable, Robot Signal Light, 18 AWG (1 :math:`mm^2`
 
 .. tip:: You may wish to temporarily secure the RSL to the control board using cable ties or Dual Lock (it is recommended to move the RSL to a more visible location as the robot is being constructed)
 
-## Circuit Breakers
+## Step 17: Circuit Breakers
 
 .. tab-set ::
 
@@ -594,7 +583,7 @@ Requires: Wire stripper, 2 pin cable, Robot Signal Light, 18 AWG (1 :math:`mm^2`
 
       If working on a Robot Quick Build, stop here and insert the board into the robot chassis before continuing.
 
-## Motor Power
+## Step 18: Motor Power
 
 .. image:: images/how-to-wire-a-simple-robot/motor-power.jpg
   :alt: Connecting power from the motor to the motor controller.
@@ -629,13 +618,13 @@ For the SPARK or other non-integrated-wire controllers (bottom image):
 
 .. tip:: It is also recommended to put the robot on blocks so the wheels are off the ground before proceeding. This will prevent any unexpected movement from becoming dangerous.
 
-## Manage Wires
+## Step 19: Manage Wires
 
 Requires: Zip ties
 
 .. tip:: Now may be a good time to add a few zip ties to manage some of the wires before proceeding. This will help keep the robot wiring neat.
 
-## Connect Battery
+## Step 20: Connect Battery
 
 Connect the battery to the robot side of the Anderson connector. Power on the robot by moving the lever on the top of the 120A main breaker into the ridge on the top of the housing.
 

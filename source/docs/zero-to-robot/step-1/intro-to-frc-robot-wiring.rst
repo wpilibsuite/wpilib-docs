@@ -1,6 +1,6 @@
 .. include:: <isonum.txt>
 
-# Introduction to FRC Robot Wiring
+# FRC Robot Wiring Reference
 
 .. note::
 
