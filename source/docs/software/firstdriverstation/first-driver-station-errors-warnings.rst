@@ -1,16 +1,17 @@
 # Driver Station Errors/Warnings
 
+.. todo:: update for FIRST DS
+
 In an effort to provide both Teams and Volunteers (:term:`FTA` / :term:`CSA` / etc.) more information to use when diagnosing robot problems, a number of Warning and Error messages have been added to the Driver Station. These messages are displayed in the DS diagnostics tab when they occur and are also included in the DS Log Files that can be viewed with the Log File Viewer. This document discusses the messages produced by the DS (messages produced by WPILib can also appear in this box and the DS Logs).
 
 ## Joystick Unplugged
 
 ```text
-ERROR<Code>-44009 occurred at Driver Station
-<time>2/5/2013 4:43:54 PM <unique#>1
-FRC: A joystick was disconnected while the robot was enabled.
+Warning at org.wpilib.driverstation.internal.DriverStationBackend.reportJoystickWarning(DriverStationBackend.java:1835): Joystick on port 0 not available, check if controller is plugged in
+Warning Joystick on port 0 not available, check if controller is plugged in
 ```
 
-This error is triggered when a Joystick is unplugged. Contrary to the message text this error will be printed even if the robot is not enabled, or even connected to the DS. You will see a single instance of this message occur each time the Driver Station is started, even if Joysticks are properly connected and functioning.
+This error is triggered when a Joystick is used in code.
 
 .. note:: Joystick Unplugged warnings can be silenced by calling ``DriverStationBackend.silenceJoystickConnectionWarning(true)`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/driverstation/internal/DriverStationBackend.html#silenceJoystickConnectionWarning(boolean)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1internal_1_1_driver_station_backend.html#ac2acd40baeeb2cef1e7377cdbe862c68))
 
@@ -27,12 +28,10 @@ This Warning message is printed whenever the Driver Station loses communication 
 ## Ping Status
 
 ```text
-Warning<Code>44002 occurred at Ping Results: link-GOOD, DS radio(.4)-bad, robot radio(.1)-GOOD, cRIO(.2)-bad, FMS- bad Driver Station
-<time>2/6/2013 11:07:59 AM<unique#>5
-FRC: Driver Station ping status has changed.
+Ping Result: Robot Radio (.1): Bad, Robot (.2): Bad, Field AP (.4): Bad, FMS:Bad, Robot WiFi: Bad
 ```
 
-A Ping Status warning is generated each time the Ping Status to a device changes while the DS is not in communication with the roboRIO. As communications is being established when the DS starts up, a few of these warnings will appear as the Ethernet link comes up, then the connection to the robot radio, then the roboRIO (with :term:`FMS` mixed in if applicable). If communications are later lost, the ping status change may help identify at which component the communication chain broke.
+A Ping Status warning is generated each time the Ping Status to a device changes while the DS is not in communication with the Robot Controller. As communications is being established when the DS starts up, a few of these warnings will appear as the Ethernet link comes up, then the connection to the robot radio, then the Systemcore (with :term:`FMS` mixed in if applicable). If communications are later lost, the ping status change may help identify at which component the communication chain broke.
 
 ## Time Since Robot Boot
 
