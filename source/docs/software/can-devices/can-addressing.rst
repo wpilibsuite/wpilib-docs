@@ -46,9 +46,9 @@ Currently assigned values can be found in the table below. If you wish
 to have a manufacturer ID assigned from the ``Reserved``\ pool, please
 submit a request to FIRST.
 
-===================== ==========
+===================== ======
 Manufacturer
-===================== ==========
+===================== ======
 Broadcast             0
 NI                    1
 Limelight             2
@@ -71,7 +71,7 @@ SWYFT Robotics        18
 Lumyn Labs            19
 Brushland Labs        20
 Reserved              21-255
-===================== ==========
+===================== ======
 
 #### API/Message Identifier
 
@@ -154,11 +154,11 @@ below:
 ================= ==
 Description
 ================= ==
-Disable	          0
-System Halt	      1
+Disable           0
+System Halt       1
 System Reset      2
 Device Assign     3
-Device Query	  4
+Device Query      4
 Heartbeat         5
 Sync              6
 Update            7
