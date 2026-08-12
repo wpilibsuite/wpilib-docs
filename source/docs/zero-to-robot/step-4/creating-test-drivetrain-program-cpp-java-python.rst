@@ -183,8 +183,9 @@ Now let's look at various parts of the code.
             ```
 
             ```python
-            import wpilib           # Used to get the joysticks and DifferentialDrive class
-            import rev              # REV library
+            import wpilib                            # Used to get the joysticks
+            from wpilib import DifferentialDrive     # Used for the DifferentialDrive class
+            import rev                               # REV library
             ```
 
    .. tab-item:: CTRE-Phoenix5
@@ -213,7 +214,7 @@ Now let's look at various parts of the code.
          ```python
          import wpilib                            # Used to get the joysticks
          from wpilib import DifferentialDrive     # Used for the DifferentialDrive class
-         import phoenix5                          # Phoenix5 library
+         import ctre                              # CTRE library
          ```
 
 Our code needs to reference the components of WPILib that are used. In C++ this is accomplished using ``#include`` statements; in Java and Python it is done with ``import`` statements. The program references classes for ``Gamepad`` (for driving), ``PWMSparkMax`` / ``TalonFX`` / ``CANSparkMax`` / ``WPI_TalonSRX`` (for controlling motors), ``TimedRobot`` (the base class used for the example), ``Timer`` (used for autonomous), and ``DifferentialDrive`` (for connecting the Gamepad to the motors).
@@ -347,11 +348,11 @@ Our code needs to reference the components of WPILib that are used. In C++ this 
          .. tab-item:: Python
             :sync: python
 
-            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/robotpy-rev/2027.0.0a5/examples/getting-started/robot.py
+            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/robotpy-rev/bc3ebc4/examples/getting-started/robot.py
                :language: python
                :linenos:
-               :lines: 12-28
-               :lineno-start: 12
+               :lines: 13-30
+               :lineno-start: 13
 
    .. tab-item:: CTRE-Phoenix5
       :sync: ctre5
@@ -388,7 +389,7 @@ Our code needs to reference the components of WPILib that are used. In C++ this 
          .. tab-item:: Python
             :sync: python
 
-            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/robotpy-ctre/2026.1.0.1/examples/getting-started/robot.py
+            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/robotpy-ctre/5b8d33f/examples/getting-started/robot.py
                :language: python
                :linenos:
                :lines: 13-30
