@@ -348,24 +348,11 @@ Our code needs to reference the components of WPILib that are used. In C++ this 
          .. tab-item:: Python
             :sync: python
 
-            ```python
-            class MyRobot(wpilib.TimedRobot):
-               def robotInit(self):
-                  """
-                  This function is called upon program startup and
-                  should be used for any initialization code.
-                  """
-                  self.leftDrive = rev.SparkMax(0, 1, rev.SparkMax.MotorType.kBrushless)
-                  self.rightDrive = rev.SparkMax(0, 2, rev.SparkMax.MotorType.kBrushless)
-                  self.robotDrive = DifferentialDrive(self.leftDrive, self.rightDrive)
-                  self.controller = wpilib.Gamepad(0)
-                  self.timer = wpilib.Timer()
-
-                  # We need to invert one side of the drivetrain so that positive voltages
-                  # result in both sides moving forward. Depending on how your robot's
-                  # gearbox is constructed, you might have to invert the left side instead.
-                  self.rightDrive.setInverted(True)
-            ```
+            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/robotpy-rev/bc3ebc4/examples/getting-started/robot.py
+               :language: python
+               :linenos:
+               :lines: 13-30
+               :lineno-start: 13
 
    .. tab-item:: CTRE-Phoenix5
       :sync: ctre5
@@ -402,24 +389,11 @@ Our code needs to reference the components of WPILib that are used. In C++ this 
          .. tab-item:: Python
             :sync: python
 
-            ```python
-            class MyRobot(wpilib.TimedRobot):
-               def robotInit(self):
-                  """
-                  This function is called upon program startup and
-                  should be used for any initialization code.
-                  """
-                  self.leftDrive = ctre.WPI_TalonFX(1)
-                  self.rightDrive = ctre.WPI_TalonFX(2)
-                  self.robotDrive = DifferentialDrive(self.leftDrive, self.rightDrive)
-                  self.controller = wpilib.Gamepad(0)
-                  self.timer = wpilib.Timer()
-
-                  # We need to invert one side of the drivetrain so that positive voltages
-                  # result in both sides moving forward. Depending on how your robot's
-                  # gearbox is constructed, you might have to invert the left side instead.
-                  self.rightDrive.setInverted(True)
-            ```
+            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/robotpy-ctre/5b8d33f/examples/getting-started/robot.py
+               :language: python
+               :linenos:
+               :lines: 13-30
+               :lineno-start: 13
 
 The sample robot in our examples will have an Xbox Controller (or other Gamepad) on USB port 0 for arcade drive and two motors on PWM ports 0 and 1 (Vendor examples use CAN with IDs 1 and 2). Here we create objects of type ``DifferentialDrive`` (robotDrive), ``Gamepad`` (controller) and ``Timer`` (timer). This section of the code does three things:
 
