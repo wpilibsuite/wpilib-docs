@@ -249,7 +249,7 @@ Systemcore provides an information packet that can be used to read match state a
 +-----------------------+------+--------------+
 | Tournament type       | 6    | 3            |
 +-----------------------+------+--------------+
-| Reserved.             | 4-5  | 16            |
+| Reserved              | 4-5  | 16           |
 +-----------------------+------+--------------+
 | Time of day (year)    | 3    | 6            |
 +-----------------------+------+--------------+
