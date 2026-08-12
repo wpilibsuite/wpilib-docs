@@ -44,43 +44,21 @@ After the length of the strip has been set, you'll have to create an ``Addressab
    .. tab-item:: Java
       :sync: Java
 
-      ```Java
-      public Robot() {
-        // SMART I/O port 0
-        m_led = new AddressableLED(0);
-
-        // Reuse buffer
-        // Default to a length of 60, start empty output
-        // Length is expensive to set, so only set it once, then just update data
-        m_ledBuffer = new AddressableLEDBuffer(60);
-        m_led.setLength(m_ledBuffer.getLength());
-
-        // Set the data
-        m_led.setData(m_ledBuffer);
-        m_led.start();
-      }
-      ```
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/main/wpilibjExamples/src/main/java/org/wpilib/snippets/addressableled/Robot.java
+         :language: java
+         :lines: 32-44
+         :lineno-match:
 
    .. tab-item:: C++
       :sync: C++
 
-      ```C++
-      class Robot : public wpi::TimedRobot {
-       public:
-        Robot();
-        void RobotPeriodic() override;
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/main/wpilibcExamples/src/main/cpp/snippets/AddressableLED/include/Robot.hpp
+         :language: c++
+         :lines: 12-25
+         :linenos:
+         :lineno-start: 12
 
-       private:
-        static constexpr int kLength = 60;
-
-        // SMART I/O port 0
-        wpi::AddressableLED m_led{0};
-        std::array<wpi::AddressableLED::LEDData, kLength>
-            m_ledBuffer;  // Reuse the buffer
-      };
-      ```
-
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-1/wpilibcExamples/src/main/cpp/examples/AddressableLED/cpp/Robot.cpp
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/main/wpilibcExamples/src/main/cpp/snippets/AddressableLED/cpp/Robot.cpp
          :language: c++
          :lines: 7-13
          :lineno-match:
@@ -181,15 +159,15 @@ The base rainbow pattern will look like this:
    .. tab-item:: Java
       :sync: Java
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-2/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/addressableled/Robot.java
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/main/wpilibjExamples/src/main/java/org/wpilib/snippets/addressableled/Robot.java
          :language: java
-         :lines: 21-31
+         :lines: 20-30
          :lineno-match:
 
    .. tab-item:: C++
       :sync: C++
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-1/wpilibcExamples/src/main/cpp/examples/AddressableLED/include/Robot.h
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/main/wpilibcExamples/src/main/cpp/snippets/AddressableLED/include/Robot.hpp
          :language: c++
          :lines: 27-37
          :lineno-match:
@@ -201,17 +179,17 @@ Now that the rainbow pattern is defined, we only need to apply it.
    .. tab-item:: Java
       :sync: Java
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-1/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/addressableled/Robot.java
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/main/wpilibjExamples/src/main/java/org/wpilib/snippets/addressableled/Robot.java
          :language: java
-         :lines: 50-56
+         :lines: 47-53
          :lineno-match:
 
    .. tab-item:: C++
       :sync: C++
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-1/wpilibcExamples/src/main/cpp/examples/AddressableLED/cpp/Robot.cpp
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/main/wpilibcExamples/src/main/cpp/snippets/AddressableLED/cpp/Robot.cpp
          :language: c++
-         :lines: 15-20
+         :lines: 13-18
          :lineno-match:
 
 .. only:: html
@@ -240,7 +218,7 @@ Use commands. The command framework is specifically built for managing when acti
 
       ```Java
       public class LEDSubsystem extends SubsystemBase {
-        private static final int kPort = 0;
+        private static final int kPort = 1;
         private static final int kLength = 120;
 
         private final AddressableLED m_led;
@@ -289,7 +267,7 @@ Use commands. The command framework is specifically built for managing when acti
         wpi::cmd::CommandPtr RunPattern(wpi::LEDPattern pattern);
 
        private:
-        static constexpr int kPort = 0;
+        static constexpr int kPort = 1;
         static constexpr int kLength = 120;
         wpi::AddressableLED m_led{kPort};
         std::array<wpi::AddressableLED::LEDData, kLength> m_ledBuffer;
