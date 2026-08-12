@@ -15,7 +15,7 @@ To access these commands, press Ctrl+Shift+P to open the Command Palette, then b
 - **WPILib: Debug Robot Code** - Build and deploy robot code to roboRIO in debug mode and start debugging (Java/C++ only)
 - **WPILib: Deploy Robot Code** - Build and deploy robot code to roboRIO (Java/C++), deploy robot code to roboRIO (Python)
 - **WPILib: Hardware Sim Robot Code** - This builds the current robot code project on your PC and starts it running in simulation using hardware attached to the comupter rather then pure software simulation. Requires vendor support.
-- **WPILib: Import a WPILib 2020-202r Gradle Project** - Open a wizard to help you create a new project from a existing VS Code Gradle project from 2020-2022. Further documentation is at :doc:`importing gradle project </docs/software/vscode-overview/importing-last-years-robot-code>`
+- **WPILib: Import a WPILib 2025-2026 Gradle Project** - Open a wizard to help you create a new project from an existing VS Code Gradle project or VS Code RobotPy project from 2025-2026. Further documentation is at :doc:`importing WPILib project </docs/software/vscode-overview/importing-last-years-robot-code>`
 - **WPILib: Install tools from GradleRIO** - Install the WPILib Java tools (e.g. Glass, OutlineViewer, etc.). Note that this is done by default by the offline installer
 - **WPILib: Manage Vendor Libraries** - Install/update 3rd party libraries
 - **WPILib: Open API Documentation** - Opens either the WPILib Javadocs, C++ Doxygen, or Python RobotPy documentation
@@ -23,8 +23,8 @@ To access these commands, press Ctrl+Shift+P to open the Command Palette, then b
 - **WPILib: Open WPILib Command Palette** - This command is used to open a WPILib Command Palette (equivalent of hitting :kbd:`Ctrl+Shift+P` and typing ``WPILib``)
 - **WPILib: Open WPILib Help** - This opens a simple page which links to the WPILib documentation (this site)
 - **WPILib: Robotpy: Sync Robot Code** - Runs robotpy sync command to download all packages specified in pyproject.toml file.
-- **WPILib: Reset Ask for WPILib Updates Flag** - This will clear the flag on the current project, allowing you to re-prompt to update a project to the latest WPILib version if you previously chose to not update.
-- **WPILib: Run a command in Gradle** - This lets you run an arbitrary command in the GradleRIO command environment
+- **WPILib: Reset Ask for WPILib Updates Flag** - This will clear the flag on the current project, allowing you to re-prompt to update a project to the latest WPILib version if you previously chose to not update (Java/C++).
+- **WPILib: Run a command in Gradle** - This lets you run an arbitrary command in the GradleRIO command environment (Java/C++).
 - **WPILib: run Gradle Clean** - Run Gradle Clean to delete build artifacts
 - **WPILib: Set Team Number** - Used to modify the team number associated with a project. This is only needed if you need to change the team number from the one initially specified when creating the project.
 - **WPILib: Set VS Code Java Home to FRC Home** - Set the VS Code Java Home variable to point to the Java Home discovered by the FRC extension. This is needed if not using the offline installer to make sure the intellisense settings are in sync with the WPILib build settings.
