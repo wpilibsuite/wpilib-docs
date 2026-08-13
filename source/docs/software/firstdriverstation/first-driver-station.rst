@@ -121,7 +121,7 @@ The Setup Tab contains a number of buttons teams can use to control the operatio
 .. image:: images/driver-station/settings-tab(4).png
   :alt: This is the third tab from the top on the left hand side.
 
-1. :guilabel:`Show Debug Graph` - When true, the debug graph is visable on the Graph tab.
+1. :guilabel:`Show Debug Graph` - When true, the debug graph is visible on the Graph tab.
 2. :guilabel:`Open Log Viewer In Browser` - Opens AdvantageScope Lite in a browser tab.
 3. Web Server API Key - Displays the API key for the Web Server
 

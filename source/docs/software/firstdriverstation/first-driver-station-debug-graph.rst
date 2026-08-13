@@ -11,7 +11,7 @@ To show the debug graph, select the gear icon for the settings tab and select ``
 
 ## Viewing Debug Graph
 
-The Debug Graph shows the timing of the driver station control-loops, UI loops, and ping, as shown below. When the Driver Station and Robot Controller are operating as expected, the graph should show generally low and consistant values, potentially with occasional spikes.
+The Debug Graph shows the timing of the driver station control-loops, UI loops, and ping, as shown below. When the Driver Station and Robot Controller are operating as expected, the graph should show generally low and consistent values, potentially with occasional spikes.
 
 .. image:: images/debug-graph/debug-graph.png
    :alt: Debug graph on the graphs tab
