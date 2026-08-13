@@ -154,6 +154,8 @@ Individual opmodes extend ``PeriodicOpMode`` ([Java](https://github.wpilib.org/a
 
 **While an opmode is selected but the robot is disabled**, ``disabledPeriodic()`` is called periodically at ``OpModeRobot#getPeriod()`` (default 20 ms). This is useful for updating dashboard displays, reading sensors, or previewing what the opmode is about to do. The library guarantees that ``disabledPeriodic()`` will be called at least once before the robot transitions to enabled, so any initialization logic placed here is guaranteed to run.
 
+.. note:: Both ``OpMode`` and ``OpModeRobot`` have ``disabledPeriodic()`` methods that can be overridden. The ``OpModeRobot#disabledPeriodic()`` method is called when the robot is disabled no matter which OpMode is selected, and the ``OpMode#disabledPeriodic()`` method is called when the robot is selected and that specific opmode is selected.
+
 **When the robot transitions from disabled to enabled**, ``start()`` is called exactly once. Use it to start timers, reset accumulators, or prepare anything that needs to be fresh at the start of each enable. ``start()`` should return quickly and not have any blocking actions; ongoing work belongs in ``periodic()``.
 
 **While the robot is enabled**, ``periodic()`` is called repeatedly at ``OpModeRobot#getPeriod()`` (default 20 ms / 50 Hz). This is where most robot logic runs: reading sensors, computing outputs, and commanding actuators. Additional callbacks registered with ``addPeriodic()`` run at their own configured rates.
@@ -217,7 +219,7 @@ Opmodes receive the ``Robot`` instance through their constructor. Declare a fiel
 
 ## Multiple OpModes and DS Selection
 
-Any number of classes can be annotated with the same type. All of them appear in the Driver Station's drop-down for that mode, organized alphabetically within their groups.
+Any number of classes can be annotated with the same type. All of them appear in the Driver Station's drop-down for that mode, organized alphabetically within their groups. Classes can also have more than one annotation, so a utility opmode can temporarily also be labeled as teleop so it can run when connected to FMS.
 
 ```java
 @Autonomous(name = "Drive Straight", group = "Drive")
@@ -226,8 +228,11 @@ public class DriveStraight extends PeriodicOpMode { ... }
 @Autonomous(name = "Score Cone", group = "Score")
 public class ScoreCone extends PeriodicOpMode { ... }
 
-@Autonomous(name = "Score Cube", group = "Score")
+@Autonomous(group = "Score")
 public class ScoreCube extends PeriodicOpMode { ... }
+
+@Utility(name = "Test Arm")
+public class TestArm extends PeriodicOpMode { ... }
 ```
 
 The operator selects the desired OpMode in the DS before enabling. In match mode (selected manually in the DS, or when connected to the FMS), the operator selects both an autonomous and a teleop OpMode before the match; the DS transitions between them automatically.
@@ -262,10 +267,10 @@ The operator selects the desired OpMode in the DS before enabling. In match mode
 
 Callbacks are registered immediately at opmode construction and run even while the robot is disabled.
 
-.. warning:: Callbacks run regardless of enabled state. Any actuator commands inside a callback must be guarded with an ``isEnabled()`` check, or they will silently have no effect while the robot is disabled.
+.. warning:: Callbacks run regardless of enabled state. Any actuator commands inside a callback must be guarded with an ``isEnabled()`` check, or they will send commands that fail while the robot is disabled.
 
 ## Migration from TimedRobot
 
 To switch to the OpMode framework from TimedRobot, replace per-mode methods in ``Robot`` (``autonomousInit``, ``teleopPeriodic``, ``utilityInit``, ``utilityPeriodic`` etc.) with separate ``@Autonomous``, ``@Teleop``, and ``@Utility`` opmode classes. Multiple opmodes of the same type replace ``SendableChooser``.
 
-``TimedRobot`` remains fully supported. Migration is not required.
+.. note:: ``TimedRobot`` remains fully supported. Migration is not required.
