@@ -22,4 +22,3 @@ Ping Result: Robot Radio (.1): Bad, Robot (.2): Bad, Field AP (.4): Bad, FMS:Bad
 A Ping Status warning is generated each time the Ping Status to a device changes while the DS is not in communication with the Robot Controller. As communications is being established when the DS starts up, a few of these warnings will appear as the Ethernet link comes up, then the connection to the robot radio, then the Systemcore (with :term:`FMS` mixed in if applicable). If communications are later lost, the ping status change may help identify at which component the communication chain broke.
 
 .. todo:: Add more errors/warnings when the DS docs are more fleshed out.
-    
