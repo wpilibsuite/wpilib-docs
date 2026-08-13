@@ -171,7 +171,7 @@ The three arguments to the ``ChassisSpeeds`` constructor are the same as ``drive
 
 ## Robot drive kinematics
 
-:doc:`Kinematics is a topic that is covered in a different section </docs/software/kinematics-and-odometry/intro-and-chassis-speeds>`, but it's worth discussing here in relation to the coordinate system. It is critically important that kinematics is configured using the coordinate system described above. Kinematics is a common starting point for coordinate system errors that then cascade to basic drivetrain control, field oriented driving, pose estimation, and path planning.
+:doc:`Kinematics is a topic that is covered in a different section </docs/software/kinematics-and-odometry/intro-and-chassis-velocities>`, but it's worth discussing here in relation to the coordinate system. It is critically important that kinematics is configured using the coordinate system described above. Kinematics is a common starting point for coordinate system errors that then cascade to basic drivetrain control, field oriented driving, pose estimation, and path planning.
 
 When you construct a ``SwerveDriveKinematics`` or ``MecanumDriveKinematics`` object, you specify a translation from the center of your robot to each wheel. These translations use the coordinate system above, with the origin in the center of your robot.
 
