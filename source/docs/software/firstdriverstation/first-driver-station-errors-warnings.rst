@@ -1,7 +1,5 @@
 # Driver Station Errors/Warnings
 
-.. todo:: update for FIRST DS
-
 In an effort to provide both Teams and Volunteers (:term:`FTA` / :term:`CSA` / etc.) more information to use when diagnosing robot problems, a number of Warning and Error messages have been added to the FIRST Driver Station. These messages are displayed in the DS logs tab when they occur and are also included in the DS Log Files that can be viewed with the AdvantageScope web app (see :ref:`docs/software/firstdriverstation/first-driver-station-log-viewer:Driver Station Log File Viewer` for more information). This document discusses the messages produced by the DS (messages produced by WPILib can also appear in this box and logs).
 
 ## Joystick Unplugged
