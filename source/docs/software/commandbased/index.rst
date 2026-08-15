@@ -8,3 +8,4 @@ For a collection of example projects using the command-based framework, see :ref
    :maxdepth: 1
 
    commands-v2/index
+   commands-v3/index
