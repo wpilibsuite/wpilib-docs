@@ -6,8 +6,6 @@
 
 The kinematics suite contains classes for differential drive, swerve drive, and mecanum drive kinematics and odometry. The kinematics classes help convert between a universal ``ChassisVelocities`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/math/kinematics/ChassisVelocities.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/structwpi_1_1math_1_1_chassis_velocities.html), :external:py:class:`Python <wpimath.ChassisVelocities>`) object, containing linear and angular velocities for a robot to usable velocities for each individual type of drivetrain i.e. left and right wheel velocities for a differential drive, four wheel velocities for a mecanum drive, or individual module states (velocity and angle) for a swerve drive.
 
-.. todo:: Update the Python class
-
 ## What is odometry?
 Odometry involves using sensors on the robot to create an estimate of the position of the robot on the field. In FRC, these sensors are typically several encoders (the exact number depends on the drive type) and a gyroscope to measure robot angle. The odometry classes utilize the kinematics classes along with periodic user inputs about velocities (and angles in the case of swerve) to create an estimate of the robot's location on the field.
 
