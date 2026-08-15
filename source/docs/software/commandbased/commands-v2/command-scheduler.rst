@@ -1,6 +1,6 @@
 # The Command Scheduler
 
-The ``CommandScheduler`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/CommandScheduler.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_scheduler.html)) is the class responsible for actually running commands.  Each iteration (ordinarily once per 20ms), the scheduler polls all registered buttons, schedules commands for execution accordingly, runs the command bodies of all scheduled commands, and ends those commands that have finished or are interrupted.
+The ``CommandScheduler`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/CommandScheduler.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_scheduler.html), [Python](https://robotpy.readthedocs.io/projects/commands-v2/en/stable/commands2/CommandScheduler.html)) is the class responsible for actually running commands.  Each iteration (ordinarily once per 20ms), the scheduler polls all registered buttons, schedules commands for execution accordingly, runs the command bodies of all scheduled commands, and ends those commands that have finished or are interrupted.
 
 The ``CommandScheduler`` also runs the ``periodic()`` method of each registered ``Subsystem``.
 
@@ -14,7 +14,7 @@ However, there is one exception: users *must* call ``CommandScheduler.getInstanc
 
 ## The ``schedule()`` Method
 
-To schedule a command, users call the ``schedule()`` method ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/CommandScheduler.html#schedule(org.wpilib.command2.Command...)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_scheduler.html#a772858c58eac2875eac7898002f78003)).  This method takes a command, and attempts to add it to list of currently-running commands, pending whether it is already running or whether its requirements are available.  If it is added, its ``initialize()`` method is called.
+To schedule a command, users call the ``schedule()`` method ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/CommandScheduler.html#schedule(org.wpilib.command2.Command...)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_scheduler.html#a772858c58eac2875eac7898002f78003), [Python](https://robotpy.readthedocs.io/projects/commands-v2/en/stable/commands2/CommandScheduler.html#commands2.CommandScheduler.schedule)).  This method takes a command, and attempts to add it to list of currently-running commands, pending whether it is already running or whether its requirements are available.  If it is added, its ``initialize()`` method is called.
 
 This method walks through the following steps:
 
@@ -53,7 +53,7 @@ This method walks through the following steps:
 
 .. note:: The ``initialize()`` method of each ``Command`` is called when the command is scheduled, which is not necessarily when the scheduler runs (unless that command is bound to a button).
 
-What does a single iteration of the scheduler's ``run()`` method ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/CommandScheduler.html#run()), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_scheduler.html#a772858c58eac2875eac7898002f78003)) actually do?  The following section walks through the logic of a scheduler iteration. For the full implementation, see the source code ([Java](https://github.com/wpilibsuite/allwpilib/blob/v2024.3.2/wpilibNewCommands/src/main/java/edu/wpi/first/wpilibj2/command/CommandScheduler.java#L252-L331), [C++](https://github.com/wpilibsuite/allwpilib/blob/v2024.3.2/wpilibNewCommands/src/main/native/cpp/frc2/command/CommandScheduler.cpp#L173-L253)).
+What does a single iteration of the scheduler's ``run()`` method ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/CommandScheduler.html#run()), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_scheduler.html#a772858c58eac2875eac7898002f78003), :external:py:meth:`Python <commands2.CommandScheduler.run>`) actually do?  The following section walks through the logic of a scheduler iteration. For the full implementation, see the source code ([Java](https://github.com/wpilibsuite/allwpilib/blob/v2024.3.2/wpilibNewCommands/src/main/java/edu/wpi/first/wpilibj2/command/CommandScheduler.java#L252-L331), [C++](https://github.com/wpilibsuite/allwpilib/blob/v2024.3.2/wpilibNewCommands/src/main/native/cpp/frc2/command/CommandScheduler.cpp#L173-L253)).
 
 ### Step 1: Run Subsystem Periodic Methods
 
@@ -161,15 +161,15 @@ The scheduler may be re-enabled by calling ``CommandScheduler.getInstance().enab
 
 Occasionally, it is desirable to have the scheduler execute a custom action whenever a certain command event (initialization, execution, or ending) occurs.  This can be done with the following methods:
 
-- ``onCommandInitialize`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/CommandScheduler.html#onCommandInitialize(java.util.function.Consumer)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_scheduler.html#a772858c58eac2875eac7898002f78003)) runs a specified action whenever a command is initialized.
+- ``onCommandInitialize`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/CommandScheduler.html#onCommandInitialize(java.util.function.Consumer)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_scheduler.html#a772858c58eac2875eac7898002f78003), [Python](https://robotpy.readthedocs.io/projects/commands-v2/en/stable/commands2/CommandScheduler.html#commands2.CommandScheduler.onCommandInitialize)) runs a specified action whenever a command is initialized.
 
-- ``onCommandExecute`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/CommandScheduler.html#onCommandExecute(java.util.function.Consumer)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_scheduler.html#a772858c58eac2875eac7898002f78003)) runs a specified action whenever a command is executed.
+- ``onCommandExecute`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/CommandScheduler.html#onCommandExecute(java.util.function.Consumer)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_scheduler.html#a772858c58eac2875eac7898002f78003), [Python](https://robotpy.readthedocs.io/projects/commands-v2/en/stable/commands2/CommandScheduler.html#commands2.CommandScheduler.onCommandExecute)) runs a specified action whenever a command is executed.
 
-- ``onCommandFinish`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/CommandScheduler.html#onCommandFinish(java.util.function.Consumer)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_scheduler.html#a772858c58eac2875eac7898002f78003)) runs a specified action whenever a command finishes normally (i.e. the ``isFinished()`` method returned true).
+- ``onCommandFinish`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/CommandScheduler.html#onCommandFinish(java.util.function.Consumer)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_scheduler.html#a772858c58eac2875eac7898002f78003), [Python](https://robotpy.readthedocs.io/projects/commands-v2/en/stable/commands2/CommandScheduler.html#commands2.CommandScheduler.onCommandFinish)) runs a specified action whenever a command finishes normally (i.e. the ``isFinished()`` method returned true).
 
-- ``onCommandInterrupt`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/CommandScheduler.html#onCommandInterrupt(java.util.function.Consumer)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_scheduler.html#affaa5c53db71e448a49eeb5067cd6b6f)) runs a specified action whenever a command is interrupted (i.e. by being explicitly canceled or by another command that shares one of its requirements).
+- ``onCommandInterrupt`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/CommandScheduler.html#onCommandInterrupt(java.util.function.Consumer)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_scheduler.html#affaa5c53db71e448a49eeb5067cd6b6f), [Python](https://robotpy.readthedocs.io/projects/commands-v2/en/stable/commands2/CommandScheduler.html#commands2.CommandScheduler.onCommandInterrupt)) runs a specified action whenever a command is interrupted (i.e. by being explicitly canceled or by another command that shares one of its requirements).
 
-A typical use-case for these methods is adding markers in an event log whenever a command scheduling event takes place, as demonstrated in the following code from the HatchbotInlined example project ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotinlined), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/HatchbotInlined)):
+A typical use-case for these methods is adding markers in an event log whenever a command scheduling event takes place, as demonstrated in the following code from the HatchbotInlined example project ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotinlined), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/HatchbotInlined), [Python](https://github.com/robotpy/mostrobotpy/tree/main/examples/robot/HatchbotInlined)):
 
 .. tab-set::
 
@@ -187,4 +187,12 @@ A typical use-case for these methods is adding markers in an event log whenever 
       .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.1.1-beta-2/wpilibcExamples/src/main/cpp/examples/HatchbotInlined/cpp/RobotContainer.cpp
          :language: c++
          :lines: 23-47
+         :lineno-match:
+
+   .. tab-item:: Python
+      :sync: tabcode-python
+
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/HatchbotInlined/robotcontainer.py
+         :language: python
+         :lines: 60-70
          :lineno-match:
