@@ -115,7 +115,7 @@ This will create a ``robot.py`` and ``pyproject.toml`` file, but will not overwr
 * The ``pyproject.toml`` file contains the requirements for your project, which are downloaded and installed via the ``robotpy sync`` command.
 * The ``robot.py`` file is where you will put the your Robot class.
 
-.. seealso:: :ref:`docs/zero-to-robot/step-2/python-setup:Download RobotPy for roboRIO`
+.. seealso:: :ref:`docs/zero-to-robot/step-2/python-setup:Download RobotPy for Systemcore`
 
 
 ## Basic Drivetrain example
@@ -340,17 +340,17 @@ Our code needs to reference the components of WPILib that are used. In C++ this 
                  should be used for any initialization code.
                  """
                  super().__init__()
-                 self.leftDrive = phoenix6.hardware.TalonFX(1)
-                 self.rightDrive = phoenix6.hardware.TalonFX(2)
-                 self.robotDrive = wpilib.drive.DifferentialDrive(
-                     self.leftDrive, self.rightDrive
+                 self.left_drive = phoenix6.hardware.TalonFX(1)
+                 self.right_drive = phoenix6.hardware.TalonFX(2)
+                 self.robot_drive = wpilib.drive.DifferentialDrive(
+                     self.left_drive, self.right_drive
                  )
                  self.controller = wpilib.Gamepad(0)
                  self.timer = wpilib.Timer()
                  # We need to invert one side of the drivetrain so that positive voltages
                  # result in both sides moving forward. Depending on how your robot's
                  # gearbox is constructed, you might have to invert the left side instead.
-                 self.rightDrive.setInverted(True)
+                 self.right_drive.set_inverted(True)
             ```
 
    .. tab-item:: REV

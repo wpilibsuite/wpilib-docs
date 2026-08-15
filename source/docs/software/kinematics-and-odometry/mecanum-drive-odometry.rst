@@ -76,23 +76,23 @@ The fourth optional argument is the starting pose of your robot on the field (as
    from wpimath.geometry import Pose2d
    from wpimath.geometry import Rotation2d
    # Locations of the wheels relative to the robot center.
-   frontLeftLocation = Translation2d(0.381, 0.381)
-   frontRightLocation = Translation2d(0.381, -0.381)
-   backLeftLocation = Translation2d(-0.381, 0.381)
-   backRightLocation = Translation2d(-0.381, -0.381)
+   front_left_location = Translation2d(0.381, 0.381)
+   front_right_location = Translation2d(0.381, -0.381)
+   back_left_location = Translation2d(-0.381, 0.381)
+   back_right_location = Translation2d(-0.381, -0.381)
    # Creating my kinematics object using the wheel locations.
    self.kinematics = MecanumDriveKinematics(
-     frontLeftLocation, frontRightLocation, backLeftLocation, backRightLocation
+     front_left_location, front_right_location, back_left_location, back_right_location
    )
    # Creating my odometry object from the kinematics object and the initial wheel positions.
    # Here, our starting pose is 5 meters along the long end of the field and in the
    # center of the field along the short end, facing the opposing alliance wall.
    self.odometry = MecanumDriveOdometry(
      self.kinematics,
-     self.gyro.getRotation2d(),
+     self.gyro.get_rotation2d(),
      MecanumDriveWheelPositions(
-       self.frontLeftEncoder.getDistance(), self.frontRightEncoder.getDistance(),
-       self.backLeftEncoder.getDistance(), self.backRightEncoder.getDistance()
+       self.front_left_encoder.get_distance(), self.front_right_encoder.get_distance(),
+       self.back_left_encoder.get_distance(), self.back_right_encoder.get_distance()
      ),
      Pose2d(5.0, 13.5, Rotation2d())
    )
@@ -136,13 +136,13 @@ The ``update`` method of the odometry class updates the robot position on the fi
    from wpimath.kinematics import MecanumDriveWheelPositions
       def periodic(self):
      # Get my wheel positions
-     wheelPositions = MecanumDriveWheelPositions(
-       self.frontLeftEncoder.getDistance(), self.frontRightEncoder.getDistance(),
-       self.backLeftEncoder.getDistance(), self.backRightEncoder.getDistance())
+     wheel_positions = MecanumDriveWheelPositions(
+       self.front_left_encoder.get_distance(), self.front_right_encoder.get_distance(),
+       self.back_left_encoder.get_distance(), self.back_right_encoder.get_distance())
      # Get the rotation of the robot from the gyro.
-     gyroAngle = gyro.getRotation2d()
+     gyro_angle = gyro.get_rotation2d()
      # Update the pose
-     self.pose = odometry.update(gyroAngle, wheelPositions)
+     self.pose = odometry.update(gyro_angle, wheel_positions)
    ```
 
 ## Resetting the Robot Pose
