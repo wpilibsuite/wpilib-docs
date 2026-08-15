@@ -10,7 +10,7 @@ It's recommended to also review the list of :doc:`known issues <known-issues>`.
 
 Due to internal GradleRIO changes, it is necessary to update projects from previous years. After :doc:`Installing WPILib for 2027 </docs/zero-to-robot/step-2/wpilib-setup>`, any 2026 projects must be :doc:`imported </docs/software/vscode-overview/importing-last-years-robot-code>` to be compatible.
 
-## Major Changes (Java/C++)
+## Major Changes (Java/C++/Python)
 
 In order to more closly track C++ compiler feature support, the supported Linux distribution has changed to only the latest Ubuntu LTS. See :ref:`Supported Operating Systems and Architectures <docs/software/what-is-wpilib:Platform Support>` for more information.
 
@@ -23,6 +23,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - Reorganize java packages from ``edu.wpi.first`` to ``org.wpilib`` and c++ namespaces from ``frc::`` to ``wpi::`` and create new subpackages for better organization. The :doc:`VS Code importer </docs/software/vscode-overview/importing-last-years-robot-code>` will attempt to update code for these changes as part of the import process.
 - Systemcore has different hardware support. Support multiple CAN buses, Smart IO, onboard IMU, Expansion Hub. Removed relay, analog output, SPI and SPI IMUs (ADIS16448, ADIS16470, ADXL345, ADXRS450), analog gyro, DMA, built-in accelerometer, Digital Glitch Filter, interrupts, counter, ultrasonic, analog trigger, Nidec Brushless, Servo, Jaguar
 - Removed Network Tables v3 support. See the :doc:`Network Tables v4 migration guide </docs/software/networktables/nt4-migration-guide>` for details on how to update your code from Network Tables v3 to v4. Users of pynetworktables will need to update to pyntcore.
+- Python functions and variables have been renamed to use snake_case instead of camelCase for consistency with Python naming conventions.
 - Many of the simple examples were moved to snippets to de-clutter the VS Code examples. The snippets are available here: [Java](https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/org/wpilib/snippets) / [C++](https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/snippets). We're thinking of ways to make these easier to discover.
 
 ## WPILib
@@ -162,7 +163,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 5: Rename ``CreateEvent`` and ``CreateSemaphore`` to Make
 - 2027 Alpha 5: Change C++ json to jart/json.cpp
 - 2027 Alpha 5: Change Java JSON to Avaje Jsonb
-- 2027 Alpha 5: Use C++23 stacktrace library on WindowsS
+- 2027 Alpha 5: Use C++23 stacktrace library on Windows
 
 ## Glass / OutlineViewer / Simulation GUI
 
