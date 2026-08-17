@@ -96,7 +96,8 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 
 #### Math
 
-- Remove ``Rotation2d`` value field
+.. warning:: Silent Breaking: ``Rotation2d``'s ``getRadians()``, ``getDegrees()``, and ``getRotations()`` methods now return a wrapped angle. See [PR #7490](https://github.com/wpilibsuite/allwpilib/pull/7490#issuecomment-2521599046) for the math reasons why. Those who don't want wrapping should use ``double`` or ``Angle`` instead of ``Rotation2d``.
+
 - Fix ``SimpleFeedforward`` overload set
 - Fix duplicate ``Rotation2d`` constructor
 - Remove LUTs from LTV controllers
