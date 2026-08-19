@@ -4,7 +4,7 @@ Glass supports displaying your robot's position on the field using the :guilabel
 
 ## Sending Robot Pose from User Code
 
-To send your robot's position (usually obtained by :ref:`odometry <docs/software/kinematics-and-odometry/intro-and-chassis-speeds:What is odometry?>` or a pose estimator), a ``Field2d`` instance must be created in robot code and sent over NetworkTables. The instance must then be updated periodically with the latest robot pose.
+To send your robot's position (usually obtained by :ref:`odometry <docs/software/kinematics-and-odometry/intro-and-chassis-velocities:What is odometry?>` or a pose estimator), a ``Field2d`` instance must be created in robot code and sent over NetworkTables. The instance must then be updated periodically with the latest robot pose.
 
 .. tab-set-code::
    ```java
@@ -29,9 +29,9 @@ To send your robot's position (usually obtained by :ref:`odometry <docs/software
    from wpilib import SmartDashboard, Field2d
    self.field = Field2d()
    # Do this in either robot or subsystem init
-   SmartDashboard.putData("Field", self.field)
+   SmartDashboard.put_data("Field", self.field)
    # Do this in either robot periodic or subsystem periodic
-   self.field.setRobotPose(self.odometry.getPose())
+   self.field.set_robot_pose(self.odometry.get_pose())
    ```
 
 ## Sending Trajectories to Field2d

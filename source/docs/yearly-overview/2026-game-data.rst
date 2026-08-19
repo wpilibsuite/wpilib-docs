@@ -173,7 +173,7 @@ For example:
 
 
   def is_hub_active() -> bool:
-      alliance = DriverStation.getAlliance()
+      alliance = DriverStation.get_alliance()
       # If we have no alliance, we cannot be enabled, therefore no hub.
       if alliance is None:
           return False
@@ -187,7 +187,7 @@ For example:
           return False
 
       # We're teleop enabled, compute.
-      match_time = DriverStation.getMatchTime()
+      match_time = DriverStation.get_match_time()
       game_data = DriverStation.getGameSpecificMessage()
 
       match game_data:

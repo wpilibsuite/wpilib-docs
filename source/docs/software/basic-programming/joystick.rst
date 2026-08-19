@@ -127,11 +127,11 @@ An axis can be used with ``.getRawAxis(int index)`` (if not using any of the cla
    ```
 
    ```python
-   leftMotor = wpilib.PWMVictorSPX(LEFT_MOTOR_PORT)
-   rightMotor = wpilib.PWMVictorSPX(RIGHT_MOTOR_PORT)
-   self.robotDrive = wpilib.drive.DifferentialDrive(leftMotor, rightMotor)
+   left_motor = wpilib.PWMVictorSPX(LEFT_MOTOR_PORT)
+   right_motor = wpilib.PWMVictorSPX(RIGHT_MOTOR_PORT)
+   self.robot_drive = wpilib.drive.DifferentialDrive(left_motor, right_motor)
    self.stick = wpilib.GenericHID(JOYSTICK_PORT)
-   self.robotDrive.arcadeDrive(-self.stick.getRawAxis(0), self.stick.getRawAxis(1))
+   self.robot_drive.arcade_drive(-self.stick.get_raw_axis(0), self.stick.get_raw_axis(1))
    ```
 
 ## Button Usage
@@ -173,12 +173,12 @@ Unlike an axis, you will usually want to use the ``pressed`` and ``released`` me
    ```
 
    ```python
-   if joystick.getRawButtonPressed(0):
+   if joystick.get_raw_button_pressed(0):
       turnIntakeOn() # When pressed the intake turns on
-   if joystick.getRawButtonReleased(0):
+   if joystick.get_raw_button_released(0):
       turnIntakeOff() # When released the intake turns off
    # OR
-   if joystick.getRawButton(0):
+   if joystick.get_raw_button(0):
       turnIntakeOn()
    else:
       turnIntakeOff()
@@ -220,7 +220,7 @@ A common request is to toggle something on and off with the press of a button.  
 
    ```python
    toggle = False
-   if joystick.getRawButtonPressed(0):
+   if joystick.get_raw_button_pressed(0):
       if toggle:
          # current state is True so turn off
          retractIntake()

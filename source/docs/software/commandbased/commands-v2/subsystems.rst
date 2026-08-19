@@ -43,7 +43,7 @@ The recommended method to create a subsystem for most users is to subclass the a
               Example command factory method.
                :return a command
               """
-              return self.runOnce(
+              return self.run_once(
                   lambda: # one-time action goes here #
               )
           def exampleCondition(self)->bool:
@@ -56,7 +56,7 @@ The recommended method to create a subsystem for most users is to subclass the a
           def periodic(self):
               # This method will be called once per scheduler run
               pass
-          def simulationPeriodic(self):
+          def simulation_periodic(self):
               # This method will be called once per scheduler run during simulation
               pass
       ```
@@ -142,7 +142,7 @@ Alternatively, instead of writing ``void`` public methods that are called from c
          :lineno-match:
 
 
-Note the qualification of the ``RunOnce`` factory used here: this isn't the static factory in ``Commands``! Subsystems have similar instance factories that return commands requiring ``this`` (Java/C++) or ``self`` (Python) subsystem. Here, the ``Subsystem.runOnce(Runnable)`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Subsystem.html#runOnce(java.lang.Runnable)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_subsystem.html#a23770c1198a39c69255a2cb8ace46305), :external:py:meth:`Python <commands2.Subsystem.runOnce>`) is used.
+Note the qualification of the ``RunOnce`` factory used here: this isn't the static factory in ``Commands``! Subsystems have similar instance factories that return commands requiring ``this`` (Java/C++) or ``self`` (Python) subsystem. Here, the ``Subsystem.runOnce(Runnable)`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Subsystem.html#runOnce(java.lang.Runnable)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_subsystem.html#a23770c1198a39c69255a2cb8ace46305), :external:py:meth:`Python <commands2.Subsystem.run_once>`) is used.
 
 For a comparison between these options, see :ref:`docs/software/commandbased/commands-v2/organizing-command-based:Instance Command Factory Methods`.
 
@@ -183,10 +183,10 @@ Subsystems have a ``periodic`` method that is called once every scheduler iterat
       def periodic(self):
           #Update the odometry in the periodic block
           self.odometry.update(
-              Rotation2d.fromDegrees(getHeading()),
-              self.leftEncoder.getDistance(),
-              self.rightEncoder.getDistance())
-          self.fieldSim.setRobotPose(getPose())
+              Rotation2d.from_degrees(getHeading()),
+              self.left_encoder.get_distance(),
+              self.right_encoder.get_distance())
+          self.field_sim.set_robot_pose(get_pose())
       ```
 
 There is also a ``simulationPeriodic()`` method that is similar to ``periodic()`` except that it is only run during :doc:`Simulation </docs/software/wpilib-tools/robot-simulation/introduction>` and can be used to update the state of the robot.
@@ -210,7 +210,7 @@ Setting a default command for a subsystem is very easy; one simply calls ``Comma
    ```
 
    ```python
-   CommandScheduler.getInstance().setDefaultCommand(exampleSubsystem, exampleCommand)
+   CommandScheduler.get_instance().set_default_command(exampleSubsystem, exampleCommand)
    ```
 
 .. tab-set-code::
@@ -224,7 +224,7 @@ Setting a default command for a subsystem is very easy; one simply calls ``Comma
    ```
 
    ```python
-   exampleSubsystem.setDefaultCommand(exampleCommand)
+   exampleSubsystem.set_default_command(exampleCommand)
    ```
 
 .. note:: A command that is assigned as the default command for a subsystem must require that subsystem.
