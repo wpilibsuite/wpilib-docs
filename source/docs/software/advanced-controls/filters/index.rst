@@ -9,6 +9,7 @@ This section describes a number of filters included with WPILib that are useful 
 
    introduction
    linear-filter
+   biquad-filter
    median-filter
    slew-rate-limiter
    debouncer

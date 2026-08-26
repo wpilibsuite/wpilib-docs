@@ -129,6 +129,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 5: Prevent ``CoordinateSystem`` from accepting left-handed systems
 - 2027 Alpha 5: Make swerve and differential kinematics functions immutable
 - 2027 Alpha 5: Mark all geometry classes as final
+- 2027 Alpha 7: Add ``BiquadFilter`` class for Second Order Section filters
 
 ### Simulation
 
