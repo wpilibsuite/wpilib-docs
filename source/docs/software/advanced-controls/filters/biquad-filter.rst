@@ -14,7 +14,7 @@ Reach for ``BiquadFilter`` when a simple filter isn't cutting it:
 - **You need to remove one specific frequency.**  If a mechanism vibrates at a known rate, a *notch* filter cuts out that one frequency and leaves the rest of your signal alone.
 - **You need to keep only a range of frequencies.**  ``LinearFilter`` can't do this at all.
 
-There is also a practical reason the class works in small chunks instead of one big calculation.  Sharp filters need a lot of math, and doing it all at once makes rounding errors pile up until the output goes haywire.  Splitting the work into a chain of small filters keeps the numbers well behaved.
+There is also a practical reason the class works in small chunks instead of one big calculation.  Sharp filters need a lot of math, and doing it all at once makes rounding errors pile up until the output goes haywire.  Splitting the work into a chain of small filters keeps the numbers well-behaved.
 
 ## Some Words You'll Need
 
