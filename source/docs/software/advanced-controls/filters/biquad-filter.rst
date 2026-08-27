@@ -10,7 +10,7 @@ Usually you don't.  For smoothing a noisy sensor, :ref:`LinearFilter.singlePoleI
 
 Reach for ``BiquadFilter`` when a simple filter isn't cutting it:
 
-- **You need a sharper cutoff.**  Every low-pass filter has a cutoff frequency: slow changes below it pass through, fast changes above it get removed.  But the change isn't sudden.  A simple filter fades out gradually, so noise a little bit above the cutoff still leaks through.  A biquad filter can make that fade much steeper.
+- **You need a sharper cutoff.**  Every low-pass filter has a cutoff frequency: slow changes below it pass through, and fast changes above it get removed.  But the change isn't sudden.  A simple filter fades out gradually, so noise a little bit above the cutoff still leaks through.  A biquad filter can make that fade much steeper.
 - **You need to remove one specific frequency.**  If a mechanism vibrates at a known rate, a *notch* filter cuts out that one frequency and leaves the rest of your signal alone.
 - **You need to keep only a range of frequencies.**  ``LinearFilter`` can't do this at all.
 
