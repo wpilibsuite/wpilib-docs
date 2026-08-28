@@ -37,6 +37,10 @@ The easiest and most expressive way to do this is with a ``StartEndCommand``:
   wpi::cmd::CommandPtr runIntake = wpi::cmd::cmd::StartEnd([&intake] { intake.Set(1.0); }, [&intake] { intake.Set(0.0); }, {&intake});
   ```
 
+  ```python
+  run_intake = commands2.cmd.startEnd(lambda: intake.set(1.0), lambda: intake.set(0.0), intake)
+  ```
+
 This is sufficient for commands that are only used once. However, for a command like this that might get used in many different autonomous routines and button bindings, inline commands everywhere means a lot of repetitive code:
 
 .. tab-set-code::
@@ -62,6 +66,17 @@ This is sufficient for commands that are only used once. However, for a command 
     wpi::cmd::cmd::Wait(3.0_s),
     wpi::cmd::cmd::StartEnd([&intake] { intake.Set(1.0); }, [&intake] { intake.Set(0.0); }, {&intake}).WithTimeout(5.0_s)
   );
+  ```
+
+  ```python
+  # robotcontainer.py
+  intake_button.whileTrue(commands2.cmd.startEnd(lambda: intake.set(1.0), lambda: intake.set(0.0), intake))
+  intake_and_shoot = commands2.cmd.startEnd(lambda: intake.set(1.0), lambda: intake.set(0.0), intake).alongWith(RunShooter(shooter))
+  autonomous_command = commands2.cmd.sequence(
+      commands2.cmd.startEnd(lambda: intake.set(1.0), lambda: intake.set(0.0), intake).withTimeout(5.0),
+      commands2.cmd.waitSeconds(3.0),
+      commands2.cmd.startEnd(lambda: intake.set(1.0), lambda: intake.set(0.0), intake).withTimeout(5.0),
+  )
   ```
 
 Creating one ``StartEndCommand`` instance and putting it in a variable won't work here, since once an instance of a command is added to a command group it is effectively "owned" by that command group and cannot be used in any other context.
@@ -94,6 +109,14 @@ For example, a command like the intake-running command is conceptually related t
   }
   ```
 
+  ```python
+  class Intake(commands2.Subsystem):
+      # ...
+      def runIntakeCommand(self) -> commands2.Command:
+          # implicitly requires `self`
+          return self.startEnd(lambda: self.set(1.0), lambda: self.set(0.0))
+  ```
+
 Notice how since we are in the ``Intake`` class, we no longer refer to ``intake``; instead, we use the ``this`` keyword to refer to the current instance.
 
 Since we are inside the ``Intake`` class, technically we can access ``private`` variables and methods directly from within the ``runIntakeCommand`` method, thus not needing intermediary methods. (For example, the ``runIntakeCommand`` method can directly interface with the motor controller objects instead of calling ``set()``.) On the other hand, these intermediary methods can reduce code duplication and increase encapsulation. Like many other choices outlined in this document, this tradeoff is a matter of personal preference on a case-by-case basis.
@@ -122,6 +145,16 @@ Using this new factory method in command groups and button bindings is highly ex
   );
   ```
 
+  ```python
+  intake_button.whileTrue(intake.runIntakeCommand())
+  intake_and_shoot = intake.runIntakeCommand().alongWith(RunShooter(shooter))
+  autonomous_command = commands2.cmd.sequence(
+      intake.runIntakeCommand().withTimeout(5.0),
+      commands2.cmd.waitSeconds(3.0),
+      intake.runIntakeCommand().withTimeout(5.0),
+  )
+  ```
+
 Adding a parameter to the ``runIntakeCommand`` method to provide the exact percentage to run the intake is easy and allows for even more flexibility.
 
 .. tab-set-code::
@@ -139,6 +172,11 @@ Adding a parameter to the ``runIntakeCommand`` method to provide the exact perce
   }
   ```
 
+  ```python
+  def runIntakeCommand(self, percent: float) -> commands2.Command:
+      return commands2.StartEndCommand(lambda: self.set(percent), lambda: self.set(0.0), self)
+  ```
+
 For instance, this code creates a command group that runs the intake forwards for two seconds, waits for two seconds, and then runs the intake backwards for five seconds.
 
 .. tab-set-code::
@@ -154,6 +192,15 @@ For instance, this code creates a command group that runs the intake forwards fo
       .AndThen(wpi::cmd::cmd::Wait(2.0_s))
       .AndThen(intake.RunIntakeCommand(-1.0).WithTimeout(5.0_s));
     ```
+
+  ```python
+  intake_run_sequence = (
+      intake.runIntakeCommand(1.0)
+      .withTimeout(2.0)
+      .andThen(commands2.cmd.waitSeconds(2.0))
+      .andThen(intake.runIntakeCommand(-1.0).withTimeout(5.0))
+  )
+  ```
 
 This approach is recommended for commands that are conceptually related to only a single subsystem, and is very concise. However, it doesn't fare well with commands related to more than one subsystem: passing in other subsystem objects is unintuitive and can cause race conditions and circular dependencies, and thus should be avoided. Therefore, this approach is best suited for single-subsystem commands, and should be used only for those cases.
 
@@ -184,6 +231,22 @@ Instance factory methods work great for single-subsystem commands.  However, com
 
   ```c++
   // TODO
+  ```
+
+  ```python
+  class AutoRoutines:
+      @staticmethod
+      def driveAndIntake(drivetrain, intake) -> commands2.Command:
+          return commands2.cmd.sequence(
+              commands2.cmd.parallel(
+                  drivetrain.driveCommand(0.5, 0.5),
+                  intake.runIntakeCommand(1.0),
+              ).withTimeout(5.0),
+              commands2.cmd.parallel(
+                  drivetrain.stopCommand(),
+                  intake.stopCommand(),
+              ),
+          )
   ```
 
 .. todo:: implement C++ version of the above code
@@ -315,6 +378,20 @@ Returning to our simple intake command from earlier, we could do this by creatin
   // TODO
   ```
 
+  ```python
+  class RunIntakeCommand(commands2.Command):
+      def __init__(self, intake: Intake) -> None:
+          super().__init__()
+          self.intake = intake
+          self.addRequirements(intake)
+
+      def initialize(self) -> None:
+          self.intake.set(1.0)
+
+      def end(self, interrupted: bool) -> None:
+          self.intake.set(0.0)
+  ```
+
 .. todo:: implement C++ version of the above code
 
 This, however, is just as cumbersome as the original repetitive code, if not more verbose. The only two lines that really matter in this entire file are the two calls to ``intake.set()``, yet there are over 20 lines of boilerplate code! Not to mention, doing this for a lot of robot actions quickly clutters up a robot project with dozens of small files. Nevertheless, this might feel more "natural," particularly for programmers who prefer to stick closely to an object-oriented model.
@@ -342,6 +419,16 @@ If we wish to write composite commands as their own classes, we may write a cons
 
   ```c++
   // TODO
+  ```
+
+  ```python
+  class IntakeThenOuttake(commands2.SequentialCommandGroup):
+      def __init__(self, intake: Intake) -> None:
+          super().__init__(
+              intake.runIntakeCommand(1.0).withTimeout(2.0),
+              commands2.WaitCommand(2.0),
+              intake.runIntakeCommand(-1.0).withTimeout(5.0),
+          )
   ```
 
 .. todo:: implement C++ version of the above code

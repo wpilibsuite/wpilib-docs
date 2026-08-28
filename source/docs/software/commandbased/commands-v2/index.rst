@@ -34,7 +34,7 @@ Commands v2 is recommended for:
 
 ## Passing Functions As Parameters
 
-In order to provide a concise inline syntax, the command-based library often accepts functions as parameters of constructors, factories, and decorators. Fortunately, both Java and C++ offer users the ability to :ref:`pass functions as objects <docs/software/basic-programming/functions-as-data:Treating Functions as Data>`:
+In order to provide a concise inline syntax, the command-based library often accepts functions as parameters of constructors, factories, and decorators. Fortunately, Java, C++, and Python all offer users the ability to :ref:`pass functions as objects <docs/software/basic-programming/functions-as-data:Treating Functions as Data>`:
 
 ### Method References (Java)
 
@@ -49,3 +49,7 @@ While method references work well for passing a function that has already been w
 .. warning:: Due to complications in C++ semantics, capturing ``this`` in a C++ lambda can cause a null pointer exception if done from a component command of a command composition.  Whenever possible, C++ users should capture relevant command members explicitly and by value.  For more details, see [here](https://github.com/wpilibsuite/allwpilib/issues/3109).
 
 C++ lacks a close equivalent to Java method references - pointers to member functions are generally not directly usable as parameters due to the presence of the implicit ``this`` parameter.  However, C++ does offer lambda expressions - in addition, the lambda expressions offered by C++ are in many ways more powerful than those in Java.  For specifics on how to write C++ lambda expressions, see :ref:`docs/software/basic-programming/functions-as-data:Lambda Expressions in C++`.
+
+### Functions and Lambdas (Python)
+
+Python natively treats functions and methods as first-class objects. In Python, methods can be passed directly by reference (such as ``self.intake.activate``) or defined inline using ``lambda`` expressions (such as ``lambda: self.drive(0.5, 0.0)``). For more details, see :ref:`docs/software/basic-programming/functions-as-data:Treating Functions as Data`.
