@@ -20,7 +20,7 @@ To help users do this, WPILib provides a ``TrapezoidProfile`` class ([Java](http
 
 .. note:: The various :ref:`feedforward helper classes <docs/software/advanced-controls/controllers/feedforward:Feedforward Control in WPILib>` provide methods for calculating the maximum simultaneously-achievable velocity and acceleration of a mechanism.  These can be very useful for calculating appropriate motion constraints for your ``TrapezoidProfile``.
 
-In order to create a trapezoidal motion profile, we must first impose some constraints on the desired motion.  Namely, we must specify a maximum velocity and acceleration that the mechanism will be expected to achieve during the motion.  To do this, we create an instance of the ``TrapezoidProfile.Constraints`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/math/trajectory/TrapezoidProfile.Constraints.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1math_1_1_trapezoid_profile_1_1_constraints.html), :external:py:class:`Python <wpimath.TrapezoidProfile.Constraints>`):
+In order to create a trapezoidal motion profile, we must first impose some constraints on the desired motion.  Namely, we must specify a maximum velocity and acceleration that the mechanism will be expected to achieve during the motion.  To do this, we create an instance of the ``TrapezoidProfile.Constraints`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/math/trajectory/TrapezoidProfile.Constraints.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1math_1_1detail_1_1_trapezoid_profile_constraints.html), :external:py:class:`Python <wpimath.TrapezoidProfile.Constraints>`):
 
 .. tab-set-code::
 

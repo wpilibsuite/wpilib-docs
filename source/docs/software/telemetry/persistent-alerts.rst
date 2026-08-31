@@ -2,7 +2,7 @@
 
 Robots encounter a variety of fault conditions: disconnected sensors/motors, invalid mechanism states, initialization failures, etc. While the FRC Driver Station provides a :ref:`console interface <docs/software/driverstation/driver-station:Messages Tab>` for instantaneous alerts, the risk of missing important messages makes it poorly suited to communicate faults that persist over time.
 
-Instead, the ``Alert`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/driverstation/Alert.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_alert.html), :py:class:`Python <robotpy:wpiutil.Alert>`) can be used for managing persistent alerts published via Network Tables. Alerts are assigned a priority (*error*, *warning*, or *info*) and can be *activated* or *deactivated* in robot code. The set of active alerts can be displayed on a dashboard, as shown below in Shuffleboard.
+Instead, the ``Alert`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/util/Alert.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1util_1_1_alert.html), :py:class:`Python <robotpy:wpiutil.Alert>`) can be used for managing persistent alerts published via Network Tables. Alerts are assigned a priority (*error*, *warning*, or *info*) and can be *activated* or *deactivated* in robot code. The set of active alerts can be displayed on a dashboard, as shown below in Shuffleboard.
 
 .. image:: images/alerts.png
    :alt: A screenshot of the alerts widget in Shuffleboard, with several active alerts.
@@ -18,9 +18,9 @@ Alert states are often expressed most easily as a conditional, such as whether t
 .. tab-set-code::
    ```java
 
-      class Robot {
-        Alert alert = new Alert("Something went wrong", AlertType.kWarning);
-
+      Class Robot {
+        Alert alert = new Alert("somethingWrong", "Something went wrong", Alert.Level.MEDIUM);
+      
         periodic() {
           alert.set(...);
         }
@@ -30,9 +30,10 @@ Alert states are often expressed most easily as a conditional, such as whether t
    ```c++
 
       class Robot {
-        wpi::Alert alert{"Something went wrong", wpi::Alert::AlertType::kWarning};
+        wpi::util::Alert alert{"Something went wrong",
+                               wpi::util::Alert::Level::MEDIUM};
       }
-
+      
       Robot::periodic() {
         alert.Set(...);
       }
@@ -46,6 +47,8 @@ Alert states are often expressed most easily as a conditional, such as whether t
         self.alert.set(...)
       }
    ```
+
+.. todo:: Update python example for alpha 7
 
 .. note:: Suggested usage of each alert type (error, warning, or info) is provided in the enum API documentation.
 
