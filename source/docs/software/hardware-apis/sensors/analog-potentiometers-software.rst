@@ -31,7 +31,7 @@ If the user would like to apply custom settings to the underlying :code:`AnalogI
 
 .. tab-set-code::
 
-   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/snippets/analogpotentiometer/Robot.java
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/snippets/analogpotentiometer/Robot.java
       :language: java
       :lines: 23-30
 
