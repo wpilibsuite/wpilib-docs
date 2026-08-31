@@ -172,7 +172,7 @@ The ``Select`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/jav
    .. tab-item:: Java
       :sync: Java
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/snippets/selectcommand/RobotContainer.java
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/snippets/selectcommand/RobotContainer.java
          :language: java
          :lines: 20-45
          :lineno-match:
