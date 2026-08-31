@@ -12,7 +12,7 @@ One of the most common control algorithms used in FRC\ |reg| and FTC\ |reg| is t
    .. tab-item:: Java
       :sync: Java
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/rapidreactcommandbot/subsystems/Shooter.java
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/rapidreactcommandbot/subsystems/Shooter.java
          :language: java
          :lines: 5-
          :lineno-match:
@@ -20,7 +20,7 @@ One of the most common control algorithms used in FRC\ |reg| and FTC\ |reg| is t
    .. tab-item:: C++
       :sync: C++ (Header)
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/RapidReactCommandBot/include/subsystems/Shooter.hpp
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/RapidReactCommandBot/include/subsystems/Shooter.hpp
          :language: c++
          :lines: 5-
          :lineno-match:
@@ -28,7 +28,7 @@ One of the most common control algorithms used in FRC\ |reg| and FTC\ |reg| is t
    .. tab-item:: C++ (Source)
       :sync: C++ (Source)
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/RapidReactCommandBot/cpp/subsystems/Shooter.cpp
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/RapidReactCommandBot/cpp/subsystems/Shooter.cpp
          :language: c++
          :lines: 5-
          :lineno-match:
