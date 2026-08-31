@@ -37,6 +37,10 @@
     "source/docs/software/convenience-features/event-based.rst",
     "source/docs/software/dashboards/glass/field2d-widget.rst",
     "source/docs/software/hardware-apis/sensors/encoders-software.rst",
-    "source/docs/software/hardware-apis/misc/addressable-leds.rst"
+    "source/docs/software/hardware-apis/misc/addressable-leds.rst",
+    "source/docs/software/advanced-gradlerio/code-formatting.rst",
+    "source/docs/software/can-devices/power-distribution-module.rst",
+    "structuring-command-based-project.rst",
+    "source/docs/software/dashboards/glass/mech2d-widget.rst"
   ]
 }

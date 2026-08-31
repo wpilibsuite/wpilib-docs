@@ -180,9 +180,9 @@ The ``Select`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/jav
    .. tab-item:: C++ (Header)
       :sync: C++ (Header)
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/snippets/SelectCommand/include/RobotContainer.hpp
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/snippets/SelectCommand/include/RobotContainer.hpp
          :language: c++
-         :lines: 26-43
+         :lines: 26-44
          :lineno-match:
 
 The ``Either`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Commands.html#either(org.wpilib.command2.Command,org.wpilib.command2.Command,java.util.function.BooleanSupplier)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/namespacewpi_1_1cmd.html#a7f8ee92e990d9785d30349267a1446c2), :external:py:func:`Python <commands2.cmd.either>`), backed by the ``ConditionalCommand`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/ConditionalCommand.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_conditional_command.html), :external:py:class:`Python <commands2.ConditionalCommand>`), is a specialization accepting two commands and a boolean selector function.

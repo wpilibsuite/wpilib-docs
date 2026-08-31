@@ -70,7 +70,7 @@ Individual opmodes extend ``PeriodicOpMode`` ([Java](https://github.wpilib.org/a
 
          .. tab-item:: MyTeleop.java
 
-            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/templates/opmode/opmode/MyTeleop.java
+            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/templates/opmode/opmode/MyTeleop.java
                :language: java
                :lines: 5-44
                :lineno-match:
