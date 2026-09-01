@@ -76,11 +76,11 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: Rename ``FMSInfo`` table to ``DriverStation``
 - 2027 Alpha 7: Switch robot construction back to supplier
 - 2027 Alpha 7: Refactor ``ExpansionHubMotor`` to introduce ``NeutralMode`` for motor control
-- 2027 Alpha 7: ``OpModeRobot``: Don't initialize classes during scan for opmodes
+- 2027 Alpha 7: ``OpModeRobot`` Don't initialize classes during scan for opmodes
 - 2027 Alpha 7: Fix opmode reset and callback handling
 - 2027 Alpha 7: Use alerts for joystick warnings
 - 2027 Alpha 7: Add Timer.createStarted() convenience factory
-- 2027 Alpha 7: Put the ``OpModeRobot``#addOpMode class/lambda arguments at the end
+- 2027 Alpha 7: Put the ``OpModeRobot#addOpMode`` class/lambda arguments at the end
 - 2027 Alpha 7: Add option to varargs string array for ``DSGamepadChooser``
 - 2027 Alpha 7: Move Preferences from util to preferences package
 - 2027 Alpha 7: Remove useless AutoCloseable implementations
@@ -324,8 +324,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: Add Linux docs shortcut
 - 2027 Alpha 7: Remove VSCode AppArmor profile
 - 2027 Alpha 7: Update to VS Code 1.134.0
-- 2027 Alpha 7: VS Code extension updates: CPP extension 1.31.4 to 1.33.8
-Java extension 1.54.0 to 1.55.0 Java Dependency extension 0.27.2 to 0.27.6
+- 2027 Alpha 7: VS Code extension updates: CPP extension 1.31.4 to 1.33.8 Java extension 1.54.0 to 1.55.0 Java Dependency extension 0.27.2 to 0.27.6
 
 ## Visual Studio Code Extension
 
