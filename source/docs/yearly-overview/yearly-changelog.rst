@@ -17,7 +17,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 .. warning:: [Windows 10 support from Microsoft ended in October 2025](https://www.microsoft.com/en-us/windows/end-of-support). While we will not explicitly block Windows 10 from being used, future releases may inadvertently break compatibility with Windows 10. We will not postpone these changes in order to maintain Windows 10 compatibility, and Windows 10 support may break as a result.
 
 - Use Java 25 and C++ 23. Visual Studio 2026 on Windows and GCC 14.x on Linux are required for C++ teams for simulation.
-- Alpha 5: Add Commands v3 framework for Java. Documentation is in work. In the meantime, see the [Commands v3 Conference ](https://www.chiefdelphi.com/t/wpilib-commands-v3-championship-conference/519702), [Design Document](https://github.com/wpilibsuite/allwpilib/blob/main/design-docs/commands-v3.md) and the port of the [Hatchbot example to Commands v3](https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotcmdv3).
+- Alpha 5: Add Commands v3 framework for Java. Documentation is in work. In the meantime, see the [Commands v3 Conference](https://www.chiefdelphi.com/t/wpilib-commands-v3-championship-conference/519702), [Design Document](https://github.com/wpilibsuite/allwpilib/blob/main/design-docs/commands-v3.md) and the port of the [Hatchbot example to Commands v3](https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotcmdv3).
 - Alpha 5: Add OpMode framework, similar to FTC. See :doc:`/docs/software/basic-programming/opmodes` for documentation.
 - Alpha 6: Support for the [2027 FIRST Driver Station](https://wpilib.org/blog/the-2027-first-driver-station) bringing multi-platform support.
 - Alpha 5: Reorganize java packages from ``edu.wpi.first`` to ``org.wpilib`` and c++ namespaces from ``frc::`` to ``wpi::`` and create new subpackages for better organization. The :doc:`VS Code importer </docs/software/vscode-overview/importing-last-years-robot-code>` will attempt to update code for these changes as part of the import process.
@@ -197,17 +197,17 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: Fix adaptive RKDP advancing by the next step size
 - 2027 Alpha 7: Remove unused full-pivoting QR
 - 2027 Alpha 7: Remove epsilon check from RKDP
-- 2027 Alpha 7: Move Pair from wpimath to wpiutil Move Ellipse and Rectangle to shape package
-- 2027 Alpha 7: Move Pair from wpimath to wpiutil Split shape proto from geometry proto
-- 2027 Alpha 7: Move Pair from wpimath to wpiutil Move generated Protobuf classes into separate proto packages
-- 2027 Alpha 7: Move Pair from wpimath to wpiutil Make SimpleMotorFeedforward accept dimensionless units
-- 2027 Alpha 7: Move Pair from wpimath to wpiutil Add atReference() to LinearSystemLoop (#4098)
-- 2027 Alpha 7: Move Pair from wpimath to wpiutil Clean up DARE solver docs and cache intermediate result
-- 2027 Alpha 7: Move Pair from wpimath to wpiutil Remove Matrix.diag()
-- 2027 Alpha 7: Move Pair from wpimath to wpiutil Make Translation2d.getAngle() return optional
-- 2027 Alpha 7: Move Pair from wpimath to wpiutil Add Matrix pseudoinverse
-- 2027 Alpha 7: Move Pair from wpimath to wpiutil Add static methods for creating Rotation3d from Euler angles
-- 2027 Alpha 7: Move Pair from wpimath to wpiutil Add TwoDeadWheelOdometry
+- 2027 Alpha 7: Move Ellipse and Rectangle to shape package
+- 2027 Alpha 7: Split shape proto from geometry proto
+- 2027 Alpha 7: Move generated Protobuf classes into separate proto packages
+- 2027 Alpha 7: Make SimpleMotorFeedforward accept dimensionless units
+- 2027 Alpha 7: Add atReference() to LinearSystemLoop (#4098)
+- 2027 Alpha 7: Clean up DARE solver docs and cache intermediate result
+- 2027 Alpha 7: Remove Matrix.diag()
+- 2027 Alpha 7: Make Translation2d.getAngle() return optional
+- 2027 Alpha 7: Add Matrix pseudoinverse
+- 2027 Alpha 7: Add static methods for creating Rotation3d from Euler angles
+- 2027 Alpha 7: Add TwoDeadWheelOdometry
 
 #### Telemetry/Tunable
 - 2027 Alpha 7: Add Telemetry and Tunable APIs
