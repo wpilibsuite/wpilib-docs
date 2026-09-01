@@ -323,6 +323,9 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: wpilibcode: fix bash scripting bugs
 - 2027 Alpha 7: Add Linux docs shortcut
 - 2027 Alpha 7: Remove VSCode AppArmor profile
+- 2027 Alpha 7: Update to VS Code 1.134.0
+- 2027 Alpha 7: VS Code extension updates: CPP extension 1.31.4 to 1.33.8
+Java extension 1.54.0 to 1.55.0 Java Dependency extension 0.27.2 to 0.27.6
 
 ## Visual Studio Code Extension
 
