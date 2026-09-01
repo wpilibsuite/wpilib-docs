@@ -58,7 +58,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 5: Rename "Test" robot mode to "Utility" to emphasize that it can be used for more than just testing
 - 2027 Alpha 6: Fix crash when using OpMode robot on Systemcore.
 - 2027 Alpha 7: More package moves in Java and header moves in C++.  Some geometry classes moved to shape, Preferences moved to preferences
-- 2027 Alpha 7: DriverStationDisplay has been added--this is a text display integrated into the DS that supports ANSI escape codes
+- 2027 Alpha 7: ``DriverStationDisplay`` has been added--this is a text display integrated into the DS that supports ANSI escape codes
 - 2027 Alpha 7: Integer (raw) timestamps are now nanoseconds instead of microseconds.  Datalog and NT still use microseconds in files/network comms.
 - 2027 Alpha 7: Alert moved to wpiutil and has added functionality; usage reporting also moved to wpiutil. Joystick warnings are now alerts
 - 2027 Alpha 7: ExpansionHub Follower Fixes
@@ -68,20 +68,20 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: Remove OpMode UserControls
 - 2027 Alpha 7: Add new generation for gamepads
 - 2027 Alpha 7: Remove Axis from Gamepad Triggers
-- 2027 Alpha 7: Change `DriverStationSim` to use `wpi::hal::RobotMode`
+- 2027 Alpha 7: Change ``DriverStationSim`` to use ``wpi::hal::RobotMode``
 - 2027 Alpha 7: Crash robot program if an exception occurs during opmode construction
-- 2027 Alpha 7: Change DriverStationSim to use a C++ enum for alliance station
+- 2027 Alpha 7: Change ``DriverStationSim`` to use a C++ enum for alliance station
 - 2027 Alpha 7: Fix incorrect robot name in reported error
 - 2027 Alpha 7: Add ``DSGamepadChooser``
-- 2027 Alpha 7: Rename FMSInfo table to DriverStation
+- 2027 Alpha 7: Rename ``FMSInfo`` table to ``DriverStation``
 - 2027 Alpha 7: Switch robot construction back to supplier
-- 2027 Alpha 7: Refactor ExpansionHubMotor to introduce NeutralMode for motor control
-- 2027 Alpha 7: OpModeRobot: Don't initialize classes during scan for opmodes
+- 2027 Alpha 7: Refactor ``ExpansionHubMotor`` to introduce ``NeutralMode`` for motor control
+- 2027 Alpha 7: ``OpModeRobot``: Don't initialize classes during scan for opmodes
 - 2027 Alpha 7: Fix opmode reset and callback handling
 - 2027 Alpha 7: Use alerts for joystick warnings
 - 2027 Alpha 7: Add Timer.createStarted() convenience factory
-- 2027 Alpha 7: Put the OpModeRobot#addOpMode class/lambda arguments at the end
-- 2027 Alpha 7: Add option to varargs string array for DSGamepadChooser
+- 2027 Alpha 7: Put the ``OpModeRobot``#addOpMode class/lambda arguments at the end
+- 2027 Alpha 7: Add option to varargs string array for ``DSGamepadChooser``
 - 2027 Alpha 7: Move Preferences from util to preferences package
 - 2027 Alpha 7: Remove useless AutoCloseable implementations
 - 2027 Alpha 7: Add raw rumble API
@@ -183,31 +183,31 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: Fix C++ Odometry ResetRotation missing a negation
 - 2027 Alpha 7: Use triangular solves to compute UKF Kalman gain
 - 2027 Alpha 7: Add drivetrain anti-tipping utility
-- 2027 Alpha 7: Add BiquadFilter class for Second Order Section filters
+- 2027 Alpha 7: Add ``BiquadFilter`` class for Second Order Section filters
 - 2027 Alpha 7: Switch std::is_constant_evaluated() to consteval
 - 2027 Alpha 7: Rewrite Trajectory API
-- 2027 Alpha 7: Quaternion::Log(): Avoid potential divide-by-zero
-- 2027 Alpha 7: Make TrajectorySample only contain time
+- 2027 Alpha 7: ``Quaternion::Log()``: Avoid potential divide-by-zero
+- 2027 Alpha 7: Make ``TrajectorySample`` only contain time
 - 2027 Alpha 7: Give trajectory generator and parameterizer more specific names
 - 2027 Alpha 7: Fix trapezoid profile
-- 2027 Alpha 7: Add body rate integration to Rotation3d
+- 2027 Alpha 7: Add body rate integration to ``Rotation3d``
 - 2027 Alpha 7: Document that transforms are intrinsic
 - 2027 Alpha 7: Use "reference" instead of "setpoint" in feedforward docs
 - 2027 Alpha 7: Note that gain setters are for online tuning
 - 2027 Alpha 7: Fix adaptive RKDP advancing by the next step size
 - 2027 Alpha 7: Remove unused full-pivoting QR
 - 2027 Alpha 7: Remove epsilon check from RKDP
-- 2027 Alpha 7: Move Ellipse and Rectangle to shape package
+- 2027 Alpha 7: Move ``Ellipse`` and ``Rectangle`` to shape package
 - 2027 Alpha 7: Split shape proto from geometry proto
 - 2027 Alpha 7: Move generated Protobuf classes into separate proto packages
-- 2027 Alpha 7: Make SimpleMotorFeedforward accept dimensionless units
-- 2027 Alpha 7: Add atReference() to LinearSystemLoop (#4098)
+- 2027 Alpha 7: Make ``SimpleMotorFeedforward`` accept dimensionless units
+- 2027 Alpha 7: Add ``atReference()`` to LinearSystemLoop
 - 2027 Alpha 7: Clean up DARE solver docs and cache intermediate result
-- 2027 Alpha 7: Remove Matrix.diag()
-- 2027 Alpha 7: Make Translation2d.getAngle() return optional
+- 2027 Alpha 7: Remove ``Matrix.diag()``
+- 2027 Alpha 7: Make ``Translation2d.getAngle()`` return optional
 - 2027 Alpha 7: Add Matrix pseudoinverse
 - 2027 Alpha 7: Add static methods for creating Rotation3d from Euler angles
-- 2027 Alpha 7: Add TwoDeadWheelOdometry
+- 2027 Alpha 7: Add ``TwoDeadWheelOdometry``
 
 #### Telemetry/Tunable
 - 2027 Alpha 7: Add Telemetry and Tunable APIs
@@ -232,7 +232,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 ### Java units
 
 - 2027 Alpha 5: Make measure implementations immutable only
-- 2027 Alpha 5: Rename `AngularMomentumUnit.mult` to `per`
+- 2027 Alpha 5: Rename ``AngularMomentumUnit.mult`` to ``per``
 - 2027 Alpha 5: Make RPM an alias of RotationsPerMinute
 - 2027 Alpha 5: Fix incorrect magnitudes in some MutableMeasure mutations
 - 2027 Alpha 5: Remove deprecated divide and negate functions
@@ -255,7 +255,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: ``wpi::expected`` and ``fmt::format`` have been replaced with ``std::expected`` and ``std::format``
 - 2027 Alpha 7: Move Pair from wpimath to wpiutil
 - 2027 Alpha 7: Add protobuf List pack/unpack for Java
-- 2027 Alpha 7: Add `Struct<char>` support in C++
+- 2027 Alpha 7: Add ``Struct<char>`` support in C++
 - 2027 Alpha 7: Always use steady_clock for timestamp
 - 2027 Alpha 7: Accept UTF-8 struct schema identifiers
 - 2027 Alpha 7: Move Alert from HAL/wpilib to wpiutil
