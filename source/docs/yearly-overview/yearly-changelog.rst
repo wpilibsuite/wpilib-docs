@@ -42,7 +42,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 5: Remove ``robotInit()``. Use the ``Robot()`` constructor instead.
 - 2027 Alpha 5: Add a few unit overloads
 - 2027 Alpha 5: Remove deprecated ``MotorControllerGroup``
-- 2027 Alpha 5: Replace individual gamepad classes (e.g. ``XboxController``, ``PS4Controller``, ``PS5Controller``, ``StadiaController``) with a single ``Gamepad`` class.
+- 2027 Alpha 5: Replace individual gamepad classes (e.g. ``XboxController``, ``PS4Controller``, ``PS5Controller``, ``StadiaController``) with a single ``Gamepad`` class. Alpha 7 adds back support for individual gamepad classes.
 - 2027 Alpha 5: Add Touchpad support for gamepads
 - 2027 Alpha 5: Remove ``MotorController::StopMotor()``. Use ``MotorController::Disable()`` instead.
 - 2027 Alpha 5: Switch to new game data
@@ -56,6 +56,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 5: Add FTC fields
 - 2027 Alpha 5: Make swerve and differential kinematics functions immutable
 - 2027 Alpha 5: Rename "Test" robot mode to "Utility" to emphasize that it can be used for more than just testing
+- 2027 Alpha 5: Split ``DriverStation`` into smaller classes, ``MatchState`` and ``RobotState`` primarily.
 - 2027 Alpha 6: Fix crash when using OpMode robot on Systemcore.
 - 2027 Alpha 7: More package moves in Java and header moves in C++.  Some geometry classes moved to shape, Preferences moved to preferences
 - 2027 Alpha 7: ``DriverStationDisplay`` has been added--this is a text display integrated into the DS that supports ANSI escape codes
