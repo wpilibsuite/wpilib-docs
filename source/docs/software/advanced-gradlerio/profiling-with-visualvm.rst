@@ -4,7 +4,7 @@ This document is intended to familiarize the reader with the diagnostic tool tha
 
 ## Unpacking VisualVM
 
-To begin, [download VisualVM](https://visualvm.github.io/download.html) and unpack it to the WPILib installation folder. The folder is located at ``~/wpilib/`` where ``~`` indicates the users home directory. On Windows, this is ``C:\Users\Public\wpilib``.
+To begin, [download VisualVM](https://visualvm.github.io/download.html) and unpack it to the WPILib installation folder where YYYY is the WPILib version year. On Windows, The folder is located at ``C:\Users\Public\wpilib\YYYY``. On macOS this is  ``~/wpilib/YYYY``, where ``~`` indicates the users home directory. On Linux, this is ``XDG_DATA_HOME/wpilib/YYYY`` (likely ``~/.local/share/wpilib/YYYY``).
 
 ## Setting up Gradle
 
