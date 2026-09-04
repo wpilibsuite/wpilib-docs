@@ -84,7 +84,7 @@ There are three types of parallel compositions, differing based on when the comp
 
 - The ``Parallel`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Commands.html#parallel(org.wpilib.command2.Command...)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/namespacewpi_1_1cmd.html#a47ec49ea5c271b6007c613c84c7c3f61), :external:py:func:`Python <commands2.cmd.parallel>`), backed by the ``ParallelCommandGroup`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/ParallelCommandGroup.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_parallel_command_group.html), :external:py:class:`Python <commands2.ParallelCommandGroup>`), constructs a parallel composition that finishes when all members finish. The ``alongWith`` decorator ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Command.html#alongWith(org.wpilib.command2.Command...)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_ptr.html#a431044d88953a37d3d9ce2d062c7eb24), :external:py:meth:`Python <commands2.Command.along_with>`) does the same in infix notation.
 - The ``Race`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Commands.html#race(org.wpilib.command2.Command...)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/namespacewpi_1_1cmd.html#a7f8ee92e990d9785d30349267a1446c2), :external:py:func:`Python <commands2.cmd.race>`), backed by the ``ParallelRaceGroup`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/ParallelRaceGroup.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_parallel_race_group.html), :external:py:class:`Python <commands2.ParallelRaceGroup>`), constructs a parallel composition that finishes as soon as any member finishes; all other members are interrupted at that point.  The ``raceWith`` decorator ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Command.html#raceWith(org.wpilib.command2.Command...)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_ptr.html#ac61c5473f928abc8f11175c6ea06a185), :external:py:meth:`Python <commands2.Command.race_with>`) does the same in infix notation.
-- The ``Deadline`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Commands.html#deadline(org.wpilib.command2.Command,org.wpilib.command2.Command...)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/namespacewpi_1_1cmd.html#a7f8ee92e990d9785d30349267a1446c2), :external:py:func:`Python <commands2.cmd.deadline>`), ``ParallelDeadlineGroup`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/ParallelDeadlineGroup.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_parallel_deadline_group.html), :external:py:class:`Python <commands2.ParallelDeadlineGroup>`) finishes when a specific command (the "deadline") ends; all other members still running at that point are interrupted.  The ``deadlineFor`` decorator ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Command.html#withDeadline(org.wpilib.command2.Command)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_ptr.html#a5ff3f4c9889f5deb57054442f85d0548), :external:py:meth:`Python <commands2.Command.deadlineWith>`) does the same in infix notation; the command the decorator was called on is the deadline.
+- The ``Deadline`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Commands.html#deadline(org.wpilib.command2.Command,org.wpilib.command2.Command...)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/namespacewpi_1_1cmd.html#a7f8ee92e990d9785d30349267a1446c2), :external:py:func:`Python <commands2.cmd.deadline>`), ``ParallelDeadlineGroup`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/ParallelDeadlineGroup.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_parallel_deadline_group.html), :external:py:class:`Python <commands2.ParallelDeadlineGroup>`) finishes when a specific command (the "deadline") ends; all other members still running at that point are interrupted.  The ``deadlineFor`` decorator ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Command.html#withDeadline(org.wpilib.command2.Command)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_ptr.html#a5ff3f4c9889f5deb57054442f85d0548), :external:py:meth:`Python <commands2.Command.deadline_for>`) does the same in infix notation; the command the decorator was called on is the deadline.
 
 .. tab-set-code::
 
@@ -172,7 +172,7 @@ The ``Select`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/jav
    .. tab-item:: Java
       :sync: Java
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/snippets/selectcommand/RobotContainer.java
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/snippets/selectcommand/RobotContainer.java
          :language: java
          :lines: 20-45
          :lineno-match:
@@ -180,9 +180,9 @@ The ``Select`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/jav
    .. tab-item:: C++ (Header)
       :sync: C++ (Header)
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/snippets/SelectCommand/include/RobotContainer.hpp
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/snippets/SelectCommand/include/RobotContainer.hpp
          :language: c++
-         :lines: 26-43
+         :lines: 26-44
          :lineno-match:
 
 The ``Either`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/Commands.html#either(org.wpilib.command2.Command,org.wpilib.command2.Command,java.util.function.BooleanSupplier)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/namespacewpi_1_1cmd.html#a7f8ee92e990d9785d30349267a1446c2), :external:py:func:`Python <commands2.cmd.either>`), backed by the ``ConditionalCommand`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/ConditionalCommand.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_conditional_command.html), :external:py:class:`Python <commands2.ConditionalCommand>`), is a specialization accepting two commands and a boolean selector function.
@@ -291,14 +291,14 @@ For cases that don't need to track the proxied command, ``ScheduleCommand`` ([Ja
 
 ## Subclassing Compositions
 
-Command compositions can also be written as a constructor-only subclass of the most exterior composition type, passing the composition members to the superclass constructor. Consider the following from the Hatch Bot example project ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbottraditional), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/HatchbotTraditional)):
+Command compositions can also be written as a constructor-only subclass of the most exterior composition type, passing the composition members to the superclass constructor. Consider the following from the Hatch Bot example project ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbottraditional), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/HatchbotTraditional)):
 
 .. tab-set::
 
    .. tab-item:: Java
       :sync: Java
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbottraditional/commands/ComplexAuto.java
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbottraditional/commands/ComplexAuto.java
          :language: java
          :lines: 5-
          :lineno-match:
@@ -306,7 +306,7 @@ Command compositions can also be written as a constructor-only subclass of the m
    .. tab-item:: C++ (Header)
       :sync: C++ (Header)
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/HatchbotTraditional/include/commands/ComplexAuto.hpp
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/HatchbotTraditional/include/commands/ComplexAuto.hpp
          :language: c++
          :lines: 5-
          :lineno-match:
@@ -314,7 +314,7 @@ Command compositions can also be written as a constructor-only subclass of the m
    .. tab-item:: C++ (Source)
       :sync: C++ (Source)
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/HatchbotTraditional/cpp/commands/ComplexAuto.cpp
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/HatchbotTraditional/cpp/commands/ComplexAuto.cpp
          :language: c++
          :lines: 5-
          :lineno-match:
