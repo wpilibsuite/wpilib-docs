@@ -41,16 +41,16 @@ It is the responsibility of the user to manage proper inversions for their drive
     .. tab-item:: Java
         :sync: Java
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/tankdrivegamepad/Robot.java
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/tankdrivegamepad/Robot.java
             :language: java
-            :lines: 18,25,31,33
+            :lines: 18,24-29
 
     .. tab-item:: C++
         :sync: C++
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/TankDriveGamepad/cpp/Robot.cpp
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/TankDriveGamepad/cpp/Robot.cpp
             :language: c++
-            :lines: 15, 22-23, 29, 31
+            :lines: 16, 22-28
 
     .. tab-item:: Python
         :sync: Python
@@ -105,7 +105,7 @@ Joysticks follow NED (North-East-Down) convention, where the positive X axis poi
 
 ## Using the DifferentialDrive class to control Differential Drive robots
 
-.. note:: WPILib provides separate Robot Drive classes for the most common drive train configurations (differential and mecanum).  The DifferentialDrive class handles the differential drivetrain configuration. These drive bases typically have two or more in-line traction or omni wheels per side (e.g., 6WD or 8WD) and may also be known as "skid-steer", "tank drive", or "West Coast Drive" (WCD). The Kit of Parts drivetrain is an example of a differential drive. There are methods to control the drive with 3 different styles ("Tank", "Arcade", or "Curvature"), explained in the article below.
+.. note:: The DifferentialDrive class handles the differential drivetrain configuration. These drive bases typically have two or more in-line traction or omni wheels per side (e.g., 6WD or 8WD) and may also be known as "skid-steer", "tank drive", or "West Coast Drive" (WCD). The Kit of Parts drivetrain is an example of a differential drive. There are methods to control the drive with 3 different styles ("Tank", "Arcade", or "Curvature"), explained in the article below.
 
 DifferentialDrive is a method provided for the control of "skid-steer" or "West Coast" drivetrains, such as the Kit of Parts chassis. Instantiating a DifferentialDrive is as simple as so:
 
@@ -114,9 +114,9 @@ DifferentialDrive is a method provided for the control of "skid-steer" or "West 
     .. tab-item:: Java
         :sync: Java
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/tankdrivegamepad/Robot.java
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/tankdrivegamepad/Robot.java
             :language: java
-            :lines: 17-21,25,32-33,43
+            :lines: 16-21
 
     .. tab-item:: C++ (Header)
         :sync: C++ (Header)
@@ -124,13 +124,6 @@ DifferentialDrive is a method provided for the control of "skid-steer" or "West 
         .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/TankDriveGamepad/cpp/Robot.cpp
             :language: c++
             :lines: 15-19
-
-    .. tab-item:: C++ (Source)
-        :sync: C++ (Source)
-
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/TankDriveGamepad/cpp/Robot.cpp
-            :language: c++
-            :lines: 23, 27-31
 
     .. tab-item:: Python
         :sync: Python
@@ -151,15 +144,15 @@ Many FRC\ |reg| drivetrains have more than 1 motor on each side. Classes derived
 
         Class variables (e.g. in Robot.java or Subsystem):
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotinlined/subsystems/DriveSubsystem.java
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotinlined/subsystems/DriveSubsystem.java
             :language: java
-            :lines: 16-26
+            :lines: 16-25
 
         In Robot or Subsystem constructor:
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotinlined/subsystems/DriveSubsystem.java
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotinlined/subsystems/DriveSubsystem.java
             :language: java
-            :lines: 47-53
+            :lines: 43-49
 
     .. tab-item:: C++ (Header)
         :sync: C++ (Header)
@@ -173,9 +166,9 @@ Many FRC\ |reg| drivetrains have more than 1 motor on each side. Classes derived
 
         In Robot or Subsystem constructor:
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/HatchbotInlined/cpp/subsystems/DriveSubsystem.cpp
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/HatchbotInlined/cpp/subsystems/DriveSubsystem.cpp
             :language: c++
-            :lines: 21-27
+            :lines: 18-24
 
     .. tab-item:: Python
         :sync: Python
@@ -223,13 +216,13 @@ MecanumDrive is a method provided for the control of holonomic drivetrains with 
 
 .. tab-set-code::
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/mecanumdrive/Robot.java
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/mecanumdrive/Robot.java
         :language: java
-        :lines: 19-22, 32-48, 54
+        :lines: 18-21, 32-48
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/MecanumDrive/cpp/Robot.cpp
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/MecanumDrive/cpp/Robot.cpp
         :language: c++
-        :lines: 42-45, 50-58, 18, 24-28
+        :lines: 37-40, 45-53, 18-23
 
     .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/MecanumDrive/robot.py
       :language: python
@@ -247,13 +240,13 @@ The MecanumDrive class contains two different default modes of driving your robo
 
 .. tab-set-code::
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/a3c18d24a7953fbc454c5c8fb93d2d59e72eda55/wpilibjExamples/src/main/java/org/wpilib/snippets/mecanumdrive/Robot.java
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/snippets/mecanumdrive/Robot.java
         :language: java
-        :lines: 68-73
+        :lines: 62-67
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/a3c18d24a7953fbc454c5c8fb93d2d59e72eda55/wpilibcExamples/src/main/cpp/snippets/MecanumDrive/cpp/Robot.cpp
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/snippets/MecanumDrive/cpp/Robot.cpp
         :language: c++
-        :lines: 43-48
+        :lines: 38-43
 
     ```python
     def teleop_periodic(self):
@@ -277,7 +270,7 @@ Just remember to get the gyro angle each time ``driveCartesian()`` is called.
 
 ## Swerve Drive SW
 
-WPILib does not have a default class for controlling swerve drive. The WPILib swerve drive kinematics classes can be used to help with the math for controlling a swerve drive. See the :doc:`/docs/software/kinematics-and-odometry/swerve-drive-kinematics` section for more information on the kinematics of swerve drive and how to use the WPILib swerve drive kinematics classes. See the :doc:`/docs/software/kinematics-and-odometry/swerve-drive-odometry` section for more information on the odometry of swerve drive and how to use the WPILib swerve drive odometry classes. These are used in the SwerveBot ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/swervebot), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/SwerveBot), [Python](https://github.com/robotpy/mostrobotpy/tree/main/examples/robot/SwerveBot)) and SwerveDrivePoseEstimator ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/swervedriveposeestimator), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/SwerveDrivePoseEstimator)) examples.
+WPILib does not have a default class for controlling swerve drive. The WPILib swerve drive kinematics classes can be used to help with the math for controlling a swerve drive. See the :doc:`/docs/software/kinematics-and-odometry/swerve-drive-kinematics` section for more information on the kinematics of swerve drive and how to use the WPILib swerve drive kinematics classes. See the :doc:`/docs/software/kinematics-and-odometry/swerve-drive-odometry` section for more information on the odometry of swerve drive and how to use the WPILib swerve drive odometry classes. These are used in the SwerveBot ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/swervebot), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/SwerveBot), [Python](https://github.com/robotpy/mostrobotpy/tree/main/examples/robot/SwerveBot)) and SwerveDrivePoseEstimator ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/swervedriveposeestimator), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/SwerveDrivePoseEstimator)) examples.
 
 ### Third Party Swerve Drive Libraries
 
