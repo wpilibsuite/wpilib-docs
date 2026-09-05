@@ -57,7 +57,7 @@ It is the responsibility of the user to manage proper inversions for their drive
 
         .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/refs/tags/2027.0.0a6/examples/robot/TankDrive/robot.py
            :language: python
-           :lines: 17-21,29
+           :lines: 17-21,30
 
 ### Squaring Inputs
 
@@ -116,7 +116,7 @@ DifferentialDrive is a method provided for the control of "skid-steer" or "West 
 
         .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/tankdrivegamepad/Robot.java
             :language: java
-            :lines: 16-21
+            :lines: 17-20
 
     .. tab-item:: C++ (Header)
         :sync: C++ (Header)
@@ -130,7 +130,7 @@ DifferentialDrive is a method provided for the control of "skid-steer" or "West 
 
         .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/TankDrive/robot.py
            :language: python
-           :lines: 17-24,27-30
+           :lines: 21-23
 
 
 ### Multi-Motor DifferentialDrive
@@ -218,7 +218,7 @@ MecanumDrive is a method provided for the control of holonomic drivetrains with 
 
     .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/mecanumdrive/Robot.java
         :language: java
-        :lines: 18-21, 32-48
+        :lines: 18-21, 26, 31-48
 
     .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/MecanumDrive/cpp/Robot.cpp
         :language: c++
