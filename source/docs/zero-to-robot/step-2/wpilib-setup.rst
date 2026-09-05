@@ -1,6 +1,6 @@
 # WPILib Installation Guide
 
-This guide will walk you through installing the WPILib development environment on your computer. This includes the WPILib tools, Visual Studio Code, and all dependencies needed to develop and deploy code to the roboRIO. WPILib Installation is required for Java and C++ teams. Python teams can do a full install per these instructions to get a Visual Studio Code environment with some python extensions, or do a tools only installation to install dashboards such as AdvantageScope and Elastic. Python teams additionally need to follow the :doc:`python-setup`.
+This guide will walk you through installing the WPILib development environment on your computer. This includes the WPILib tools, Visual Studio Code, and all dependencies needed to develop and deploy code to the Systemcore. WPILib Installation is required for Java and C++ teams. Python teams can do a full install per these instructions to get a Visual Studio Code environment with some python extensions, or do a tools only installation to install dashboards such as AdvantageScope and Elastic. Python teams additionally need to follow the :doc:`python-setup`.
 
 ## Prerequisites
 
@@ -182,7 +182,7 @@ Some operating systems require some final action to complete installation.
 
 ## Additional C++ Installation for Simulation
 
-C++ robot simulation requires that a native compiler to be installed. For Windows, this would be [Visual Studio 2022 version 17.9 or later](https://visualstudio.microsoft.com/vs/) (**not** VS Code), macOS requires [Xcode 14 or later](https://apps.apple.com/us/app/xcode/id497799835), and Linux (Ubuntu) requires the ``build-essential`` package.
+C++ robot simulation requires that a native compiler to be installed. For Windows, this would be [Visual Studio 2026](https://visualstudio.microsoft.com/vs/) (**not** VS Code), macOS requires [Xcode 15.3 or later](https://apps.apple.com/us/app/xcode/id497799835), and Linux requires GCC 14, on Ubuntu/Debian it is provided by the ``g++-14`` package.
 
 Ensure the :guilabel:`Desktop Development with C++` option is checked in the Visual Studio installer for simulation support.
 
@@ -195,7 +195,7 @@ The Offline Installer installs the following components:
 
 - **Visual Studio Code** - The supported IDE for 2019 and later robot code development. The offline installer sets up a separate copy of VS Code for WPILib development, even if you already have VS Code on your machine. This is done because some of the settings that make the WPILib setup work may break existing workflows if you use VS Code for other projects.
 
-- **C++ Compiler** - The toolchains for building C++ code for the roboRIO
+- **C++ Compiler** - The toolchains for building C++ code for the Systemcore
 
 - **Gradle** - The specific version of Gradle used for building/deploying C++ or Java robot code
 

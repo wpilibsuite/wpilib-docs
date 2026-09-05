@@ -56,9 +56,9 @@ Both of the following examples are extremely simplified programs that just illus
    ```python
    def __init__(self):
        super().__init__()
-       table = ntcore.NetworkTableInstance.getDefault().getTable("GRIP/mycontoursReport")
-       self.areasSub = table.getDoubleArrayTopic("area").subscribe([])
-   def teleopPeriodic(self):
+       table = ntcore.NetworkTableInstance.get_default().get_table("GRIP/mycontoursReport")
+       self.areasSub = table.get_double_array_topic("area").subscribe([])
+   def teleop_periodic(self):
        areas = self.areasSub.get()
        print("Areas:", areas)
    ```

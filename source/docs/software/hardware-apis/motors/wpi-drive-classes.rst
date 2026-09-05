@@ -206,13 +206,13 @@ Like Arcade Drive, the Curvature Drive mode is used to control the drivetrain us
         :lines: 37-47
 
     ```python
-    def teleopPeriodic(self):
+    def teleop_periodic(self):
         # Tank drive with a given left and right rates
-        self.myDrive.tankDrive(-self.leftStick.getY(), -self.rightStick.getY())
+        self.myDrive.tank_drive(-self.left_stick.get_y(), -self.right_stick.get_y())
         # Arcade drive with a given forward and turn rate
-        self.myDrive.arcadeDrive(-self.driveStick.getY(), -self.driveStick.getX())
+        self.myDrive.arcade_drive(-self.driveStick.get_y(), -self.driveStick.get_x())
         # Curvature drive with a given forward and turn rate, as well as a button for turning in-place.
-        self.myDrive.curvatureDrive(-self.driveStick.getY(), -self.driveStick.getX(), self.driveStick.getButton(1))
+        self.myDrive.curvature_drive(-self.driveStick.get_y(), -self.driveStick.get_x(), self.driveStick.getButton(1))
     ```
 
 .. todo:: Add RLI for python example above.
@@ -256,11 +256,11 @@ The MecanumDrive class contains two different default modes of driving your robo
         :lines: 43-48
 
     ```python
-    def teleopPeriodic(self):
+    def teleop_periodic(self):
         # Drive using the X, Y, and Z axes of the joystick.
-        self.robotDrive.driveCartesian(-self.stick.getY(), -self.stick.getX(), -self.stick.getZ())
+        self.robot_drive.drive_cartesian(-self.stick.get_y(), -self.stick.get_x(), -self.stick.get_z())
         # Drive at 45 degrees relative to the robot, at the speed given by the Y axis of the joystick, with no rotation.
-        self.robotDrive.drivePolar(-self.stick.getY(), Rotation2d.fromDegrees(45), 0)
+        self.robot_drive.drive_polar(-self.stick.get_y(), Rotation2d.from_degrees(45), 0)
     ```
 
 .. todo:: Add RLI for python example above.

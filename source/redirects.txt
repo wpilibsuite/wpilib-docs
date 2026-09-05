@@ -454,3 +454,4 @@
 "docs/zero-to-robot/step-2/frc-game-tools.rst" "docs/zero-to-robot/step-2/first-driver-station.rst"
 "docs/zero-to-robot/step-3/imaging-your-roborio.rst" "docs/zero-to-robot/step-3/imaging-your-systemcore.rst"
 "docs/zero-to-robot/step-3/roborio2-imaging.rst" "docs/zero-to-robot/step-3/imaging-your-systemcore.rst"
+"docs/software/kinematics-and-odometry/intro-and-chassis-speeds.rst" "docs/software/kinematics-and-odometry/intro-and-chassis-velocities.rst"

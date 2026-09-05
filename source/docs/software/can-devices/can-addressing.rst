@@ -155,20 +155,20 @@ below:
 Description
 ================= ==
 Disable	          0
-System Halt	      1
-System Reset      2
-Device Assign     3
-Device Query	  4
-Heartbeat         5
-Sync              6
-Update            7
-Firmware Version  8
-Enumerate         9
+System Reset      1
 System Resume     10
 ================= ==
 
 Devices should disable immediately when receiving the Disable message
 (arbID 0).  Implementation of other broadcast messages is optional.
+
+These packets are all 0 length packets.
+
+Only Disable is currently sent by Systemcore. The System Reset and System Resume messages are reserved for future use.
+
+These packets are forwarded over Motioncore to all Motioncore buses.
+
+This packet is always sent as a CAN 2.0 frame, it is never sent as an FD frame.
 
 ## Requirements for FIRST CAN Nodes
 For CAN Nodes to be accepted for use in the FIRST System, they must:

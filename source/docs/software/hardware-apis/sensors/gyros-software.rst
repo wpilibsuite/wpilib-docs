@@ -193,21 +193,21 @@ The following example shows how to stabilize heading using a simple P loop close
         # The gain for a simple P loop
         self.kP = 1
         # Initialize motor controllers and drive
-        leftLeader = Spark(0)
-        leftFollower = Spark(1)
-        rightLeader = Spark(2)
-        rightFollower = Spark(3)
-        leftLeader.addFollower(leftFollower)
-        rightLeader.addFollower(rightFollower)
-        self.drive = DifferentialDrive(leftLeader, rightLeader)
-        rightLeader.setInverted(True)
+        left_leader = Spark(0)
+        left_follower = Spark(1)
+        right_leader = Spark(2)
+        right_follower = Spark(3)
+        left_leader.add_follower(left_follower)
+        right_leader.add_follower(right_follower)
+        self.drive = DifferentialDrive(left_leader, right_leader)
+        right_leader.set_inverted(True)
 
 
-    def autonomousPeriodic(self):
+    def autonomous_periodic(self):
         # Setpoint is implicitly 0, since we don't want the heading to change
-        error = -self.gyro.getRate()
+        error = -self.gyro.get_rate()
         # Drives forward continuously at half speed, using the gyro to stabilize the heading
-        self.drive.tankDrive(0.5 + self.kP * error, 0.5 - self.kP * error)
+        self.drive.tank_drive(0.5 + self.kP * error, 0.5 - self.kP * error)
 
     ```
 
@@ -291,25 +291,25 @@ The following example shows how to stabilize heading using a simple P loop close
         # The gain for a simple P loop
         self.kP = 1
         # Initialize motor controllers and drive
-        leftLeader = Spark(0)
-        leftFollower = Spark(1)
-        rightLeader = Spark(2)
-        rightFollower = Spark(3)
-        leftLeader.addFollower(leftFollower)
-        rightLeader.addFollower(rightFollower)
-        self.drive = DifferentialDrive(leftLeader, leftFollower)
-        rightLeader.setInverted(True)
+        left_leader = Spark(0)
+        left_follower = Spark(1)
+        right_leader = Spark(2)
+        right_follower = Spark(3)
+        left_leader.add_follower(left_follower)
+        right_leader.add_follower(right_follower)
+        self.drive = DifferentialDrive(left_leader, left_follower)
+        right_leader.set_inverted(True)
 
 
-    def autonomousInit(self):
+    def autonomous_init(self):
         # Set setpoint to current heading at start of auto
-        self.heading = self.gyro.getAngle()
+        self.heading = self.gyro.get_angle()
 
 
-    def autonomousPeriodic(self):
-        error = self.heading - self.gyro.getAngle()
+    def autonomous_periodic(self):
+        error = self.heading - self.gyro.get_angle()
         # Drives forward continuously at half speed, using the gyro to stabilize the heading
-        self.drive.tankDrive(0.5 + self.kP * error, 0.5 - self.kP * error)
+        self.drive.tank_drive(0.5 + self.kP * error, 0.5 - self.kP * error)
 
     ```
 
@@ -383,21 +383,21 @@ Much like with heading stabilization, this is often accomplished with a PID loop
         # The gain for a simple P loop
         self.kP = 0.05
         # Initialize motor controllers and drive
-        leftLeader = Spark(0)
-        leftFollower = Spark(1)
-        rightLeader = Spark(2)
-        rightFollower = Spark(3)
-        leftLeader.addFollower(leftFollower)
-        rightLeader.addFollower(rightFollower)
-        self.drive = DifferentialDrive(leftLeader, rightLeader)
-        rightLeader.setInverted(True)
+        left_leader = Spark(0)
+        left_follower = Spark(1)
+        right_leader = Spark(2)
+        right_follower = Spark(3)
+        left_leader.add_follower(left_follower)
+        right_leader.add_follower(right_follower)
+        self.drive = DifferentialDrive(left_leader, right_leader)
+        right_leader.set_inverted(True)
 
 
-    def autonomousPeriodic(self):
+    def autonomous_periodic(self):
         # Find the heading error; setpoint is 90
-        error = 90 - self.gyro.getAngle()
+        error = 90 - self.gyro.get_angle()
         # Drives forward continuously at half speed, using the gyro to stabilize the heading
-        self.drive.tankDrive(self.kP * error, -self.kP * error)
+        self.drive.tank_drive(self.kP * error, -self.kP * error)
 
     ```
 
