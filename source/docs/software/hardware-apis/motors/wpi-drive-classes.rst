@@ -80,11 +80,11 @@ The Motor Safety interface of motor controllers can be interacted with by the us
 .. tab-set-code::
 
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/a3c18d24a7953fbc454c5c8fb93d2d59e72eda55/wpilibjExamples/src/main/java/org/wpilib/snippets/motorcontrol/Robot.java
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/snippets/motorcontrol/Robot.java
         :language: java
         :lines: 50-53
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/a3c18d24a7953fbc454c5c8fb93d2d59e72eda55/wpilibcExamples/src/main/cpp/snippets/MotorControl/cpp/Robot.cpp
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/snippets/MotorControl/cpp/Robot.cpp
         :language: c++
         :lines: 49-52
 
@@ -121,7 +121,7 @@ DifferentialDrive is a method provided for the control of "skid-steer" or "West 
     .. tab-item:: C++ (Header)
         :sync: C++ (Header)
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/TankDriveGamepad/cpp/Robot.cpp
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/TankDriveGamepad/cpp/Robot.cpp
             :language: c++
             :lines: 15-19
 
@@ -164,7 +164,7 @@ Many FRC\ |reg| drivetrains have more than 1 motor on each side. Classes derived
     .. tab-item:: C++ (Header)
         :sync: C++ (Header)
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/HatchbotInlined/include/subsystems/DriveSubsystem.hpp
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/HatchbotInlined/include/subsystems/DriveSubsystem.hpp
             :language: c++
             :lines: 54, 58-67
 
@@ -197,11 +197,11 @@ Like Arcade Drive, the Curvature Drive mode is used to control the drivetrain us
 
 .. tab-set-code::
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/a3c18d24a7953fbc454c5c8fb93d2d59e72eda55/wpilibjExamples/src/main/java/org/wpilib/snippets/differentialdrive/Robot.java
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/snippets/differentialdrive/Robot.java
         :language: java
         :lines: 34-42
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/a3c18d24a7953fbc454c5c8fb93d2d59e72eda55/wpilibcExamples/src/main/cpp/snippets/DifferentialDrive/cpp/Robot.cpp
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/snippets/DifferentialDrive/cpp/Robot.cpp
         :language: c++
         :lines: 37-47
 
