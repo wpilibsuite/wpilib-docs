@@ -1711,7 +1711,7 @@ wheels = [
 
 [[package]]
 name = "sphinxext-photofinish"
-version = "0.1.11"
+version = "0.1.13"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beautifulsoup4" },
@@ -1719,9 +1719,9 @@ dependencies = [
     { name = "sphinx" },
     { name = "tinycss2" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/93/f9/a07cd491f4d65c36b3a71d41bc1fa3086eb9026c3da83170a5a88d69ab57/sphinxext_photofinish-0.1.11.tar.gz", hash = "sha256:175f8a1522f2decc59b34daa974c7ff92d037b0820f4af4f6218df967b68ebfa", size = 12279, upload-time = "2024-05-04T18:55:40.471Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/28/59/1da6e2181d931a805ebe5a3910a3a0a88d755e3bf59ba66ea5ef7e1f38f7/sphinxext_photofinish-0.1.13.tar.gz", hash = "sha256:dd67df3e0745602d90f8448f4fa743ec15fb2f80033ba9636fc88afb847d545e", size = 12586, upload-time = "2026-09-09T04:26:38.473Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/34/85/b898ab9ba52aebe0511b7ba2cccf81ca077b1904516b024cb601f217455a/sphinxext_photofinish-0.1.11-py3-none-any.whl", hash = "sha256:25c1098ce9e7a0c17ceee27d6432940f4c2f32b8efa7f391384023a4364f7578", size = 11985, upload-time = "2024-05-04T18:55:39.262Z" },
+    { url = "https://files.pythonhosted.org/packages/a4/e3/6333c7bd5131a38455aff6bc650d14526a4efb1d5ce9dc0eaec269867f1f/sphinxext_photofinish-0.1.13-py3-none-any.whl", hash = "sha256:c5d15878f65b65035113d4a2225e30696e4c79794b17dfba7ef7d66e9ec06324", size = 12134, upload-time = "2026-09-09T04:26:37.406Z" },
 ]
 
 [[package]]
@@ -1893,7 +1893,7 @@ requires-dist = [
     { name = "sphinxext-delta", specifier = "==0.4.1" },
     { name = "sphinxext-mimic", specifier = "==0.1.1" },
     { name = "sphinxext-opengraph", specifier = "==0.13.0" },
-    { name = "sphinxext-photofinish", specifier = "==0.1.11" },
+    { name = "sphinxext-photofinish", specifier = "==0.1.13" },
     { name = "sphinxext-rediraffe", specifier = "==0.3.0" },
     { name = "sphinxext-remoteliteralinclude", specifier = "==0.6.1" },
     { name = "sphinxext-toptranslators", specifier = "==0.1.3" },

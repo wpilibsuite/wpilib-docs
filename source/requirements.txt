@@ -1097,9 +1097,9 @@ sphinxext-opengraph==0.13.0 \
     --hash=sha256:103335d08567ad8468faf1425f575e3b698e9621f9323949a6c8b96d9793e80b \
     --hash=sha256:936c07828edc9ad9a7b07908b29596dc84ed0b3ceaa77acdf51282d232d4d80e
     # via wpilib-docs
-sphinxext-photofinish==0.1.11 \
-    --hash=sha256:175f8a1522f2decc59b34daa974c7ff92d037b0820f4af4f6218df967b68ebfa \
-    --hash=sha256:25c1098ce9e7a0c17ceee27d6432940f4c2f32b8efa7f391384023a4364f7578
+sphinxext-photofinish==0.1.13 \
+    --hash=sha256:c5d15878f65b65035113d4a2225e30696e4c79794b17dfba7ef7d66e9ec06324 \
+    --hash=sha256:dd67df3e0745602d90f8448f4fa743ec15fb2f80033ba9636fc88afb847d545e
     # via wpilib-docs
 sphinxext-rediraffe==0.3.0 \
     --hash=sha256:f319b3ccb7c3c3b6f63ffa6fd3eeb171b6d272df55075a9e84364394f391f507 \
