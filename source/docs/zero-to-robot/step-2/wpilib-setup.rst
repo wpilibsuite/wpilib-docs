@@ -1,6 +1,11 @@
 # WPILib Installation Guide
 
-This guide will walk you through installing the WPILib development environment on your computer. This includes the WPILib tools, Visual Studio Code, and all dependencies needed to develop and deploy code to the roboRIO. WPILib Installation is required for Java and C++ teams. Python teams can do a full install per these instructions to get a Visual Studio Code environment with some python extensions, or do a tools only installation to install dashboards such as AdvantageScope and Elastic. Python teams additionally need to follow the :doc:`python-setup`.
+This guide walks through installing the WPILib desktop development environment.
+It includes WPILib tools, Visual Studio Code, and the dependencies needed to
+develop and deploy robot code. A full installation is required for desktop
+Java and C++ development. Python teams can use it for the WPILib VS Code setup
+and tools, or select a tools-only installation, and must also follow the
+:doc:`Python setup guide <python-setup>`.
 
 ## Prerequisites
 
@@ -140,7 +145,11 @@ After installation is complete, you will be presented with the finished screen.
 .. image:: images/wpilib-setup/installer-finish.png
    :alt: Installer finished screen.
 
-.. important:: WPILib installs a separate version of VS Code. It does not use an already existing installation. Each year has it's own copy of the tools appended with the year. IE: ``WPILib VS Code 2026``. Please launch the WPILib VS Code and not a system installed copy!
+.. important::
+
+   WPILib installs a separate version of VS Code instead of using an existing
+   system installation. Each season has its own copy, such as ``WPILib VS Code
+   2027``. Launch WPILib VS Code when working on a robot project.
 
 Congratulations, the WPILib development environment and tooling is now installed on your computer! Press Finish to exit the installer.
 
@@ -174,7 +183,7 @@ Some operating systems require some final action to complete installation.
       The above will fix the following error:
 
       ```console
-      The SUID sandbox helper binary was found, but is not configured correctly. Rather than run without sandboxing I'm aborting now. You need to make sure that ~/wpilib/2026/advantagescope/chrome-sandbox is owned by root and has mode 4755.
+      The SUID sandbox helper binary was found, but is not configured correctly. Rather than run without sandboxing I'm aborting now. You need to make sure that ~/wpilib/2027/advantagescope/chrome-sandbox is owned by root and has mode 4755.
       ```
 
 
@@ -195,7 +204,7 @@ The Offline Installer installs the following components:
 
 - **Visual Studio Code** - The supported IDE for 2019 and later robot code development. The offline installer sets up a separate copy of VS Code for WPILib development, even if you already have VS Code on your machine. This is done because some of the settings that make the WPILib setup work may break existing workflows if you use VS Code for other projects.
 
-- **C++ Compiler** - The toolchains for building C++ code for the roboRIO
+- **C++ Compiler** - The toolchains for building C++ robot code
 
 - **Gradle** - The specific version of Gradle used for building/deploying C++ or Java robot code
 

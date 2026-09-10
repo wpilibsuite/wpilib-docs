@@ -1,11 +1,29 @@
-# Creating your Test Drivetrain Program (Java/C++/Python)
+# Create Your Test Drivetrain Program (Java/C++/Python)
 
-Once everything is installed, we're ready to create a robot program.  WPILib comes with several templates for robot programs.  Use of these templates is highly recommended for new users; however, advanced users are free to write their own robot code from scratch. This article walks through creating a project from one of the provided examples which has some code already written to drive a basic robot.
+**By the end of this page:** you will have a Java, C++, or Python drivetrain
+project configured for your robot and deployed to Systemcore.
+
+Before beginning, confirm that WPILib and any language-specific tools from
+:doc:`Step 2 <../step-2/index>` are installed, Step 3 is complete, and you know
+the motor-controller type, port numbers or CAN IDs, and team number for your
+robot.
+
+WPILib includes tested example projects with working robot structure already
+in place. This walkthrough starts with the **Getting Started** example, then
+explains the code you must check before deploying it to your robot.
 
 * :ref:`create_java_cpp_project`
 * :ref:`create_python_project`
 
-.. important:: This guide includes code examples that involve vendor hardware for the convenience of the user. In this document, :term:`PWM` refers to the motor controller included in the KOP. The CTRE tab references the Talon FX motor controller (Falcon 500 motor), but usage is similar for TalonSRX and VictorSPX. The REV tab references the CAN SPARK MAX controlling a brushless motor, but it's similar for brushed motor. There is an assumption that the user has already installed the required :doc:`vendordeps </docs/software/vscode-overview/3rd-party-libraries>` and configured the device(s) (update firmware, assign CAN IDs, etc) according to the manufacturer documentation ([CTRE](https://docs.ctr-electronics.com/) / [REV](https://docs.revrobotics.com/brushless/spark-max/gs)).
+.. important::
+
+   Choose the hardware tab that matches the motor controllers on your robot.
+   The **PWM** tab covers the motor controller included in the FRC Kit of Parts.
+   The **CTRE** tabs cover Talon controllers, and the **REV** tab covers SPARK
+   controllers. Before deploying a CAN example, install the required
+   :doc:`vendor library </docs/software/vscode-overview/3rd-party-libraries>`,
+   update the devices, and assign unique CAN IDs using the manufacturer's
+   instructions.
 
 .. _create_java_cpp_project:
 
@@ -57,7 +75,7 @@ Double check all the settings and click :guilabel:`Create Project`. If anything 
 
 .. note:: Any errors in project generation will appear in the bottom right-hand corner of the screen.
 
-## Opening The New Project
+## Opening the New Project
 
 .. image:: /docs/software/vscode-overview/images/importing-previous-project/opening-project.png
    :alt: Open Project Dialog in VS Code
@@ -113,14 +131,18 @@ Running the ``robotpy init`` command will initialize a new robot project:
 This will create a ``robot.py`` and ``pyproject.toml`` file, but will not overwrite an existing file.
 
 * The ``pyproject.toml`` file contains the requirements for your project, which are downloaded and installed via the ``robotpy sync`` command.
-* The ``robot.py`` file is where you will put the your Robot class.
+* The ``robot.py`` file is where you will put your Robot class.
 
-.. seealso:: :ref:`docs/zero-to-robot/step-2/python-setup:Download RobotPy for roboRIO`
+.. seealso::
+
+   :doc:`Install Python and RobotPy <../step-2/python-setup>` before creating
+   the project.
 
 
-## Basic Drivetrain example
+## Basic Drivetrain Example
 
-First, here is what a simple code can look like for a Drivetrain with PWM controlled motors (such as SparkMax).
+First, here is what a simple drivetrain program can look like with
+PWM-controlled motor controllers.
 
 .. note:: the Python example below is from `<https://github.com/robotpy/mostrobotpy/tree/main/examples/robot/GettingStarted>`__
 
@@ -260,7 +282,11 @@ Now let's look at various parts of the code.
 
 Our code needs to reference the components of WPILib that are used. In C++ this is accomplished using ``#include`` statements; in Java and Python it is done with ``import`` statements. The program references classes for ``Gamepad`` (for driving), ``PWMSparkMax`` / ``TalonFX`` / ``CANSparkMax`` / ``WPI_TalonSRX`` (for controlling motors), ``TimedRobot`` (the base class used for the example), ``Timer`` (used for autonomous), and ``DifferentialDrive`` (for connecting the Gamepad to the motors).
 
-.. note:: The ``Gamepad`` class is used with the 2027 FIRST Driver station. If you are using the NI Driver station, you will need to use the ``NiDsXboxController`` class instead.
+.. note:: The ``Gamepad`` class is used with the 2027 FIRST Driver Station. If
+   you are using the NI Driver Station, use the ``NiDsXboxController`` class
+   instead. The pinned Python PWM example above still shows
+   ``NiDsXboxController``; replace it with ``wpilib.Gamepad(0)`` when following
+   this guide with the 2027 Driver Station.
 
 ## Defining the variables for our sample robot
 
@@ -435,10 +461,13 @@ Our code needs to reference the components of WPILib that are used. In C++ this 
                :lines: 13-30
                :lineno-start: 13
 
-The sample robot in our examples will have an Xbox Controller (or other Gamepad) on USB port 0 for arcade drive and two motors on PWM ports 0 and 1 (Vendor examples use CAN with IDs 1 and 2). Here we create objects of type ``DifferentialDrive`` (robotDrive), ``Gamepad`` (controller) and ``Timer`` (timer). This section of the code does three things:
+The sample robot uses an Xbox controller (or another gamepad) on USB port 0
+for arcade drive and two motors on PWM ports 0 and 1. The vendor examples use
+CAN IDs 1 and 2. Here we create ``DifferentialDrive`` (``robotDrive``),
+``Gamepad`` (``controller``), and ``Timer`` (``timer``) objects. This code:
 
-1. Defines the variables as members of our Robot class.
-2. Initializes the variables.
+1. Defines the variables as members of the Robot class.
+2. Initializes each object once instead of recreating it periodically.
 
 .. note:: The variable initializations for C++ are in the ``private`` section at the bottom of the program. This means they are private to the class (``Robot``). The C++ code also sets the Motor Safety expiration to 0.1 seconds (the drive will shut off if we don't give it a command every .1 seconds) and starts the ``Timer`` used for autonomous.
 
@@ -579,3 +608,23 @@ Utility Mode is used for testing robot functionality or running other code that 
 
       For more detailed instructions, see :doc:`Deploy Python code </docs/software/python/subcommands/deploy>`.
 
+After deployment, confirm that the terminal reports success and Driver Station
+shows both robot communication and robot code. Do not enable the drivetrain
+from this page.
+
+.. container:: sw-success
+
+   .. container:: sw-success-h
+
+      ✓ Your drivetrain program is deployed.
+
+   Continue to the safety checks and first-enable procedure before running the
+   motors.
+
+.. container:: sw-nav
+
+   :doc:`← Step 4: Write and Drive <index>`
+
+   .. container:: sw-next
+
+      :doc:`Run Your Test Program Safely → <running-test-program>`

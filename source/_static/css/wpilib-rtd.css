@@ -51,8 +51,8 @@ code.py-class, code.py-func, code.py-meth {
     all: unset!important;
 }
 
-/* 
-* Top color bar 
+/*
+* Top color bar
 */
 
 .page::before {
@@ -68,7 +68,7 @@ body {
     margin-top: 10px;
 }
 
-/* 
+/*
 * Sidebar styling
 */
 
