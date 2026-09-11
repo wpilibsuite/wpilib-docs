@@ -9,12 +9,12 @@ Note that there are three cases: red, blue, and no color yet.  It is important t
 .. tab-set-code::
 
   ```java
-  Optional<Alliance> ally = DriverStation.getAlliance();
+  Optional<Alliance> ally = DriverStationBackend.getAlliance();
   if (ally.isPresent()) {
-      if (ally.get() == Alliance.Red) {
+      if (ally.get() == Alliance.RED) {
           <RED ACTION>
       }
-      if (ally.get() == Alliance.Blue) {
+      if (ally.get() == Alliance.BLUE) {
           <BLUE ACTION>
       }
   }
