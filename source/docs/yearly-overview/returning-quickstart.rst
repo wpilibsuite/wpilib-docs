@@ -4,7 +4,7 @@ This section serves as a launching point for veteran teams that need to update t
 
 It is advised that **all** teams read through the :doc:`changelog </docs/yearly-overview/yearly-changelog>` and :doc:`known issues </docs/yearly-overview/known-issues>` for the season.
 
-1. :doc:`Install the FIRST Driver Station </docs/zero-to-robot/step-2/first-driver-station>`
+1. :doc:`Install the FIRST Driver Station </docs/zero-to-robot/step-2/first-driver-station-installation>`
 2. :doc:`Install WPILib </docs/zero-to-robot/step-2/wpilib-setup>` (Java / C++ teams only)
 3. :doc:`Update third party libraries </docs/software/vscode-overview/3rd-party-libraries>`
 4. Reimage :doc:`Systemcore </docs/zero-to-robot/step-3/imaging-your-systemcore>`

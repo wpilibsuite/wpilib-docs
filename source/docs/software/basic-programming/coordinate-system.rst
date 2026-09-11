@@ -220,7 +220,7 @@ There are two primary ways many teams choose to define the field coordinate syst
 
 .. warning:: There are cases where your alliance may change (or appear to change) after the code is initialized. When you are not connected to the :term:`FMS` at a competition, you can change your alliance station in the Driver Station application at any time. Even when you are at a competition, your robot will usually initialize before connecting to the FMS so you will not have alliance information.
 
-.. note:: At competition events, the FMS will automatically report your Team Station and alliance color. When you are not connected to an FMS, you can choose your Team Station and alliance color on the Driver Station :ref:`docs/software/driverstation/driver-station:operation tab`.
+.. note:: At competition events, the FMS will automatically report your Team Station and alliance color. When you are not connected to an FMS, you can choose your Team Station and alliance color on the Driver Station :ref:`docs/software/firstdriverstation/first-driver-station-introduction:Settings Tab`.
 
 #### Always blue origin
 

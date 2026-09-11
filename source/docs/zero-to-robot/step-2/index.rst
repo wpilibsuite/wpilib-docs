@@ -6,7 +6,7 @@ An overview of the available control system software can be found :doc:`here </d
    :maxdepth: 1
 
    offline-installation-preparations
-   first-driver-station
+   first-driver-station-installation
    wpilib-setup
    python-setup
    step-2-next-steps

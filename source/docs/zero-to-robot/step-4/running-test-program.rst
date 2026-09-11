@@ -16,14 +16,14 @@ The roboRIO should be powered on and connected to the PC over Ethernet or USB.
 
 ## Starting the FRC Driver Station
 
-.. image:: /docs/software/driverstation/images/driver-station/ds-icon.png
+.. image:: /docs/software/firstdriverstation/images/driver-station/first-ds-icon.png
     :alt: The Driver Station icon found on the desktop.
 
-The FRC\ |reg| Driver Station can be launched by double-clicking the icon on the Desktop or by selecting Start->All Programs->FRC Driver Station.
+The FIRST Driver Station can be launched by double-clicking the icon on the Desktop or by selecting Start->All Programs->FRC Driver Station.
 
 ## Setting Up the Driver Station
 
-.. image:: /docs/software/driverstation/images/driver-station/ds-setup.png
+.. image:: /docs/software/firstdriverstation/images/driver-station/settings-tab(1).png
     :alt: Using the 3rd tab with the gear of the Driver Station to set the team number.
 
 The DS must be set to your team number in order to connect to your robot. In order to do this click the Setup tab then enter your team number in the team number box. Press return or click outside the box for the setting to take effect.

@@ -1,6 +1,6 @@
 # Recording Faults with Persistent Alerts
 
-Robots encounter a variety of fault conditions: disconnected sensors/motors, invalid mechanism states, initialization failures, etc. While the FRC Driver Station provides a :ref:`console interface <docs/software/driverstation/driver-station:Messages Tab>` for instantaneous alerts, the risk of missing important messages makes it poorly suited to communicate faults that persist over time.
+Robots encounter a variety of fault conditions: disconnected sensors/motors, invalid mechanism states, initialization failures, etc. While the FRC Driver Station provides a :ref:`console interface <docs/software/firstdriverstation/first-driver-station-introduction:Display Tab>` for instantaneous alerts, the risk of missing important messages makes it poorly suited to communicate faults that persist over time.
 
 Instead, the ``Alert`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/util/Alert.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1util_1_1_alert.html), :py:class:`Python <robotpy:wpilib.Alert>`) can be used for managing persistent alerts published via Network Tables. Alerts are assigned a priority (*error*, *warning*, or *info*) and can be *activated* or *deactivated* in robot code. The set of active alerts can be displayed on a dashboard, as shown below in Shuffleboard.
 
