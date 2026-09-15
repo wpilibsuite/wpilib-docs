@@ -25,16 +25,18 @@ Public sensor accessors and triggers are fine, and are often useful. Reading a s
 import org.wpilib.command3.Command;
 import org.wpilib.command3.Mechanism;
 import org.wpilib.hardware.motor.PWMSparkMax;
+import org.wpilib.hardware.rotation.Encoder;
 
 public class ExampleArm implements Mechanism {
   // This motor controller is declared private to guarantee that it can't be used
   // dangerously, outside of the command requirements system
   private final PWMSparkMax pivotMotor = new PWMSparkMax(1);
+  private final Encoder pivotEncoder = new Encoder(1, 2);
 
   // Triggers can be and are encouraged to be public. They can't control the mechanism,
   // and make it easier to coordinate complex actions
-  public final Trigger isUp = new Trigger(() -> pivotMotor.getPosition() >= 90);
-  public final Trigger isDown = new Trigger(() -> pivotMotor.getPosition() <= 0);
+  public final Trigger isUp = new Trigger(() -> pivotEncoder.getDistance() >= 90);
+  public final Trigger isDown = new Trigger(() -> pivotMotor.getDistance() <= 0);
 
   public ExampleArm() {
     setDefaultCommand(stop());
