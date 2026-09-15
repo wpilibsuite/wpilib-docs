@@ -2,13 +2,54 @@
 
 Lambda functions are a way of passing code to a function for *that* function to execute when it needs it. Java allows any object that could be an interface with a single method (a so-called "functional interface") to be written instead using a lambda function to improve readability and performance.
 
-Commands v3 uses lambdas heavily because command builders need to be given behavior. A command factory does not usually run the command immediately; it packages up the lambda so the scheduler can run it later, when the command is scheduled.
-
 The commonly used functional interfaces in v3 are:
 
 - ``Consumer<Coroutine>`` - a function that accepts a ``Coroutine`` input with no outputs. Used when defining command bodies with the builder API. Every occurrence of ``run(coroutine -> ... )`` is a ``Consumer<Coroutine>``.
 - ``Runnable`` - a function with no inputs and no outputs. Used when setting ``whenCanceled`` and for ``runRepeatedly(() -> ... )``
 - ``BooleanSupplier`` - a function with no inputs and returns a ``boolean`` value. Heavily used by :doc:`triggers` and for coroutine ``waitUntil(() -> ...)``
+
+Commands v3 uses lambdas heavily because command builders need to be given behavior. Note that a command created with a builder does not run the lambdas immediately, but stores them for the command to run after it is scheduled.
+
+```java
+public Command countingCommand(int count) {
+  return Command.noRequirements(coroutine -> {
+    // The command body is written as a lambda function accepting a Coroutine argument.
+    // The lambda function will execute after the command is scheduled.
+    for (int i = 1; i <= count; i++) {
+      System.out.println("Counted to " + i);
+      coroutine.yield();
+    }
+  }).named("Count to " + count);
+}
+```
+## How commands use lambda functions
+
+Command builders are based around providing a lambda function for the logic that the command will run. ``Command.noRequirements()`` and ``Command.requiring(...).executing()`` both accept lambda functions for the command logic. These lambda functions accept a single ``Coroutine`` argument and perform whatever command logic is needed.
+
+The ``coroutine`` parameter is only valid while the command is running. Do not store it in a field or try to call it later from another thread or callback. If a command does not need the coroutine parameter, name it ``_`` to make that clear to readers and to the compiler.
+
+```
+public Command printingCommand(String output) {
+  // This command doesn't need the Coroutine parameter, so we name it with an underscore to keep
+  // our code concise.
+  return Command.noRequirements(_ -> System.out.println(output))
+           .named("Debug Print");
+}
+```
+
+The optional ``whenCanceled()`` and ``whenExited()`` builder methods also accept lambda functions, but don't have any arguments.
+
+```java
+public Command driveDistance(double distance) {
+  return run(coroutine -> {
+    while (encoder.getDistance() < distance) {
+      motor.setVoltage(8);
+      coroutine.yield();
+    }
+  }).whenExited(() -> motor.setVoltage(0))
+    .named("Drive Distance: " + distance);
+}
+```
 
 ## Lambda Examples
 
@@ -87,10 +128,4 @@ There are also several special cases for lambda functions to make them more conc
 1. Lambda functions with exactly one input parameter don't need parentheses around the parameter list.
 2. Parameters to lambda functions don't need to have their types specified. This is why commands v3 code can use ``run(coroutine -> ...)`` instead of having to to specify ``run((Coroutine coroutine) -> ...)`` every time.
 3. Lambda functions with only one line of code can omit the curly braces and ``return`` keyword
-
-## How commands use lambda functions
-
-Command builders are based around providing a lambda function for the logic that the command will run. ``Command.noRequirements()`` and ``Command.requiring(...).executing()`` both accept lambda functions for the command logic. These lambda functions accept a single ``Coroutine`` object and perform whatever command logic is needed. The optional ``whenCanceled()`` builder method also accepts a lambda function, but this one doesn't have any arguments.
-
-
-The ``coroutine`` parameter is only valid while the command is running. Do not store it in a field or try to call it later from another thread or callback. If a command does not need the coroutine parameter, name it ``_`` to make that clear to readers and to the compiler.
+4. Unused lambda parameters can be named with an underscore (``_``) to indicate they're not used.
