@@ -87,7 +87,7 @@ The ``toWheelSpeeds(ChassisSpeeds speeds)`` (Java / Python) / ``ToWheelSpeeds(Ch
    ```
 
 #### Field-oriented drive
-:ref:`Recall <docs/software/kinematics-and-odometry/intro-and-chassis-speeds:Creating a ChassisSpeeds object from field-relative speeds>` that a ``ChassisSpeeds`` object can be created from a set of desired field-oriented speeds. This feature can be used to get wheel speeds from a set of desired field-oriented speeds.
+:ref:`Recall <docs/software/kinematics-and-odometry/intro-and-chassis-velocities:Creating a ChassisSpeeds object from field-relative speeds>` that a ``ChassisSpeeds`` object can be created from a set of desired field-oriented speeds. This feature can be used to get wheel speeds from a set of desired field-oriented speeds.
 
 .. tab-set-code::
 
@@ -173,4 +173,3 @@ One can also use the kinematics object to convert a ``MecanumDriveWheelSpeeds`` 
    sideways = chassisSpeeds.vy
    angular = chassisSpeeds.omega
    ```
-

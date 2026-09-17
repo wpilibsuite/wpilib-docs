@@ -4,7 +4,11 @@ This guide is intended for Python teams. Java and C++ teams can skip to :doc:`wp
 
 ## Prerequisites
 
-You must install a supported version of Python on a supported operating system. Every year we upgrade RobotPy to the latest available version of Python. In 2025 we support Python 3.9/3.10/3.11/3.12/3.13, but only 3.13 is available for the roboRIO.
+You must install a supported version of Python on a supported operating
+system. RobotPy updates its supported Python versions each season; check the
+`current RobotPy installation guide
+<https://robotpy.readthedocs.io/en/stable/install/index.html>`_ before choosing
+a Python version.
 
 Supported Operating Systems and Architectures:
  * Windows 11, 64 bit only. Arm-based Windows 11 is unsupported.
@@ -30,8 +34,6 @@ Once you have installed Python, you can use pip to install RobotPy on your devel
    .. tab-item:: Windows
       :sync: windows
 
-      .. note:: If you previously installed a pre-2024 or 2024 beta version of RobotPy, you should first uninstall RobotPy via ``py -m pip uninstall robotpy`` before upgrading.
-
       .. warning:: On Windows, the [Visual Studio 2022 redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#latest-supported-redistributable-version) package is required to be installed.
 
       Run the following command from cmd or Powershell to install the core RobotPy packages:
@@ -55,8 +57,6 @@ Once you have installed Python, you can use pip to install RobotPy on your devel
    .. tab-item:: macOS
       :sync: macos
 
-      .. note:: If you previously installed a pre-2024 or 2024 beta version of RobotPy, you should first uninstall RobotPy via ``python3 -m pip uninstall robotpy`` before upgrading.
-
       On a macOS system that has pip installed, just run the following command from the Terminal application (may require admin rights):
 
       ```sh
@@ -77,8 +77,6 @@ Once you have installed Python, you can use pip to install RobotPy on your devel
 
    .. tab-item:: Linux
       :sync: linux
-
-      .. note:: If you previously installed a pre-2024 or 2024 beta version of RobotPy, you should first uninstall RobotPy via ``python3 -m pip uninstall robotpy`` before upgrading.
 
       RobotPy distributes manylinux binary wheels on PyPI. However, installing these requires a distro that has glibc 2.35 or newer, and an installer that implements :pep:`600`, such as pip 20.3 or newer. You can check your version of pip with the following command:
 
@@ -107,11 +105,11 @@ Once you have installed Python, you can use pip to install RobotPy on your devel
    .. tab-item:: Linux ARM Coprocessor
       :sync: linux-arm
 
-      We publish prebuilt wheels on artifactory, which can be downloaded by giving the ``--extra-index-url`` option to pip:
-
-      ```sh
-      python3 -m pip install --extra-index-url=https://wpilib.jfrog.io/artifactory/api/pypi/wpilib-python-release-2025/simple robotpy
-      ```
+      Season-specific Linux ARM wheels are published separately. Use the
+      repository and install command listed in the `current RobotPy
+      installation guide
+      <https://robotpy.readthedocs.io/en/stable/install/index.html>`_; an
+      Artifactory URL from an older season may install incompatible packages.
 
       **source install**
 

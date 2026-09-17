@@ -131,7 +131,7 @@ To create code tabs in an article, you can use the ``.. tab-set-code::`` directi
       :language: java
       :lines: 19-25
       :lineno-match:
-   
+
    ```c++
    // Start the timer.
    m_timer.Start();

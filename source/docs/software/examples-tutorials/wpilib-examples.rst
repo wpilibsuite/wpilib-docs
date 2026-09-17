@@ -8,6 +8,8 @@ WPILib example projects demonstrate a large number of library features and use p
 
 .. image:: /docs/software/vscode-overview/images/creating-robot-program/create-new-project.png
 
+.. _wpilib-basic-examples:
+
 ## Basic Examples
 
 These examples demonstrate basic/minimal robot functionality.  They are useful for beginning teams who are gaining initial familiarity with robot programming, but are highly limited in functionality.
@@ -42,6 +44,8 @@ These examples demonstrate sensor reading and data processing using WPILib.  Mec
 * **Gyro** ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/gyro), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/Gyro), [Python](https://github.com/robotpy/mostrobotpy/tree/main/examples/robot/Gyro)): Demonstrates the use of the ``AnalogGyro`` class to measure robot heading and stabilize driving.
 * **SysIdRoutine** ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/sysidroutine), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/SysIdRoutine), [Python](https://github.com/robotpy/mostrobotpy/tree/main/examples/robot/SysId)): Demonstrates the use of the SysIdRoutine API to gather characterization data for a differential drivetrain.
 
+
+.. _wpilib-command-based-examples:
 
 ## Command-Based Examples
 
@@ -85,6 +89,8 @@ These examples demonstrate miscellaneous WPILib functionality that does not fit 
 * **UnitTest** ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/examples/unittest), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/examples/UnitTest)): Shows how to do :doc:`Unit Testing </docs/software/wpilib-tools/robot-simulation/unit-testing>`.  The test files need to be in a separate Test directory ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/test/java/org/wpilib/examples/unittest), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/test/cpp/examples/UnitTest/cpp)).
 
 
+.. _wpilib-snippet-examples:
+
 ## Snippets
 
 These examples demonstrate a single item.
@@ -104,5 +110,4 @@ These examples demonstrate a single item.
 * **Select Command Example** ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/snippets/selectcommand), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/snippets/SelectCommand), [Python](https://github.com/robotpy/mostrobotpy/tree/main/examples/robot/SelectCommand)): Demonstrates the use of the ``SelectCommand`` class to run one of a selection of commands depending on a runtime-evaluated condition.
 * **Simple Vision** ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/snippets/quickvision), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/snippets/QuickVision), [Python](https://github.com/robotpy/mostrobotpy/tree/main/examples/robot/QuickVision)): Demonstrates how to stream video from a USB camera to the dashboard.
 * **Solenoids** ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibjExamples/src/main/java/org/wpilib/snippets/solenoid), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-6/wpilibcExamples/src/main/cpp/snippets/Solenoid), [Python](https://github.com/robotpy/mostrobotpy/tree/main/examples/robot/Solenoid)): Demonstrates the use of the ``Solenoid`` and ``DoubleSolenoid`` classes to control solenoid outputs with a set of joystick buttons.
-
 
