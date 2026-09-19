@@ -86,14 +86,14 @@ The ``LinearSystem`` class contains methods for easily creating state-space syst
 
    .. tab-item:: Python
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/StateSpaceFlywheelSysId/robot.py
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/StateSpaceFlywheelSysId/robot.py
          :language: python
-         :lines: 19-23
+         :lines: 20-24
          :lineno-match:
 
       .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/StateSpaceFlywheelSysId/robot.py
          :language: python
-         :lines: 35-50
+         :lines: 36-53
          :lineno-match:
 
 
@@ -133,14 +133,14 @@ The ``LinearSystem`` class contains methods to easily create a model of a flywhe
    .. tab-item:: Python
       :sync: python
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/StateSpaceFlywheel/robot.py
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/StateSpaceFlywheel/robot.py
          :language: python
-         :lines: 19-23
+         :lines: 20-24
          :lineno-match:
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/StateSpaceFlywheel/robot.py
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/StateSpaceFlywheel/robot.py
          :language: python
-         :lines: 37-46
+         :lines: 40-49
          :lineno-match:
 
 ## Kalman Filters: Observing Flywheel State
@@ -182,9 +182,9 @@ Because the feedback controller computes error using the :term:`x-hat` estimated
    .. tab-item:: Python
       :sync: python
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/StateSpaceFlywheel/robot.py
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/StateSpaceFlywheel/robot.py
          :language: python
-         :lines: 48-54
+         :lines: 51-57
          :lineno-match:
 
 Because Kalman filters use our state-space model in the :ref:`docs/software/advanced-controls/state-space/state-space-observers:Predict step`, it is important that our model is as accurate as possible. One way to verify this is to record a flywheel's input voltage and velocity over time, and replay this data by calling only ``predict`` on the Kalman filter. Then, the kV and kA gains (or moment of inertia and other constants) can be adjusted until the model closely matches the recorded data.
@@ -223,9 +223,9 @@ Much like ``SimpleMotorFeedforward`` can be used to generate feedforward voltage
    .. tab-item:: Python
       :sync: python
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/StateSpaceFlywheel/robot.py
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/StateSpaceFlywheel/robot.py
          :language: python
-         :lines: 56-69
+         :lines: 59-72
          :lineno-match:
 
 ## Bringing it All Together: LinearSystemLoop
@@ -258,9 +258,9 @@ LinearSystemLoop combines our system, controller, and observer that we created e
    .. tab-item:: Python
       :sync: python
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/StateSpaceFlywheel/robot.py
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/StateSpaceFlywheel/robot.py
          :language: python
-         :lines: 71-74
+         :lines: 74-77
          :lineno-match:
 
 Once we have our ``LinearSystemLoop``, the only thing left to do is actually run it. To do that, we'll periodically update our Kalman filter with our new encoder velocity measurements and apply new voltage commands to it. To do that, we first set the :term:`reference`, then ``correct`` with the current flywheel speed, ``predict`` the Kalman filter into the next timestep, and apply the inputs generated using ``getU``.
