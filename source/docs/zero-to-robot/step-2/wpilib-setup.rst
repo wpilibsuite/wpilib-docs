@@ -167,14 +167,14 @@ Some operating systems require some final action to complete installation.
       Furthermore, modern Ubuntu versions [disable the kernel user namespaces feature for unknown applications](https://ubuntu.com/blog/ubuntu-23-10-restricted-unprivileged-user-namespaces). This means that the [sandboxing feature](https://code.visualstudio.com/blogs/2022/11/28/vscode-sandbox) won't work on the WPILib VS Code. To enable sandboxing for the WPILib applications, AppArmor profiles are provided, and can be installed using the command below.
 
       ```console
-      $ sudo cp ~/wpilib/YEAR/wpilibcode/AppArmor/* /etc/apparmor.d/
+      $ sudo cp $XDG_DATA_HOME/wpilib/YEAR/wpilibcode/AppArmor/* /etc/apparmor.d/
       $ sudo systemctl reload apparmor.service
       ```
 
       The above will fix the following error:
 
       ```console
-      The SUID sandbox helper binary was found, but is not configured correctly. Rather than run without sandboxing I'm aborting now. You need to make sure that ~/wpilib/2026/advantagescope/chrome-sandbox is owned by root and has mode 4755.
+      The SUID sandbox helper binary was found, but is not configured correctly. Rather than run without sandboxing I'm aborting now. You need to make sure that ~/.local/share/wpilib/2027/advantagescope/chrome-sandbox is owned by root and has mode 4755.
       ```
 
 
@@ -229,7 +229,7 @@ WPILib is designed to install to different folders for different years, so that 
 
   .. tab-item:: Linux
 
-     1. Delete the appropriate wpilib folder (``~/wpilib/YYYY`` where ``YYYY`` is the year to uninstall). eg ``rm -rf ~/wpilib/YYYY``
+     1. Delete the appropriate wpilib folder (``$XDG_DATA_HOME/wpilib/YYYY`` where ``YYYY`` is the year to uninstall). eg ``rm -rf $XDG_DATA_HOME/wpilib/YYYY``
 
 ## Troubleshooting
 

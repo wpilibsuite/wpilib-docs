@@ -8,15 +8,15 @@ The command based way to use the these classes is detailed in the section: :ref:
 
 ## Driver Station Joysticks
 
-.. image:: /docs/software/driverstation/images/driver-station/ds-usb-tab.png
-   :alt: The 4th tab down on the left hand side is the USB devices tab.
+.. image:: /docs/software/firstdriverstation/images/driver-station/gamepad-tab.png
+   :alt: The 2nd tab down on the left hand side is the gamepad tab.
 
-The :ref:`USB Devices Tab <docs/software/driverstation/driver-station:USB Devices Tab>` of the Driver Station is used to setup and configure the joystick for use with the robot.  Pressing a button on a joystick will cause its entry in the table to light up green.  Selecting the joystick will show the values of axes, buttons, and the POV that can be used to determine the mapping between physical joystick features and axis or button numbers.
+The :ref:`Gasmepad Tab <docs/software/firstdriverstation/first-driver-station-introduction:Gamepad Tab>` of the Driver Station is used to setup and configure the joystick for use with the robot.  Pressing a button on a gamepad select that gamepad.  Selecting the joystick will show the a representation of axes, buttons, and the POV that can be used to determine the mapping between physical joystick features and the name and axis or button numbers.
 
-.. image:: images/joystick/lights.jpg
-   :alt: On the USB tab the indicators light up to show what is currently being pressed.
+.. image:: /docs/software/firstdriverstation/images/driver-station/gamepad-locking.png
+   :alt: On the gamepad tab the indicators light up to show what is currently being pressed.
 
-The USB Devices Tab also assigns a joystick index to each joystick.  To reorder the joysticks simply click and drag.  The Driver Station software will try to preserve the ordering of devices between runs.  It is a good idea to note what order your devices should be in and check each time you start the Driver Station software that they are correct.
+The :ref:`Gamepad Tab <docs/software/firstdriverstation/first-driver-station-introduction:Gamepad Tab>` also assigns a joystick index to each joystick.  To reorder the joysticks simply click and drag.  The Driver Station software will try to preserve the ordering of devices between runs.  It is a good idea to note what order your devices should be in and check each time you start the Driver Station software that they are correct.
 
 When the Driver Station is in disabled mode, it is routinely looking for status changes on the joystick devices.  Unplugged devices are removed from the list and new devices are opened and added. When not connected to the FMS, unplugging a joystick will force the Driver Station into disabled mode. To start using the joystick again: plug the joystick in, check that it shows up in the right spot, then re-enable the robot. While the Driver Station is in enabled mode, it will not scan for new devices.  This is a time consuming operation and timely update of signals from attached devices takes priority.
 
