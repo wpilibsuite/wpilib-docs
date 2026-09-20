@@ -55,7 +55,7 @@ It is the responsibility of the user to manage proper inversions for their drive
     .. tab-item:: Python
         :sync: Python
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/refs/tags/2027.0.0a6/examples/robot/TankDrive/robot.py
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/TankDrive/robot.py
            :language: python
            :lines: 17-21,30
 
@@ -173,7 +173,7 @@ Many FRC\ |reg| drivetrains have more than 1 motor on each side. Classes derived
     .. tab-item:: Python
         :sync: Python
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/refs/tags/2027.0.0a6/examples/robot/HatchbotInlined/subsystems/drivesubsystem.py
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/HatchbotInlined/subsystems/drivesubsystem.py
             :language: python
             :lines: 15-29
 
