@@ -55,9 +55,9 @@ It is the responsibility of the user to manage proper inversions for their drive
     .. tab-item:: Python
         :sync: Python
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/refs/tags/2027.0.0a6/examples/robot/TankDrive/robot.py
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/TankDrive/robot.py
            :language: python
-           :lines: 17-21,30
+           :lines: 18-20,23,31
 
 ### Squaring Inputs
 
@@ -88,9 +88,9 @@ The Motor Safety interface of motor controllers can be interacted with by the us
         :language: c++
         :lines: 49-52
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/011945f5752f8f8faf66e9176a58339639833b5d/snippets/robot/MotorControl/robot.py
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/snippets/robot/MotorControl/robot.py
         :language: python
-        :lines: 49-52
+        :lines: 51-54
 
 
 By default all Drive objects enable Motor Safety. Depending on the mechanism and the structure of your program, you may wish to configure the timeout length of the motor safety (in seconds). The timeout length is configured on a per actuator basis and is not a global setting. The default (and minimum useful) value is 100ms.
@@ -128,9 +128,9 @@ DifferentialDrive is a method provided for the control of "skid-steer" or "West 
     .. tab-item:: Python
         :sync: Python
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/TankDrive/robot.py
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/TankDrive/robot.py
            :language: python
-           :lines: 21-23
+           :lines: 22-24
 
 
 ### Multi-Motor DifferentialDrive
@@ -173,9 +173,9 @@ Many FRC\ |reg| drivetrains have more than 1 motor on each side. Classes derived
     .. tab-item:: Python
         :sync: Python
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/refs/tags/2027.0.0a6/examples/robot/HatchbotInlined/subsystems/drivesubsystem.py
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/HatchbotInlined/subsystems/drivesubsystem.py
             :language: python
-            :lines: 15-29
+            :lines: 16-30
 
 
 ### Drive Modes
@@ -224,9 +224,9 @@ MecanumDrive is a method provided for the control of holonomic drivetrains with 
         :language: c++
         :lines: 37-40, 45-53, 18-23
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/MecanumDrive/robot.py
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/MecanumDrive/robot.py
       :language: python
-      :lines: 18-22, 25-42
+      :lines: 19-23, 26-43
 
 ### Mecanum Drive Modes
 .. note::
