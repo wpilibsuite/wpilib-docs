@@ -57,7 +57,7 @@ It is the responsibility of the user to manage proper inversions for their drive
 
         .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/TankDrive/robot.py
            :language: python
-           :lines: 18-20,22,31
+           :lines: 18-20,23,31
 
 ### Squaring Inputs
 

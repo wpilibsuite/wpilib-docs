@@ -134,7 +134,7 @@ First, here is what a simple code can look like for a Drivetrain with PWM contro
       :language: c++
       :linenos:
 
-   .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/GettingStarted/robot.py
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/GettingStarted/robot.py
       :language: python
       :linenos:
 
@@ -289,10 +289,10 @@ Our code needs to reference the components of WPILib that are used. In C++ this 
          .. tab-item:: Python
             :sync: python
 
-            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/GettingStarted/robot.py
+            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/GettingStarted/robot.py
                :language: python
                :lineno-match:
-               :lines: 11-28
+               :lines: 12-29
 
    .. tab-item:: CTRE-Phoenix6
       :sync: ctre6
