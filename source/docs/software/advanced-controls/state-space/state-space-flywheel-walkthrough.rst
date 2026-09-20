@@ -293,7 +293,7 @@ Once we have our ``LinearSystemLoop``, the only thing left to do is actually run
 
       .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/StateSpaceFlywheel/robot.py
          :language: python
-         :lines: 93-116
+         :lines: 93-115
          :lineno-match:
 
 ## Angle Wrap with LQR
