@@ -28,9 +28,9 @@ To access files from the deploy directory in your robot code, use the ``Filesyst
 
 By default the deploy directory in your project is transferred to the SystemCore when code is deployed.  It is initiated by this section of the ``build.gradle`` file.
 
-.. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/vscode-wpilib/v2027.0.0-alpha-6/vscode-wpilib/resources/gradle/java/build.gradle
+.. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/vscode-wpilib/v2027.0.0-alpha-7/vscode-wpilib/resources/gradle/java/build.gradle
    :language: groovy
-   :lines: 36-42
+   :lines: 38-44
    :lineno-match:
 
 This will overwrite any duplicate files found in the ``/home/systemcore/deploy`` directory on the RIO and copy over any additional not present there.  If ``deleteOldFiles`` is false it will not remove any files no longer present in the project deploy directory.  Changing it to `true` helps prevent programs like :doc:`Choreo </docs/software/pathplanning/choreo/index>` and [PathPlanner](https://pathplanner.dev) from getting confused by files that were deleted locally but still exist on the SystemCore.
