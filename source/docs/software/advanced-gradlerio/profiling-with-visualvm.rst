@@ -10,17 +10,20 @@ To begin, [download VisualVM](https://visualvm.github.io/download.html) and unpa
 
 GradleRIO supports passing JVM launch arguments, and this is what is necessary to enable remote debugging. Remote debugging is a feature that allows a local machine (such as the user's desktop) to view important information about a remote target (in our case, a SystemCore). To begin, locate the ``wpilibJava`` code block located in the projects ``build.gradle``. Below is what is looks like.
 
-.. rli:: https://raw.githubusercontent.com/wpilibsuite/vscode-wpilib/v2027.0.0-alpha-6/vscode-wpilib/resources/gradle/java/build.gradle
+.. rli:: https://raw.githubusercontent.com/wpilibsuite/vscode-wpilib/v2027.0.0-alpha-7/vscode-wpilib/resources/gradle/java/build.gradle
    :language: groovy
-   :lines: 16-46
+   :lines: 16-48
    :lineno-match:
-   :emphasize-lines: 18-19
+   :emphasize-lines: 18-21
 
 
 We will be replacing the highlighted lines with:
 
 ```groovy
 wpilibJava(getArtifactTypeClass('WPILibJavaArtifact')) {
+   // Set to true to use debug including JNI, which will drastically impact performance.
+   debugJni = false
+
    // Enable VisualVM connection
    jvmArgs.add("-Dcom.sun.management.jmxremote=true")
    jvmArgs.add("-Dcom.sun.management.jmxremote.port=1198")
