@@ -91,7 +91,7 @@ The ``LinearSystem`` class contains methods for easily creating state-space syst
          :lines: 20-24
          :lineno-match:
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/StateSpaceFlywheelSysId/robot.py
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/StateSpaceFlywheelSysId/robot.py
          :language: python
          :lines: 36-53
          :lineno-match:
@@ -291,9 +291,9 @@ Once we have our ``LinearSystemLoop``, the only thing left to do is actually run
    .. tab-item:: Python
       :sync: python
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/StateSpaceFlywheel/robot.py
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/StateSpaceFlywheel/robot.py
          :language: python
-         :lines: 90-113
+         :lines: 93-116
          :lineno-match:
 
 ## Angle Wrap with LQR
