@@ -41,7 +41,6 @@
     "source/docs/software/commandbased/commands-v2/structuring-command-based-project.rst",
     "source/docs/software/dashboards/glass/mech2d-widget.rst",
     "source/docs/software/basic-programming/robot-preferences.rst",
-    "source/docs/zero-to-robot/step-4/creating-test-drivetrain-program-cpp-java-python.rst",
     "source/docs/software/wpilib-tools/robot-simulation/physics-sim.rst",
     "source/docs/software/vision-processing/roborio/using-the-cameraserver-on-the-roborio.rst"
   ]
