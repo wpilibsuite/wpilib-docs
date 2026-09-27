@@ -90,7 +90,7 @@ Because ``BooleanSupplier`` has only one method that takes no arguments and retu
 
 For a simple WPILib example, consider the signature of ``Commands.runOnce`` (which creates an ``InstantCommand`` that, when scheduled, runs the given function once and then terminates):
 
-.. note:: The ``requirements`` parameter is explained in the :ref:`Command-based documentation <docs/software/commandbased/commands-v2/commands:getRequirements>`, and will not be discussed here.
+.. note:: The ``requirements`` parameter is explained in the :ref:`Commands v2 documentation <docs/software/commandbased/commands-v2/commands:getRequirements>`, and will not be discussed here.
 
 ```java
 public static Command runOnce(Runnable action, Subsystem... requirements)
@@ -224,6 +224,6 @@ Since ``RunOnce`` wants a function with no parameters and no return value, our l
 
 In the above example, our function body references an object that lives outside of the function itself (namely, the ``drivetrain`` object).  This is called a "capture" of a variable from the surrounding code (which is sometimes called the "outer scope" or "enclosing scope").  Usually the captured variables are either local variables from the enclosing method body in which the lambda expression is defined, or else fields of an enclosing class definition in which that method is defined.
 
-C++ has somewhat more-powerful semantics than Java.  One cost of this is that we generally need to give the C++ compiler some help to figure out *how exactly* we want it to capture state from the enclosing scope.  This is the purpose of the *capture list*.  For the purposes of using the WPILibC Command-based framework, it is usually sufficient to use a capture list of ``[this]``, which gives access to members of the enclosing class by capturing the enclosing class's ``this`` pointer by value.
+C++ has somewhat more-powerful semantics than Java.  One cost of this is that we generally need to give the C++ compiler some help to figure out *how exactly* we want it to capture state from the enclosing scope.  This is the purpose of the *capture list*.  For the purposes of using the WPILibC Commands v2 framework, it is usually sufficient to use a capture list of ``[this]``, which gives access to members of the enclosing class by capturing the enclosing class's ``this`` pointer by value.
 
 Method locals cannot be captured with the ``this`` pointer, and must be captured explicitly either by reference or by value by including them in the capture list (or by implicitly by instead specifying a default capture semantics).  It is typically safer to capture locals by-value, since a lambda can outlive the lifespan of an object it captures by reference.  For more details, consult the [C++ standard library documentation on capture semantics](https://en.cppreference.com/w/cpp/language/lambda#Lambda_capture).

@@ -143,7 +143,7 @@ This will bring up the "WPILIb New Project Creator"
 .. image:: images/creating-robot-program/new-project-creator.png
    :alt: The project type selector of the WPILib New Project Creator
 
-The **Project Type** chooses between an empty template project of one of the base classes, or a :doc:`WPILib example project </docs/software/examples-tutorials/wpilib-examples>`. Additionally, a template exists for :ref:`Command-based <docs/software/commandbased/commands-v2/what-is-command-based:What is "command-based" programming?>` projects, which are built on the :code:`TimedRobot` base class but include a number of additional features - this type of robot program is highly recommended for new teams.
+The **Project Type** chooses between an empty template project of one of the base classes, or a :doc:`WPILib example project </docs/software/examples-tutorials/wpilib-examples>`. Additionally, templates exist for :ref:`Commands v2 <docs/software/commandbased/commands-v2/what-is-command-based:What is "command-based" programming?>` and :doc:`Commands v3 </docs/software/commandbased/commands-v3/index>` projects, which are built on the :code:`TimedRobot` base class but include a number of additional features - this type of robot program is highly recommended for new teams.
 
 After making the selections, click :guilabel:`Next`.
 

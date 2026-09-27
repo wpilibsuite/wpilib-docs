@@ -43,15 +43,21 @@ These examples demonstrate sensor reading and data processing using WPILib.  Mec
 * **SysIdRoutine** ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/sysidroutine), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/SysIdRoutine), [Python](https://github.com/robotpy/mostrobotpy/tree/main/examples/robot/SysId)): Demonstrates the use of the SysIdRoutine API to gather characterization data for a differential drivetrain.
 
 
-## Command-Based Examples
+## Commands v2 Examples
 
-These examples demonstrate the use of the :ref:`Command-Based framework <docs/software/commandbased/commands-v2/what-is-command-based:What Is "Command-Based" Programming?>`.
+These examples demonstrate the use of the :ref:`Commands v2 framework <docs/software/commandbased/commands-v2/what-is-command-based:What Is "Command-Based" Programming?>`.
 
 * **DriveDistanceOffboard** ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/drivedistanceoffboard), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/DriveDistanceOffboard), [Python](https://github.com/robotpy/mostrobotpy/tree/main/examples/robot/DriveDistanceOffboard)): Demonstrates the use of a ``TrapezoidProfileCommand`` in conjunction with a "smart motor controller" to drive forward by a set distance with a trapezoidal motion profile.
 * **Rapid React Command Bot** ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/rapidreactcommandbot), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/RapidReactCommandBot)): This project uses the latest command based best practices and the Epilogue logging system.  It is capable of playing the FRC 2022 game Rapid React.
 * **Inlined Hatchbot** ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotinlined), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/HatchbotInlined), [Python](https://github.com/robotpy/mostrobotpy/tree/main/examples/robot/HatchbotInlined)): A complete set of robot code for a simple hatch-delivery bot typical of the 2019 FRC game *Destination: Deep Space*.  Commands are written in an "inline" style, in which explicit subclassing of ``Command`` is avoided.
 * **Traditional Hatchbot** ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbottraditional), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/HatchbotTraditional), [Python](https://github.com/robotpy/mostrobotpy/tree/main/examples/robot/HatchbotTraditional)): A complete set of robot code for a simple hatch-delivery bot typical of the 2019 FRC game *Destination: Deep Space*.  Commands are written in a "traditional" style, in which subclasses of ``Command`` are written for each robot action.
 
+## Commands v3 Examples
+
+These examples demonstrate the use of the :doc:`Commands v3 framework </docs/software/commandbased/commands-v3/index>`.
+
+**HatchbotCmdv3** ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotcmdv3)): A complete set of robot code for a simple hatch-delivery bot typical of the 2019 FRC game *Destination: Deep Space*. This example is a direct port of the v2 **Inlined Hatchbot** example to v3.
+**RebuiltCmdv3** ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/rebuiltcmdv3)): A complete set of robot code for a swerve drive robot playing the 2026 FRC game *Rebuilt*. This example demonstrates how to structure a complex project and best practices for using Commands v3.
 
 ## State-Space Examples
 
