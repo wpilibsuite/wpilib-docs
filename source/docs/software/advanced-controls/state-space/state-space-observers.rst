@@ -110,9 +110,9 @@ WPILib's Kalman Filter classes' constructors take a linear system, a vector of p
 
    .. tab-item:: Python
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a6/examples/robot/StateSpaceFlywheel/robot.py
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/StateSpaceFlywheel/robot.py
          :language: python
-         :lines: 48-54
+         :lines: 51-57
          :lineno-match:
 
 ## Footnotes

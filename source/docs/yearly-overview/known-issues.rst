@@ -43,7 +43,7 @@ Some teams have seen this happen due to software that is running on the driver s
 
 1. Reboot the driver station computer
 2. Close software that is running in the background
-3. Follow the :doc:`Driver Station Best Practices </docs/software/driverstation/driver-station-best-practices>`
+3. Follow the :doc:`Driver Station Best Practices </docs/software/firstdriverstation/first-driver-station-best-practices>`
 
 While rare, this can be caused by robot code that oversaturates the Systemcore processor or network connection. If all other troubleshooting steps fail, you can try running with one of the WPILib example programs to see if the problem still occurs.
 
