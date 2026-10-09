@@ -310,7 +310,6 @@
 "docs/networking/networking-introduction/om5p-ac-radio-modification.rst" "docs/zero-to-robot/step-3/radio-programming.rst"
 "docs/software/driverstation/programming-radios-for-fms-offseason.rst" "docs/zero-to-robot/step-3/radio-programming.rst"
 "docs/yearly-overview/2026-Game-Data.rst" "docs/yearly-overview/2026-game-data.rst"
-"docs/contributing/wpilib-docs/todo.rst" "docs/contributing/frc-docs/todo.rst"
 "docs/software/basic-programming/opmodes.rst" "docs/software/basic-programming/index.rst"
 "docs/yearly-overview/removed-features.rst" "docs/yearly-overview/index.rst"
 "docs/software/systemcore-info/recovering-a-roborio-using-safe-mode.rst" "docs/software/roborio-info/recovering-a-roborio-using-safe-mode.rst"
@@ -367,4 +366,4 @@
 "docs/software/commandbased/commands-v3/telemetry.rst" "docs/software/commandbased/index.rst"
 "docs/software/commandbased/commands-v3/triggers.rst" "docs/software/commandbased/index.rst"
 "docs/software/commandbased/commands-v3/troubleshooting.rst" "docs/software/commandbased/index.rst"
-"docs/software/firstdriverstation/first-driver-station-debug-graph.rst" "docs/software/firstdriverstation/first-driver-station-debug-graph.rst" "docs/software/driverstation/driver-station-log-viewer.rst"
+"docs/software/firstdriverstation/first-driver-station-debug-graph.rst" "docs/software/driverstation/driver-station-log-viewer.rst"
