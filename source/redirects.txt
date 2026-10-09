@@ -310,6 +310,7 @@
 "docs/networking/networking-introduction/om5p-ac-radio-modification.rst" "docs/zero-to-robot/step-3/radio-programming.rst"
 "docs/software/driverstation/programming-radios-for-fms-offseason.rst" "docs/zero-to-robot/step-3/radio-programming.rst"
 "docs/yearly-overview/2026-Game-Data.rst" "docs/yearly-overview/2026-game-data.rst"
+"docs/contributing/wpilib-docs/todo.rst" "docs/contributing/frc-docs/index.rst"
 "docs/software/basic-programming/opmodes.rst" "docs/software/basic-programming/index.rst"
 "docs/yearly-overview/removed-features.rst" "docs/yearly-overview/index.rst"
 "docs/software/systemcore-info/recovering-a-roborio-using-safe-mode.rst" "docs/software/roborio-info/recovering-a-roborio-using-safe-mode.rst"
