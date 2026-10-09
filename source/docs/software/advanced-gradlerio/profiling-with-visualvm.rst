@@ -4,23 +4,26 @@ This document is intended to familiarize the reader with the diagnostic tool tha
 
 ## Unpacking VisualVM
 
-To begin, [download VisualVM](https://visualvm.github.io/download.html) and unpack it to the WPILib installation folder. The folder is located at ``~/wpilib/`` where ``~`` indicates the users home directory. On Windows, this is ``C:\Users\Public\wpilib``.
+To begin, [download VisualVM](https://visualvm.github.io/download.html) and unpack it to the WPILib installation folder where YYYY is the WPILib version year. On Windows, The folder is located at ``C:\Users\Public\wpilib\YYYY``. On macOS this is  ``~/wpilib/YYYY``, where ``~`` indicates the users home directory. On Linux, this is ``XDG_DATA_HOME/wpilib/YYYY`` (likely ``~/.local/share/wpilib/YYYY``).
 
 ## Setting up Gradle
 
 GradleRIO supports passing JVM launch arguments, and this is what is necessary to enable remote debugging. Remote debugging is a feature that allows a local machine (such as the user's desktop) to view important information about a remote target (in our case, a SystemCore). To begin, locate the ``wpilibJava`` code block located in the projects ``build.gradle``. Below is what is looks like.
 
-.. rli:: https://raw.githubusercontent.com/wpilibsuite/vscode-wpilib/v2027.0.0-alpha-6/vscode-wpilib/resources/gradle/java/build.gradle
+.. rli:: https://raw.githubusercontent.com/wpilibsuite/vscode-wpilib/v2027.0.0-alpha-7/vscode-wpilib/resources/gradle/java/build.gradle
    :language: groovy
-   :lines: 16-46
+   :lines: 16-48
    :lineno-match:
-   :emphasize-lines: 18-19
+   :emphasize-lines: 18-21
 
 
 We will be replacing the highlighted lines with:
 
 ```groovy
 wpilibJava(getArtifactTypeClass('WPILibJavaArtifact')) {
+   // Set to true to use debug including JNI, which will drastically impact performance.
+   debugJni = false
+
    // Enable VisualVM connection
    jvmArgs.add("-Dcom.sun.management.jmxremote=true")
    jvmArgs.add("-Dcom.sun.management.jmxremote.port=1198")
