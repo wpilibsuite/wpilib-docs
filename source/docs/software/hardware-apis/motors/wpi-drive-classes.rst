@@ -41,14 +41,14 @@ It is the responsibility of the user to manage proper inversions for their drive
     .. tab-item:: Java
         :sync: Java
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/tankdrivegamepad/Robot.java
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/examples/tankdrivegamepad/Robot.java
             :language: java
             :lines: 18,24-29
 
     .. tab-item:: C++
         :sync: C++
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/TankDriveGamepad/cpp/Robot.cpp
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/examples/TankDriveGamepad/cpp/Robot.cpp
             :language: c++
             :lines: 16, 22-28
 
@@ -80,11 +80,11 @@ The Motor Safety interface of motor controllers can be interacted with by the us
 .. tab-set-code::
 
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/snippets/motorcontrol/Robot.java
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/snippets/motorcontrol/Robot.java
         :language: java
         :lines: 50-53
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/snippets/MotorControl/cpp/Robot.cpp
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/snippets/MotorControl/cpp/Robot.cpp
         :language: c++
         :lines: 49-52
 
@@ -114,14 +114,14 @@ DifferentialDrive is a method provided for the control of "skid-steer" or "West 
     .. tab-item:: Java
         :sync: Java
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/tankdrivegamepad/Robot.java
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/examples/tankdrivegamepad/Robot.java
             :language: java
             :lines: 17-20
 
     .. tab-item:: C++ (Header)
         :sync: C++ (Header)
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/TankDriveGamepad/cpp/Robot.cpp
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/examples/TankDriveGamepad/cpp/Robot.cpp
             :language: c++
             :lines: 15-19
 
@@ -144,20 +144,20 @@ Many FRC\ |reg| drivetrains have more than 1 motor on each side. Classes derived
 
         Class variables (e.g. in Robot.java or Subsystem):
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotinlined/subsystems/DriveSubsystem.java
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotinlined/subsystems/DriveSubsystem.java
             :language: java
             :lines: 16-25
 
         In Robot or Subsystem constructor:
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotinlined/subsystems/DriveSubsystem.java
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/examples/hatchbotinlined/subsystems/DriveSubsystem.java
             :language: java
             :lines: 43-49
 
     .. tab-item:: C++ (Header)
         :sync: C++ (Header)
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/HatchbotInlined/include/subsystems/DriveSubsystem.hpp
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/examples/HatchbotInlined/include/subsystems/DriveSubsystem.hpp
             :language: c++
             :lines: 54, 58-67
 
@@ -166,7 +166,7 @@ Many FRC\ |reg| drivetrains have more than 1 motor on each side. Classes derived
 
         In Robot or Subsystem constructor:
 
-        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/HatchbotInlined/cpp/subsystems/DriveSubsystem.cpp
+        .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/examples/HatchbotInlined/cpp/subsystems/DriveSubsystem.cpp
             :language: c++
             :lines: 18-24
 
@@ -190,11 +190,11 @@ Like Arcade Drive, the Curvature Drive mode is used to control the drivetrain us
 
 .. tab-set-code::
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/snippets/differentialdrive/Robot.java
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/snippets/differentialdrive/Robot.java
         :language: java
         :lines: 34-42
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/snippets/DifferentialDrive/cpp/Robot.cpp
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/snippets/DifferentialDrive/cpp/Robot.cpp
         :language: c++
         :lines: 37-47
 
@@ -216,11 +216,11 @@ MecanumDrive is a method provided for the control of holonomic drivetrains with 
 
 .. tab-set-code::
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/mecanumdrive/Robot.java
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/examples/mecanumdrive/Robot.java
         :language: java
         :lines: 18-21, 26, 31-48
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/MecanumDrive/cpp/Robot.cpp
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/examples/MecanumDrive/cpp/Robot.cpp
         :language: c++
         :lines: 37-40, 45-53, 18-23
 
@@ -240,11 +240,11 @@ The MecanumDrive class contains two different default modes of driving your robo
 
 .. tab-set-code::
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/snippets/mecanumdrive/Robot.java
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/snippets/mecanumdrive/Robot.java
         :language: java
         :lines: 62-67
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/snippets/MecanumDrive/cpp/Robot.cpp
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/snippets/MecanumDrive/cpp/Robot.cpp
         :language: c++
         :lines: 38-43
 

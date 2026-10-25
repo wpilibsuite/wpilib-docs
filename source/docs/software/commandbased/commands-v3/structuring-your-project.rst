@@ -14,7 +14,7 @@ WPILib needs a single entry point to start your program. Use a ``Robot`` class t
 
 Mechanisms should be declared as ``public final`` fields in the robot class and initialized in the field declaration or in the constructor. The former makes the code a little more concise, while the latter allows for flexibility if different mechanism implementations exist.
 
-.. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/rebuiltcmdv3/Robot.java
+.. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/examples/rebuiltcmdv3/Robot.java
   :language: java
   :lines: 22-
   :lineno-match:
@@ -38,19 +38,19 @@ In the example of a slapdown intake, there could be three classes:
 3. ``Intake``, which combines both the rollers and the wrist
 
 ### ``IntakeRoller.java``
-.. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/rebuiltcmdv3/mechanisms/IntakeRoller.java
+.. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/examples/rebuiltcmdv3/mechanisms/IntakeRoller.java
   :language: java
   :lines: 15-
   :lineno-match:
 
 ### ``IntakeWrist.java``
-.. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/rebuiltcmdv3/mechanisms/IntakeWrist.java
+.. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/examples/rebuiltcmdv3/mechanisms/IntakeWrist.java
   :language: java
   :lines: 17-
   :lineno-match:
 
 ### ``Intake.java``
-.. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/rebuiltcmdv3/mechanisms/Intake.java
+.. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/examples/rebuiltcmdv3/mechanisms/Intake.java
   :language: java
   :lines: 12-
   :lineno-match:
@@ -69,7 +69,7 @@ OpMode classes let you group mode-specific logic together in one place without c
 
 OpMode constructors are generally all that's needed. WPILib will automatically call them when that mode is selected on the driver station, passing in the main ``Robot`` object if the constructor accepts it.
 
-.. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/rebuiltcmdv3/opmodes/auto/SweepAuto.java
+.. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/examples/rebuiltcmdv3/opmodes/auto/SweepAuto.java
   :language: java
   :lines: 15-
   :lineno-match:
