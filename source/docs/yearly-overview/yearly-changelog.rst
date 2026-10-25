@@ -90,6 +90,11 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 
   .. warning:: Silent Breaking: The change to nanoseconds affects ``RobotController`` ``getTime`` and ``getMonotonicTime`` and ``wpi::Now()``, ``nt::Now()``, and the cscore timestamp functions.
 
+- 2027 Alpha 8: Upgrade to Catch2 3.16.0
+- 2027 Alpha 8: Upgrade to Sleipnir 0.6.6
+- 2027 Alpha 8: fix ``getTeamNumber()``
+- 2027 Alpha 8: Keep Watchdog times in integer nanoseconds
+- 2027 Alpha 8: Upgrade to LLVM 23.1.3
 
 #### Commands v2
 
@@ -99,6 +104,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 5: Remove ``Mecanum``/``SwerveControllerCommand``
 - 2027 Alpha 5: Add ``Subsystem.idle()``
 - 2027 Alpha 5: Fix ``WaitUntilCommand`` for match time counting down
+- 2027 Alpha 8: Trigger: add ``ifTrue``
 
 #### Commands v3
 
@@ -114,6 +120,20 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: Multiple periodic callbacks in the same scope
 - 2027 Alpha 7: Fix Untils not Including "Until Condition"
 - 2027 Alpha 7: Allow fork/await failures to be handled by user code
+- 2927 Alpha 8: Add robot mode scopes
+- 2027 Alpha 8: Do not track command-scoped bindings for cleanup
+- 2027 Alpha 8: Prevent new states from being added to state machines after no-arg ``switchFromAny()`` calls
+- 2027 Alpha 8: Prevent unsafe commands from running during disabled
+- 2027 Alpha 8: Allow triggers to be garbage collected when their creation scope exits
+- 2027 Alpha 8: Add ``onExit`` command callback to always run when a command stops running
+- 2027 Alpha 8: Trigger: add ``ifTrue``
+- 2027 Alpha 8: Add Commands v3-compatible SysIdRoutine
+- 2027 Alpha 8: Fix awaitCompletion
+- 2027 Alpha 8: Performance improvement for ``schedule()``
+- 2027 Alpha 8: Make Hatchbot cmdv3 examples idiomatic
+- 2027 Alpha 8: Use MatchState in Rebuilt cmdv3 example
+- 2027 Alpha 8: Track running commands by their original run IDs when awaiting
+- 2027 Alpha 8: Add special handling for yielding coroutine functions
 
 #### NetworkTables
 
@@ -127,6 +147,14 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: Split SetServerTeam and SetServerFixed, add mDNS resolver
 - 2027 Alpha 7: Fix publish-triggered announcements being blocked by subscription announcements
 - 2027 Alpha 7: Multiple bugfixes
+- 2027 Alpha 8: Update send mode after subscription changes
+- 2027 Alpha 8: NetworkOutgoingQueue: fix bookkeeping
+- 2027 Alpha 8: Update InstanceImpl::Destroy() to wait for listener callback completion
+- 2027 Alpha 8: Stop NetworkServer's loop before its members are destroyed
+- 2027 Alpha 8: Persist property-only updates
+- 2027 Alpha 8: Change topic metadata UID fields to int64_t
+- 2027 Alpha 8: Fix ntcore shutdown race
+- 2027 Alpha 8: Publish the current WPILib version to NT
 
 #### Data Logging
 
@@ -135,6 +163,12 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 5: Support logging of protobuf-serializable types
 - 2027 Alpha 5: Use full class names in static logger fields
 - 2027 Alpha 7: Multiple bugfixes
+- 2027 Alpha 8: Avoid repeated warnings on overflow
+- 2027 Alpha 8: Provide one entrypoint; use service loading to find generated loggers
+- 2027 Alpha 8: Unify dynamic protobuf handling
+- 2027 Alpha 8: use alerts for low free space
+- 2027 Alpha 8: Don't delete match logs when cleaning up logs
+- 2027 Alpha 8: Periodically check for USB and transfer log file
 
 #### Hardware interfaces
 
@@ -148,6 +182,8 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: All CAN device classes now take a ``CANPort`` enum instead of an integer port to disambiguate Systemcore ports from Motioncore ports.
 - 2027 Alpha 7: Create drivers library. PWM motor controllers were moved to this library.
 - 2027 Alpha 7: Add Gobilda Pinpoint support
+- 2027 Alpha 8: Remove Talon and VictorSP motor controllers as they won't be [legal for 2027 season](https://community.firstinspires.org/2026-event-robot-rule-preview-for-2027-season-part-1).
+- 2027 Alpha 8: Fix CAN Streams swapping flags and length
 
 #### Math
 
@@ -213,13 +249,27 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: Add Matrix pseudoinverse
 - 2027 Alpha 7: Add static methods for creating Rotation3d from Euler angles
 - 2027 Alpha 7: Add ``TwoDeadWheelOdometry``
+- 2027 Alpha 8: Update the Kraken X60 DCMotor factories to use values from the CTRE Motor Testing Lab
+- 2027 Alpha 8: Fix incorrect rename of MatrixStruct
+- 2027 Alpha 8: Remove non-unit-safe Trajectory.SampleAt() overload from C++
+- 2027 Alpha 8: Fix Celsius and Fahrenheit telemetry logging
+- 2027 Alpha 8: Fix rounding issue in IsStabilizable()
+- 2027 Alpha 8: Implement isStabilizable with EJML
+- 2027 Alpha 8: Replace instances of speeds with velocities
+- 2027 Alpha 8: Remove Trajectory's dependence on Pose2d
+- 2027 Alpha 8: Fix C++ trajectory sample sorting
+- 2027 Alpha 8: Breaking: Simplify trajectory classes
+- 2027 Alpha 8: Fix HolonomicTrajectory transform
 
 #### Telemetry/Tunable
 - 2027 Alpha 7: Add Telemetry and Tunable APIs
+- 2027 Alpha 8: Add getTuneRevision to Tunable API
+- 2027 Alpha 8: Add backwards compatibility shim for Selectable. This will be removed before the kickoff release.
 
 #### AprilTag/Fields
 - 2027 Alpha 7: [fields] Split images, change to generation, merge AprilTags content
 - 2027 Alpha 7: [apriltag] Convert to vendordep
+- 2027 Alpha 8: Upgrade apriltag to master from 2026-08-07
 
 ### Simulation
 
@@ -232,7 +282,8 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 
 - 2027 Alpha 5: Adding XRP Java and C++ examples for Timed Robot
 - 2027 Alpha 6: Show IP and port of XRP/Romi to user on connection
-- 2027 Alpha 7: Fix motor support and https://github.com/wpilibsuite/allwpilib/pull/8915
+- 2027 Alpha 7: Fix motor support
+- 2027 Alpha 8: Implement Romi WS backwards compatibility
 
 ### Java units
 
@@ -241,6 +292,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 5: Make RPM an alias of RotationsPerMinute
 - 2027 Alpha 5: Fix incorrect magnitudes in some MutableMeasure mutations
 - 2027 Alpha 5: Remove deprecated divide and negate functions
+- 2027 Alpha 8: Improve return type of min/max utilities
 
 ### CameraServer
 
@@ -265,9 +317,20 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: Accept UTF-8 struct schema identifiers
 - 2027 Alpha 7: Move Alert from HAL/wpilib to wpiutil
 - 2027 Alpha 7: Add usage reporting API
+- 2027 Alpha 8: Java: Add an ``Option`` type which is similar to Java's ``Optional`` but doesn't allow ``.get()`` which would silently return a value when none exists.
+- 2027 Alpha 8: Fix lost wakeups
+- 2027 Alpha 8: Fix stacktrace formatting in jni_util
+- 2027 Alpha 8: uv::Async: Add early nullptr
+- 2027 Alpha 8: Add Bluetooth LE packet client
+- 2027 Alpha 8: Define low priority Alerts as blue instead of green
+- 2027 Alpha 8: Add projected binary search functions
+- 2027 Alpha 8: Build requireNonNullParam's message only when the argument is null
+- 2027 Alpha 8: Prevent AsyncFunction send-after-close race
 
 ### Javac Plugin
 - 2027 Alpha 7: Add compiler check for integer division in floating-point contexts
+- 2027 Alpha 8: Add annotation processor to validate correct usage of opmode annotations
+- 2027 Alpha 8: Show provenance and suppression instructions in compile-time errors
 
 ## Glass / OutlineViewer / Simulation GUI
 
@@ -285,6 +348,13 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: Add sim GUI support for DS display
 - 2027 Alpha 7: Change to SDL3
 - 2027 Alpha 7: [glass] Add NT button for System server, add force restart
+- 2027 Alpha 8: Fix bugs in glass UI and tweak styling
+- 2027 Alpha 8: Scale the GUI by content scale, not window pixel density
+- 2027 Alpha 8: Sim GUI: Display sim devices in GUI as a slash-separated tree
+- 2027 Alpha 8: Add DS alerts to sim GUI
+- 2027 Alpha 8: Add Font Awesome Brands icons
+- 2027 Alpha 8: Clear stale optional protobuf values
+- 2027 Alpha 8: Use relative paths for Field2d images in saved files
 
 ## GradleRIO
 
@@ -300,6 +370,9 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: Support catch2 for C++ unit tests
 - 2027 Alpha 7: Add drivers, tunables, telemetry, and fields libraries
 - 2027 Alpha 7: Change install directory to XDG_DATA_HOME/wpilib on Linux
+- 2027 Alpha 8: Add poison pill for simulateJava task
+- 2027 Alpha 8: Add META-INF resources to eclipse classpath
+- 2027 Alpha 8: Remove vision libraries
 
 ## WPILib All in One Installer
 
@@ -329,6 +402,11 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: Remove VSCode AppArmor profile
 - 2027 Alpha 7: Update to VS Code 1.134.0
 - 2027 Alpha 7: VS Code extension updates: CPP extension 1.31.4 to 1.33.8 Java extension 1.54.0 to 1.55.0 Java Dependency extension 0.27.2 to 0.27.6
+- 2027 Alpha 8: Update CPP VS Code ext to 1.34.4 to fix intellisense
+- 2027 Alpha 8: Fix gzip extraction of macOS tools
+- 2027 Alpha 8: Added Application Name to MacOS Installer
+- 2027 Alpha 8: Seperate the version used for shortcuts vs install folder
+- 2027 Alpha 8: Give the bundled Linux VS Code its own desktop name so it no longer collides with other VS Code installs
 
 ## Visual Studio Code Extension
 
@@ -356,6 +434,11 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: Reload Java project config on build
 - 2027 Alpha 7: Pass build.gradle path to project reload command
 - 2027 Alpha 7: Fix WPILib tool detection on Linux
+- 2027 Alpha 8: Remove unnamespaced wpiutil C++ replacements
+- 2027 Alpha 8: Don't check for missing Java class for C++ import
+- 2027 Alpha 8: Display installed VS Code extensions in project info
+- 2027 Alpha 8: Add a list of dependency URLs to project info
+- 2027 Alpha 8: Optimize JDK version detection and display full JDK version
 
 ## SysId
 
@@ -378,6 +461,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 5: Use updated thirdparty-ceres and move resource files
 - 2027 Alpha 5: Refactor to use WPILib libraries and modern C++ conventions and improve UX
 - 2027 Alpha 5: Remove tag ID limit
+- 2027 Alpha 8: Fix potential deadlock
 
 ## Shuffleboard
 
