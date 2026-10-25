@@ -107,9 +107,9 @@ When possible, instead of using code blocks, an RLI should be used.  This pulls 
    :lines: 18-24
    :lineno-match:
 
-.. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/GettingStarted/cpp/Robot.cpp
+.. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/examples/GettingStarted/cpp/Robot.cpp
    :language: c++
-   :lines: 46-56
+   :lines: 44-54
    :lineno-match:
 
 .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/GettingStarted/robot.py

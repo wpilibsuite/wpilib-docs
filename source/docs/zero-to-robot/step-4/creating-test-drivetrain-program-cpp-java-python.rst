@@ -126,11 +126,11 @@ First, here is what a simple code can look like for a Drivetrain with PWM contro
 
 .. tab-set-code::
 
-   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/gettingstarted/Robot.java
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/examples/gettingstarted/Robot.java
       :language: java
       :linenos:
 
-   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/GettingStarted/cpp/Robot.cpp
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/examples/GettingStarted/cpp/Robot.cpp
       :language: c++
       :linenos:
 
@@ -281,9 +281,9 @@ Our code needs to reference the components of WPILib that are used. In C++ this 
          .. tab-item:: C++
             :sync: c++
 
-            .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/GettingStarted/cpp/Robot.cpp
+            .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/examples/GettingStarted/cpp/Robot.cpp
                :language: c++
-               :lines: 46-55
+               :lines: 44-53
                :lineno-match:
 
          .. tab-item:: Python
@@ -456,9 +456,9 @@ The sample robot in our examples will have an Xbox Controller (or other Gamepad)
    .. tab-item:: C++
       :sync: c++
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/GettingStarted/cpp/Robot.cpp
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/examples/GettingStarted/cpp/Robot.cpp
          :language: c++
-         :lines: 13-20
+         :lines: 13-18
          :lineno-match:
 
    .. tab-item:: Python
@@ -481,9 +481,9 @@ The ``Robot`` constructor for our sample program inverts the right side of the d
       :lines: 34-50
       :lineno-match:
 
-   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/GettingStarted/cpp/Robot.cpp
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/examples/GettingStarted/cpp/Robot.cpp
       :language: c++
-      :lines: 22-33
+      :lines: 20-31
       :lineno-match:
 
    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/GettingStarted/robot.py
@@ -504,9 +504,9 @@ The ``AutonomousInit`` method is run once each time the robot transitions to aut
       :lines: 52-60
       :lineno-match:
 
-   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/GettingStarted/cpp/Robot.cpp
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/examples/GettingStarted/cpp/Robot.cpp
       :language: c++
-      :lines: 35-40
+      :lines: 33-38
       :lineno-match:
 
    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/GettingStarted/robot.py
@@ -525,9 +525,9 @@ Like in Autonomous, the Teleop mode has a ``TeleopInit`` and ``TeleopPeriodic`` 
       :lines: 62-68
       :lineno-match:
 
-   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/GettingStarted/cpp/Robot.cpp
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/examples/GettingStarted/cpp/Robot.cpp
       :language: c++
-      :lines: 42-44
+      :lines: 40-42
       :lineno-match:
 
    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/GettingStarted/robot.py
