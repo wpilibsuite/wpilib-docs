@@ -185,6 +185,7 @@ linkcheck_ignore = [
 linkcheck_anchors_ignore_for_url = [
     r".*github.com.*",
     r".*ni.com/en/support/downloads/drivers/download.frc-game-tools.html.*",
+    r".*developer.apple.com/documentation/technotes/tn3179-understanding-local-network-privacy.*",
 ]
 
 # Sets linkcheck timeout in seconds
