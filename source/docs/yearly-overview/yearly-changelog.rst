@@ -405,7 +405,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 8: Update CPP VS Code ext to 1.34.4 to fix intellisense
 - 2027 Alpha 8: Fix gzip extraction of macOS tools
 - 2027 Alpha 8: Added Application Name to MacOS Installer
-- 2027 Alpha 8: Seperate the version used for shortcuts vs install folder
+- 2027 Alpha 8: Separate the version used for shortcuts vs install folder
 - 2027 Alpha 8: Give the bundled Linux VS Code its own desktop name so it no longer collides with other VS Code installs
 
 ## Visual Studio Code Extension
