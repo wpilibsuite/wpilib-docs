@@ -27,7 +27,7 @@ The data is accessed using the Game Data methods in each language. Below are des
 
 ### C++/Java/Python
 
-In C++, Java, and Python the Game Data is accessed by using the ``GetGameData`` method of the MatchState class  ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/driverstation/MatchState.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_match_state.html), :py:class:`Python <robotpy:wpilib.MatchState>`). ``GetGameData`` returns an ``Optional`` type so Teams know that Game Data has been received. Teams likely want to query the data in a Teleop method such as Teleop Periodic in order to receive the data after it is sent during the match. Make sure to handle the case where the data has not been received.
+In C++, Java, and Python the Game Data is accessed by using the ``GetGameData`` method of the MatchState class  ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.core/org/wpilib/driverstation/MatchState.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_match_state.html), :py:class:`Python <robotpy:wpilib.MatchState>`). ``GetGameData`` returns an ``Optional`` type so Teams know that Game Data has been received. Teams likely want to query the data in a Teleop method such as Teleop Periodic in order to receive the data after it is sent during the match. Make sure to handle the case where the data has not been received.
 
 .. tab-set-code::
 

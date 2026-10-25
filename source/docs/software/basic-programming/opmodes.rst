@@ -19,7 +19,7 @@ Here's an example of what opmode selection looks like on the Driver Station:
 
 ## The Robot Class
 
-In an opmode project the ``Robot`` class extends ``OpModeRobot`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/framework/OpModeRobot.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_op_mode_robot_base.html)). Hardware objects, subsystems, and any state shared across all opmodes are declared as members here.
+In an opmode project the ``Robot`` class extends ``OpModeRobot`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.core/org/wpilib/framework/OpModeRobot.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_op_mode_robot_base.html)). Hardware objects, subsystems, and any state shared across all opmodes are declared as members here.
 
 .. tab-set::
 
@@ -57,7 +57,7 @@ The following methods in ``OpModeRobot`` run no matter the selected opmode:
 
 ## Creating OpModes
 
-Individual opmodes extend ``PeriodicOpMode`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/opmode/PeriodicOpMode.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_periodic_op_mode.html)) and implement whichever lifecycle methods they need.
+Individual opmodes extend ``PeriodicOpMode`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.core/org/wpilib/opmode/PeriodicOpMode.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_periodic_op_mode.html)) and implement whichever lifecycle methods they need.
 
 .. tab-set::
 

@@ -205,7 +205,7 @@ The Logs tab displays diagnostic messages from the DS, WPILib, User Code, and/or
 .. image:: images/driver-station/display-alerts-tab.png
   :alt: This is the third tab from the top on the right hand side.
 
-The DS Display and Alerts tab. The Display window shows output from the ``DriverStationDisplay`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/driverstation/DriverStationDisplay.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_driver_station_display.html), :py:class:`Python <robotpy:wpilib.DriverStationDisplay>`). See :ref:`docs/software/telemetry/persistent-alerts:Recording Faults with Persistent Alerts` for more information on Alerts.
+The DS Display and Alerts tab. The Display window shows output from the ``DriverStationDisplay`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.core/org/wpilib/driverstation/DriverStationDisplay.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_driver_station_display.html), :py:class:`Python <robotpy:wpilib.DriverStationDisplay>`). See :ref:`docs/software/telemetry/persistent-alerts:Recording Faults with Persistent Alerts` for more information on Alerts.
 
 On both the Display and Alert windows, you can press the pop-out button to open the window in a separate window.
 
