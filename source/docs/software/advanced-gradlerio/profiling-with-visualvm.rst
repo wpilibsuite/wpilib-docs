@@ -103,7 +103,7 @@ To begin, ensure you are on the :guilabel:`Monitor` tab and click :guilabel:`Hea
    :alt: Location of heap dump button in VisualVM
    :width: 700
 
-This heap dump will be stored on the target system (Systemcore) and must be retrieved using SFTP. See :doc:`this article </docs/software/systemcore-info/roborio-ftp>` for information on retrieving the dump from the Systemcore.
+This heap dump will be stored on the target system (Systemcore) and must be retrieved using SFTP. See :doc:`this article </docs/software/systemcore-info/systemcore-sftp>` for information on retrieving the dump from the Systemcore.
 
 Once downloaded, the dump can be analyzed with VisualVM.
 
