@@ -455,6 +455,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 5: Use Elastic 2027.0.0-alpha7
 - 2027 Alpha 6: Use Elastic 2027.0.0-alpha8
 - 2027 Alpha 7: Use Elastic 2027.0.0-alpha9
+- 2027 Alpha 8: Use Elastic 2027.0.0-alpha10
 
 ## WPIcal
 
