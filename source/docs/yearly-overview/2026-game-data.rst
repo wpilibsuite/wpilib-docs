@@ -69,7 +69,7 @@ In C++, Java, and Python the Game Data is accessed by using the ``GetGameData`` 
      }
   ```
 
-  .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/07b318443054388aece6824001e7f7f6f63041ab/snippets/robot/GameData2026/robot.py
+  .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/snippets/robot/GameData2026/robot.py
     :language: python
     :lines: 84-89,91-92,94-95,97-98
     :lineno-start: 84
@@ -195,7 +195,7 @@ For example:
    }
   ```
 
-  .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/07b318443054388aece6824001e7f7f6f63041ab/snippets/robot/GameData2026/robot.py
+  .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/snippets/robot/GameData2026/robot.py
     :language: python
     :lines: 20-69
     :lineno-match:

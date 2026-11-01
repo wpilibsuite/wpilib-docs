@@ -420,7 +420,7 @@ And then usage:
     :lines: 28-31
     :lineno-match:
 
-  .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot//HatchbotTraditional/robotcontainer.py
+  .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/examples/robot//HatchbotTraditional/robotcontainer.py
     :language: python
     :lines: 68-75
     :lineno-match:
