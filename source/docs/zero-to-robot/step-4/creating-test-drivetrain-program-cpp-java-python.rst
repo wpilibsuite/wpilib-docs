@@ -134,7 +134,7 @@ First, here is what a simple code can look like for a Drivetrain with PWM contro
       :language: c++
       :linenos:
 
-   .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/GettingStarted/robot.py
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/examples/robot/GettingStarted/robot.py
       :language: python
       :linenos:
 
@@ -167,9 +167,9 @@ Now let's look at various parts of the code.
 
          .. tab-item:: Python
 
-            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/GettingStarted/robot.py
+            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/examples/robot/GettingStarted/robot.py
                :language: python
-               :lines: 8
+               :lines: 10
                :lineno-match:
 
    .. tab-item:: CTRE-Phoenix6
@@ -289,10 +289,10 @@ Our code needs to reference the components of WPILib that are used. In C++ this 
          .. tab-item:: Python
             :sync: python
 
-            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/GettingStarted/robot.py
+            .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/examples/robot/GettingStarted/robot.py
                :language: python
                :lineno-match:
-               :lines: 12-29
+               :lines: 14-30
 
    .. tab-item:: CTRE-Phoenix6
       :sync: ctre6
@@ -464,11 +464,10 @@ The sample robot in our examples will have an Xbox Controller (or other Gamepad)
    .. tab-item:: Python
       :sync: python
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/GettingStarted/robot.py
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/examples/robot/GettingStarted/robot.py
          :language: python
-         :lines: 13-18, 25-28
+         :lines: 15-20, 27-30
          :linenos:
-         :lineno-start: 12
 
 The ``Robot`` constructor for our sample program inverts the right side of the drivetrain. Depending on your drive setup, you might need to invert the left side instead.
 
@@ -486,9 +485,9 @@ The ``Robot`` constructor for our sample program inverts the right side of the d
       :lines: 20-31
       :lineno-match:
 
-   .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/GettingStarted/robot.py
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/examples/robot/GettingStarted/robot.py
       :language: python
-      :lines: 30-42
+      :lines: 32-46
       :lineno-match:
 
 The ``AutonomousInit`` method is run once each time the robot transitions to autonomous from another mode. In this program, we restart the ``Timer`` in this method.
@@ -509,9 +508,9 @@ The ``AutonomousInit`` method is run once each time the robot transitions to aut
       :lines: 33-38
       :lineno-match:
 
-   .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/GettingStarted/robot.py
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/examples/robot/GettingStarted/robot.py
       :language: python
-      :lines: 44-51
+      :lines: 48-57
       :lineno-match:
 
 Like in Autonomous, the Teleop mode has a ``TeleopInit`` and ``TeleopPeriodic`` function. In this example we don't have anything to do in ``TeleopInit``, it is provided for illustration purposes only. In ``TeleopPeriodic``, the code uses the ``ArcadeDrive`` method to map the Y-axis of the left thumbstick of the ``Gamepad`` to forward/back motion of the drive motors and the X-axis to turning motion.
@@ -530,9 +529,9 @@ Like in Autonomous, the Teleop mode has a ``TeleopInit`` and ``TeleopPeriodic`` 
       :lines: 40-42
       :lineno-match:
 
-   .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot/GettingStarted/robot.py
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/examples/robot/GettingStarted/robot.py
       :language: python
-      :lines: 53-57
+      :lines: 59-65
       :lineno-match:
 
 Utility Mode is used for testing robot functionality or running other code that shouldn't be run in a match. Similar to ``TeleopInit``, the ``UtilityInit`` and ``UtilityPeriodic`` methods are provided here for illustrative purposes only.

@@ -135,9 +135,9 @@ The ``runOnce`` factory, backed by the ``InstantCommand`` ([Java](https://github
   .. tab-item:: Python
       :sync: tabcode-python
 
-      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot//HatchbotInlined/subsystems/hatchsubsystem.py
+      .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/examples/robot//HatchbotInlined/subsystems/hatchsubsystem.py
         :language: python
-        :lines: 24-34
+        :lines: 26-36
         :lineno-match:
 
 The ``run`` factory, backed by the ``RunCommand`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.command2/org/wpilib/command2/RunCommand.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_run_command.html), :external:py:class:`Python <commands2.RunCommand>`) class, creates a command that calls a lambda repeatedly, until interrupted.
@@ -361,7 +361,7 @@ What might a functional command look like in practice? As before, below is a sim
   .. tab-item:: Python
     :sync: tabcode-python
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot//HatchbotTraditional/commands/grabhatch.py
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/examples/robot//HatchbotTraditional/commands/grabhatch.py
       :language: python
       :lines: 7-
       :lineno-match:
@@ -401,7 +401,7 @@ What about a more complicated case? Below is a drive command, from the same exam
   .. tab-item:: Python
     :sync: tabcode-python
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot//HatchbotTraditional/commands/defaultdrive.py
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/examples/robot//HatchbotTraditional/commands/defaultdrive.py
       :language: python
       :lines: 7-
       :lineno-match:
@@ -439,7 +439,7 @@ Notice that this command does not override ``isFinished()``, and thus will never
       :lines: 24-30
       :lineno-match:
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a7/examples/robot//HatchbotInlined/robotcontainer.py
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/examples/robot//HatchbotInlined/robotcontainer.py
       :language: python
-      :lines: 55-66
+      :lines: 53-65
       :lineno-match:
