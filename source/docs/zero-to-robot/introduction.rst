@@ -13,6 +13,7 @@ These pages cover the specifics of the WPILib libraries and the FIRST Control Sy
 ### Java
 
 - [Code Academy](https://www.codecademy.com/learn/learn-java)
+- [Coddy](https://coddy.tech/landing/java) is a free interactive Java course that runs in the browser.
 - [Head First Java 2nd Edition](https://www.amazon.com/dp/0596009208/) is a very beginner friendly introduction to programming in Java (ISBN-10: 0596009208).
 
 ### C++
@@ -28,6 +29,7 @@ These pages cover the specifics of the WPILib libraries and the FIRST Control Sy
 ### Python
 
 -  [List of various guides to learn Python](http://docs.python-guide.org/en/latest/intro/learning/)
+- [Coddy](https://coddy.tech/landing/python) is a free interactive Python course that runs in the browser.
 
 ## Zero to Robot
 
