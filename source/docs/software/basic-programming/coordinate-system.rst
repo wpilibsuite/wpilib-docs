@@ -212,13 +212,13 @@ For a field of length L (alliance wall to alliance wall) and width W, X ranges f
    :alt: REBUILT field with the origin at the center, +X toward the blue alliance wall, and +Y toward the top
    :width: 600
 
-   WPILib field coordinate system, shown on the FRC 2026 REBUILT field [#]_
+   WPILib field coordinate system, shown on the FRC 2026 REBUILT field
 
 .. figure:: images/coordinate-system/biobuzz-field-coordinates.jpg
    :alt: BIOBUZZ field with the origin at the center, +X toward the blue alliance wall, and +Y toward the top
    :width: 600
 
-   WPILib field coordinate system, shown on the FTC 2026-2027 BIOBUZZ field [#]_
+   WPILib field coordinate system, shown on the FTC 2026-2027 BIOBUZZ field
 
 The built-in field layouts and AprilTag layouts provided by WPILib, for both FRC and FTC and including layouts from prior seasons, use this coordinate system.
 
@@ -245,7 +245,7 @@ Games such as FRC Rapid React in 2022 and FTC Into The Deep in 2024-2025 used a 
 .. figure:: images/coordinate-system/rapid-react-field.jpg
    :alt: Rotated Rapid React field from 2022
 
-   Rotated field from FRC RAPID REACT in 2022 [#]_
+   Rotated field from FRC RAPID REACT in 2022
 
 The FTC INTO THE DEEP field below is also rotated. Rotating the field 180° about its center swaps the red and blue alliance elements.
 
@@ -253,14 +253,14 @@ The FTC INTO THE DEEP field below is also rotated. Rotating the field 180° abou
    :alt: Rotated Into The Deep field from 2024-2025
    :width: 400
 
-   Rotated field from FTC INTO THE DEEP in 2024-2025 [#]_
+   Rotated field from FTC INTO THE DEEP in 2024-2025
 
 Games such as FRC CHARGED UP in 2023 and CRESCENDO in 2024 and FTC DECODE in 2025-2026 used a mirrored layout. A mirrored layout means that the red and blue alliance layout are mirrored across the centerpoint of the field. Refer to the CHARGED UP field diagram below. When you are standing behind the blue alliance wall, the charge station is on the right side of the field from your perspective. However, standing behind the red alliance wall, the charge station is on the left side of the field from your perspective.
 
 .. figure:: images/coordinate-system/charged-up-field.jpg
    :alt: Mirrored CHARGED UP field from 2023
 
-   Mirrored field from FRC CHARGED UP in 2023 [#]_
+   Mirrored field from FRC CHARGED UP in 2023
 
 The FTC DECODE field below is also mirrored. The red and blue alliance goals and zones are reflections of each other across the center line of the field.
 
@@ -268,7 +268,7 @@ The FTC DECODE field below is also mirrored. The red and blue alliance goals and
    :alt: Mirrored DECODE field from 2025-2026
    :width: 400
 
-   Mirrored field from FTC DECODE in 2025-2026 [#]_
+   Mirrored field from FTC DECODE in 2025-2026
 
 ### Dealing with red or blue alliance
 
@@ -378,9 +378,11 @@ Some teams choose to define the origin of the field based on their alliance, so 
 - Your alliance color can change after initialization. If your robot has seen a tag and used it for pose estimation, you will need to adjust your origin and reset your estimated pose.
 - AprilTag layouts, the Glass and Field2d widgets, and other tools use the field-centered origin described above. Special handling is needed to convert your pose to the field-centered coordinate system before using a tag layout or sending the pose to a dashboard.
 
-.. [#] REBUILT field image based on the field image from Juniormunk on Chiefdelphi `<https://www.chiefdelphi.com/t/2026-rebuilt-high-resolution-field-image/510611>`__
-.. [#] BIOBUZZ field image based on the field images from u/kidsonfilms on Reddit `<https://www.reddit.com/r/FTC/comments/1weleaj/biobuzz_custom_field_images_meepmeep_compatible/>`__
-.. [#] Rapid React field image from MikLast on Chiefdelphi `<https://www.chiefdelphi.com/t/2022-top-down-field-renders/399031>`__
-.. [#] INTO THE DEEP field image based on the field images from u/kidsonfilms on Reddit `<https://www.reddit.com/r/FTC/comments/1fbhxka/into_the_deep_meepmeep_custom_field_images/>`__
-.. [#] CHARGED UP field image from MikLast on Chiefdelphi `<https://www.chiefdelphi.com/t/2023-top-down-field-renders/421365>`__
-.. [#] DECODE field image based on the field images from u/kidsonfilms on Reddit `<https://www.reddit.com/r/FTC/comments/1nalob0/decode_custom_field_images_meepmeep_compatible/>`__
+### Image sources
+
+- REBUILT field image based on the field image from Juniormunk on Chiefdelphi `<https://www.chiefdelphi.com/t/2026-rebuilt-high-resolution-field-image/510611>`__
+- BIOBUZZ field image based on the field images from u/kidsonfilms on Reddit `<https://www.reddit.com/r/FTC/comments/1weleaj/biobuzz_custom_field_images_meepmeep_compatible/>`__
+- Rapid React field image from MikLast on Chiefdelphi `<https://www.chiefdelphi.com/t/2022-top-down-field-renders/399031>`__
+- INTO THE DEEP field image based on the field images from u/kidsonfilms on Reddit `<https://www.reddit.com/r/FTC/comments/1fbhxka/into_the_deep_meepmeep_custom_field_images/>`__
+- CHARGED UP field image from MikLast on Chiefdelphi `<https://www.chiefdelphi.com/t/2023-top-down-field-renders/421365>`__
+- DECODE field image based on the field images from u/kidsonfilms on Reddit `<https://www.reddit.com/r/FTC/comments/1nalob0/decode_custom_field_images_meepmeep_compatible/>`__
