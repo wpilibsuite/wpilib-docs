@@ -392,7 +392,7 @@ http.client.HTTPConnection.send = new_send
 
 intersphinx_mapping = {
     "robotpy": (
-        "https://robotpy.readthedocs.io/projects/robotpy/en/2027.0.0a7/",
+        "https://robotpy.readthedocs.io/projects/robotpy/en/2027.0.0a8/",
         None,
     ),
 }
