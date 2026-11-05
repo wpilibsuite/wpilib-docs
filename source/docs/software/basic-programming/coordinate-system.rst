@@ -208,13 +208,13 @@ Starting with 2027, WPILib uses a single field coordinate system for all field-r
 
 For a field of length L (alliance wall to alliance wall) and width W, X ranges from -L/2 to L/2, and Y ranges from -W/2 to W/2. Field images in tools such as Glass show the blue alliance wall on the right and the red alliance wall on the left, so positive X points to the right and positive Y points up on the screen. The figures below show the same coordinate system on an FRC field and an FTC field.
 
-.. figure:: images/coordinate-system/rebuilt-field-coordinates.webp
+.. figure:: images/coordinate-system/rebuilt-field-coordinates.jpg
    :alt: REBUILT field with the origin at the center, +X toward the blue alliance wall, and +Y toward the top
    :width: 600
 
    WPILib field coordinate system, shown on the FRC 2026 REBUILT field [#]_
 
-.. figure:: images/coordinate-system/biobuzz-field-coordinates.webp
+.. figure:: images/coordinate-system/biobuzz-field-coordinates.jpg
    :alt: BIOBUZZ field with the origin at the center, +X toward the blue alliance wall, and +Y toward the top
    :width: 600
 
@@ -249,7 +249,7 @@ Games such as FRC Rapid React in 2022 and FTC Into The Deep in 2024-2025 used a 
 
 The FTC INTO THE DEEP field below is also rotated. Rotating the field 180° about its center swaps the red and blue alliance elements.
 
-.. figure:: images/coordinate-system/into-the-deep-field.webp
+.. figure:: images/coordinate-system/into-the-deep-field.jpg
    :alt: Rotated Into The Deep field from 2024-2025
    :width: 400
 
@@ -264,7 +264,7 @@ Games such as FRC CHARGED UP in 2023 and CRESCENDO in 2024 and FTC DECODE in 202
 
 The FTC DECODE field below is also mirrored. The red and blue alliance goals and zones are reflections of each other across the center line of the field.
 
-.. figure:: images/coordinate-system/decode-field.webp
+.. figure:: images/coordinate-system/decode-field.jpg
    :alt: Mirrored DECODE field from 2025-2026
    :width: 400
 
