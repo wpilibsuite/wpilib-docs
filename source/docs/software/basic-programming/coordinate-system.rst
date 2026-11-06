@@ -220,7 +220,9 @@ For a field of length L (alliance wall to alliance wall) and width W, X ranges f
 
    WPILib field coordinate system, shown on the FTC 2026-2027 BIOBUZZ field
 
-The built-in field layouts and AprilTag layouts provided by WPILib, for both FRC and FTC and including layouts from prior seasons, use this coordinate system.
+The built-in field and AprilTag layouts provided by WPILib, for both FRC and FTC, use this coordinate system. This includes the layouts from prior seasons; the field images, field JSON files, and AprilTag layouts for previous games were adjusted in WPILib itself to match the new convention, so you can use them the same way as the current season's layouts without converting them.
+
+.. note:: Only the copies of the layouts that ship with WPILib were adjusted. AprilTag layouts, field dimensions, and coordinates from other sources, such as official field layout CSVs or game manuals for previous seasons, third-party libraries, and your own saved poses and paths, still use the convention from their original season and need to be converted as described below.
 
 .. warning:: This is a change from earlier conventions in both programs. Poses published to NetworkTables or logged to a DataLog do not record which coordinate system they use, so dashboards, tools, and code that were written for earlier seasons need to be updated.
 
@@ -253,7 +255,7 @@ The FTC INTO THE DEEP field below is also rotated. Rotating the field 180° abou
    :alt: Rotated Into The Deep field from 2024-2025
    :width: 400
 
-   Rotated field from FTC INTO THE DEEP in 2024-2025
+   Rotated field from FTC INTO THE DEEP in 2024-2025. This image was rotated 180° from the original, as it is in WPILib, so the blue alliance area is on the right. During the INTO THE DEEP season, the red alliance area was on the right when looking at the field from the audience.
 
 Games such as FRC CHARGED UP in 2023 and CRESCENDO in 2024 and FTC DECODE in 2025-2026 used a mirrored layout. A mirrored layout means that the red and blue alliance layout are mirrored across the centerpoint of the field. Refer to the CHARGED UP field diagram below. When you are standing behind the blue alliance wall, the charge station is on the right side of the field from your perspective. However, standing behind the red alliance wall, the charge station is on the left side of the field from your perspective.
 
