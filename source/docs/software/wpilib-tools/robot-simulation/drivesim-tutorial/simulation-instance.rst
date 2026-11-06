@@ -37,29 +37,36 @@ The ``EncoderSim`` class allows users to set encoder positions and velocities on
    ```
 
 ## Simulating Gyroscopes
-Similar to the ``EncoderSim`` class, simulated gyroscope classes also exist for commonly used WPILib gyros -- ``AnalogGyroSim`` and ``ADXRS450_GyroSim``. These are also constructed in the same manner.
+
+Core WPILib no longer ships analog or SPI gyro classes (``AnalogGyro``, ``ADXRS450_Gyro``); gyro hardware is provided by vendors. The Systemcore's onboard :term:`IMU` is represented by the ``OnboardIMU`` class, and its reported values can be driven in simulation with ``OnboardIMUSim``. Unlike ``EncoderSim``, the simulation helper does not wrap a hardware object: it sets the angles, rates, and accelerations that ``OnboardIMU`` reports.
 
 .. note:: It is not possible to simulate certain vendor gyros (i.e. Pigeon :term:`IMU` and NavX) using WPILib classes. Please read the respective vendors' documentation for information on their simulation support.
 
 .. tab-set-code::
    ```java
+   import org.wpilib.hardware.imu.OnboardIMU;
+   import org.wpilib.simulation.OnboardIMUSim;
+
    // Create our gyro object like we would on a real robot.
-   private AnalogGyro m_gyro = new AnalogGyro(1);
-   // Create the simulated gyro object, used for setting the gyro
-   // angle. Like EncoderSim, this does not need to be commented out
-   // when deploying code to the roboRIO.
-   private AnalogGyroSim m_gyroSim = new AnalogGyroSim(m_gyro);
+   private OnboardIMU m_gyro = new OnboardIMU(OnboardIMU.MountOrientation.FLAT);
+   ...
+   // In simulation, set the values that the hardware object reports.
+   // Like EncoderSim, this does not need to be commented out when
+   // deploying code to the robot.
+   OnboardIMUSim.setAngleZ(Math.toRadians(90.0));
    ```
 
    ```c++
-   #include <frc/AnalogGyro.h>
-   #include <frc/simulation/AnalogGyroSim.h>
+   #include <numbers>
+   #include <wpi/hardware/imu/OnboardIMU.hpp>
+   #include <wpi/simulation/OnboardIMUSim.hpp>
    ...
-   // Create our gyro objectl ike we would on a real robot.
-   wpi::AnalogGyro m_gyro{1};
-   // Create the simulated gyro object, used for setting the gyro
-   // angle. Like EncoderSim, this does not need to be commented out
-   // when deploying code to the roboRIO.
-   wpi::sim::AnalogGyroSim m_gyroSim{m_gyro};
+   // Create our gyro object like we would on a real robot.
+   wpi::OnboardIMU m_gyro{wpi::OnboardIMU::FLAT};
+   // In simulation, set the values that the hardware object reports.
+   // Like EncoderSim, this does not need to be commented out when
+   // deploying code to the robot.
+   wpi::sim::OnboardIMUSim m_gyroSim;
+   m_gyroSim.SetAngleZ(wpi::units::radian_t{std::numbers::pi / 2.0});
    ```
 
