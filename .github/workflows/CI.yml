@@ -180,7 +180,13 @@ jobs:
     - name: Check redirects format
       run: |
         [[ $(grep -v '^#' source/redirects.txt) == $(git show origin/main:source/redirects.txt | grep -v '^#')* ]] || { echo "Error: redirects.txt can only be appended to. Lines cannot be modified or deleted."; exit 1; }
-        
+    - name: Check Read the Docs search.ignore matches redirects
+      run: |
+        uv run python source/_extensions/rtd_search_ignore.py --check
+    - name: Test search.ignore generator
+      run: |
+        uv run python -m unittest discover -s tests -v
+
   check-formatting:
     runs-on: ubuntu-24.04
     steps:
