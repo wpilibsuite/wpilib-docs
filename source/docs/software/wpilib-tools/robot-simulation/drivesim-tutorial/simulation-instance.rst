@@ -36,9 +36,9 @@ The ``EncoderSim`` class allows users to set encoder positions and velocities on
    wpi::sim::EncoderSim m_rightEncoderSim{m_rightEncoder};
    ```
 
-## Simulating Gyroscopes
+## Simulating OnboardIMU
 
-Core WPILib no longer ships analog or SPI gyro classes (``AnalogGyro``, ``ADXRS450_Gyro``); gyro hardware is provided by vendors. The Systemcore's onboard :term:`IMU` is represented by the ``OnboardIMU`` class, and its reported values can be driven in simulation with ``OnboardIMUSim``. Unlike ``EncoderSim``, the simulation helper does not wrap a hardware object: it sets the angles, rates, and accelerations that ``OnboardIMU`` reports.
+``OnboardIMU`` is the Systemcore's onboard :term:`IMU` — a real hardware class, used the same way on a real robot. In simulation, the values that an ``OnboardIMU`` reports (angles, rates, and accelerations) can be set with ``OnboardIMUSim``. Unlike ``EncoderSim``, the sim class is not created from the hardware object: values are set through static methods (Java) or on a standalone instance (C++).
 
 .. note:: It is not possible to simulate certain vendor gyros (i.e. Pigeon :term:`IMU` and NavX) using WPILib classes. Please read the respective vendors' documentation for information on their simulation support.
 
