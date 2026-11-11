@@ -24,9 +24,9 @@ WPILib is designed to install to different folders for different years, so that 
 
 .. only:: not prbuild
 
-   .. wpilibrelease:: v2025.3.2
+   .. wpilibrelease:: v2027.0.0-alpha-8
 
-[You can download the latest release of the installer from GitHub](https://github.com/wpilibsuite/allwpilib/releases/latest/).
+[You can download the latest release of the installer from GitHub](https://github.com/wpilibsuite/allwpilib/releases/).
 
 Once on the GitHub releases page, scroll to the Downloads section.
 
@@ -120,13 +120,13 @@ This next screen involves downloading VS Code. Unfortunately, due to licensing r
 
   - Skips installing VS Code. Useful for advanced installations or configurations. Generally not recommended.
 
-- Select existing VS Code archive for offline install on this computer
-
-  - Selecting this option will bring up a prompt allowing you to select a pre-existing zip file of VS Code that has been downloaded by the installer previously. This option does **not** let you select an already installed copy of VS Code on your machine.
-
 - Create VS Code archives to share with other computers/OSes for offline install
 
   - This option downloads and saves a copy of VS Code for all platforms, which is useful for sharing with the installer for future offline installs.
+
+- Select existing VS Code archive for offline install on this computer
+
+  - Selecting this option will bring up a prompt allowing you to select a pre-existing zip file of VS Code that has been downloaded by the installer previously. This option does **not** let you select an already installed copy of VS Code on your machine.
 
 Go ahead and select :guilabel:`Download for this computer only`. This will begin the download process and can take a bit depending on internet connectivity (it's ~300MB). Once the download is done, select :guilabel:`Next`. You should be presented with a screen that looks similar to the one below.
 
@@ -140,7 +140,7 @@ After installation is complete, you will be presented with the finished screen.
 .. image:: images/wpilib-setup/installer-finish.png
    :alt: Installer finished screen.
 
-.. important:: WPILib installs a separate version of VS Code. It does not use an already existing installation. Each year has it's own copy of the tools appended with the year. IE: ``WPILib VS Code 2026``. Please launch the WPILib VS Code and not a system installed copy!
+.. important:: WPILib installs a separate version of VS Code. It does not use an already existing installation. Each year has it's own copy of the tools appended with the year. IE: ``2027 WPILib VS Code``. Please launch the WPILib VS Code and not a system installed copy!
 
 Congratulations, the WPILib development environment and tooling is now installed on your computer! Press Finish to exit the installer.
 
