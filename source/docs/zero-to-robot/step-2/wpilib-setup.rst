@@ -24,9 +24,7 @@ WPILib is designed to install to different folders for different years, so that 
 
 .. only:: not prbuild
 
-   .. wpilibrelease:: v2026.2.1
-
-.. todo:: Update after the extension is updated to support the new intaller location.
+   .. wpilibrelease:: v2027.0.0-alpha-8
 
 [You can download the latest release of the installer from GitHub](https://github.com/wpilibsuite/allwpilib/releases/).
 
