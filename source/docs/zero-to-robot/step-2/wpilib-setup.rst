@@ -30,7 +30,7 @@ WPILib is designed to install to different folders for different years, so that 
 
 Once on the GitHub releases page, scroll to the Downloads section.
 
-.. image:: images/installer-download/github-release.jpg
+.. image:: images/installer-download/github-release.png
    :alt: Latest WPILib release page on GitHub
 
 Then click on the correct binary for your OS and architecture to begin the download.
@@ -46,7 +46,7 @@ When you download the WPILib installer, it is distributed as a disk image file `
 
       Windows 11 users can right click on the downloaded disk image and select :guilabel:`Mount` to open it. Then launch ``WPILibInstaller.exe``.
 
-      .. image:: images/wpilib-setup/extract-windows-10.png
+      .. image:: images/wpilib-setup/extract-windows-11.png
          :alt: The menu after right clicking on an .iso file to choose "Mount".
 
       .. note:: Other installed programs may associate with iso files and the :guilabel:`mount` option may not appear. If that software does not give the option to mount or extract the iso file, then follow the directions below.

@@ -24,7 +24,7 @@ This documentation can be downloaded for offline viewing. The link to download t
 
 Once on the GitHub releases page, scroll to the download section in the middle of the page.
 
-.. image:: images/installer-download/github-release.jpg
+.. image:: images/installer-download/github-release.png
    :alt: Latest WPILib release page on GitHub
 
 Then click on the correct binary for your OS and architecture to begin the download.
