@@ -86,6 +86,8 @@ The redirect writer will automatically add renamed/moved files to the redirects 
 
 The redirect checker makes sure that there are valid redirects for all files. This **will** fail CI if it does not pass. To check, run ``uv run .\make.bat rediraffecheckdiff`` to verify all files are redirected. Additionally, an HTML build may need to be ran to ensure that all files redirect properly.
 
+Redirected pages are kept out of Read the Docs search results by the ``search.ignore`` list in ``readthedocs.yml``, which is generated from ``redirects.txt``. After changing ``redirects.txt``, run ``uv run python source/_extensions/rtd_search_ignore.py`` and commit the updated ``readthedocs.yml``. The HTML build and CI fail if the list is out of date.
+
 ### Building HTML
 
 Type the command ``uv run .\make.bat html`` to generate HTML content. The content is located in the ``build/html`` directory at the root of the repository.
