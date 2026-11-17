@@ -1,15 +1,15 @@
 {% extends '!sidebar/brand.html' %} {# This is mostly copied from
 https://github.com/pradyunsg/furo/blob/main/src/furo/theme/furo/sidebar/brand.html -#}
-{% block brand_content %} 
+{% block brand_content %}
 {% if not theme_sidebar_hide_name %}
 <span class="sidebar-brand-text"
-  >{{ project }}</span
+  ><strong>{{ project }}</strong></span
 >{% endif %}
 {%- if logo_url %}
 <div class="sidebar-logo-container">
-  <img class="sidebar-logo" src="{{ logo_url }}" alt="Logo?" />
+  <img class="sidebar-logo" src="{{ logo_url }}" alt="FIRST and WPILib" />
 </div>
-{%- endif %} 
+{%- endif %}
 {%- if theme_light_logo and theme_dark_logo %}
 <div class="sidebar-logo-container">
   <img
@@ -23,7 +23,13 @@ https://github.com/pradyunsg/furo/blob/main/src/furo/theme/furo/sidebar/brand.ht
     alt="Dark Logo"
   />
 </div>
-{%- endif %} 
+{%- endif %}
+
+<div class="sidebar-wpi-brand">
+  <div class="sidebar-wpi-mark">
+    <img src="{{ pathto('_static/wpi-logo-black.png', 1) }}" alt="Worcester Polytechnic Institute" />
+  </div>
+</div>
 
 {%- set nav_version = version %}
 {% if READTHEDOCS and current_version %}

@@ -6,21 +6,25 @@ This article contains instructions/links to components you will want to gather i
 
 .. tip:: This document compiles all the download links from the following documents to make it easier to install on offline computers or on multiple computers. If you are you installing on a single computer that is connected to the internet, you can skip this page.
 
-.. note:: The order in which these tools are installed does not matter for Java and C++ teams.  LabVIEW should be installed before the FRC Game Tools or 3rd Party Libraries.
+.. note::
+
+   The order in which the desktop tools are installed does not matter. OnBot
+   runs on Systemcore. Desktop LabVIEW requires its own installation;
+   Systemcore-specific offline installation instructions are still being completed.
 
 ## Documentation
 
-This documentation can be downloaded for offline viewing. The link to download the PDF can be found [here](https://buildmedia.readthedocs.org/media/pdf/frc-docs/stable/frc-docs.pdf).
+This documentation can be downloaded for offline viewing. The link to download the PDF can be found [on Read the Docs](https://app.readthedocs.org/projects/frc-docs/downloads/). Select the documentation version matching your software; the stable PDF may cover the previous control system.
 
 ## Installers
 
-### All Teams
+### FRC Driver Station
 
--  [2025 FRC Game Tools](https://www.ni.com/en/support/downloads/drivers/download.frc-game-tools.html#553883) (Note: Click on link for "Install Offline")
+-  [FRC Driver Station](https://github.com/wpilibsuite/FirstDriverStation-Public/releases/latest)
 
 ### Java/C++ Teams
 
--  [Java/C++ WPILib Installer](https://github.com/wpilibsuite/allwpilib/releases/latest)
+-  [2027 WPILib installer and release-selection guidance](wpilib-setup.html#downloading)
 
 Once on the GitHub releases page, scroll to the download section in the middle of the page.
 
@@ -30,6 +34,12 @@ Once on the GitHub releases page, scroll to the download section in the middle o
 Then click on the correct binary for your OS and architecture to begin the download.
 
 .. note:: After downloading the Java/C++ WPILib installer, run it once while connected to the internet and select :guilabel:`Install for this User` then :guilabel:`Create VS Code zip to share with other computers/OSes for offline install` and save the downloaded VS Code archives for future offline installations.
+
+Before disconnecting from the internet, also download the Systemcore update
+for your hardware revision and the Driver Station version compatible with
+your WPILib release. Follow :doc:`../step-3/imaging-your-systemcore` for update
+selection. Python teams should follow :doc:`python-setup` and its linked
+RobotPy guidance for their selected release.
 
 ## 3rd Party Libraries/Software
 

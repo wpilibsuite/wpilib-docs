@@ -17,20 +17,13 @@ The Systemcore's built-in Smart Input/Output ports (or "Smart I/O") ports functi
 
 The Systemcore has 6 Smart I/O ports (numbered 0-5), as seen in the image above.  Each port has three pins - signal, power ("3.3V"), and ground ("gnd").  The "power" and "ground" pins are used to power the peripheral sensors that connect to the analog input ports - there is a constant 3.3V potential difference between the "power" and the "ground" pins [2]_.  The signal pin is the pin on which the signal is actually measured.
 
-All Smart I/O ports have built-in "pull-down" resistors between the power pins and the signal pins - these ensure that when the signal pin is "floating" (i.e. is not connected to any circuit), they consistently remain in a "low" state.
-
-.. warning:: The roboRIO had pull-up resistors instead of pull-down resistors, so the behavior of the Smart I/O ports is different from that of the roboRIO's digital input ports.  This means that sensors designed for the roboRIO's digital input ports may have different wiring for the Smart I/O ports.
+Beta and later Systemcore units use pull-ups on their digital inputs. An open switch reads high; closing a normally open switch between signal and ground reads low. See `FIRST's hardware update <https://www.firstinspires.org/community-blog/control-system-update-first-tech-challenge-edition>`_.
 
 ### Connecting a simple switch to a DIO port
 
-The simplest device that can be connected to a DIO port is a switch (such as a :ref:`limit switch <docs/hardware/sensors/proximity-switches:Mechanical proximity switches ("limit switches")>`).  When a switch is connected correctly to a DIO port, the port will read "low" when the circuit is open, and "high" when the circuit is closed.
+A simple switch (such as a :ref:`limit switch <docs/hardware/sensors/proximity-switches:Mechanical proximity switches ("limit switches")>`) needs two wires. Connect a normally open switch between the *signal* and *ground* pins. In code, a low input means the switch circuit is closed.
 
-A simple switch does not need to be powered, and thus only has two wires.  Switches should be wired between the *signal* and the *power* pins of the DIO port.  When the switch circuit is open, the signal pin will float, and the pull-down resistor will ensure that it reads "low."  When the switch circuit is closed, it will connect directly to the power rail, and thus read "high".
-
-.. image:: images/digital-inputs-hardware/limit-switch-to-roborio.svg
-   :alt: Connecting a normally open limit switch to a DIO channel of the roboRIO.
-
-.. todo:: Update above image to use the Systemcore Smart I/O ports and wiring for pull-down resistors.
+See :doc:`/docs/software/systemcore-info/systemcore-cable-reference` for the three-pin cable assignments and connector-orientation drawing.
 
 ### Connecting a powered sensor to a DIO port
 

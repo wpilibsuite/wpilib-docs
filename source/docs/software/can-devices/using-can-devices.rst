@@ -8,6 +8,7 @@
 
 - CAN is bi-directional, so CAN motor controllers can send data back to the RIO, again facilitating a more expansive feature-set than can be offered by PWM Controllers.
 
-For instructions on wiring CAN devices, see the relevant section of the :ref:`robot wiring guide <docs/zero-to-robot/step-1/basic-robot-wiring:CAN Devices>`.
+For physical connections and the status of the Systemcore wiring instructions,
+see :doc:`CAN Wiring Basics </docs/software/systemcore-info/systemcore-can-wiring>`.
 
 CAN devices generally have their own WPILib classes.  The following sections will describe the use of several of these classes.

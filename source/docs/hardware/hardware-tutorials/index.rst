@@ -5,7 +5,7 @@
 .. toctree::
    :maxdepth: 1
 
-   motors
-   sensors
-   pneumatics
-   transmissions
+   Motors for Robotics Applications <{{ frc_docs_url }}docs/hardware/hardware-tutorials/motors.html>
+   Sensing and Sensors <{{ frc_docs_url }}docs/hardware/hardware-tutorials/sensors.html>
+   Pneumatics <{{ frc_docs_url }}docs/hardware/hardware-tutorials/pneumatics.html>
+   Power Transmission <{{ frc_docs_url }}docs/hardware/hardware-tutorials/transmissions.html>
