@@ -263,6 +263,7 @@ Those sections identify what is available and what is still coming.
    :maxdepth: 1
    :hidden:
 
+   Systemcore Wiring <systemcore-wiring>
    Step 1: Build and Wire Your Robot <step-1/index>
    Step 2: Set Up Your Environment <step-2/index>
    Step 3: Configure Your Control System <step-3/index>

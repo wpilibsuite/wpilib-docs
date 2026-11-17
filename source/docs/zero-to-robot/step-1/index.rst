@@ -216,7 +216,7 @@ these connections.
          :class: wl-ftc-text
 
    .. grid-item-card:: FRC Robot Wiring Walkthrough
-      :link: basic-robot-wiring
+      :link: /docs/zero-to-robot/systemcore-wiring
       :link-type: doc
       :class-card: sw-card-frc
 
@@ -241,7 +241,7 @@ these connections.
       follow the steps in order.
 
    .. grid-item-card:: FRC Robot Wiring Reference
-      :link: intro-to-frc-robot-wiring
+      :link: /docs/zero-to-robot/systemcore-wiring
       :link-type: doc
       :class-card: sw-card-frc
 
@@ -297,7 +297,5 @@ these connections.
    :hidden:
 
    Kitbot / Starter Bot Assembly <{{ frc_docs_url }}docs/zero-to-robot/step-1/kitbot-starterbot-assembly.html>
-   FRC Robot Wiring Walkthrough <basic-robot-wiring>
    FTC Robot Wiring Walkthrough </docs/ftc/basic-ftc-robot-wiring>
-   FRC Robot Wiring Reference <intro-to-frc-robot-wiring>
    FTC Robot Wiring Reference </docs/ftc/ftc-robot-wiring-overview>

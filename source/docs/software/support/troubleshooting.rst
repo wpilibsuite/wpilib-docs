@@ -5,7 +5,7 @@ Find the section below that matches the symptom you see. This page focuses on
 Systemcore connectivity, programming tools, deployment, and robot-code issues.
 
 For detailed hardware checks, follow the
-:doc:`FRC wiring reference </docs/zero-to-robot/step-1/intro-to-frc-robot-wiring>`
+:doc:`Systemcore wiring reference  </docs/zero-to-robot/systemcore-wiring>`
 or `FTC Docs <https://ftc-docs.firstinspires.org/en/latest/>`_, using the guide
 that matches your control system.
 

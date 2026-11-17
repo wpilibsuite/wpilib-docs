@@ -6,7 +6,7 @@ This page introduces the hardware interfaces used by WPILib: Systemcore,
 motor controllers, sensors, and their connections to robot software.
 
 For chassis assembly and program-specific wiring, use the
-:doc:`Systemcore wiring reference </docs/zero-to-robot/step-1/intro-to-frc-robot-wiring>`,
+:doc:`Systemcore wiring reference </docs/zero-to-robot/systemcore-wiring>`,
 `kitbot assembly resources
 <{{ frc_docs_url }}docs/zero-to-robot/step-1/kitbot-starterbot-assembly.html>`_,
 or `FTC Docs <https://ftc-docs.firstinspires.org/en/latest/>`_.
@@ -311,7 +311,7 @@ Use the instructions for your controller and hardware revision.
          :gutter: 3
 
          .. grid-item-card:: Wiring Guide
-            :link: /docs/zero-to-robot/step-1/intro-to-frc-robot-wiring
+            :link: /docs/zero-to-robot/systemcore-wiring
             :link-type: doc
             :class-card: sw-card-frc
 

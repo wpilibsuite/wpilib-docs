@@ -28,8 +28,8 @@ Please see the :ref:`docs/zero-to-robot/step-3/radio-programming:Alternative Set
 
 The robot-mounted VH-109 is designed to run directly from robot battery
 voltage. Connect the robot power distribution system to the radio's 12 VDC
-Weidmuller input using the wiring described in
-:ref:`docs/zero-to-robot/step-1/basic-robot-wiring:Radio Power`. A VRM is not
+Weidmuller input. For the Systemcore installation wiring reference, see
+:doc:`Systemcore wiring  </docs/zero-to-robot/systemcore-wiring>`. A VRM is not
 required.
 
 The VH-109 can also receive passive :term:`PoE` through its RIO port. Vivid
