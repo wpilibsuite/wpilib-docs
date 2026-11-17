@@ -1,3 +1,5 @@
+:orphan:
+
 # Kitbot / Starter Bot Assembly
 
 .. grid:: 1 1 2 2

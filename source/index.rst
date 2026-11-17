@@ -203,17 +203,15 @@ WPILib Documentation
       You'll also find links to hardware guides and vendor documentation.
 
    .. grid-item-card:: FRC Docs: Team, Hardware, and Vendor Resources
-      :link: /docs/hardware/hardware-basics/hardware-overview
-      :link-type: doc
+      :link: {{ frc_docs_url }}docs/hardware/index.html
+      :link-type: url
       :class-card: sw-card-frc
 
-      **Separate site coming soon**
-      ^^^
-      Find FRC hardware guides, vendor links, and team resources. These will
-      move to a separate site; until then they are here in WPILib docs.
+      Find FRC hardware guides, assembly and wiring instructions, vendor
+      links, and team resources in FRC Docs.
 
       +++
-      Browse current FRC resources →
+      Browse FRC Docs →
 
    .. grid-item-card:: FTC Docs: Hardware and Setup and more
       :link: https://ftc-docs.firstinspires.org/en/latest/
@@ -335,9 +333,9 @@ WPILib Documentation
    :caption: Hardware and Wiring
    :hidden:
 
-   docs/controls-overviews/control-system-hardware
+   Hardware Component Overview <{{ frc_docs_url }}docs/controls-overviews/control-system-hardware.html>
    docs/hardware/hardware-basics/hardware-overview
-   docs/hardware/hardware-basics/status-lights-ref
+   Status Light Quick Reference <{{ frc_docs_url }}docs/hardware/hardware-basics/status-lights-ref.html>
    docs/software/can-devices/index
 
 .. toctree::

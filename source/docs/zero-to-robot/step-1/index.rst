@@ -65,8 +65,8 @@ following it. Parts 2 and 3 below cover the shared Systemcore connection.
    :gutter: 3
 
    .. grid-item-card:: Kitbot / Starter Bot Assembly
-      :link: kitbot-starterbot-assembly
-      :link-type: doc
+      :link: {{ frc_docs_url }}docs/zero-to-robot/step-1/kitbot-starterbot-assembly.html
+      :link-type: url
       :class-card: sw-card-shared
 
       **FRC + FTC**
@@ -296,7 +296,7 @@ these connections.
    :maxdepth: 1
    :hidden:
 
-   Kitbot / Starter Bot Assembly <kitbot-starterbot-assembly>
+   Kitbot / Starter Bot Assembly <{{ frc_docs_url }}docs/zero-to-robot/step-1/kitbot-starterbot-assembly.html>
    FRC Robot Wiring Walkthrough <basic-robot-wiring>
    FTC Robot Wiring Walkthrough </docs/ftc/basic-ftc-robot-wiring>
    FRC Robot Wiring Reference <intro-to-frc-robot-wiring>

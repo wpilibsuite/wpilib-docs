@@ -6,11 +6,11 @@ This page introduces the hardware interfaces used by WPILib: Systemcore,
 motor controllers, sensors, and their connections to robot software.
 
 For chassis assembly and program-specific wiring, use the
-:doc:`FRC wiring reference </docs/zero-to-robot/step-1/intro-to-frc-robot-wiring>`,
-:doc:`kitbot and starter-bot resources </docs/zero-to-robot/step-1/kitbot-starterbot-assembly>`,
-or `FTC Docs <https://ftc-docs.firstinspires.org/en/latest/>`_. The FRC guides
-are currently hosted on this site. Check each guide's hardware scope before
-following its wiring diagrams.
+:doc:`Systemcore wiring reference </docs/zero-to-robot/step-1/intro-to-frc-robot-wiring>`,
+`kitbot assembly resources
+<{{ frc_docs_url }}docs/zero-to-robot/step-1/kitbot-starterbot-assembly.html>`_,
+or `FTC Docs <https://ftc-docs.firstinspires.org/en/latest/>`_.
+Use the instructions for your controller and hardware revision.
 
 .. tab-set::
 
@@ -311,7 +311,7 @@ following its wiring diagrams.
          :gutter: 3
 
          .. grid-item-card:: Wiring Guide
-            :link: ../../zero-to-robot/step-1/intro-to-frc-robot-wiring
+            :link: /docs/zero-to-robot/step-1/intro-to-frc-robot-wiring
             :link-type: doc
             :class-card: sw-card-frc
 
@@ -325,8 +325,8 @@ following its wiring diagrams.
             Required every season before deploying code.
 
          .. grid-item-card:: Status Light Reference
-            :link: status-lights-ref
-            :link-type: doc
+            :link: {{ frc_docs_url }}docs/hardware/hardware-basics/status-lights-ref.html
+            :link-type: url
             :class-card: sw-card-frc
 
             Decode LED patterns on the Systemcore, radio, and motor

@@ -1,3 +1,5 @@
+:orphan:
+
 .. include:: <isonum.txt>
 
 # Status Light Quick Reference

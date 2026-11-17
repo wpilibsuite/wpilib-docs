@@ -1,3 +1,5 @@
+:orphan:
+
 .. include:: <isonum.txt>
 
 # FRC Robot Wiring Walkthrough

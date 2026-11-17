@@ -1,3 +1,5 @@
+:orphan:
+
 .. include:: <isonum.txt>
 
 # Robot Battery Basics

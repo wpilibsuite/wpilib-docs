@@ -310,7 +310,22 @@ def skip_case_only_redirects(app):
     app.config.rediraffe_redirects = filtered
 
 
+def resolve_frc_docs_links(app, docname, source):
+    """Use one configurable destination for links to the separate FRC site."""
+    source[0] = source[0].replace(
+        "{{ frc_docs_url }}", app.config.frc_docs_url.rstrip("/") + "/"
+    )
+
+
 def setup(app):
+    # Use the hosted FRC draft by default; local previews can override the root.
+    # Set FRC_DOCS_URL or pass -D frc_docs_url=<site-root> to Sphinx.
+    app.add_config_value(
+        "frc_docs_url",
+        os.getenv("FRC_DOCS_URL", "https://amanda-frc-docs.readthedocs.io/en/latest/"),
+        "env",
+    )
+    app.connect("source-read", resolve_frc_docs_links)
     app.connect("builder-inited", skip_case_only_redirects)
     app.add_css_file("css/wpilib-rtd.css")
     app.add_css_file("css/sw-components.css")

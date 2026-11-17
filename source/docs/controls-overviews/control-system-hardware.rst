@@ -1,3 +1,5 @@
+:orphan:
+
 .. include:: <isonum.txt>
 
 # Hardware Component Overview

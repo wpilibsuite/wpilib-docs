@@ -1,6 +1,8 @@
+:orphan:
+
 # Wiring Pneumatics - CTRE Pneumatic Control Module
 
-This page describes wiring pneumatics with the CTRE Pneumatic Control Module (PCM). For instructions on wiring pneumatics with the REV Pneumatic Hub (PH) see :doc:`this page <wiring-pneumatics-ph>`.
+This page describes wiring pneumatics with the CTRE Pneumatic Control Module (PCM). For instructions on wiring pneumatics with the REV Pneumatic Hub (PH) see `this page <{{ frc_docs_url }}docs/hardware/hardware-basics/wiring-pneumatics-ph.html>`_.
 
 .. hint:: For pneumatics safety & mechanical requirements, consult this year's Robot Construction rules. For mechanical design guidelines, the FIRST Pneumatics Manual is located [here](https://www.firstinspires.org/sites/default/files/uploads/resource_library/frc/technical-resources/frc_pneumatics_manual.pdf)
 
@@ -20,7 +22,7 @@ For complicated robot designs requiring more channels or multiple solenoid volta
 .. image:: images/wiring-pneumatics-pcm/pcm-subsystem.svg
    :alt: Pneumatics wiring diagram showing all of the connections to the PCM.
 
-The first PCM on your robot can be wired from the PDP VRM/PCM connectors on the end of the PDP or from a 15 amp or 20 amp port on the PDH (20 amp recommended if controlling a compressor). The PCM is connected to the roboRIO via CAN and can be placed anywhere in the middle of the CAN chain (or on the end with a custom terminator). For more details on wiring a single PCM, see :ref:`docs/zero-to-robot/step-1/basic-robot-wiring:Pneumatics Power (Optional)`
+The first PCM on your robot can be wired from the PDP VRM/PCM connectors on the end of the PDP or from a 15 amp or 20 amp port on the PDH (20 amp recommended if controlling a compressor). The PCM is connected to the roboRIO via CAN and can be placed anywhere in the middle of the CAN chain (or on the end with a custom terminator). For more details on wiring a single PCM, see :doc:`Systemcore wiring  </docs/zero-to-robot/step-1/intro-to-frc-robot-wiring>`
 
 Additional PCMs can be wired to a standard WAGO connector on the side of the PDP and protected with a 20A or smaller circuit breaker. Additional PCMs should also be placed anywhere in the middle of the CAN chain.
 

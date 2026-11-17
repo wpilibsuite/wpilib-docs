@@ -1,3 +1,5 @@
+:orphan:
+
 # CAN Wiring Basics
 
 :term:`CAN` is a two wire network that is designed to facilitate communication between multiple devices on your robot. It is recommended that CAN on your robot follow a "daisy-chain" topology. This means that the CAN wiring should usually start at your roboRIO and go into and out of each device successively until finally ending at the :term:`PDP`.
