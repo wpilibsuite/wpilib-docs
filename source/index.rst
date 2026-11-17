@@ -6,20 +6,67 @@
 WPILib Documentation
 ====================
 
-.. raw:: html
+.. rubric:: Find the Right Documentation
 
-   <div class="wl-hero">
-     <h1 class="wl-hero-title">
-       Welcome!
-     </h1>
-     <p class="wl-hero-copy">
-       WPILib is the standard programming library for <em>FIRST</em> Robotics,
-       supporting teams competing in
-       <strong class="wl-hero-frc"><em>FIRST</em> Robotics Competition (FRC)</strong>
-       and
-       <strong class="wl-hero-ftc"><em>FIRST</em> Tech Challenge (FTC)</strong>.
-     </p>
-   </div>
+.. grid:: 1 1 3 3
+   :gutter: 3
+
+   .. grid-item-card:: WPILib: Systemcore and Robot Programming
+      :link: /docs/zero-to-robot/introduction
+      :link-type: doc
+      :class-card: sw-card-shared
+
+      Set up Systemcore, write robot code, and learn how to test and debug it.
+      You'll also find links to hardware guides and vendor documentation.
+
+   .. grid-item-card:: FTC Docs: Hardware and Setup and more
+      :link: https://ftc-docs.firstinspires.org/en/latest/
+      :link-type: url
+      :class-card: sw-card-ftc
+
+      Find FTC assembly and wiring guides, plus setup and programming help
+      for the REV control system. For Systemcore programming, use WPILib docs.
+
+      +++
+      Browse FTC Docs →
+
+   .. grid-item-card:: FRC Docs: Team, Hardware, and Vendor Resources
+      :link: {{ frc_docs_url }}docs/hardware/index.html
+      :link-type: url
+      :class-card: sw-card-frc
+
+      Find FRC hardware guides, assembly and wiring instructions, vendor
+      links, and team resources in FRC Docs.
+
+      +++
+      Browse FRC Docs →
+
+.. container:: wl-welcome-layout
+
+   .. figure:: /docs/controls-overviews/images/control-system-hardware/systemcore.png
+      :alt: Limelight Systemcore robot controller.
+      :width: 340
+      :align: center
+      :class: wl-hero-controller
+
+      Systemcore controller. Photo courtesy of Limelight.
+
+   .. raw:: html
+
+      <div class="wl-hero">
+        <h1 class="wl-hero-title">
+          Welcome!
+        </h1>
+        <p class="wl-hero-copy">
+          WPILib is the standard programming library for <em>FIRST</em> Robotics,
+          supporting teams competing in
+          <strong class="wl-hero-frc"><em>FIRST</em> Robotics Competition (FRC)</strong>
+          and
+          <strong class="wl-hero-ftc"><em>FIRST</em> Tech Challenge (FTC)</strong>.
+        </p>
+      </div>
+
+.. raw:: html
 
    <div id="landing-tab-root">
 
@@ -189,38 +236,6 @@ WPILib Documentation
    })();
    </script>
 
-.. rubric:: Find the Right Documentation
-
-.. grid:: 1 1 3 3
-   :gutter: 3
-
-   .. grid-item-card:: WPILib: Systemcore and Robot Programming
-      :link: /docs/zero-to-robot/introduction
-      :link-type: doc
-      :class-card: sw-card-shared
-
-      Set up Systemcore, write robot code, and learn how to test and debug it.
-      You'll also find links to hardware guides and vendor documentation.
-
-   .. grid-item-card:: FRC Docs: Team, Hardware, and Vendor Resources
-      :link: {{ frc_docs_url }}docs/hardware/index.html
-      :link-type: url
-      :class-card: sw-card-frc
-
-      Find FRC hardware guides, assembly and wiring instructions, vendor
-      links, and team resources in FRC Docs.
-
-      +++
-      Browse FRC Docs →
-
-   .. grid-item-card:: FTC Docs: Hardware and Setup and more
-      :link: https://ftc-docs.firstinspires.org/en/latest/
-      :link-type: url
-      :class-card: sw-card-ftc
-
-      Find FTC assembly and wiring guides, plus setup and programming help
-      for the REV control system. For Systemcore programming, use WPILib docs.
-
 .. raw:: html
 
    <hr class="wl-core-intro"/>
@@ -269,6 +284,33 @@ WPILib Documentation
 
 .. toctree::
    :maxdepth: 1
+   :caption: Hardware and Wiring
+   :hidden:
+
+   Hardware Component Overview <{{ frc_docs_url }}docs/controls-overviews/control-system-hardware.html>
+   docs/controls-overviews/control-system-software
+   docs/hardware/hardware-basics/hardware-overview
+   Status Light Quick Reference <{{ frc_docs_url }}docs/hardware/hardware-basics/status-lights-ref.html>
+   docs/software/can-devices/index
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Programming Fundamentals
+   :hidden:
+
+   docs/software/what-is-wpilib
+   docs/software/basic-programming/index
+   docs/software/hardware-apis/index
+   docs/software/commandbased/index
+   docs/software/telemetry/index
+   docs/software/python/index
+   docs/software/blocks/index
+   docs/software/programming-snippets
+   docs/software/examples-tutorials/wpilib-examples
+   docs/software/examples-tutorials/third-party-examples
+
+.. toctree::
+   :maxdepth: 1
    :caption: Reference
    :hidden:
 
@@ -280,22 +322,6 @@ WPILib Documentation
 
 .. toctree::
    :maxdepth: 1
-   :caption: Programming Fundamentals
-   :hidden:
-
-   docs/software/what-is-wpilib
-   docs/controls-overviews/control-system-software
-   docs/software/basic-programming/index
-   docs/software/hardware-apis/index
-   docs/software/commandbased/index
-   docs/software/python/index
-   docs/software/blocks/index
-   docs/software/programming-snippets
-   docs/software/examples-tutorials/wpilib-examples
-   docs/software/examples-tutorials/third-party-examples
-
-.. toctree::
-   :maxdepth: 1
    :caption: Tools, Dashboards, and Networking
    :hidden:
 
@@ -303,7 +329,6 @@ WPILib Documentation
    docs/software/vscode-overview/3rd-party-libraries
    docs/software/firstdriverstation/index
    docs/software/dashboards/index
-   docs/software/telemetry/index
    docs/software/wpilib-tools/outlineviewer/index
    docs/software/wpilib-tools/wpical/index
    docs/networking/networking-introduction/index
@@ -325,18 +350,8 @@ WPILib Documentation
    :hidden:
 
    docs/ftc/index
-   docs/xrp-robot/index
    docs/romi-robot/index
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Hardware and Wiring
-   :hidden:
-
-   Hardware Component Overview <{{ frc_docs_url }}docs/controls-overviews/control-system-hardware.html>
-   docs/hardware/hardware-basics/hardware-overview
-   Status Light Quick Reference <{{ frc_docs_url }}docs/hardware/hardware-basics/status-lights-ref.html>
-   docs/software/can-devices/index
+   docs/xrp-robot/index
 
 .. toctree::
    :maxdepth: 1
