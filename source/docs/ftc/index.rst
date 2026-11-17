@@ -20,7 +20,7 @@ FTC SDK. Check the hardware and software covered by a guide before following it.
       **WPILib**
       ^^^
       Use the tools and programming concepts described on this site.
-      Start with Zero to Robot for setup and programming instructions.
+      Start with Robot to Motion for setup and programming instructions.
 
    .. grid-item-card:: REV Control Hub / Expansion Hub
       :link: https://ftc-docs.firstinspires.org/en/latest/
@@ -55,7 +55,7 @@ The programming options below describe Systemcore with WPILib.
       Python support in both the OnBot environment and
       desktop VS Code.
 
-   .. grid-item-card:: Blockly
+   .. grid-item-card:: Blocks
       :class-card: sw-card-ftc
 
       **Systemcore**

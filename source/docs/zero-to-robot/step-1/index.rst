@@ -1,20 +1,8 @@
-# Step 1: Build and Wire Your Robot
+:orphan:
 
-.. container:: sw-step-badge
+# Assembly and Wiring Prerequisites
 
-   .. container:: sw-step-n
 
-      01
-
-   .. container::
-
-      .. container:: sw-step-info-title
-
-         Build and Wire Your Robot
-
-      .. container:: sw-step-info-sub
-
-         Step 1 of 4
 
 Assemble and wire the drivetrain and control system, power on Systemcore,
 and open its web interface from your computer.
@@ -77,7 +65,7 @@ following it. Parts 2 and 3 below cover the shared Systemcore connection.
 .. note::
 
    FRC KitBot code will be available after the 2027 kickoff in
-   :doc:`Step 4: Write and Drive <../step-4/index>`.
+   :doc:`Step 3: Write and Drive <../step-4/index>`.
 
 .. rubric:: Part 2: Wire Your Systemcore
 
@@ -138,9 +126,9 @@ to it directly, before any radio or field network is involved.
    * - Connection
      - Default value
    * - Built-in Wi-Fi SSID
-     - ``SYSTEMCORE``
+     - Image 17+: ``SYSTEMCORE-[RANDOM]``; earlier images: ``SYSTEMCORE``
    * - Built-in Wi-Fi password
-     - ``PASSWORD``
+     - Image 17+: check the display; earlier images: ``PASSWORD``
    * - Wi-Fi access point IP
      - ``172.30.0.1``
    * - USB (Windows)
@@ -153,12 +141,16 @@ to it directly, before any radio or field network is involved.
    Units on OS image 9 or earlier use ``172.28.0.1`` (USB, Windows) or
    ``172.29.0.1`` (USB, macOS/Linux) instead.
 
+The image 17 Wi-Fi change is documented in the
+`Systemcore OS release notes <https://github.com/LimelightVision/systemcore-os-public#alpha-17-and-beta-17>`_.
+If the password was changed, use the configured password instead of the default.
+
 1. Connect the battery and turn robot power **On**.
 2. Confirm that Systemcore powers on and check the onboard display for
    hardware faults before continuing.
-3. Connect the computer to the ``SYSTEMCORE`` Wi-Fi network using password
-   ``PASSWORD``, or connect it to the USB-C LINK port with a data-capable
-   cable.
+3. Connect the computer to the Systemcore Wi-Fi network using the credentials
+   for its OS image shown above, or connect it to the USB-C LINK port with a
+   data-capable cable. Use your configured credentials if the defaults were changed.
 4. Open ``http://robot.local`` in a browser. If that name does not resolve,
    use the appropriate IP address from the table.
 5. Confirm that the Systemcore web interface loads and identifies the unit.
@@ -286,11 +278,11 @@ these connections.
 
 .. container:: sw-nav
 
-   :doc:`← Zero to Robot <../introduction>`
+   :doc:`← Robot to Motion <../introduction>`
 
    .. container:: sw-next
 
-      :doc:`Step 2: Set Up Your Environment → <../step-2/index>`
+      :doc:`Step 1: Set Up Your Environment → <../step-2/index>`
 
 .. toctree::
    :maxdepth: 1

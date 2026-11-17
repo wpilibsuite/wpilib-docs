@@ -27,11 +27,18 @@ WPILib is designed to install to different folders for different years, so that 
 
 ## Downloading
 
-.. only:: not prbuild
+For 2027 pre-season Systemcore testing, download the
+`WPILib 2027.0.0 Alpha 8 installer
+<https://github.com/wpilibsuite/allwpilib/releases/tag/v2027.0.0-alpha-8>`_.
+This release was reviewed on November 17, 2026. Read its requirements and
+known issues before installing; it is prerelease software.
 
-   .. wpilibrelease:: v2025.3.2
-
-[You can download the latest release of the installer from GitHub](https://github.com/wpilibsuite/allwpilib/releases/latest/).
+For newer builds, select a compatible **2027** release from the
+`complete release list <https://github.com/wpilibsuite/allwpilib/releases>`_.
+GitHub's latest-release shortcut may select a stable release for an earlier
+season. Match WPILib, Systemcore OS, Driver Station, and vendor libraries using
+the `Systemcore testing compatibility tables
+<https://github.com/wpilibsuite/SystemcoreTesting#software-compatibility>`_.
 
 Once on the GitHub releases page, scroll to the Downloads section.
 

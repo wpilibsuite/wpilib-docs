@@ -114,7 +114,7 @@ Read a digital input (limit switch, beam break, etc.):
 
       .. admonition:: Coming Soon
 
-         A Blocks (Blockly) version of this snippet will be added here.
+         A Blocks version of this snippet will be added here.
 
    .. tab-item:: C++
       :sync: c++

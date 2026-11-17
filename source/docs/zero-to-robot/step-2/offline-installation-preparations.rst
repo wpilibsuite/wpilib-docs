@@ -14,17 +14,17 @@ This article contains instructions/links to components you will want to gather i
 
 ## Documentation
 
-This documentation can be downloaded for offline viewing. The link to download the PDF can be found [here](https://buildmedia.readthedocs.org/media/pdf/frc-docs/stable/frc-docs.pdf).
+This documentation can be downloaded for offline viewing. The link to download the PDF can be found [on Read the Docs](https://app.readthedocs.org/projects/frc-docs/downloads/). Select the documentation version matching your software; the stable PDF may cover the previous control system.
 
 ## Installers
 
-### All Teams
+### FRC Driver Station
 
 -  [FRC Driver Station](https://github.com/wpilibsuite/FirstDriverStation-Public/releases/latest)
 
 ### Java/C++ Teams
 
--  [Java/C++ WPILib Installer](https://github.com/wpilibsuite/allwpilib/releases/latest)
+-  [2027 WPILib installer and release-selection guidance](wpilib-setup.html#downloading)
 
 Once on the GitHub releases page, scroll to the download section in the middle of the page.
 
@@ -34,6 +34,12 @@ Once on the GitHub releases page, scroll to the download section in the middle o
 Then click on the correct binary for your OS and architecture to begin the download.
 
 .. note:: After downloading the Java/C++ WPILib installer, run it once while connected to the internet and select :guilabel:`Install for this User` then :guilabel:`Create VS Code zip to share with other computers/OSes for offline install` and save the downloaded VS Code archives for future offline installations.
+
+Before disconnecting from the internet, also download the Systemcore update
+for your hardware revision and the Driver Station version compatible with
+your WPILib release. Follow :doc:`../step-3/imaging-your-systemcore` for update
+selection. Python teams should follow :doc:`python-setup` and its linked
+RobotPy guidance for their selected release.
 
 ## 3rd Party Libraries/Software
 

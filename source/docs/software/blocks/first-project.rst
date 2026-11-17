@@ -10,7 +10,7 @@ Build a program to drive a four-motor KitBot with CIM motors and REV SPARK MAX c
 Before You Start
 ----------------
 
-Complete the control-system preparation in :doc:`Zero to Robot Step 3 </docs/zero-to-robot/step-3/index>`. Follow the robot and controller manufacturers' wiring instructions. Have the following ready:
+Complete the control-system preparation in :doc:`Robot to Motion Step 2 </docs/zero-to-robot/step-3/index>`. Follow the robot and controller manufacturers' wiring instructions. Have the following ready:
 
 * A KitBot drivetrain with four CIM motors, two on each side.
 * Four SPARK MAX controllers configured for brushed motors, with unique CAN device IDs.

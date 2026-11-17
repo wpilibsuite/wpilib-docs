@@ -1,28 +1,42 @@
 .. include:: <isonum.txt>
 
-# Zero to Robot
+# Robot to Motion
 
-This guide takes you from setting up **Systemcore** to running a drivetrain
-program.
+**Set up Systemcore, write your first program, and drive.**
 
-Start with assembly and wiring in Step 1, set up your editor in Step 2,
-configure the control system in Step 3, then write code and test the
-drivetrain in Step 4.
+Start with an assembled chassis. Follow the
+:doc:`Systemcore wiring guide <systemcore-wiring>`, then set up your software,
+configure the controller, and run a drivetrain program.
 
-Assemble and wire your robot then configuring Systemcore. Step 1 links
-to the FRC assembly and wiring guides currently hosted here and to
-`FTC Docs <https://ftc-docs.firstinspires.org/en/latest/>`_ for FTC resources.
-Use instructions that match your hardware.
+Set up your editor in Step 1, configure the control system in Step 2,
+then write code and test the drivetrain in Step 3.
+
+.. note::
+
+   **Before you start:** Assemble your chassis and mount the components. For FRC
+   assembly, follow `Zero to Robot in FRC Docs
+   <{{ frc_docs_url }}docs/zero-to-robot/index.html>`_.
+   FTC teams should use `FTC Docs <https://ftc-docs.firstinspires.org/en/latest/>`_
+   for hardware resources. Continue with :doc:`Systemcore wiring <systemcore-wiring>`
+   here before applying power.
 
 FTC teams using a REV Control Hub or Expansion Hub should use
 the `FTC Docs <https://ftc-docs.firstinspires.org/en/latest/>`_ for
 legacy hardware setup and programming.
 
+.. card:: Wire Your Systemcore Drivetrain →
+   :link: systemcore-wiring
+   :link-type: doc
+   :class-card: sw-card-shared
+
+   Connect the controller, motor controllers, and radio, then inspect the wiring
+   before continuing to software setup.
+
 .. rubric:: Choose How You Will Program
    :class: wl-shared-text
 
 Choose a programming environment and a language available for that platform.
-Keep those choices as you follow Steps 2 and 4.
+Keep those choices as you follow Steps 1 and 3.
 
 **Choice 1: Programming environment**
 
@@ -67,7 +81,7 @@ look at Blocks or LabVIEW.
      - ✓
      - Teams choosing a text-based language
      - Uses classes and explicit type declarations
-   * - **Blocks (Blockly)**
+   * - **Blocks**
      - Graphical blocks
      - ✓
      - ✓
@@ -93,7 +107,7 @@ look at Blocks or LabVIEW.
      - Graphical programming
 
 LabVIEW is available through OnBot and desktop development. C++ is available
-through desktop development only. Step 2 describes the environment you choose;
+through desktop development only. Step 1 describes the environment you choose;
 the desktop LabVIEW installation walkthrough is still being completed.
 
 .. tip::
@@ -167,40 +181,22 @@ the desktop LabVIEW installation walkthrough is still being completed.
 .. rubric:: The Steps
    :class: wl-shared-text
 
-Follow Steps 1 through 4 in order for the **FRC VS Code walkthrough**.
-Step 4 links to the drivetrain example and the first driving test. Use
+Follow Steps 1 through 3 in order for the **FRC VS Code walkthrough**.
+Step 3 links to the drivetrain example and the first driving test. Use
 Troubleshooting when a connection, deployment, or motor test fails.
 
 Some OnBot, Blocks, and FTC walkthroughs are still being completed.
 Those sections identify what is available and what is still coming.
 
-.. note::
-
-   **FTC teams:** The Systemcore and Motioncore assembly and wiring
-   walkthroughs are still being completed. Start with powering and connecting
-   Systemcore (Step 1, Parts 2-3) and choosing your tools (Step 2).
-   You can also practice WPILib programming with the
-   :doc:`XRP robot <../xrp-robot/index>`.
-
-.. grid:: 1 2 4 4
+.. grid:: 1 1 3 3
    :gutter: 3
-
-   .. grid-item-card:: Build and Wire Your Robot
-      :link: step-1/index
-      :link-type: doc
-      :class-card: sw-card-shared
-
-      **01**
-      ^^^
-      Wire the control system: power distribution, Systemcore,
-      motor controllers, and radio.
 
    .. grid-item-card:: Set Up Your Environment
       :link: step-2/index
       :link-type: doc
       :class-card: sw-card-shared
 
-      **02**
+      **01**
       ^^^
       Set up the editor and language you chose above, and install the
       Driver Station for your robot.
@@ -210,7 +206,7 @@ Those sections identify what is available and what is still coming.
       :link-type: doc
       :class-card: sw-card-shared
 
-      **03**
+      **02**
       ^^^
       Configure your Systemcore and radio. Required every season
       before you can deploy code.
@@ -220,7 +216,7 @@ Those sections identify what is available and what is still coming.
       :link-type: doc
       :class-card: sw-card-shared
 
-      **04**
+      **03**
       ^^^
       Create your first robot project, deploy code to the robot,
       and enable it with the Driver Station.
@@ -264,7 +260,6 @@ Those sections identify what is available and what is still coming.
    :hidden:
 
    Systemcore Wiring <systemcore-wiring>
-   Step 1: Build and Wire Your Robot <step-1/index>
-   Step 2: Set Up Your Environment <step-2/index>
-   Step 3: Configure Your Control System <step-3/index>
-   Step 4: Write and Drive <step-4/index>
+   Step 1: Set Up Your Environment <step-2/index>
+   Step 2: Configure Your Control System <step-3/index>
+   Step 3: Write and Drive <step-4/index>

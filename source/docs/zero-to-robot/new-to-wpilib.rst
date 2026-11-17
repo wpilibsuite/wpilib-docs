@@ -7,7 +7,7 @@ read sensors, and communicate with the Driver Station.
 
 .. tip::
 
-   **New to programming too?** Start with :doc:`Zero to Robot <introduction>`.
+   **New to programming too?** Start with :doc:`Robot to Motion <introduction>`.
    Follow the setup steps, then write and run your first robot program.
 
 .. rubric:: How the Pieces Fit Together
@@ -55,7 +55,7 @@ software, and motors connect through Motioncore. Servos will not be supported
 for FTC on Systemcore.
 
 The programming building blocks above apply to both programs; the
-:doc:`Zero to Robot guide <introduction>` identifies the program-specific
+:doc:`Robot to Motion guide <introduction>` identifies the program-specific
 steps.
 
 .. tip::
@@ -68,4 +68,4 @@ steps.
 
    .. container:: sw-next
 
-      :doc:`Continue to Zero to Robot → <introduction>`
+      :doc:`Continue to Robot to Motion → <introduction>`

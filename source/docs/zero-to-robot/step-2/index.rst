@@ -1,10 +1,10 @@
-# Step 2: Set Up Your Environment
+# Step 1: Set Up Your Environment
 
 .. container:: sw-step-badge
 
    .. container:: sw-step-n
 
-      02
+      01
 
    .. container::
 
@@ -14,14 +14,14 @@
 
       .. container:: sw-step-info-sub
 
-         Step 2 of 4
+         Step 1 of 3
 
 Set up your programming environment and the Driver Station software for
 your robot.
 
 .. rubric:: Before You Start
 
-Keep the language and programming environment you selected in :doc:`Zero to Robot
+Keep the language and programming environment you selected in :doc:`Robot to Motion
 <../introduction>`. Complete the setup for that environment, then set up your
 program's driver software. The programming environment is where you write code;
 the Driver Station is where you control the robot during a test.
@@ -45,7 +45,7 @@ the Driver Station is where you control the robot during a test.
 Choose how you'll write code. **OnBot** runs in the browser with nothing
 to install; **desktop development** uses tools installed on your computer,
 including WPILib VS Code or LabVIEW. These paths support FRC and FTC with Systemcore. Keep using the environment and language you selected
-on the Zero to Robot page.
+on the Robot to Motion page.
 
 .. important::
 
@@ -101,9 +101,9 @@ on the Zero to Robot page.
 
             **FRC + FTC: macOS / Linux**
             ^^^
-            - macOS 12+ or modern Linux distro
+            - macOS 15+ or a supported Linux distribution (see the installation guide)
             - WPILib + VS Code for writing code
-            - Can run Driver Station for testing only, cannot image Systemcore
+            - Can run Driver Station for testing; see the imaging guide for OS updates
             - Deploy code over USB or Wi-Fi (needs network access)
             - Robot simulation is currently FRC only
 
@@ -184,7 +184,7 @@ on the Zero to Robot page.
       .. tip::
 
          **Vendor libraries are not installed here.**
-         Libraries like REVLib and Phoenix 6 are added per-project in Step 4
+         Libraries like REVLib and Phoenix 6 are added per-project in Step 3
          using the WPILib Dependency Manager. You do not need them yet.
 
 .. rubric:: Desktop LabVIEW
@@ -210,9 +210,9 @@ regardless of whether you selected OnBot, VS Code, or desktop LabVIEW.
       **FRC only: Windows 11**
       ^^^
       Install this on the Windows laptop that will drive the robot at
-      competition. The 2027 production release supports the official FMS.
-      During pre-season testing, match alpha Driver Station builds with a
-      compatible Systemcore release.
+      competition. During pre-season testing, match Driver Station,
+      Systemcore OS, and WPILib versions using the installation guide.
+      Confirm FMS compatibility with the event before using a prerelease build.
 
    .. grid-item-card:: FTC Driver Station
       :link: ../../ftc/index
@@ -239,7 +239,7 @@ regardless of whether you selected OnBot, VS Code, or desktop LabVIEW.
 - The driver software for your program is installed and opens.
 
 You do not need to create a project or install vendor libraries yet. Those
-belong to Step 4, after the control system is configured.
+belong to Step 3, after the control system is configured.
 
 .. container:: sw-success
 
@@ -249,15 +249,15 @@ belong to Step 4, after the control system is configured.
 
    Continue when your selected programming environment opens successfully. FRC teams should
    also confirm that the FRC Driver Station opens; "No Robot Communication"
-   is expected until the robot is configured in Step 3.
+   is expected until the robot is configured in Step 2.
 
 .. container:: sw-nav
 
-   :doc:`← Step 1: Build and Wire Your Robot <../step-1/index>`
+   :doc:`← Robot to Motion <../introduction>`
 
    .. container:: sw-next
 
-      :doc:`Step 3: Configure Your Control System → <../step-3/index>`
+      :doc:`Step 2: Configure Your Control System → <../step-3/index>`
 
 .. toctree::
    :maxdepth: 1

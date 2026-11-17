@@ -4,7 +4,13 @@ This guide is intended for Python teams. Java and C++ teams can skip to :doc:`wp
 
 ## Prerequisites
 
-You must install a supported version of Python on a supported operating system. Every year we upgrade RobotPy to the latest available version of Python. In 2027 we support Python 3.11/3.12/3.13/3.14, but only 3.14 is available for the Systemcore.
+Install a Python version supported by your selected RobotPy release on a supported
+operating system. The desktop Python version and the Python runtime included in
+a Systemcore image are separate requirements. Check the
+`RobotPy testing instructions <https://github.com/wpilibsuite/SystemcoreTesting/blob/main/robotpy.md>`_
+and the `Systemcore OS release notes <https://github.com/LimelightVision/systemcore-os-public>`_
+for the releases you are using; do not assume every Systemcore image contains
+the same Python runtime.
 
 Supported Operating Systems and Architectures:
  * Windows 11, 64 bit only. Arm-based Windows 11 is unsupported.
@@ -23,6 +29,14 @@ On Windows and macOS, we recommend using the official Python installers distribu
 
 ## Install RobotPy
 
+For 2027 pre-season testing, use the
+`RobotPy Systemcore testing instructions
+<https://github.com/wpilibsuite/SystemcoreTesting/blob/main/robotpy.md>`_
+to select a compatible RobotPy release. The commands below select 2027
+packages and allow prereleases; an unqualified install can select the previous
+season's stable package. Set the project's RobotPy version in
+``pyproject.toml`` to match before syncing or deploying.
+
 Once you have installed Python, you can use pip to install RobotPy on your development computer.
 
 .. tab-set::
@@ -37,19 +51,19 @@ Once you have installed Python, you can use pip to install RobotPy on your devel
       Run the following command from cmd or Powershell to install the core RobotPy packages:
 
       ```sh
-      py -3 -m pip install robotpy
+      py -3 -m pip install --pre "robotpy==2027.*"
       ```
 
       To upgrade, you can run this:
 
       ```sh
-      py -3 -m pip install --upgrade robotpy
+      py -3 -m pip install --upgrade --pre "robotpy==2027.*"
       ```
 
       If you don't have administrative rights on your computer, either use [virtualenv/virtualenvwrapper-win](https://docs.python-guide.org/en/latest/dev/virtualenvs/), or or you can install to the user site-packages directory:
 
       ```sh
-      py -3 -m pip install --user robotpy
+      py -3 -m pip install --user --pre "robotpy==2027.*"
       ```
 
    .. tab-item:: macOS
@@ -58,19 +72,19 @@ Once you have installed Python, you can use pip to install RobotPy on your devel
       On a macOS system that has pip installed, just run the following command from the Terminal application (may require admin rights):
 
       ```sh
-      python3 -m pip install robotpy
+      python3 -m pip install --pre "robotpy==2027.*"
       ```
 
       To upgrade, you can run this:
 
       ```sh
-      python3 -m pip install --upgrade robotpy
+      python3 -m pip install --upgrade --pre "robotpy==2027.*"
       ```
 
       If you don't have administrative rights on your computer, either use `virtualenv/virtualenvwrapper <http://docs.python-guide.org/en/latest/dev/virtualenvs/>`_, or you can install to the user site-packages directory:
 
       ```sh
-      python3 -m pip install --user robotpy
+      python3 -m pip install --user --pre "robotpy==2027.*"
       ```
 
    .. tab-item:: Linux
@@ -87,13 +101,13 @@ Once you have installed Python, you can use pip to install RobotPy on your devel
       If you have a compatible version of pip, you can simply run:
 
       ```sh
-      python3 -m pip install robotpy
+      python3 -m pip install --pre "robotpy==2027.*"
       ```
 
       To upgrade, you can run this:
 
       ```sh
-      python3 -m pip install --upgrade robotpy
+      python3 -m pip install --upgrade --pre "robotpy==2027.*"
       ```
 
       If you manage to install the packages and get the following error or something similar, your system is most likely not compatible with RobotPy::

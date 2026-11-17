@@ -1,10 +1,10 @@
-# Step 3: Configure Your Control System
+# Step 2: Configure Your Control System
 
 .. container:: sw-step-badge
 
    .. container:: sw-step-n
 
-      03
+      02
 
    .. container::
 
@@ -14,7 +14,7 @@
 
       .. container:: sw-step-info-sub
 
-         Step 3 of 4
+         Step 2 of 3
 
 Install the current season image on Systemcore, set the team number, and
 check the connection between your computer and robot.
@@ -25,13 +25,13 @@ check the connection between your computer and robot.
    .. grid-item-card:: Robot Ready
       :class-card: sw-card-shared
 
-      - Step 1 is complete and Systemcore powers on normally
+      - Your robot is assembled and wired, and Systemcore powers on normally
       - Your computer opens ``robot.local`` over Systemcore Wi-Fi or USB
 
    .. grid-item-card:: Computer and Team Ready
       :class-card: sw-card-shared
 
-      - Step 2 is complete and your program's driver software opens
+      - Step 1 is complete and your program's driver software opens
       - You know your team number
       - FRC teams have an Ethernet cable available for the radio
 
@@ -99,7 +99,7 @@ Before continuing:
 The steps below cover the external FRC radio. FTC uses the radio built into
 Systemcore.
 Systemcore-specific radio configuration steps for FTC are still being
-written; see :doc:`Step 1: Confirm It's Alive <../step-1/index>` in the
+written; see :doc:`Systemcore imaging and connection guide <imaging-your-systemcore>` in the
 meantime for the built-in connection details.
 
 .. grid:: 1 1 2 2
@@ -135,7 +135,7 @@ setup you selected in the radio guide before checking communication.
 
       - Web interface and display show the expected OS version
       - Display and Driver Station show the same team number
-      - Power LED is solid green and Status LED is off
+      - No unresolved startup or hardware faults are reported by the web interface
 
    .. grid-item-card:: Network and Driver Station
       :class-card: sw-card-shared
@@ -148,7 +148,7 @@ setup you selected in the radio guide before checking communication.
    indicator highlighted in green.
 
 The robot-code indicator may remain off until the first program is deployed in
-Step 4. That does not mean Step 3 failed.
+Step 3. That does not mean Step 2 failed.
 
 .. container:: sw-success
 
@@ -158,15 +158,15 @@ Step 4. That does not mean Step 3 failed.
 
    Continue when the team numbers match, the computer uses your intended
    connection, and the Driver Station communication indicator is green. The robot-code
-   indicator can remain off until you deploy in Step 4.
+   indicator can remain off until you deploy in Step 3.
 
 .. container:: sw-nav
 
-   :doc:`← Step 2: Set Up Your Environment <../step-2/index>`
+   :doc:`← Step 1: Set Up Your Environment <../step-2/index>`
 
    .. container:: sw-next
 
-      :doc:`Step 4: Write and Drive → <../step-4/index>`
+      :doc:`Step 3: Write and Drive → <../step-4/index>`
 
 .. toctree::
    :maxdepth: 1

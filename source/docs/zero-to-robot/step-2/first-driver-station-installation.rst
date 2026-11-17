@@ -8,9 +8,20 @@ The new FIRST Driver Station is distributed from the
 
    Pre-season alpha releases may require a specific Systemcore OS version and
    are not compatible with the roboRIO or the current FTC SDK. Check the
-   release notes before installing an alpha build. Production Driver Station
-   releases for 2027 and later support the official FIRST Field Management
-   System (FMS).
+   release notes before installing an alpha build. For event use, confirm the
+   Driver Station and FMS combination with the event organizers; prerelease
+   compatibility depends on the specific builds.
+
+## Match the Software Versions
+
+Use the `Systemcore testing compatibility table
+<https://github.com/wpilibsuite/SystemcoreTesting#software-compatibility>`_
+to select compatible WPILib, Systemcore OS, and Driver Station releases.
+The `Driver Station Alpha 8 release notes
+<https://github.com/wpilibsuite/FirstDriverStation-Public/releases/tag/v2027.0.0-alpha-8>`_
+describe a patch to Alpha 7. Check the requirements in both releases when
+updating an older installation. Review the notes again before changing any
+part of a working setup.
 
 ## Before You Download
 
@@ -22,7 +33,7 @@ The new FIRST Driver Station is distributed from the
 
 ## Downloading Install Files
 
-Navigate to the [First Drive Station Releases Page](https://github.com/wpilibsuite/FirstDriverStation-Public/releases/latest). On macOS platforms download the correct ``.pkg`` file and on Windows platforms download the correct ``.exe`` file for your device. For Linux devices, only the archive files are provided.
+Navigate to the [FIRST Driver Station Releases Page](https://github.com/wpilibsuite/FirstDriverStation-Public/releases/latest). On macOS platforms download the correct ``.pkg`` file and on Windows platforms download the correct ``.exe`` file for your device. For Linux devices, only the archive files are provided.
 
 ## Per Platform Setup
 
@@ -97,4 +108,4 @@ After running these commands, reboot macOS before starting the Driver Station ag
    the USB/controller view.
 4. With no robot connected, a communication warning is expected.
 
-Continue to :doc:`Step 3: Configure Your Control System <../step-3/index>`.
+Continue to :doc:`Step 2: Configure Your Control System <../step-3/index>`.

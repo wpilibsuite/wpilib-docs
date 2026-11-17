@@ -4,6 +4,13 @@ For a Systemcore that boots normally and runs OS version 11 or later, routine
 updates run through its web interface at ``robot.local``. Older installations
 and units that cannot boot use the recovery procedure later on this page.
 
+Before downloading an image, check the
+`Systemcore software compatibility table
+<https://github.com/wpilibsuite/SystemcoreTesting#software-compatibility>`_
+and the image's release notes. Hardware revision and OS image version are
+different: a Beta unit can run an OS used with an alpha WPILib release.
+Select a compatible set of WPILib, Driver Station, and vendor libraries.
+
 ## Prerequisites
 
 - A ``.llupdate`` file downloaded from the
@@ -67,11 +74,11 @@ After the update and reboot:
 3. Confirm that the onboard display shows the correct team number.
 4. Enter the same team number in the Driver Station settings.
 5. Confirm that the Driver Station reports robot communication. A missing
-   robot-code indicator is expected until code is deployed in Step 4.
+   robot-code indicator is expected until code is deployed in Step 3.
 
 If the Driver Station cannot connect, compare the team number on the Systemcore
 display with the number in Driver Station settings. When creating a project in
-Step 4, use this same number for deployment.
+Step 3, use this same number for deployment.
 
 ## Recovery Flashing
 

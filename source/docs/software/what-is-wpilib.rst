@@ -117,7 +117,7 @@ FIRST\ |reg|, and volunteer developers from the community.
      - Teams choosing a text-based language
      - Statically typed
      - Uses classes and explicit type declarations
-   * - **Blocks (Blockly)**
+   * - **Blocks**
      - Teams that prefer visual programming
      - Graphical blocks
      - Generates Python code
@@ -189,7 +189,7 @@ require a local editor installation.
    **C++ build system:** GradleRIO is the baseline; transitioning
    to an alternative build system is possible depending on community contributions.
 
-**OnBot Environments: Blockly, Java, Python, LabVIEW**
+**OnBot Environments: Blocks, Java, Python, LabVIEW**
 
 .. card:: VS Code-derived editor hosted on Systemcore
    :class-card: sw-card-frc
@@ -205,7 +205,7 @@ require a local editor installation.
       :header-rows: 1
 
       * - Feature
-        - Blockly
+        - Blocks
         - Java
         - Python
         - LabVIEW
@@ -276,11 +276,11 @@ require a local editor installation.
 
    * - Feature
      - Desktop (VS Code)
-     - OnBot (Java / Python / Blockly / LabVIEW)
+     - OnBot (Java / Python / Blocks / LabVIEW)
      - FTC Legacy (REV)
    * - **Languages**
      - Java, C++, Python
-     - Java, Python, Blockly, LabVIEW
+     - Java, Python, Blocks, LabVIEW
      - Java, Blocks
    * - **C++ support**
      - ✓

@@ -10,7 +10,7 @@ Python, or Blocks using the FRC Driver Station. Before testing, create and
 deploy your :doc:`Java, C++, or Python drivetrain program
 </docs/zero-to-robot/step-4/creating-test-drivetrain-program-cpp-java-python>`
 or a :ref:`Blocks drivetrain sample <create_blocks_project>`, and complete
-the Step 3 communication checks.
+the Step 2 communication checks.
 
 Work through the tests in order: check the direct connection, test controller
 response with the wheels off the floor, then repeat the test through the radio.
@@ -73,7 +73,7 @@ controller input while the robot remains disabled. Controller values change
 when you move a stick and return to neutral when you release it.
 
 If communication is missing, return to
-:doc:`Step 3 <../step-3/index>`. If communication is present but robot code is
+:doc:`Step 2 <../step-3/index>`. If communication is present but robot code is
 missing, inspect the deploy output and Driver Station log before enabling.
 
 ## First Enable
@@ -146,4 +146,4 @@ another person ready to disable or power off the robot.
 
    .. container:: sw-next
 
-      :doc:`Return to Step 4 → <index>`
+      :doc:`Return to Step 3 → <index>`

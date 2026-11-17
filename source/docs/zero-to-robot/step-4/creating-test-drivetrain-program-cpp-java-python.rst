@@ -6,7 +6,7 @@ Systemcore. The next page covers motor testing with the wheels off the floor.
 Use the Java, C++, or Python walkthrough below, or start with a Blocks sample.
 
 Before beginning, confirm that WPILib and any language-specific tools from
-:doc:`Step 2 <../step-2/index>` are installed, Step 3 is complete, and you know
+:doc:`Step 1 <../step-2/index>` are installed, Step 2 is complete, and you know
 the motor-controller type, port numbers or CAN IDs, and team number for your
 robot.
 
@@ -83,7 +83,7 @@ The next page asks for a language and project base.
 .. image:: /docs/software/vscode-overview/images/creating-robot-program/new-project-creator-language.png
    :alt: The language and base page of the WPILib New Project Creator
 
-1. **Language:** select Java or C++ to match your choice in Step 2.
+1. **Language:** select Java or C++ to match your choice in Step 1.
 2. **Project Base:** select **Getting Started** for this walkthrough.
 
 After making the selections, click :guilabel:`Next`.
@@ -620,7 +620,7 @@ Before deploying, save the program and check that:
 - The required vendor libraries are installed for a CAN example.
 - The controller is assigned to the port used by the example.
 
-Connect the computer using the USB or robot-network path verified in Step 3.
+Connect the computer using the USB or robot-network path verified in Step 2.
 Keep the robot disabled, then use the command for your language below.
 
 .. tab-set::
@@ -680,7 +680,7 @@ controller checks and first drive test.
 
 .. container:: sw-nav
 
-   :doc:`← Step 4: Write and Drive <index>`
+   :doc:`← Step 3: Write and Drive <index>`
 
    .. container:: sw-next
 

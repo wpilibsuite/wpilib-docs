@@ -40,14 +40,14 @@ WPILib Documentation
        <div id="new-s1">
          <div class="wl-welcome">
            <h2 class="wl-welcome-h">New to WPILib? You're in the right place.</h2>
-           <p class="wl-welcome-p">Start with Zero to Robot to connect Systemcore, install WPILib, and write your first robot program. No programming experience is required.</p>
+           <p class="wl-welcome-p">Start with Robot to Motion to connect Systemcore, install WPILib, and write your first robot program. No programming experience is required.</p>
          </div>
          <h3 class="wl-sh">Set Up and Program Your Robot</h3>
          <a class="wl-card wl-card-shared wl-btn wl-feature-card" href="docs/zero-to-robot/introduction.html">
            <span class="wl-num wl-shared-text">→</span>
            <div>
-             <div class="wl-card-title">Zero to Robot</div>
-             <div class="wl-card-desc">Choose a programming language and editor, connect and configure Systemcore, then deploy code and drive. Assembly and wiring guides are linked in Step 1.</div>
+             <div class="wl-card-title">Robot to Motion</div>
+             <div class="wl-card-desc">Set up Systemcore, write your first program, and drive. Start with an assembled robot and follow the Systemcore wiring guide.</div>
            </div>
          </a>
          <div class="wl-tip wl-tip-shared">
@@ -150,7 +150,7 @@ WPILib Documentation
              <h3 class="wl-ret-h">Practice with WPILib</h3>
              <ul>
                <li>Use WPILib to read sensors, control motors, and write autonomous routines</li>
-               <li>Choose your language and editor in Zero to Robot</li>
+               <li>Choose your language and editor in Robot to Motion</li>
                <li>Use the XRP to practice without waiting for a competition robot</li>
              </ul>
              <a href="https://wpilib.org/blog" class="wl-shared-text wl-ret-link">Follow the WPILib blog for release updates</a>
@@ -265,7 +265,7 @@ WPILib Documentation
 
    New to WPILib <docs/zero-to-robot/new-to-wpilib>
    Returning Teams <docs/zero-to-robot/returning>
-   Zero to Robot <docs/zero-to-robot/introduction>
+   Robot to Motion <docs/zero-to-robot/introduction>
 
 .. toctree::
    :maxdepth: 1

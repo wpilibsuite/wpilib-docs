@@ -1,10 +1,10 @@
-# Step 4: Write and Drive
+# Step 3: Write and Drive
 
 .. container:: sw-step-badge
 
    .. container:: sw-step-n
 
-      04
+      03
 
    .. container::
 
@@ -14,12 +14,12 @@
 
       .. container:: sw-step-info-sub
 
-         Step 4 of 4
+         Step 3 of 3
 
 Deploy a drivetrain program to Systemcore, test the controller and drive
 motors, and verify that disabling the robot stops the motors.
 
-Use the programming environment and language you set up in Step 2. Start with the example
+Use the programming environment and language you set up in Step 1. Start with the example
 for your hardware and test with the drive wheels off the floor.
 
 .. note::
@@ -32,7 +32,7 @@ for your hardware and test with the drive wheels off the floor.
    .. grid-item-card:: Control System Ready
       :class-card: sw-card-shared
 
-      - Step 3 is complete
+      - Step 2 is complete
       - Driver Station communication is green
       - Your controller is connected to the driver computer
 
@@ -75,7 +75,7 @@ first drive test. The Blocks KitBot walkthrough is a draft awaiting runtime and 
    .. grid-item-card:: LabVIEW: OnBot or Desktop
       :class-card: sw-card-shared
 
-      Use the LabVIEW environment you selected in Step 2. The Systemcore
+      Use the LabVIEW environment you selected in Step 1. The Systemcore
       project-creation and deployment walkthroughs for both environments
       are still being completed.
 
@@ -125,7 +125,7 @@ example when adapting the project to your hardware.
 
 For **Blocks**, follow :doc:`Drive Your KitBot with Blocks </docs/software/blocks/first-project>` to build the drivetrain program and check its hardware and API compatibility before deployment.
 
-For **OnBot or LabVIEW**, use the environment you selected in Step 2. The
+For **OnBot or LabVIEW**, use the environment you selected in Step 1. The
 Systemcore project-creation instructions are still being completed; the
 VS Code walkthrough does not describe these editors.
 
@@ -135,6 +135,11 @@ Before deploying any drivetrain project:
 - Check each motor controller's type and port or CAN ID against the wiring.
 - Check which controller axes the example uses to drive and turn.
 - Add the vendor libraries required by the motor controllers in your example.
+- Check the `Systemcore vendor compatibility table
+  <https://github.com/wpilibsuite/SystemcoreTesting#third-party-library-compatibility-by-wpilib-version>`_
+  and the vendor's release notes. A library for an earlier season or WPILib
+  alpha may use different APIs. For REV devices, also check the
+  `REV testing notes <https://github.com/wpilibsuite/SystemcoreTesting/blob/main/REV.md>`_.
 
 .. card:: Managing Vendor Dependencies
    :link: /docs/software/vscode-overview/3rd-party-libraries
@@ -185,7 +190,7 @@ motor assignments, and the drive call in your program before deploying it.
 Keep the robot disabled and its drive wheels supported off the floor.
 
 1. Power on Systemcore and connect the computer using the USB or robot-network
-   path you checked in Step 3. Confirm Driver Station communication before
+   path you checked in Step 2. Confirm Driver Station communication before
    deploying.
 2. Save your program and deploy using the command for your language:
 
@@ -292,7 +297,7 @@ problem, then repeat the test with the wheels off the floor.
 
 .. container:: sw-nav
 
-   :doc:`← Step 3: Configure Your Control System <../step-3/index>`
+   :doc:`← Step 2: Configure Your Control System <../step-3/index>`
 
 .. toctree::
    :maxdepth: 1
