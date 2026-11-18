@@ -67,6 +67,7 @@ local_extensions = [
     "_extensions.wpilib_release",
     "_extensions.default_latex_image_settings",
     "_extensions.redown",
+    "_extensions.rtd_search_ignore",
 ]
 
 if os.getenv("READTHEDOCS") == "True":
