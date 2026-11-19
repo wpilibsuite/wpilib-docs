@@ -14,6 +14,39 @@ Welcome to the *FIRST*\ |reg| Control System Documentation! This site contains e
 
 Community translations can be found in a variety of languages in the menu towards the bottom-right of the screen.
 
+.. rubric:: Find the Right Documentation
+
+.. grid:: 1 1 3 3
+   :gutter: 3
+
+   .. grid-item-card:: FTC Docs: Hardware and Setup
+      :link: https://ftc-docs.firstinspires.org/en/latest/
+      :link-type: url
+      :class-card: sw-card-ftc
+
+      Find FTC assembly and wiring guides, plus setup and programming help
+      for the REV control system. For Systemcore programming, use WPILib docs.
+
+      +++
+      Browse FTC Docs →
+
+   .. grid-item-card:: FRC Docs: Team, Hardware, and Vendor Resources
+      :class-card: sw-card-frc
+
+      Find FRC hardware guides, assembly and wiring instructions, vendor
+      links, and team resources.
+
+      +++
+      **Coming soon.**
+
+   .. grid-item-card:: WPILib: Systemcore and Robot Programming
+      :class-card: sw-card-shared
+
+      Set up Systemcore, write robot code, and learn how to test and debug it.
+
+      +++
+      **You are here.**
+
 .. grid:: 1 2 2 2
    :gutter: 3
 

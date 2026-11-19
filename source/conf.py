@@ -127,7 +127,7 @@ photofinish_ci_only = True
 # Enables ChiefDelphi support
 ogp_custom_meta_tags = [
     '<meta property="og:ignore_canonical" content="true" />',
-    '<meta name="theme-color" content="#003974" />',
+    '<meta name="theme-color" content="#AC2B37" />',
     '<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />',
 ]
 
@@ -255,13 +255,17 @@ html_favicon = "assets/FIRSTicon_RGB_withTM.ico"
 html_baseurl = "https://docs.wpilib.org/en/stable/"
 
 html_theme_options = {
+    "announcement": (
+        "FRC Docs is moving to its own site. Please report any issues you encounter during the transition on "
+        '<a href="https://github.com/wpilibsuite/frc-docs/issues">GitHub</a>.'
+    ),
     "light_css_variables": {
-        "color-sidebar-background": "#003974",
+        "color-sidebar-background": "#AC2B37",
         "color-sidebar-brand-text": "#ffffffcc",
         "color-sidebar-link-text--top-level": "#d9d9d9",
-        "color-background-hover": "#023160",
-        "color-sidebar-link-text": "#acb1b9",
-        "color-sidebar-caption-text": "#81868d",
+        "color-background-hover": "#922430",
+        "color-sidebar-link-text": "#d9d9d9",
+        "color-sidebar-caption-text": "#c5cbd1",
     }
 }
 
