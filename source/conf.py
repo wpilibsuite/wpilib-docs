@@ -266,7 +266,7 @@ html_theme_options = {
         "color-background-hover": "#922430",
         "color-sidebar-link-text": "#d9d9d9",
         "color-sidebar-caption-text": "#c5cbd1",
-    }
+    },
 }
 
 html_sidebars = {
