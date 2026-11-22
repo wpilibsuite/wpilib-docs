@@ -1927,7 +1927,7 @@ requires-dist = [
     { name = "sphinxcontrib-serializinghtml", specifier = "==2.0.0" },
     { name = "sphinxcontrib-svg2pdfconverter", specifier = "==2.1.0" },
     { name = "sphinxcontrib-video", specifier = "==0.4.2" },
-    { name = "sphinxcontrib-youtube", specifier = ">=1.5.0" },
+    { name = "sphinxcontrib-youtube", specifier = "==1.5.0" },
     { name = "sphinxext-delta", specifier = "==0.4.1" },
     { name = "sphinxext-mimic", specifier = "==0.1.1" },
     { name = "sphinxext-opengraph", specifier = "==0.13.0" },
