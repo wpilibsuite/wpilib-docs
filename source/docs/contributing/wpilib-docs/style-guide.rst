@@ -311,6 +311,16 @@ System.out.println("Hello World");
 This is a section!
 ````
 
+## Youtube Videos
+
+Youtube videos should be embedded using the ``.. youtube::`` directive. The format is:
+
+```ReST
+.. youtube:: <video_id>
+   :privacy_mode:
+   :width: 100%
+```
+
 ## Important Note!
 
 This list is not exhaustive and administrators reserve the right to make changes. Changes will be reflected in this document.
