@@ -30,15 +30,15 @@ If you're interested in just switching what the driver sees, you can change the 
     ```
 
     ```c++
-    cs::UsbCamera camera1;
-    cs::UsbCamera camera2;
-    cs::VideoSink server;
-    frc::Joystick joy1{0};
+    wpi::cs::UsbCamera camera1;
+    wpi::cs::UsbCamera camera2;
+    wpi::cs::VideoSink server;
+    wpi::Joystick joy1{0};
     bool prevTrigger = false;
     Robot() {
-      camera1 = frc::CameraServer::StartAutomaticCapture(0);
-      camera2 = frc::CameraServer::StartAutomaticCapture(1);
-      server = frc::CameraServer::GetServer();
+      camera1 = wpi::CameraServer::StartAutomaticCapture(0);
+      camera2 = wpi::CameraServer::StartAutomaticCapture(1);
+      server = wpi::CameraServer::GetServer();
     }
     void TeleopPeriodic() override {
       if (joy1.GetTrigger() && !prevTrigger) {
@@ -95,15 +95,15 @@ By default, the cscore library is pretty aggressive in turning off cameras not i
     :sync: tabcode-c++
 
     ```c++
-    cs::UsbCamera camera1;
-    cs::UsbCamera camera2;
-    cs::VideoSink server;
-    frc::Joystick joy1{0};
+    wpi::cs::UsbCamera camera1;
+    wpi::cs::UsbCamera camera2;
+    wpi::cs::VideoSink server;
+    wpi::Joystick joy1{0};
     bool prevTrigger = false;
     Robot() {
-      camera1 = frc::CameraServer::StartAutomaticCapture(0);
-      camera2 = frc::CameraServer::StartAutomaticCapture(1);
-      server = frc::CameraServer::GetServer();
+      camera1 = wpi::CameraServer::StartAutomaticCapture(0);
+      camera2 = wpi::CameraServer::StartAutomaticCapture(1);
+      server = wpi::CameraServer::GetServer();
       camera1.SetConnectionStrategy(cs::VideoSource::ConnectionStrategy::kConnectionKeepOpen);
       camera2.SetConnectionStrategy(cs::VideoSource::ConnectionStrategy::kConnectionKeepOpen);
     }
@@ -130,17 +130,18 @@ By default, the cscore library is pretty aggressive in turning off cameras not i
     import wpilib
     from ntcore import NetworkTableInstance
     class MyRobot(wpilib.TimedRobot):
-        def robotInit(self):
+        def __init__(self):
+            super().__init__()
             self.joy1 = wpilib.Joystick(0)
-            self.cameraSelection = NetworkTableInstance.getDefault().getTable("").getEntry("CameraSelection")
+            self.cameraSelection = NetworkTableInstance.get_default().get_table("").get_entry("CameraSelection")
             wpilib.CameraServer.launch("vision.py:main")
-        def teleopPeriodic(self):
-            if self.joy1.getTriggerPressed():
+        def teleop_periodic(self):
+            if self.joy1.get_trigger_pressed():
                 print("Setting camera 2")
-                self.cameraSelection.setString("USB Camera 1")
-            elif self.joy1.getTriggerReleased():
+                self.cameraSelection.set_string("USB Camera 1")
+            elif self.joy1.get_trigger_released():
                 print("Setting camera 1")
-                self.cameraSelection.setString("USB Camera 0")
+                self.cameraSelection.set_string("USB Camera 0")
     ```
 
     ``vision.py`` contents:
@@ -148,12 +149,12 @@ By default, the cscore library is pretty aggressive in turning off cameras not i
     ```python
     from cscore import CameraServer, VideoSource
         def main():
-        CameraServer.enableLogging()
-        camera1 = CameraServer.startAutomaticCapture(0)
-        camera2 = CameraServer.startAutomaticCapture(1)
+        CameraServer.enable_logging()
+        camera1 = CameraServer.start_automatic_capture(0)
+        camera2 = CameraServer.start_automatic_capture(1)
         camera1.setConnectionStrategy(VideoSource.ConnectionStrategy.kConnectionKeepOpen)
         camera2.setConnectionStrategy(VideoSource.ConnectionStrategy.kConnectionKeepOpen)
-            CameraServer.waitForever()
+            CameraServer.wait_forever()
     ```
 
     ``pyproject.toml`` contents (this only shows the portions you need to update):
@@ -161,8 +162,8 @@ By default, the cscore library is pretty aggressive in turning off cameras not i
     ```toml
     [tool.robotpy]
     ...
-    # Add cscore to the robotpy-extras list
-    robotpy_extras = ["cscore"]
+    # Add cscore to the components list
+    components = ["cscore"]
     ```
 
 .. note::

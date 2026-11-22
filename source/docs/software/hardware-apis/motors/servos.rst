@@ -11,7 +11,7 @@ Servo motors are a type of motor which integrates positional feedback into the m
     ```
 
     ```c++
-    frc::Servo exampleServo {1};
+    wpi::Servo exampleServo {1};
     ```
 
     ```python
@@ -36,7 +36,7 @@ A servo object is constructed by passing a channel.
 
     ```python
     exampleServo.set(.5)
-    exampleServo.setAngle(75)
+    exampleServo.set_angle(75)
     ```
 
 There are two methods of setting servo values in WPILib:

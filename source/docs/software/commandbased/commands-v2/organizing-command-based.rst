@@ -2,9 +2,9 @@
 
 As robot code becomes more complicated, navigating, understanding, and maintaining the code takes up more and more time and energy. Making changes to the code often becomes more difficult, sometimes for reasons that have very little to do with the actual complexity of the underlying logic. For a simplified example: putting the logic for many unrelated robot functions into a single 1000-line file makes it difficult to find a specific piece of code within that file, particularly under stress at a competition. But spreading out closely related logic across dozens of tiny files is often just as difficult to navigate.
 
-This is not a problem unique to FRC, and in fact, good organization only becomes more and more critical as software projects become bigger and bigger. The "best" organization system is a perennial topic of debate, much like the "best" programming language, but in the end, the choice (in both cases) comes down to the specific task at hand and the programmer (or programmers) implementing said task. Even in the relatively small space of FRC robot programming, there is no right answer. The best choice for a given team will depend on the nature of the specific robot code, team structure, and pure personal preference.
+This is not a problem unique to WPILib, and in fact, good organization only becomes more and more critical as software projects become bigger and bigger. The "best" organization system is a perennial topic of debate, much like the "best" programming language, but in the end, the choice (in both cases) comes down to the specific task at hand and the programmer (or programmers) implementing said task. Even in the relatively small space of WPILib robot programming, there is no right answer. The best choice for a given team will depend on the nature of the specific robot code, team structure, and pure personal preference.
 
-This article discusses various facets of command-based robot program design that advanced FRC programmers may want to be aware of when writing code. It is not a prescriptive tutorial, though it presents some recommended best practices. If this level of choice seems daunting, however, many teams have been highly successful while sticking closely to WPILib's example code and guidelines. However, this discussion may be of interest to intermediate and advanced programmers who want to make their code not only effective, but flexible, easily changeable, and sometimes even beautiful.
+This article discusses various facets of command-based robot program design that advanced WPILib programmers may want to be aware of when writing code. It is not a prescriptive tutorial, though it presents some recommended best practices. If this level of choice seems daunting, however, many teams have been highly successful while sticking closely to WPILib's example code and guidelines. However, this discussion may be of interest to intermediate and advanced programmers who want to make their code not only effective, but flexible, easily changeable, and sometimes even beautiful.
 
 ## Why Care About Organization?
 Good code organization will rarely make or break a team's competitive ability—but it does mean easier debugging, faster modifications, nicer-looking code, and happier programmers. While it's impossible to define "good" organization by way of what the code looks like from the inside, it's easier to define in terms of what the robot's software looks like from the outside.
@@ -34,7 +34,7 @@ The easiest and most expressive way to do this is with a ``StartEndCommand``:
   ```
 
   ```c++
-  frc2::CommandPtr runIntake = frc2::cmd::StartEnd([&intake] { intake.Set(1.0); }, [&intake] { intake.Set(0.0); }, {&intake});
+  wpi::cmd::CommandPtr runIntake = wpi::cmd::cmd::StartEnd([&intake] { intake.Set(1.0); }, [&intake] { intake.Set(0.0); }, {&intake});
   ```
 
 This is sufficient for commands that are only used once. However, for a command like this that might get used in many different autonomous routines and button bindings, inline commands everywhere means a lot of repetitive code:
@@ -54,13 +54,13 @@ This is sufficient for commands that are only used once. However, for a command 
   ```
 
   ```c++
-  intakeButton.WhileTrue(frc2::cmd::StartEnd([&intake] { intake.Set(1.0); }, [&intake] { intake.Set(0.0); }, {&intake}));
-  frc2::CommandPtr intakeAndShoot = frc2::cmd::StartEnd([&intake] { intake.Set(1.0); }, [&intake] { intake.Set(0.0); }, {&intake})
+  intakeButton.WhileTrue(wpi::cmd::cmd::StartEnd([&intake] { intake.Set(1.0); }, [&intake] { intake.Set(0.0); }, {&intake}));
+  wpi::cmd::CommandPtr intakeAndShoot = wpi::cmd::cmd::StartEnd([&intake] { intake.Set(1.0); }, [&intake] { intake.Set(0.0); }, {&intake})
       .AlongWith(RunShooter(&shooter).ToPtr());
-  frc2::CommandPtr autonomousCommand = frc2::cmd::Sequence(
-    frc2::cmd::StartEnd([&intake] { intake.Set(1.0); }, [&intake] { intake.Set(0.0); }, {&intake}).WithTimeout(5.0_s),
-    frc2::cmd::Wait(3.0_s),
-    frc2::cmd::StartEnd([&intake] { intake.Set(1.0); }, [&intake] { intake.Set(0.0); }, {&intake}).WithTimeout(5.0_s)
+  wpi::cmd::CommandPtr autonomousCommand = wpi::cmd::cmd::Sequence(
+    wpi::cmd::cmd::StartEnd([&intake] { intake.Set(1.0); }, [&intake] { intake.Set(0.0); }, {&intake}).WithTimeout(5.0_s),
+    wpi::cmd::cmd::Wait(3.0_s),
+    wpi::cmd::cmd::StartEnd([&intake] { intake.Set(1.0); }, [&intake] { intake.Set(0.0); }, {&intake}).WithTimeout(5.0_s)
   );
   ```
 
@@ -88,7 +88,7 @@ For example, a command like the intake-running command is conceptually related t
   ```
 
   ```c++
-  frc2::CommandPtr Intake::RunIntakeCommand() {
+  wpi::cmd::CommandPtr Intake::RunIntakeCommand() {
     // implicitly requires `this`
     return this->StartEnd([this] { this->Set(1.0); }, [this] { this->Set(0.0); });
   }
@@ -114,10 +114,10 @@ Using this new factory method in command groups and button bindings is highly ex
 
   ```c++
   intakeButton.WhileTrue(intake.RunIntakeCommand());
-  frc2::CommandPtr intakeAndShoot = intake.RunIntakeCommand().AlongWith(RunShooter(&shooter).ToPtr());
-  frc2::CommandPtr autonomousCommand = frc2::cmd::Sequence(
+  wpi::cmd::CommandPtr intakeAndShoot = intake.RunIntakeCommand().AlongWith(RunShooter(&shooter).ToPtr());
+  wpi::cmd::CommandPtr autonomousCommand = wpi::cmd::cmd::Sequence(
     intake.RunIntakeCommand().WithTimeout(5.0_s),
-    frc2::cmd::Wait(3.0_s),
+    wpi::cmd::cmd::Wait(3.0_s),
     intake.RunIntakeCommand().WithTimeout(5.0_s)
   );
   ```
@@ -133,7 +133,7 @@ Adding a parameter to the ``runIntakeCommand`` method to provide the exact perce
   ```
 
   ```c++
-  frc2::CommandPtr Intake::RunIntakeCommand(double percent) {
+  wpi::cmd::CommandPtr Intake::RunIntakeCommand(double percent) {
     // implicitly requires `this`
     return this->StartEnd([this, percent] { this->Set(percent); }, [this] { this->Set(0.0); });
   }
@@ -150,8 +150,8 @@ For instance, this code creates a command group that runs the intake forwards fo
   ```
 
   ```c++
-  frc2::CommandPtr intakeRunSequence = intake.RunIntakeCommand(1.0).WithTimeout(2.0_s)
-      .AndThen(frc2::cmd::Wait(2.0_s))
+  wpi::cmd::CommandPtr intakeRunSequence = intake.RunIntakeCommand(1.0).WithTimeout(2.0_s)
+      .AndThen(wpi::cmd::cmd::Wait(2.0_s))
       .AndThen(intake.RunIntakeCommand(-1.0).WithTimeout(5.0_s));
     ```
 

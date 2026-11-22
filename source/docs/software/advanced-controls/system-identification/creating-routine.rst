@@ -54,7 +54,7 @@ The ``drive`` callback exists so that you can pass the requested voltage directl
 
 The ``log`` callback reads sensors so that the routine can log the voltage, position, and velocity at each timestep.
 
-See the SysIdRoutine ([Java](https://github.com/wpilibsuite/allwpilib/tree/2027/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/sysidroutine), [C++](https://github.com/wpilibsuite/allwpilib/tree/2027/wpilibcExamples/src/main/cpp/examples/SysIdRoutine)) example project for example callbacks.
+See the SysIdRoutine ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/examples/sysidroutine), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/examples/SysIdRoutine)) example project for example callbacks.
 
 ### Test Factories
 
@@ -73,10 +73,10 @@ To be able to run the tests, SysIdRoutine exposes test "factories", or functions
   ```
 
   ```python
-  def sysIdQuasistatic(self, direction:commands2.sysid.SysIdRoutine.Direction) -> commands2.Command:
+  def sys_id_quasistatic(self, direction:commands2.sysid.SysIdRoutine.Direction) -> commands2.Command:
     return commands2.sysid.SysIdRoutine.quasistatic(direction)
 
-  def sysIdDynamic(self, direction:commands2.sysid.SysIdRoutine.Direction) -> commands2.Command:
+  def sys_id_dynamic(self, direction:commands2.sysid.SysIdRoutine.Direction) -> commands2.Command:
     return commands2.sysid.SysIdRoutine.dynamic(direction)
   ```
 

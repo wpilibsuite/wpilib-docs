@@ -23,8 +23,8 @@ sys.path.append(os.path.abspath("./frc-docs/source"))
 
 # -- Project information -----------------------------------------------------
 
-project = "FIRST Robotics Competition"
-copyright = "2025, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License"
+project = "WPILib Documentation"
+copyright = "2026, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License"
 author = "WPILib"
 version = "2027"
 
@@ -61,7 +61,6 @@ extensions = [
 ]
 
 local_extensions = [
-    "_extensions.rtd_patch",
     "_extensions.localization",
     "_extensions.controls_js_sim",
     "_extensions.wpilib_release",
@@ -75,15 +74,15 @@ if os.getenv("READTHEDOCS") == "True":
 extensions += local_extensions
 
 versionwarning_messages = {
+    # "latest": """
+    #    The documentation you are currently viewing is for upcoming changes to WPILib.
+    #    Please see the <a href="https://docs.wpilib.org" id="versionwarning_href">stable</a> version for the current release of WPILib.
+    #    <script>
+    #        document.getElementById("versionwarning_href").setAttribute("href", location.href.replace("/latest/", "/stable/"))
+    #    </script>
+    #    """,
     "latest": """
-        The documentation you are currently viewing is for upcoming changes to WPILib.
-        Please see the <a href="https://docs.wpilib.org" id="versionwarning_href">stable</a> version for the current release of WPILib.
-        <script>
-            document.getElementById("versionwarning_href").setAttribute("href", location.href.replace("/latest/", "/stable/"))
-        </script>
-        """,
-    "2027": """
-        The documentation you are currently viewing is for the SystemCore Alpha Test.
+        The documentation you are currently viewing is for the Systemcore Alpha Test.
         Please see the <a href="https://docs.wpilib.org" id="versionwarning_href">stable</a> version for the current release of WPILib.
         <script>
             document.getElementById("versionwarning_href").setAttribute("href", location.href.replace("/latest/", "/stable/"))
@@ -96,7 +95,7 @@ versionwarning_admonition_type = "warning"
 versionwarning_banner_title = "Warning!"
 versionwarning_body_selector = 'article[role="main"]'
 
-# List of languages that frc-docs supports
+# List of languages that wpilib-docs supports
 localization_languages = [
     "en",
     "es",
@@ -118,7 +117,7 @@ rediraffe_auto_redirect_perc = 80
 
 # Configure OpenGraph support
 ogp_site_url = "https://docs.wpilib.org/en/stable/"
-ogp_site_name = "FIRST Robotics Competition Documentation"
+ogp_site_name = "WPILib Documentation"
 ogp_image = "https://raw.githubusercontent.com/wpilibsuite/branding/main/export/png/wpilib-icon-256.png"
 
 # Configure photofinish ci mode
@@ -151,7 +150,7 @@ linkcheck_anchors = True
 linkcheck_ignore = [
     #    r".*kauailabs.com.*",
     r".*wpilibpi.local.*",
-    #    r".*andymark.com.*",
+    r".*andymark.com.*",
     #    r".*ti.com/lit/an/spma033a/spma033a.pdf.*",
     r".*java.com.*",
     r".*playingwithfusion.com/contactus.php.*",
@@ -169,12 +168,23 @@ linkcheck_ignore = [
     r".*electrodragon.com.*",
     r".*filezilla-project.org.*",
     r".*miktex.org.*",
+    r".*analog.com.*",
+    r".*opencv.org.*",
+    r".*strawberryperl.com.*",
+    r".*docutils.sourceforge.io.*",
+    r".*cppreference.com.*",
+    r".*thriftybot.com.*",
+    r".*wcproducts.com.*",
+    r".*store.ctr-electronics.com.*",
+    r".*calib.io.*",
+    r".*limelightvision.io.*",
+    r".*https://wiki.debian.org.*",
 ]
 
 linkcheck_anchors_ignore_for_url = [
     r".*github.com.*",
     r".*ni.com/en/support/downloads/drivers/download.frc-game-tools.html.*",
-    r".*ni.com/en/support/downloads/software-products/download.package-manager.html.*",
+    r".*developer.apple.com/documentation/technotes/tn3179-understanding-local-network-privacy.*",
 ]
 
 # Sets linkcheck timeout in seconds
@@ -184,7 +194,7 @@ linkcheck_workers = 1
 linkcheck_report_timeouts_as_broken = False
 
 # Specify a standard user agent, as Sphinx default is blocked on some sites
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
 
 # Autosection labels prefix document path and filename
 autosectionlabel_prefix_document = True
@@ -197,7 +207,6 @@ templates_path = ["_templates"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = [
     "docs/yearly-overview/2020-Game-Data.rst",
-    "docs/software/wpilib-tools/robotbuilder/resources/**",
     "docs/beta/*",
 ]
 
@@ -273,7 +282,7 @@ user_options = [
 
 
 def setup(app):
-    app.add_css_file("css/frc-rtd.css")
+    app.add_css_file("css/wpilib-rtd.css")
 
     # Local Api Docs support
     app.add_js_file("js/api-docs-redirect.js")
@@ -282,7 +291,7 @@ def setup(app):
     is_rtl = app.config.language in rtl_locale
     app.config.hoverxref_tooltip_side = "left" if is_rtl else "right"
     if is_rtl:
-        app.add_css_file("css/frc-rtl.css")
+        app.add_css_file("css/wpilib-rtl.css")
 
     # Fix rtd version/language menu on iOS
     app.add_js_file("js/fix-rtd-menu-ios.js")
@@ -300,8 +309,8 @@ def setup(app):
 html_context = {
     "display_github": True,  # Integrate GitHub
     "github_user": "wpilibsuite",  # Username
-    "github_repo": "frc-docs",  # Repo name
-    "github_version": "2027",  # Version, set to 2027 so edit on github makes PRs to 2027 instead of main/stable
+    "github_repo": "wpilib-docs",  # Repo name
+    "github_version": "main",  # Version
     "conf_py_path": "/source/",  # Path in the checkout to the docs root
 }
 
@@ -381,9 +390,8 @@ def new_send(self, data):
 http.client.HTTPConnection.send = new_send
 
 intersphinx_mapping = {
-    "robotpy": ("https://robotpy.readthedocs.io/projects/robotpy/en/stable/", None),
-    "commands2": (
-        "https://robotpy.readthedocs.io/projects/commands-v2/en/stable/",
+    "robotpy": (
+        "https://robotpy.readthedocs.io/projects/robotpy/en/2027.0.0a8/",
         None,
     ),
 }

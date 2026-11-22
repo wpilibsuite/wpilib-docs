@@ -1,7 +1,7 @@
 # Step 3: Updating the Drivetrain Model
 Now that the drivetrain model has been made, it needs to be updated periodically with the latest motor voltage commands. It is recommended to do this step in a separate ``simulationPeriodic()`` / ``SimulationPeriodic()`` method inside your subsystem and only call this method in simulation.
 
-.. note:: If you are using the command-based framework, every subsystem that extends ``SubsystemBase`` has a ``simulationPeriodic()`` / ``SimulationPeriodic()`` which can be overridden. This method is automatically run only during simulation. If you are not using the command-based library, make sure you call your simulation method inside the overridden ``simulationPeriodic()`` / ``SimulationPeriodic()`` of the main ``Robot`` class. These periodic methods are also automatically called only during simulation.
+.. note:: If you are using the Commands v2 framework, every subsystem that extends ``SubsystemBase`` has a ``simulationPeriodic()`` / ``SimulationPeriodic()`` which can be overridden. This method is automatically run only during simulation. If you are not using the v2 library, make sure you call your simulation method inside the overridden ``simulationPeriodic()`` / ``SimulationPeriodic()`` of the main ``Robot`` class. These periodic methods are also automatically called only during simulation.
 
 There are three main steps to updating the model:
 
@@ -38,8 +38,8 @@ There are three main steps to updating the model:
    ```
 
    ```c++
-   frc::PWMSparkMax m_leftMotor{0};
-   frc::PWMSparkMax m_rightMotor{1};
+   wpi::PWMSparkMax m_leftMotor{0};
+   wpi::PWMSparkMax m_rightMotor{1};
    Drivetrain() {
      ...
      m_leftEncoder.SetDistancePerPulse(2 * std::numbers::pi * kWheelRadius / kEncoderResolution);
@@ -50,8 +50,8 @@ There are three main steps to updating the model:
      // the [-1, 1] PWM signal to voltage by multiplying it by the
      // robot controller voltage.
      m_driveSim.SetInputs(
-       m_leftMotor.get() * units::volt_t(frc::RobotController::GetInputVoltage()),
-       m_rightMotor.get() * units::volt_t(frc::RobotController::GetInputVoltage()));
+       m_leftMotor.get() * units::volt_t(wpi::RobotController::GetInputVoltage()),
+       m_rightMotor.get() * units::volt_t(wpi::RobotController::GetInputVoltage()));
      // Advance the model by 20 ms. Note that if you are running this
      // subsystem in a separate thread or have changed the nominal timestep
      // of TimedRobot, this value needs to match it.

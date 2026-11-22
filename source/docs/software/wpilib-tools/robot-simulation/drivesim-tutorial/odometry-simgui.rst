@@ -14,7 +14,7 @@ The robot pose can be visualized on the Simulator GUI (during simulation) or on 
    ```c++
    #include <frc/smartdashboard/Field2d.h>
    ...
-   frc::Field2d m_field;
+   wpi::Field2d m_field;
    ```
 
 This ``Field2d`` instance must then be sent over NetworkTables. The best place to do this is in the constructor of your subsystem.
@@ -31,7 +31,7 @@ This ``Field2d`` instance must then be sent over NetworkTables. The best place t
    #include <frc/smartdashboard/SmartDashboard.h>
    Drivetrain() {
      ...
-     frc::SmartDashboard::PutData("Field", &m_field);
+     wpi::SmartDashboard::PutData("Field", &m_field);
    }
    ```
 
@@ -64,6 +64,6 @@ Finally, the pose from your odometry must be updated periodically into the ``Fie
    }
    ```
 
-.. important:: It is important that this code is placed in a regular ``periodic()`` method -- one that is called periodically regardless of mode of operation. If you are using the command-based library, this method already exists. If not, you are responsible for calling this method periodically from the main ``Robot`` class.
+.. important:: It is important that this code is placed in a regular ``periodic()`` method -- one that is called periodically regardless of mode of operation. If you are using the Commands v2 library, this method already exists. If not, you are responsible for calling this method periodically from the main ``Robot`` class.
 
 .. note:: At this point we have covered all of the code changes required to run your code.  You should head to the :ref:`Simulation User Interface page <docs/software/wpilib-tools/robot-simulation/simulation-gui:Simulation Specific User Interface Elements>` for more info on how to run the simulation and the :ref:`Field2d Widget page <docs/software/dashboards/glass/field2d-widget:Viewing Trajectories with Glass>` to add the field that your simulated robot will run on to the GUI.

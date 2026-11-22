@@ -41,10 +41,13 @@
       A core concept in probability which states that when many independent variables are added up, the result tends to look like a "normal" (or Gaussian) distribution, regardless of whether the independent variables themselves are normally distributed. See [Central Limit Theorem](https://en.wikipedia.org/wiki/Central_limit_theorem) on Wikipedia for more info.
 
    CIM
-      CCL Industrial Motor, Limited - [Chiaphua Components Limited](https://www.cclmotors.com/website/eng/home) is the company that made the commonly used, relatively powerful, brushed motor.
+      CCL Industrial Motor, Limited - [Chiaphua Components Limited](https://www.cclmotors.com/) is the company that made the commonly used, relatively powerful, brushed motor.
 
    Classical Mechanics
       The branch of physics which studies and describes the motion of relatively large, relatively slow objects. See [Classical Mechanics](https://en.wikipedia.org/wiki/Classical_mechanics) on Wikipedia for more info.
+
+   Coroutine
+      A function that can be paused to be resumed later.
 
    COTS
       Commercial off the shelf - a standard (i.e. not custom order) part commonly available from a vendor to all teams for purchase.
@@ -100,6 +103,9 @@
    FLL
       FIRST Lego League - Introduces science, technology, engineering, and math (STEM) to children ages 4-16 through fun, exciting hands-on learning.
 
+   factory method
+      A software design pattern where a method is used to create and return an object, rather than calling a constructor directly. In the commands framework, factory methods on mechanisms are the preferred way to create commands. See [factory method](https://en.wikipedia.org/wiki/Factory_method_pattern) on Wikipedia for more info.
+
    floating point
       A method for approximating real numbers in computer-based arithmetic, using a fixed precision integer scaled by an integer exponent. Typically computer systems support both "single" precision (32-bit storage) and "double" precision (64-bit storage) floating point values, as defined by IEEE 754.
 
@@ -152,13 +158,19 @@
       Kit of Parts - the collection of items listed on the Kickoff Kit checklists, distributed to the team via FIRST Choice, or paid for completely (except shipping) with a Product Donation Voucher (PDV).
 
    KOP chassis
-      The KOP contains a drive base (chassis) distributed to every team (that did not opt out) as part of the :term:`KOP`. For the 2025 season, the KOP chassis is the [AM14U6](https://www.andymark.com/products/am14u6-6-wheel-drop-center-robot-drive-base-2025-frc-kit-of-parts-drive-base).
+      The KOP contains a drive base (chassis) distributed to every team (that did not opt out) as part of the :term:`KOP`. For the 2026 season, the KOP chassis is the [AM14U6](https://www.andymark.com/products/am14u6-6-wheel-drop-center-robot-drive-base-2025-frc-kit-of-parts-drive-base).
+
+   lambda functions
+      An anonymous function that can be passed as an argument to another function or stored in a variable. In Java, lambda functions are commonly used with the commands frameworks to define the logic that a command executes. See [lambda expressions](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html) on the Java documentation site for more info.
 
    LED
       Light-Emitting Diode - a semiconductor device that emits light when current flows through it.  Used on multiple robot parts to convey the status of the device.
 
    mass
       the amount of matter in a physical object. Objects with more mass will resist changes in motion more than objects with less mass. See [mass](https://en.wikipedia.org/wiki/Mass) on Wikipedia for more info.
+
+   Mechanism
+      A software representation of physical hardware on a robot, such as a drivetrain or an arm. Mechanisms in the commands v3 framework are used to manage resource ownership, ensuring that only one command can control a particular piece of hardware at a time.
 
    moment of inertia
       The property of an object that describes both how much mass it has, and how that mass is distributed relative to a certain axis of rotation. Objects with higher moments of inertia resist changes in rotational motion more than objects with lower moments of inertia. Increasing the moment of inertia is accomplished by adding more mass, or moving the mass further away from the axis of rotation. See [moment of inertia](https://en.wikipedia.org/wiki/Moment_of_inertia) on Wikipedia for more info.
@@ -191,7 +203,7 @@
       CTRE Power Distribution Panel - power distribution module with 8 high-current (40A max), 8 lower current (20A / 30A), 1 20A protected channel (for :term:`PCM` and :term:`VRM`), and 1 10A protected channel (for the roboRIO).
 
    permanent-magnet DC motor
-      The classification of all legal motors for the FIRST robotics competition. This type of motor takes direct current as input, and uses it to create a magnetic field. In turn, this magnetic field interacts with a physical magnet to create a force that turns the output shaft. Electrical ("brushless") or mechanical ("brushed") means are used to ensure the electrically-generated magnetic field always points in a direction that creates forces when it interacts with the physical magnet, even as the motor's shaft rotates. See [permanent-magnet motor](https://en.wikipedia.org/wiki/Brushed_DC_electric_motor#Permanent-magnet_motors) on Wikipedia for more info.
+      The classification of all legal motors for the FRC and FTC. This type of motor takes direct current as input, and uses it to create a magnetic field. In turn, this magnetic field interacts with a physical magnet to create a force that turns the output shaft. Electrical ("brushless") or mechanical ("brushed") means are used to ensure the electrically-generated magnetic field always points in a direction that creates forces when it interacts with the physical magnet, even as the motor's shaft rotates. See [permanent-magnet motor](https://en.wikipedia.org/wiki/Brushed_DC_electric_motor#Permanent-magnet_motors) on Wikipedia for more info.
 
    persistent
       In :term:`NetworkTables`, a :term:`topic` that is saved to a file by the server and restored at startup.

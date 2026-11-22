@@ -147,7 +147,7 @@ double distanceMeters = distance.value();
 ```
 
 ## Example of the Units Library in WPILib Code
-Several arguments for methods in new features of WPILib (ex. :ref:`kinematics <docs/software/kinematics-and-odometry/intro-and-chassis-speeds:What is kinematics?>`) use the units library. Here is an example of :ref:`sampling a trajectory <docs/software/advanced-controls/trajectories/manipulating-trajectories:Sampling the trajectory>`.
+Several arguments for methods in new features of WPILib (ex. :ref:`kinematics <docs/software/kinematics-and-odometry/intro-and-chassis-velocities:What is kinematics?>`) use the units library. Here is an example of :ref:`sampling a trajectory <docs/software/advanced-controls/trajectories/manipulating-trajectories:Sampling the trajectory>`.
 
 ```c++
 // Sample the trajectory at 1.2 seconds. This represents where the robot
@@ -163,11 +163,11 @@ Some WPILib classes represent objects that could naturally work with multiple ch
 // Creates a new set of trapezoidal motion profile constraints
 // Max velocity of 10 meters per second
 // Max acceleration of 20 meters per second squared
-frc::TrapezoidProfile<units::meters>::Constraints{10_mps, 20_mps_sq};
+wpi::math::TrapezoidProfile<units::meters>::Constraints{10_mps, 20_mps_sq};
 // Creates a new set of trapezoidal motion profile constraints
 // Max velocity of 10 radians per second
 // Max acceleration of 20 radians per second squared
-frc::TrapezoidProfile<units::radians>::Constraints{10_rad_per_s, 20__rad_per_s / 1_s};
+wpi::math::TrapezoidProfile<units::radians>::Constraints{10_rad_per_s, 20__rad_per_s / 1_s};
 ```
 
 For more detailed documentation, please visit the official [GitHub page](https://github.com/nholthaus/units) for the units library.

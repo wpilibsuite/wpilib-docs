@@ -1,14 +1,14 @@
 # Privacy Policy
 
-WPILib is a project developed by volunteers who are largely based in the United States.  We take privacy seriously and collect only the minimum amount of information needed to support our mission of providing user-friendly libraries and software tools to enable FIRST Robotics Competition teams to be successful in writing software for their robots.
+WPILib is a project developed by volunteers who are largely based in the United States.  We take privacy seriously and collect only the minimum amount of information needed to support our mission of providing user-friendly libraries and software tools to enable FIRST teams to be successful in writing software for their robots.
 
 ## Information We Collect
 
 WPILib-developed desktop applications do not collect personal information.  They do create and store logs of application errors and user interactions on the user's system, but this data is not shared online unless the user takes action to upload or share it.
 
-The WPILib libraries do not collect personal information.  When run on the roboRIO, the libraries collect limited metrics data (“usage reporting”) regarding what pieces of the libraries are used by the deployed software (user-written code linked to the WPILib libraries).  Only when the robot code is running and connected to the competition field at a FIRST Robotics Competition event is this information shared with and stored by the Field Management System.  This information is associated solely with the FRC team and not with any individual.  An anonymized (team number removed) version of this metrics data is publicly shared by FIRST after each competition season, and is used to inform future development of library features.
+The WPILib libraries do not collect personal information.  When run on Systemcore, the libraries collect limited metrics data (“usage reporting”) regarding what pieces of the libraries are used by the deployed software (user-written code linked to the WPILib libraries).  Only when the robot code is running and connected to the competition field at a FIRST Robotics Competition event is this information shared with and stored by the Field Management System.  This information is associated solely with the FRC team and not with any individual.  An anonymized (team number removed) version of this metrics data is publicly shared by FIRST after each competition season, and is used to inform future development of library features.
 
-[FIRST Privacy Policy](https://www.firstinspires.org/about/privacy-policy).
+[FIRST Privacy Policy](https://www.firstinspires.org/privacy-policy).
 
 ## Third-Party Data Collection
 
@@ -65,4 +65,3 @@ The Elastic desktop application is distributed and installed with the WPILib ins
 ## Contact
 
 Questions about this policy can be directed to wpilib@wpi.edu.
-

@@ -16,13 +16,13 @@ The :guilabel:`Command Selector`  widget allows you to start and cancel a specif
    #include <frc/smartdashboard/SmartDashboard.h>
    ...
    MyCommand command{...};
-   frc::SmartDashboard::PutData("My Command", &command);
+   wpi::SmartDashboard::PutData("My Command", &command);
    ```
 
    ```python
    from wpilib import SmartDashboard
    command = MyCommand(...)
-   SmartDashboard.putData("My Command", command)
+   SmartDashboard.put_data("My Command", command)
    ```
 
 .. image:: images/command-selector.png

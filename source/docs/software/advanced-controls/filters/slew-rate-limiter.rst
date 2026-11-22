@@ -2,11 +2,11 @@
 
 # Slew Rate Limiter
 
-A common use for filters in FRC\ |reg| is to soften the behavior of control inputs (for example, the joystick inputs from your driver controls).  Unfortunately, a simple low-pass filter is poorly-suited for this job; while a low-pass filter will soften the response of an input stream to sudden changes, it will also wash out fine control detail and introduce phase lag.  A better solution is to limit the rate-of-change of the control input directly.  This is performed with a *slew rate limiter* - a filter that caps the maximum rate-of-change of the signal.
+A common use for filters in FRC\ |reg| & FTC\ |reg| is to soften the behavior of control inputs (for example, the joystick inputs from your driver controls).  Unfortunately, a simple low-pass filter is poorly-suited for this job; while a low-pass filter will soften the response of an input stream to sudden changes, it will also wash out fine control detail and introduce phase lag.  A better solution is to limit the rate-of-change of the control input directly.  This is performed with a *slew rate limiter* - a filter that caps the maximum rate-of-change of the signal.
 
 A slew rate limiter can be thought of as a sort of primitive motion profile.  In fact, the slew rate limiter is the first-order equivalent of the :ref:`Trapezoidal Motion Profile <docs/software/advanced-controls/controllers/trapezoidal-profiles:Trapezoidal Motion Profiles in WPILib>` supported by WPILib - it is precisely the limiting case of trapezoidal motion when the acceleration constraint is allowed to tend to infinity.  Accordingly, the slew rate limiter is a good choice for applying a de-facto motion profile to a stream of velocity setpoints (or voltages, which are usually approximately proportional to velocity).  For input streams that control positions, it is usually better to use a proper trapezoidal profile.
 
-Slew rate limiting is supported in WPILib through the ``SlewRateLimiter`` class ([Java](https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/filter/SlewRateLimiter.html), [C++](https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_slew_rate_limiter.html), :external:py:class:`Python <wpimath.filter.SlewRateLimiter>`).
+Slew rate limiting is supported in WPILib through the ``SlewRateLimiter`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.math/org/wpilib/math/filter/SlewRateLimiter.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1math_1_1_slew_rate_limiter.html), :external:py:class:`Python <wpimath.SlewRateLimiter>`).
 
 ## Creating a SlewRateLimiter
 
@@ -25,7 +25,7 @@ Creating a SlewRateLimiter is simple:
 
   ```c++
   // Creates a SlewRateLimiter that limits the rate of change of the signal to 0.5 volts per second
-  frc::SlewRateLimiter<units::volts> filter{0.5_V / 1_s};
+  wpi::math::SlewRateLimiter<units::volts> filter{0.5_V / 1_s};
   ```
 
   ```python
@@ -79,8 +79,8 @@ A typical use of a SlewRateLimiter is to limit the acceleration of a robot's dri
 
   ```python
   # Ordinary call with no ramping applied
-  drivetrain.arcadeDrive(forward, turn)
+  drivetrain.arcade_drive(forward, turn)
   # Slew-rate limits the forward/backward input, limiting forward/backward acceleration
-  drivetrain.arcadeDrive(filter.calculate(forward), turn)
+  drivetrain.arcade_drive(filter.calculate(forward), turn)
   ```
 

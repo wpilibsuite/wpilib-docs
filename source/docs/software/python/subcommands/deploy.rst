@@ -34,11 +34,11 @@ When you execute the ``robotpy deploy`` subcommand, it will do the following:
 * Install python packages on the roboRIO as specified by your ``pyproject.toml`` (if not already present)
 * Copy the entire robot project directory to the roboRIO and execute it
 
-.. warning:: Avoid powering off the robot while deploying robot code. Interrupting the deployment process can corrupt the roboRIO filesystem and prevent your code from working until the roboRIO is :doc:`re-imaged </docs/zero-to-robot/step-3/imaging-your-roborio>`.
+.. warning:: Avoid powering off the robot while deploying robot code. Interrupting the deployment process can corrupt the Systemcore filesystem and prevent your code from working until the Systemcore is :doc:`re-imaged </docs/zero-to-robot/step-3/imaging-your-systemcore>`.
 
 When successful, you will see a ``SUCCESS: Deploy was successful!`` message.
 
-You can watch your robot code's output (and see any problems) with netconsole by using the Driver Station Log Viewer or [pynetconsole](https://github.com/robotpy/pynetconsole). You can use netconsole and the normal FRC tools to interact with the running robot code.
+You can watch your robot code's output (and see any problems) with netconsole by using the Driver Station Log Viewer or [pynetconsole](https://github.com/robotpy/pynetconsole). You can use netconsole and the normal WPILib tools to interact with the running robot code.
 
 .. seealso:: :doc:`/docs/software/vscode-overview/viewing-console-output`
 

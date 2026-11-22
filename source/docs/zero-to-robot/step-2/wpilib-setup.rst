@@ -1,17 +1,18 @@
 # WPILib Installation Guide
 
-This guide will walk you through installing the WPILib development environment on your computer. This includes the WPILib tools, Visual Studio Code, and all dependencies needed to develop and deploy code to the roboRIO. WPILib Installation is required for Java and C++ teams. Python teams can do a full install per these instructions to get a Visual Studio Code environment with some python extensions, or do a tools only installation to install dashboards such as AdvantageScope and Elastic. Python teams additionally need to follow the :doc:`python-setup`.
+This guide will walk you through installing the WPILib development environment on your computer. This includes the WPILib tools, Visual Studio Code, and all dependencies needed to develop and deploy code to the Systemcore. WPILib Installation is required for Java and C++ teams. Python teams can do a full install per these instructions to get a Visual Studio Code environment with some python extensions, or do a tools only installation to install dashboards such as AdvantageScope and Elastic. Python teams additionally need to follow the :doc:`python-setup`.
 
 ## Prerequisites
 
 Supported Operating Systems and Architectures:
- * Windows 10 & 11, 64 bit only. 32 bit and Arm are not supported
- * Ubuntu 22.04 & 24.04, 64 bit. Other Linux distributions with glibc >= 2.34 may work, but are unsupported
- * macOS 13.3 or higher, both Intel and Arm.
+ * Windows 11, 64 bit only. Arm-based Windows 11 is unsupported.
+ * Debian 13 'Trixie', 64 bit only.
+ * Ubuntu 26.04, 64 bit only.
+ * macOS 15 or higher, both Intel and Arm.
 
-.. warning:: The following OSes are no longer supported: macOS 12 or earlier, Ubuntu 18.04 & 20.04, Windows 7, Windows 8.1, and any 32-bit Windows.
+.. note:: Linux distributions other than those mentioned above that contain glibc >= 2.41 may work, but are unsupported.
 
-.. note:: [Windows 10 support from Microsoft will end in October 2025](https://www.microsoft.com/en-us/windows/end-of-support). We intend to continue supporting Windows 10 through the 2026 season, but may have to drop support in 2027. Teams should start planning their upgrade path to Windows 11, or switch to one of the supported Linux distributions listed.
+.. warning:: [Windows 10 support from Microsoft ended in October 2025](https://www.microsoft.com/en-us/windows/end-of-support). While we will not explicitly block Windows 10 from being used, future releases may inadvertently break compatibility with Windows 10. We will not postpone these changes in order to maintain Windows 10 compatibility, and Windows 10 support may break as a result.
 
 .. note:: C++ compilation is memory intensive. A minimum of 32 GB of RAM is recommended for C++ teams.
 
@@ -23,13 +24,13 @@ WPILib is designed to install to different folders for different years, so that 
 
 .. only:: not prbuild
 
-   .. wpilibrelease:: v2025.3.2
+   .. wpilibrelease:: v2027.0.0-alpha-8
 
-[You can download the latest release of the installer from GitHub](https://github.com/wpilibsuite/allwpilib/releases/latest/).
+[You can download the latest release of the installer from GitHub](https://github.com/wpilibsuite/allwpilib/releases/).
 
 Once on the GitHub releases page, scroll to the Downloads section.
 
-.. image:: images/installer-download/github-release.jpg
+.. image:: images/installer-download/github-release.png
    :alt: Latest WPILib release page on GitHub
 
 Then click on the correct binary for your OS and architecture to begin the download.
@@ -40,17 +41,17 @@ When you download the WPILib installer, it is distributed as a disk image file `
 
 .. tab-set::
 
-   .. tab-item:: Windows 10+
-      :sync: windows-10
+   .. tab-item:: Windows 11
+      :sync: windows-11
 
-      Windows 10+ users can right click on the downloaded disk image and select :guilabel:`Mount` to open it. Then launch ``WPILibInstaller.exe``.
+      Windows 11 users can right click on the downloaded disk image and select :guilabel:`Mount` to open it. Then launch ``WPILibInstaller.exe``.
 
-      .. image:: images/wpilib-setup/extract-windows-10.png
+      .. image:: images/wpilib-setup/extract-windows-11.png
          :alt: The menu after right clicking on an .iso file to choose "Mount".
 
       .. note:: Other installed programs may associate with iso files and the :guilabel:`mount` option may not appear. If that software does not give the option to mount or extract the iso file, then follow the directions below.
 
-      You can use [7-zip](https://www.7-zip.org/) to extract the disk image by right-clicking, selecting :guilabel:`7-Zip` and selecting :guilabel:`Extract to...`. Windows 11 users may need to select :guilabel:`Show more options` at the bottom of the context menu.
+      You can use [7-zip](https://www.7-zip.org/) to extract the disk image by right-clicking, selecting :guilabel:`Show more options` at the bottom of the context menu, selecting :guilabel:`7-Zip` and selecting :guilabel:`Extract to...`.
 
       .. image:: images/wpilib-setup/extract-windows-7.png
          :alt: After right clicking on the .iso file go to "7-Zip" then "Extract to....".
@@ -119,15 +120,15 @@ This next screen involves downloading VS Code. Unfortunately, due to licensing r
 
   - Skips installing VS Code. Useful for advanced installations or configurations. Generally not recommended.
 
-- Select existing VS Code archive for offline install on this computer
-
-  - Selecting this option will bring up a prompt allowing you to select a pre-existing zip file of VS Code that has been downloaded by the installer previously. This option does **not** let you select an already installed copy of VS Code on your machine.
-
 - Create VS Code archives to share with other computers/OSes for offline install
 
   - This option downloads and saves a copy of VS Code for all platforms, which is useful for sharing with the installer for future offline installs.
 
-Go ahead and select :guilabel:`Download for this computer only`. This will begin the download process and can take a bit depending on internet connectivity (it's ~150MB). Once the download is done, select :guilabel:`Next`. You should be presented with a screen that looks similar to the one below.
+- Select existing VS Code archive for offline install on this computer
+
+  - Selecting this option will bring up a prompt allowing you to select a pre-existing zip file of VS Code that has been downloaded by the installer previously. This option does **not** let you select an already installed copy of VS Code on your machine.
+
+Go ahead and select :guilabel:`Download for this computer only`. This will begin the download process and can take a bit depending on internet connectivity (it's ~300MB). Once the download is done, select :guilabel:`Next`. You should be presented with a screen that looks similar to the one below.
 
 .. note:: teams upgrading from Beta will already have a version of VS Code installed. However, it's still recommended to select :guilabel:`Download for this computer only` to ensure the latest recommended version of VS Code is installed
 
@@ -139,7 +140,7 @@ After installation is complete, you will be presented with the finished screen.
 .. image:: images/wpilib-setup/installer-finish.png
    :alt: Installer finished screen.
 
-.. important:: WPILib installs a separate version of VS Code. It does not use an already existing installation. Each year has it's own copy of the tools appended with the year. IE: ``WPILib VS Code 2025``. Please launch the WPILib VS Code and not a system installed copy!
+.. important:: WPILib installs a separate version of VS Code. It does not use an already existing installation. Each year has it's own copy of the tools appended with the year. IE: ``2027 WPILib VS Code``. Please launch the WPILib VS Code and not a system installed copy!
 
 Congratulations, the WPILib development environment and tooling is now installed on your computer! Press Finish to exit the installer.
 
@@ -158,22 +159,22 @@ Some operating systems require some final action to complete installation.
    .. tab-item:: Linux
       :sync: linux
 
-      Some versions of Linux (e.g. Ubuntu 22.04 and later) require you to give the desktop shortcut the ability to launch. Right click on the desktop icon and select Allow Launching.
+      Some Linux versions require you to give the desktop shortcut the ability to launch. Right click on the desktop icon and select Allow Launching.
 
       .. image:: images/wpilib-setup/linux-enable-launching.png
          :alt: Menu that pops up after right click the desktop icon in Linux.
 
-      Ubuntu 23.10 and later [disable the kernel user namespaces feature for unknown applications](https://ubuntu.com/blog/ubuntu-23-10-restricted-unprivileged-user-namespaces). This means that the [sandboxing feature](https://code.visualstudio.com/blogs/2022/11/28/vscode-sandbox) won't work on the WPILib VS Code. To enable sandboxing for the WPILib applications, AppArmor profiles are provided, and can be installed using the command below.
+      Furthermore, modern Ubuntu versions [disable the kernel user namespaces feature for unknown applications](https://ubuntu.com/blog/ubuntu-23-10-restricted-unprivileged-user-namespaces). This means that the [sandboxing feature](https://code.visualstudio.com/blogs/2022/11/28/vscode-sandbox) won't work on the WPILib VS Code. To enable sandboxing for the WPILib applications, AppArmor profiles are provided, and can be installed using the command below.
 
       ```console
-      $ sudo cp ~/wpilib/YEAR/frccode/AppArmor/* /etc/apparmor.d/
+      $ sudo cp $XDG_DATA_HOME/wpilib/YEAR/wpilibcode/AppArmor/* /etc/apparmor.d/
       $ sudo systemctl reload apparmor.service
       ```
 
       The above will fix the following error:
 
       ```console
-      The SUID sandbox helper binary was found, but is not configured correctly. Rather than run without sandboxing I'm aborting now. You need to make sure that ~/wpilib/2025/advantagescope/chrome-sandbox is owned by root and has mode 4755.
+      The SUID sandbox helper binary was found, but is not configured correctly. Rather than run without sandboxing I'm aborting now. You need to make sure that ~/.local/share/wpilib/2027/advantagescope/chrome-sandbox is owned by root and has mode 4755.
       ```
 
 
@@ -181,7 +182,7 @@ Some operating systems require some final action to complete installation.
 
 ## Additional C++ Installation for Simulation
 
-C++ robot simulation requires that a native compiler to be installed. For Windows, this would be [Visual Studio 2022 version 17.9 or later](https://visualstudio.microsoft.com/vs/) (**not** VS Code), macOS requires [Xcode 14 or later](https://apps.apple.com/us/app/xcode/id497799835), and Linux (Ubuntu) requires the ``build-essential`` package.
+C++ robot simulation requires that a native compiler to be installed. For Windows, this would be [Visual Studio 2026](https://visualstudio.microsoft.com/vs/) (**not** VS Code), macOS requires [Xcode 15.3 or later](https://apps.apple.com/us/app/xcode/id497799835), and Linux requires GCC 14, on Ubuntu/Debian it is provided by the ``g++-14`` package.
 
 Ensure the :guilabel:`Desktop Development with C++` option is checked in the Visual Studio installer for simulation support.
 
@@ -194,7 +195,7 @@ The Offline Installer installs the following components:
 
 - **Visual Studio Code** - The supported IDE for 2019 and later robot code development. The offline installer sets up a separate copy of VS Code for WPILib development, even if you already have VS Code on your machine. This is done because some of the settings that make the WPILib setup work may break existing workflows if you use VS Code for other projects.
 
-- **C++ Compiler** - The toolchains for building C++ code for the roboRIO
+- **C++ Compiler** - The toolchains for building C++ code for the Systemcore
 
 - **Gradle** - The specific version of Gradle used for building/deploying C++ or Java robot code
 
@@ -206,9 +207,9 @@ The Offline Installer installs the following components:
 
 - **VS Code Extensions** - WPILib and Java/C++/Python extensions for robot code development in VS Code
 
-- **Documentation** - Offline copies of this frc-docs documentation and Java/C++/Python APIs
+- **Documentation** - Offline copies of this wpilib-docs documentation and Java/C++/Python APIs
 
-.. note:: It's not recommended to use the VS Code Backup and Settings Sync feature to sync settings between a regular VS Code installation and the FRC VS Code installation. This could lead to either installation being broken.
+.. note:: It's not recommended to use the VS Code Backup and Settings Sync feature to sync settings between a regular VS Code installation and the WPILib VS Code installation. This could lead to either installation being broken.
 
 
 ## Uninstalling
@@ -228,7 +229,7 @@ WPILib is designed to install to different folders for different years, so that 
 
   .. tab-item:: Linux
 
-     1. Delete the appropriate wpilib folder (``~/wpilib/YYYY`` where ``YYYY`` is the year to uninstall). eg ``rm -rf ~/wpilib/YYYY``
+     1. Delete the appropriate wpilib folder (``$XDG_DATA_HOME/wpilib/YYYY`` where ``YYYY`` is the year to uninstall). eg ``rm -rf $XDG_DATA_HOME/wpilib/YYYY``
 
 ## Troubleshooting
 

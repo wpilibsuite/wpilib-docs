@@ -1,14 +1,14 @@
 .. include:: <isonum.txt>
 
-# FRC CAN Device Specifications
+# FIRST CAN Device Specifications
 
-This document seeks to describe the basic functions of the current FRC\ |reg|
+This document seeks to describe the basic functions of the current FRC\ |reg| & FTC\ |reg|
 :term:`CAN` system and the requirements for any new CAN devices seeking to work
 with the system.
 
 ## Addressing
 
-FRC CAN nodes assign arbitration IDs based on a pre-defined scheme that
+FIRST CAN nodes assign arbitration IDs based on a pre-defined scheme that
 breaks the ID into 5 components:
 
 #### Device Type
@@ -51,8 +51,8 @@ Manufacturer
 ===================== ==========
 Broadcast             0
 NI                    1
-Luminary Micro        2
-DEKA                  3
+Limelight             2
+FIRST                 3
 CTR Electronics       4
 REV Robotics          5
 Grapple               6
@@ -78,7 +78,7 @@ Reserved              21-255
 The API or Message Identifier is a 10-bit value that identifies a
 particular command or message type. These identifiers are unique for
 each Manufacturer + Device Type combination (so an API identifier that
-may be a "Voltage Set" for a Luminary Micro Motor Controller may be a
+may be a "Voltage Set" for a REV Robotics Motor Controller may be a
 "Status Get" for a CTR Electronics Motor Controller or ``Current Get``
 for a CTR Power Distribution Module).
 
@@ -131,7 +131,7 @@ Set Setpoint No Ack         11
 
 Device Number is a 6-bit quantity indicating the number of the device of
 a particular type. Devices should default to device ID 0 to match other
-components of the FRC Control System. Device 0x3F may be reserved for
+components of the FIRST Control System. Device 0x3F may be reserved for
 device specific broadcast messages.
 
 .. image:: images/can-addressing/can-id-example.png
@@ -139,7 +139,7 @@ device specific broadcast messages.
 
 ## Protected Frames
 
-FRC CAN Nodes which implement actuator control capability (motor
+FIRST CAN Nodes which implement actuator control capability (motor
 controllers, relays, pneumatics controllers, etc.) must implement a way
 to verify that the robot is enabled and that commands originate with the
 main robot controller (i.e. the roboRIO).
@@ -155,25 +155,25 @@ below:
 Description
 ================= ==
 Disable	          0
-System Halt	      1
-System Reset      2
-Device Assign     3
-Device Query	  4
-Heartbeat         5
-Sync              6
-Update            7
-Firmware Version  8
-Enumerate         9
+System Reset      1
 System Resume     10
 ================= ==
 
 Devices should disable immediately when receiving the Disable message
 (arbID 0).  Implementation of other broadcast messages is optional.
 
-## Requirements for FRC CAN Nodes
-For CAN Nodes to be accepted for use in the FRC System, they must:
+These packets are all 0 length packets.
 
--  Communicate using Arbitration IDs which match the prescribed FRC
+Only Disable is currently sent by Systemcore. The System Reset and System Resume messages are reserved for future use.
+
+These packets are forwarded over Motioncore to all Motioncore buses.
+
+This packet is always sent as a CAN 2.0 frame, it is never sent as an FD frame.
+
+## Requirements for FIRST CAN Nodes
+For CAN Nodes to be accepted for use in the FIRST System, they must:
+
+-  Communicate using Arbitration IDs which match the prescribed FIRST
    format:
 
    -  A valid, issued CAN Device Type (per Table 1 - CAN Device Types)
@@ -196,7 +196,9 @@ The roboRIO provides a universal CAN heartbeat that any device on the bus can li
 +-----------------------+------+--------------+
 | Match number          | 6-7  | 10           |
 +-----------------------+------+--------------+
-| Replay number         | 6    | 6            |
+| Replay number         | 6    | 5            |
++-----------------------+------+--------------+
+| FTC Motor Override    | 6    | 1            |
 +-----------------------+------+--------------+
 | Red alliance          | 5    | 1            |
 +-----------------------+------+--------------+
@@ -227,7 +229,8 @@ The roboRIO provides a universal CAN heartbeat that any device on the bus can li
 struct [[gnu::packed]] RobotState {
   uint64_t matchTimeSeconds : 8;
   uint64_t matchNumber : 10;
-  uint64_t replayNumber : 6;
+  uint64_t replayNumber : 5;
+  uint64_t ftcMotorOverride : 1;
   uint64_t redAlliance : 1;
   uint64_t enabled : 1;
   uint64_t autonomous : 1;
@@ -245,4 +248,6 @@ struct [[gnu::packed]] RobotState {
 
 If the ``System watchdog`` flag is set, motor controllers are enabled. If 100 ms has passed since this packet was received, the robot program can be considered hung, and devices should act as if the robot has been disabled.
 
-Note that all fields except ``Enabled``, ``Autonomous mode``, ``Test mode``, and ``System watchdog`` will contain invalid values until an arbitrary time after the Driver Station connects.
+Note that all fields except ``Enabled``, ``Autonomous mode``, ``Test mode``, ``FTC Motor Override`` and ``System watchdog`` will contain invalid values until an arbitrary time after the Driver Station connects.
+
+The ``FTC Motor Override`` flag is set when the a motor controller hardware client is allowing enablement of FTC motors without a DS connected. In this state, the robot code will be disabled.

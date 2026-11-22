@@ -42,17 +42,14 @@ Vendor dependencies are installed on a per-project basis (so each robot project 
    .. tab-item:: Python
       :sync: python
 
-      All RobotPy project dependencies are specified in ``pyproject.toml``. You can add additional vendor-specific dependencies either by:
-
-      * Adding the component name to ``robotpy_extras``
-      * Adding the PyPI package name to ``requires``
+      All RobotPy project dependencies are specified in ``pyproject.toml``. You can specify optional WPILib components by adding the component name to ``components``.
 
       .. seealso:: :doc:`/docs/software/python/pyproject_toml`
 
       Optional WPILib components:
 
       +----------+----------------+---------------------+
-      |          | robotpy_extras | requires            |
+      |          | components     | requires            |
       +==========+================+=====================+
       | Apriltag | apriltag       | robotpy-apriltag    |
       +----------+----------------+---------------------+
@@ -65,31 +62,33 @@ Vendor dependencies are installed on a per-project basis (so each robot project 
       | XRP      | xrp            | robotpy-xrp         |
       +----------+----------------+---------------------+
 
+      To add vendor libraries to your project, you must add the PyPI package name to ``requires``.
+
       Optional vendor-specific components (not all are available at the beginning of the season):
 
-      +---------------------+-----------+-------------------+---------------------------+
-      |                     | Origin    | robotpy_extras    | requires                  |
-      +=====================+===========+===================+===========================+
-      | ChoreoLib           | Vendor    |                   | sleipnirgroup-choreolib   |
-      +---------------------+-----------+-------------------+---------------------------+
-      | CTRE Phoenix 6      | Vendor    | phoenix6          | phoenix6                  |
-      +---------------------+-----------+-------------------+---------------------------+
-      | CTRE Phoenix 5      | Community | phoenix5          | robotpy-ctre              |
-      +---------------------+-----------+-------------------+---------------------------+
-      | PathPlannerLib      | Vendor    | pathplannerlib    | robotpy-pathplannerlib    |
-      +---------------------+-----------+-------------------+---------------------------+
-      | PhotonVision        | Vendor    | photonvision      | photonlibpy               |
-      +---------------------+-----------+-------------------+---------------------------+
-      | Playing With Fusion | Community | playingwithfusion | robotpy-playingwithfusion |
-      +---------------------+-----------+-------------------+---------------------------+
-      | REVLib              | Community | rev               | robotpy-rev               |
-      +---------------------+-----------+-------------------+---------------------------+
-      | Studica             | Community | navx              | robotpy-navx              |
-      +---------------------+-----------+-------------------+---------------------------+
-      | URCL                | Community |                   | robotpy-urcl              |
-      +---------------------+-----------+-------------------+---------------------------+
+      +---------------------+-----------+---------------------------+
+      |                     | Origin    | requires                  |
+      +=====================+===========+===========================+
+      | ChoreoLib           | Vendor    | sleipnirgroup-choreolib   |
+      +---------------------+-----------+---------------------------+
+      | CTRE Phoenix 6      | Vendor    | phoenix6                  |
+      +---------------------+-----------+---------------------------+
+      | CTRE Phoenix 5      | Community | robotpy-ctre              |
+      +---------------------+-----------+---------------------------+
+      | PathPlannerLib      | Vendor    | robotpy-pathplannerlib    |
+      +---------------------+-----------+---------------------------+
+      | PhotonVision        | Vendor    | photonlibpy               |
+      +---------------------+-----------+---------------------------+
+      | Playing With Fusion | Community | robotpy-playingwithfusion |
+      +---------------------+-----------+---------------------------+
+      | REVLib              | Community | robotpy-rev               |
+      +---------------------+-----------+---------------------------+
+      | Studica             | Community | robotpy-navx              |
+      +---------------------+-----------+---------------------------+
+      | URCL                | Community | robotpy-urcl              |
+      +---------------------+-----------+---------------------------+
 
-      When using ``requires``, you can specify a version by appending ``==<version>`` to the package name, e.g. ``robotpy-commands-v2==2024.0.0``. If you do not specify a version, the latest version will be installed.
+      When using ``requires``, you should specify a version by appending ``==<version>`` to the package name, e.g. ``robotpy-commands-v2==2024.0.0``. If you do not specify a version, the latest version will be installed.
 
       To check what version of packages are currently installed, run the command ``pip list``.
 
@@ -132,7 +131,7 @@ Vendor dependencies are installed on a per-project basis (so each robot project 
 
       Adding a vendor library dependency from the vendor URL can also be done through the command-line via a gradle task. Open a command-line instance at the project root, and enter ``gradlew vendordep --url=<url>`` where ``<url>`` is the vendor JSON URL. This will add the vendor library dependency JSON file to the ``vendordeps`` folder of the project. Vendor libraries can be updated the same way.
 
-      The ``vendordep`` gradle task can also fetch vendordep JSONs from the user ``wpilib`` folder. To do so, pass ``FRCLOCAL/Filename.json`` as the file URL. For example, ``gradlew vendordep --url=FRCLOCAL/WPILibNewCommands.json`` will fetch the JSON for the command-based framework.
+      The ``vendordep`` gradle task can also fetch vendordep JSONs from the user ``wpilib`` folder. To do so, pass ``FIRSTLOCAL/Filename.json`` as the file URL. For example, ``gradlew vendordep --url=FIRSTLOCAL/WPILibNewCommands.json`` will fetch the JSON for the command-based framework.
 
 ### How Does It Work?
 
@@ -141,11 +140,11 @@ Vendor dependencies are installed on a per-project basis (so each robot project 
    .. tab-item:: Java/C++
       :sync: javacpp
 
-      For Java and C++, a :term:`JSON` file describing the vendor library is installed on your system to ``~/wpilib/YYYY/vendordeps`` (where YYYY is the year and ~ is ``C:\Users\Public`` on Windows). This is often done by an offline installer, but may need to be done manually if a ``.zip`` of the ``.json`` files is provided. This file is then used from VS Code to add to the library to each individual project. Vendor library information is managed on a per-project basis to make sure that a project is always pointing to a consistent version of a given vendor library. The libraries themselves are placed in the Maven cache at ``C:\Users\Public\wpilib\YYYY\maven``. Vendors can place a local copy here with an offline installer (recommended) or require users to be connected to the internet for an initial build to fetch the library from a remote Maven location.
+      For Java and C++, a :term:`JSON` file describing the vendor library is installed on your system to the vendordeps folder in WPILib Installation folder (e.g., ``wpilib/YYYY/vendordeps``) where YYYY is the WPILib version year. On macOS this is  ``~/wpilib/YYYY``, where ``~`` indicates the users home directory. On Linux, this is ``XDG_DATA_HOME/wpilib/YYYY`` (likely ``~/.local/share/wpilib/YYYY``) On Windows, the installation folder is ``C:\Users\Public``. This is often done by an offline installer, but may need to be done manually if a ``.zip`` of the ``.json`` files is provided. This file is then used from VS Code to add to the library to each individual project. Vendor library information is managed on a per-project basis to make sure that a project is always pointing to a consistent version of a given vendor library. The libraries themselves are placed in the Maven cache at ``wpilib/YYYY/maven``. Vendors can place a local copy here with an offline installer (recommended) or require users to be connected to the internet for an initial build to fetch the library from a remote Maven location.
 
       This JSON file allows specification of complex libraries with multiple components (Java, C++, JNI, etc.) and also helps handle some complexities related to simulation.
 
    .. tab-item:: Python
       :sync: python
 
-      Third party libraries are packaged into Python wheels and uploaded to PyPI (if pure python) and/or WPILib's artifactory. Users can enable them as dependencies either by adding the component name to ``robotpy_extras`` (recommended) or by adding an explicit dependency for the PyPI package in ``requires``. The dependencies are downloaded when ``robotpy sync`` is executed, and installed on the roboRIO when ``robotpy deploy`` is executed.
+      Third party libraries are packaged into Python wheels and uploaded to PyPI (if pure python) and/or WPILib's artifactory. Users can enable them as dependencies either by adding them by adding an explicit dependency for the PyPI package in ``requires``. The dependencies are downloaded when ``robotpy sync`` is executed, and installed on the roboRIO when ``robotpy deploy`` is executed.
