@@ -5,11 +5,10 @@
 
 The Limelight Systemcore is designed specifically with FIRST in mind. The Systemcore is powered by a Raspberry Pi Compute Module 5 (CM5) with a quad-core ARM Cortex-A76 processor, and uses a Raspberry Pi RP2350 for reconfigurable I/O.
 
-The Systemcore is a reconfigurable robotics controller that includes built-in ports for Controller Area Network (CAN), Inter-Integrated Circuits (I2C), USB, Ethernet, and reconfigurable I/O for Pulse Width Modulation (PWM), Digital I/O, and Analog Input to quickly connect the common sensors and actuators used in robotics. The controller features LEDs, a display, and an onboard IMU. It has an onboard quad-core ARM Cortex-A76 processor
-The Systemcore is a reconfigurable robotics controller that includes built-in ports for CAN Flexible Data-Rate (CAN-FD), I²C, USB, Ethernet, and 6 Smart (reconfigurable) I/O ports.
+The Systemcore is a reconfigurable robotics controller that includes built-in ports for Controller Area Network Flexible Data-Rate (CAN-FD), Inter-Integrated Circuits (I²C), USB, Ethernet, and 6 Smart (reconfigurable) I/O ports.
 The 6 Smart I/O pins support PWM, Digital I/O, and Analog Inputs to quickly connect the common sensors and actuators used in robotics.
 
-The Systemcore comes shipped with 4 GB of RAM and 16 GB of EMMC storage, and also comes with a M.2 A+E key 2230 slot for connecting compatible peripherals over a PCIe 2.0 connection.
+The Systemcore comes shipped with 4 GB of RAM and 16 GB of EMMC storage, and also comes with a M.2 A+E key 2230 slot for connecting compatible peripherals over a PCIe 2.0 connection. A version of the Systemcore with 2 GB of RAM will be available in the future.
 
 The Systemcore also comes with integrated 2.4 and 5 GHz WiFi and Bluetooth 5.0 with BLE.
 
