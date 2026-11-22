@@ -69,3 +69,7 @@ For C++ projects, there is one more step to set up IntelliSense. Whenever you op
 ### 3rd Party Libraries
 
 It is necessary to update and re-import 3rd party libraries. See :doc:`3rd Party Libraries <3rd-party-libraries>` for details.
+
+### Generated Code
+
+If you are using generated or template code (e.g., from the CTRE Swerve Generator or YAMS), you will need to update the generator and re-run it or update the template. Manually updating the generated code is error-prone. See the documentation for the generator you are using for details on how to re-run it.
