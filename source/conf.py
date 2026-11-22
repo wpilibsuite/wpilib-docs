@@ -44,7 +44,6 @@ extensions = [
     "sphinxcontrib.video",
     "sphinxext.delta",
     "sphinxext.opengraph",
-    "sphinxext.photofinish",
     "sphinxext.rediraffe",
     "sphinxext.remoteliteralinclude",
     "sphinxext.toptranslators",
@@ -70,6 +69,9 @@ local_extensions = [
 
 if os.getenv("READTHEDOCS") == "True":
     extensions.append("sphinx_build_compatibility.extension")
+
+if os.getenv("PHOTOFINISH_DISABLED") != "True":
+    extensions.append("sphinxext.photofinish")
 
 extensions += local_extensions
 
