@@ -19,14 +19,14 @@ Here's an example of what opmode selection looks like on the Driver Station:
 
 ## The Robot Class
 
-In an opmode project the ``Robot`` class extends ``OpModeRobot`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/framework/OpModeRobot.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_op_mode_robot_base.html)). Hardware objects, subsystems, and any state shared across all opmodes are declared as members here.
+In an opmode project the ``Robot`` class extends ``OpModeRobot`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.core/org/wpilib/framework/OpModeRobot.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_op_mode_robot_base.html)). Hardware objects, subsystems, and any state shared across all opmodes are declared as members here.
 
 .. tab-set::
 
    .. tab-item:: Java
       :sync: Java
 
-      .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/templates/opmode/Robot.java
+      .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/templates/opmode/Robot.java
          :language: java
          :lines: 5-33
          :lineno-match:
@@ -34,7 +34,7 @@ In an opmode project the ``Robot`` class extends ``OpModeRobot`` ([Java](https:/
    .. tab-item:: C++ (Header)
       :sync: C++ (Header)
 
-      .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/templates/opmode/include/Robot.hpp
+      .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/templates/opmode/include/Robot.hpp
          :language: c++
          :lines: 5-14
          :lineno-match:
@@ -42,7 +42,7 @@ In an opmode project the ``Robot`` class extends ``OpModeRobot`` ([Java](https:/
    .. tab-item:: C++ (Source)
       :sync: C++ (Source)
 
-      .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/templates/opmode/cpp/Robot.cpp
+      .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/templates/opmode/cpp/Robot.cpp
          :language: c++
          :lines: 5-25
          :lineno-match:
@@ -57,7 +57,7 @@ The following methods in ``OpModeRobot`` run no matter the selected opmode:
 
 ## Creating OpModes
 
-Individual opmodes extend ``PeriodicOpMode`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/opmode/PeriodicOpMode.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_periodic_op_mode.html)) and implement whichever lifecycle methods they need.
+Individual opmodes extend ``PeriodicOpMode`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.core/org/wpilib/opmode/PeriodicOpMode.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_periodic_op_mode.html)) and implement whichever lifecycle methods they need.
 
 .. tab-set::
 
@@ -70,14 +70,14 @@ Individual opmodes extend ``PeriodicOpMode`` ([Java](https://github.wpilib.org/a
 
          .. tab-item:: MyTeleop.java
 
-            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/templates/opmode/opmode/MyTeleop.java
+            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/templates/opmode/opmode/MyTeleop.java
                :language: java
                :lines: 5-44
                :lineno-match:
 
          .. tab-item:: MyAuto.java
 
-            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/templates/opmode/opmode/MyAuto.java
+            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/templates/opmode/opmode/MyAuto.java
                :language: java
                :lines: 5-30
                :lineno-match:
@@ -115,35 +115,35 @@ Individual opmodes extend ``PeriodicOpMode`` ([Java](https://github.wpilib.org/a
 
          .. tab-item:: Robot.cpp
 
-            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/templates/opmode/cpp/Robot.cpp
+            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/templates/opmode/cpp/Robot.cpp
                :language: c++
                :lines: 5-25
                :lineno-match:
 
          .. tab-item:: MyTeleop.hpp
 
-            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/templates/opmode/include/opmode/MyTeleop.hpp
+            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/templates/opmode/include/opmode/MyTeleop.hpp
                :language: c++
                :lines: 5-23
                :lineno-match:
 
          .. tab-item:: MyTeleop.cpp
 
-            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/templates/opmode/cpp/opmode/MyTeleop.cpp
+            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/templates/opmode/cpp/opmode/MyTeleop.cpp
                :language: c++
                :lines: 5-26
                :lineno-match:
 
          .. tab-item:: MyAuto.hpp
 
-            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/templates/opmode/include/opmode/MyAuto.hpp
+            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/templates/opmode/include/opmode/MyAuto.hpp
                :language: c++
                :lines: 5-23
                :lineno-match:
 
          .. tab-item:: MyAuto.cpp
 
-            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/templates/opmode/cpp/opmode/MyAuto.cpp
+            .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/templates/opmode/cpp/opmode/MyAuto.cpp
                :language: c++
                :lines: 5-33
                :lineno-match:

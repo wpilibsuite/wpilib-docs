@@ -62,7 +62,6 @@ extensions = [
 ]
 
 local_extensions = [
-    "_extensions.rtd_patch",
     "_extensions.localization",
     "_extensions.controls_js_sim",
     "_extensions.wpilib_release",
@@ -186,6 +185,7 @@ linkcheck_ignore = [
 linkcheck_anchors_ignore_for_url = [
     r".*github.com.*",
     r".*ni.com/en/support/downloads/drivers/download.frc-game-tools.html.*",
+    r".*developer.apple.com/documentation/technotes/tn3179-understanding-local-network-privacy.*",
 ]
 
 # Sets linkcheck timeout in seconds
@@ -392,7 +392,7 @@ http.client.HTTPConnection.send = new_send
 
 intersphinx_mapping = {
     "robotpy": (
-        "https://robotpy.readthedocs.io/projects/robotpy/en/2027.0.0a7/",
+        "https://robotpy.readthedocs.io/projects/robotpy/en/2027.0.0a8/",
         None,
     ),
 }

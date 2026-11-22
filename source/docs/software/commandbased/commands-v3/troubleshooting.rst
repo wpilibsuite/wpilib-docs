@@ -120,7 +120,7 @@ public Command moveToSetpoint(double setpoint) {
 
 ### State Machine Missing Initial State
 
-When defining :doc:`state-machines`, you must call `setInitialState() <https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command3/StateMachine.html#setInitialState(org.wpilib.command3.StateMachine.State)>`__ before the state machine can be used as a command. Forgetting this call will result in a compile-time error.
+When defining :doc:`state-machines`, you must call `setInitialState() <https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.command3/org/wpilib/command3/StateMachine.html#setInitialState(org.wpilib.command3.StateMachine.State)>`__ before the state machine can be used as a command. Forgetting this call will result in a compile-time error.
 
 **Example of an error:**
 
@@ -147,7 +147,7 @@ public Command stateMachineExample() {
 
 ### State Machine Global Transitions
 
-If you use `switchFromAny() <https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command3/StateMachine.html#switchFromAny(org.wpilib.command3.StateMachine.State...)>`__ without arguments to define a global transition, it only applies to states that were added to the state machine **before** the `switchFromAny()` call.
+If you use `switchFromAny() <https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.command3/org/wpilib/command3/StateMachine.html#switchFromAny(org.wpilib.command3.StateMachine.State...)>`__ without arguments to define a global transition, it only applies to states that were added to the state machine **before** the `switchFromAny()` call.
 
 **Example of an error:**
 

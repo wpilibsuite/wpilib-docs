@@ -6,6 +6,6 @@
    systemcore-introduction
    /docs/zero-to-robot/step-3/imaging-your-systemcore
    systemcore-web-dashboard
-   roborio-ftp
+   systemcore-sftp
    systemcore-ssh
    roborio-brownouts

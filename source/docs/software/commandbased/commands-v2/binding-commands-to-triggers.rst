@@ -4,7 +4,7 @@ Apart from autonomous commands, which are scheduled at the start of the autonomo
 
 As mentioned earlier, command-based is a :term:`declarative programming` paradigm. Accordingly, binding buttons to commands is done declaratively; the association of a button and a command is "declared" once, during robot initialization. The library then does all the hard work of checking the button state and scheduling (or canceling) the command as needed, behind-the-scenes. Users only need to worry about designing their desired UI setup - not about implementing it!
 
-Command binding is done through the ``Trigger`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/Trigger.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_trigger.html)).
+Command binding is done through the ``Trigger`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.command2/org/wpilib/command2/button/Trigger.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_trigger.html)).
 
 ## Getting a Trigger Instance
 
@@ -14,7 +14,7 @@ To bind commands to conditions, we need a ``Trigger`` object. There are three wa
 
 .. todo:: Update for CommandGamepad
 
-The command-based HID classes contain factory methods returning a ``Trigger`` for a given button. ``CommandGenericHID`` has an index-based ``button(int)`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/CommandGenericHID.html#button(int)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_generic_h_i_d.html#a5d8367128251961432905706b8060181)), and its subclasses ``CommandGamepad`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/CommandGamepad.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_gamepad.html)), and ``CommandJoystick`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/CommandJoystick.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_joystick.html)) have named factory methods for each button.
+The command-based HID classes contain factory methods returning a ``Trigger`` for a given button. ``CommandGenericHID`` has an index-based ``button(int)`` factory ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.command2/org/wpilib/command2/button/CommandGenericHID.html#button(int)), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_generic_h_i_d.html#a5d8367128251961432905706b8060181)), and its subclasses ``CommandGamepad`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.command2/org/wpilib/command2/button/CommandGamepad.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_gamepad.html)), and ``CommandJoystick`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.command2/org/wpilib/command2/button/CommandJoystick.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_command_joystick.html)) have named factory methods for each button.
 
 .. tab-set-code::
 
@@ -30,7 +30,7 @@ The command-based HID classes contain factory methods returning a ``Trigger`` fo
 
 ### JoystickButton
 
-Alternatively, the :ref:`regular HID classes <docs/software/basic-programming/joystick:Joysticks>` can be used and passed to create an instance of ``JoystickButton`` [Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/button/JoystickButton.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_joystick_button.html)), a constructor-only subclass of ``Trigger``:
+Alternatively, the :ref:`regular HID classes <docs/software/basic-programming/joystick:Joysticks>` can be used and passed to create an instance of ``JoystickButton`` [Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.command2/org/wpilib/command2/button/JoystickButton.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1cmd_1_1_joystick_button.html)), a constructor-only subclass of ``Trigger``:
 
 .. tab-set-code::
 
@@ -75,13 +75,13 @@ This binding schedules a command when a trigger changes from ``false`` to ``true
 .. tab-set-code::
 
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/rapidreactcommandbot/RapidReactCommandBot.java
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/examples/rapidreactcommandbot/RapidReactCommandBot.java
       :language: java
       :lines: 64-65
       :lineno-match:
 
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/RapidReactCommandBot/cpp/RapidReactCommandBot.cpp
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/examples/RapidReactCommandBot/cpp/RapidReactCommandBot.cpp
       :language: c++
       :lines: 27-28
       :lineno-match:
@@ -94,12 +94,12 @@ This binding schedules a command when a trigger changes from ``false`` to ``true
 
 .. tab-set-code::
 
-  .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/templates/commandv2/RobotContainer.java
+  .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/templates/commandv2/RobotContainer.java
     :language: java
     :lines: 45-47
     :lineno-match:
 
-  .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/templates/commandv2/cpp/RobotContainer.cpp
+  .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/templates/commandv2/cpp/RobotContainer.cpp
     :language: c++
     :lines: 26-28
     :lineno-match:
@@ -108,16 +108,16 @@ The ``whileFalse`` binding is identical, only that it schedules on ``false`` and
 
 ### toggleOnTrue
 
-This binding toggles a command, scheduling it when a trigger changes from ``false`` to ``true`` (or a button is initially pressed), and canceling it under the same condition if the command is currently running. Note that while this functionality is supported, toggles are not a highly-recommended option for user control, as they require the driver to keep track of the robot state.  The preferred method is to use two buttons; one to turn on and another to turn off.  Using a [StartEndCommand](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/StartEndCommand.html) or a [ConditionalCommand](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command2/ConditionalCommand.html) is a good way to specify the commands that you want to be want to be toggled between.
+This binding toggles a command, scheduling it when a trigger changes from ``false`` to ``true`` (or a button is initially pressed), and canceling it under the same condition if the command is currently running. Note that while this functionality is supported, toggles are not a highly-recommended option for user control, as they require the driver to keep track of the robot state.  The preferred method is to use two buttons; one to turn on and another to turn off.  Using a [StartEndCommand](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.command2/org/wpilib/command2/StartEndCommand.html) or a [ConditionalCommand](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.command2/org/wpilib/command2/ConditionalCommand.html) is a good way to specify the commands that you want to be want to be toggled between.
 
 .. tab-set-code::
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibjExamples/src/main/java/org/wpilib/examples/rapidreactcommandbot/RapidReactCommandBot.java
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/examples/rapidreactcommandbot/RapidReactCommandBot.java
       :language: java
       :lines: 76-77
       :lineno-match:
 
-    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-7/wpilibcExamples/src/main/cpp/examples/RapidReactCommandBot/cpp/RapidReactCommandBot.cpp
+    .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/examples/RapidReactCommandBot/cpp/RapidReactCommandBot.cpp
       :language: c++
       :lines: 39-40
       :lineno-match:

@@ -159,7 +159,7 @@ public Command sweepAndScore() {
 
 The ``org.wpilib.command3.button`` package provides specialized classes for creating triggers from game controllers, such as Xbox and PS5 (DualSense) controllers. These classes provide methods that return ``Trigger`` objects for every button, d-pad direction, and trigger on the controller. Prefer these named methods over raw button numbers when possible; the resulting robot code is easier to read and easier to audit during an event.
 
-For a full list of available controller classes and their methods, see the `org.wpilib.command3.button <https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/command3/button/package-summary.html>`__ Javadoc.
+For a full list of available controller classes and their methods, see the `org.wpilib.command3.button <https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.command3/org/wpilib/command3/button/package-summary.html>`__ Javadoc.
 
 ### Advanced Controller Triggers
 

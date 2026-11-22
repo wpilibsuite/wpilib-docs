@@ -27,7 +27,7 @@ The data is accessed using the Game Data methods in each language. Below are des
 
 ### C++/Java/Python
 
-In C++, Java, and Python the Game Data is accessed by using the ``GetGameData`` method of the MatchState class  ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/org/wpilib/driverstation/MatchState.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_match_state.html), :py:class:`Python <robotpy:wpilib.MatchState>`). ``GetGameData`` returns an ``Optional`` type so Teams know that Game Data has been received. Teams likely want to query the data in a Teleop method such as Teleop Periodic in order to receive the data after it is sent during the match. Make sure to handle the case where the data has not been received.
+In C++, Java, and Python the Game Data is accessed by using the ``GetGameData`` method of the MatchState class  ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.core/org/wpilib/driverstation/MatchState.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_match_state.html), :py:class:`Python <robotpy:wpilib.MatchState>`). ``GetGameData`` returns an ``Optional`` type so Teams know that Game Data has been received. Teams likely want to query the data in a Teleop method such as Teleop Periodic in order to receive the data after it is sent during the match. Make sure to handle the case where the data has not been received.
 
 .. tab-set-code::
 
@@ -69,7 +69,7 @@ In C++, Java, and Python the Game Data is accessed by using the ``GetGameData`` 
      }
   ```
 
-  .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/07b318443054388aece6824001e7f7f6f63041ab/snippets/robot/GameData2026/robot.py
+  .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/snippets/robot/GameData2026/robot.py
     :language: python
     :lines: 84-89,91-92,94-95,97-98
     :lineno-start: 84
@@ -195,7 +195,7 @@ For example:
    }
   ```
 
-  .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/07b318443054388aece6824001e7f7f6f63041ab/snippets/robot/GameData2026/robot.py
+  .. remoteliteralinclude:: https://raw.githubusercontent.com/robotpy/mostrobotpy/2027.0.0a8/snippets/robot/GameData2026/robot.py
     :language: python
     :lines: 20-69
     :lineno-match:

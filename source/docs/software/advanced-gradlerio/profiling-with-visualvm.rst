@@ -10,7 +10,7 @@ To begin, [download VisualVM](https://visualvm.github.io/download.html) and unpa
 
 GradleRIO supports passing JVM launch arguments, and this is what is necessary to enable remote debugging. Remote debugging is a feature that allows a local machine (such as the user's desktop) to view important information about a remote target (in our case, a Systemcore). To begin, locate the ``wpilibJava`` code block located in the projects ``build.gradle``. Below is what is looks like.
 
-.. rli:: https://raw.githubusercontent.com/wpilibsuite/vscode-wpilib/v2027.0.0-alpha-7/vscode-wpilib/resources/gradle/java/build.gradle
+.. rli:: https://raw.githubusercontent.com/wpilibsuite/vscode-wpilib/v2027.0.0-alpha-8/vscode-wpilib/resources/gradle/java/build.gradle
    :language: groovy
    :lines: 16-48
    :lineno-match:
@@ -103,7 +103,7 @@ To begin, ensure you are on the :guilabel:`Monitor` tab and click :guilabel:`Hea
    :alt: Location of heap dump button in VisualVM
    :width: 700
 
-This heap dump will be stored on the target system (Systemcore) and must be retrieved using SFTP. See :doc:`this article </docs/software/systemcore-info/roborio-ftp>` for information on retrieving the dump from the Systemcore.
+This heap dump will be stored on the target system (Systemcore) and must be retrieved using SFTP. See :doc:`this article </docs/software/systemcore-info/systemcore-sftp>` for information on retrieving the dump from the Systemcore.
 
 Once downloaded, the dump can be analyzed with VisualVM.
 
