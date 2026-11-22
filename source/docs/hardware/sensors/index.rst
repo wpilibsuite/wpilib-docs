@@ -1,5 +1,4 @@
-Sensors
-=======
+# Sensors
 
 .. toctree::
    :maxdepth: 1
@@ -11,7 +10,6 @@ Sensors
    proximity-switches
    encoders-hardware
    gyros-hardware
-   ultrasonics-hardware
    accelerometers-hardware
    lidar
    triangulating-rangefinders

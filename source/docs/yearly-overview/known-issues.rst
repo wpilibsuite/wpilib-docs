@@ -1,98 +1,86 @@
 .. include:: <isonum.txt>
 
-Known Issues
-============
+# Known Issues
 
-This article details known issues (and workarounds) for FRC\ |reg| Control System Software.
+This article details known issues (and workarounds) for FIRST\ |reg| Control System Software.
 
-Open Issues
------------
+## Open Issues
 
-Driver Station Reporting No Code
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+### Unable to deploy on macOS when multiple VS Code versions are installed
 
-**Issue:** There is a rare occurrence in the roboRIO 2.0 that causes the roboRIO to not properly start the robot program. This causes the Driver Station to report a successful connection but no code, even though code is deployed on the roboRIO.
+**Issue:** On macOS, having multiple installed copies of Visual Studio Code can cause deploy operations to fail because of [macOS local network privacy](https://developer.apple.com/documentation/technotes/tn3179-understanding-local-network-privacy)
 
-**Workaround:** We are currently investigating the root cause, but FIRST volunteers have been made aware and the recommendation is to reboot the roboRIO when this occurs.
+**Workaround:** Open Settings -> Privacy and Security -> Local Network Access and ensure that all VS Code versions are allowed Local Network Access.
 
- .. note:: Pressing the physical :guilabel:`User` button on the roboRIO for 5 seconds can also cause the robot code to not start, but a reboot will not start the robot code. If the robot code does not start after rebooting, press the :guilabel:`User` button. Ensure that nothing on the robot is in contact with the :guilabel:`User` button.
+If that doesn't work, you can run the following commands in a terminal and then reboot. This allows any program to access the robot's network.
 
-Radio Second Port Sometimes Fails to Communicate
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+```zsh
+sudo defaults write com.apple.network.local-network AllowedEthernetLocalNetworkAddresses -array "10.0.0.0/8"
+sudo defaults write com.apple.network.local-network AllowedWiFiLocalNetworkAddresses -array "10.0.0.0/8"
+```
 
-**Issue:** There is a rare occurrence in the OM5P Radios that causes the second Ethernet port (the one farthest from the power plug) to not communicate.
+.. warning:: This also allows any program to access any network with the address in the range of ``10.x.x.x``, which may be undesirable if you connect to other networks in that range beside's the robot's network. If you only access a robot with a single team number, you can substitute ``10.TE.AM.0/24``` (:ref:`TE.AM IP Notation <docs/networking/networking-introduction/ip-configurations:TE.AM IP Address Notation>`). If you only access the robot's network over eithernet or WiFi, you can only run the appropriate command.
 
-**Workaround:** Generally, power cycling the radio will restablish communication with the second port. Alternately, utilize a network switch such as the tp-link switch available from `FIRST Choice <https://firstchoicebyandymark.com/fc-cn-9024>`__ or the `brainboxes SW-005 <https://www.brainboxes.com/product/industrial-ethernet-switches/fast-ethernet/sw-005>`__ and plug all ethernet devices into the network switch and then plug the switch into the radio's first Ethernet port. This also allows easier tethering while at competition.
+### Driver Station randomly disabled
 
-Onboard I2C Causing System Lockups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Issue:** The Driver Station contains safety mechanisms to protect against control issues. Some teams have seen this cause the robot to disable.
 
-**Issue:** Use of the onboard I2C port on the roboRIO 1 or 2, in any language, can result in system lockups. The frequency of these lockups appears to be dependent on the specific hardware (i.e. different roboRIOs will behave differently) as well as how the bus is being used.
+**Workaround:** There are multiple potential causes for tripping the safety mechanisms.
 
-**Workaround:** The only surefire mitigation is to use the MXP I2C port or another device to read the I2C data. Accessing the device less frequently and/or using a different roboRIO may significantly reduce the likelihood/frequency of lockups, it will be up to each team to assess their tolerance of the risk of lockup. This lockup can not be definitively identified on the field and a field fault will not be called for a match where this behavior is believed to occur. This lockup is a CPU/kernel hang, the roboRIO will completely stop responding and will not be accessible via the DS, webpage or SSH. If you can access your roboRIO via any of these methods, you are experiencing a different issue.
+.. note:: The safety mechanisms will *not* disable the robot when connected to the :term:`FMS`.
 
-Several alternatives exist for accessing the REV color sensor without using the roboRIO I2C port. A similar approach could be used for other I2C sensors.
+Some teams have seen this happen only when the robot is operated wirelessly, but not when operated via USB or ethernet tether. Some potential mitigations:
 
-- Use a `Raspberry Pi Pico <https://github.com/ThadHouse/picocolorsensor/>`__. Supports up to 2 REV color sensors, sends data to the roboRIO via serial. The Pi Pico is low cost (less than $10) and readily available.
-- Use a `Raspberry Pi <https://github.com/PeterJohnson/rpi-colorsensor/>`__. Supports 1-4 color sensors, sends data to the roboRIO via NetworkTables. Primarily useful for teams already using a Raspberry Pi as a coprocessor.
+1. Try relocating the robot radio to a better location (high in the robot and away from motors or large amounts of metal). Follow the `manufacturer's recommended mounting <https://frc-radio.vivid-hosting.net/getting-started/usage/mounting-your-radio>`__
+2. :doc:`Measure your robot's bandwidth </docs/networking/networking-introduction/measuring-bandwidth-usage>` and ensure you have margin under the 7 Mbps bandwidth limit
+3. See if the Wi-Fi environment is congested using a tool like [WiFi Analyzer](https://apps.microsoft.com/detail/9NBLGGH33N0N?hl=en-US&gl=US).
+4. Utilize the recommended :doc:`2 radio setup </docs/zero-to-robot/step-3/radio-programming>`.
+   1. Ensure the DS Radio is mounted high, away from interference and humans walking between the DS radio and the robot.
+   2. Use ethernet to connect the DS computer to the DS Radio
+5. Update the Wi-Fi drivers for the DS computer.
 
-Updating Properties on roboRIO 2.0 may be slow or hang
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Some teams have seen this happen due to software that is running on the driver station (such as Autodesk updater or Discord). Some potential mitigations:
 
-**Issue:** Updating the properties on a roboRIO 2.0 without reformatting using the Imaging Tool (such as setting the team number) may be slow or hang.
+1. Reboot the driver station computer
+2. Close software that is running in the background
+3. Follow the :doc:`Driver Station Best Practices </docs/software/firstdriverstation/first-driver-station-best-practices>`
 
-**Workaround:** After a few minutes of the tool waiting the roboRIO should be able to be rebooted and the new properties should be set.
+While rare, this can be caused by robot code that oversaturates the Systemcore processor or network connection. If all other troubleshooting steps fail, you can try running with one of the WPILib example programs to see if the problem still occurs.
 
-Simulation crashes on Mac after updating WPILib
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+If you identify software that interferes with driver station, please open an issue at https://github.com/wpilibsuite/FirstDriverStation-Public/issues
+
+### Simulation crashes on Mac after updating WPILib
 
 **Issue:** On macOS, after updating the project to use a newer version of WPILib, running simulation immediately crashes without the GUI appearing.
 
 **Workaround:** In VS Code, run WPILib | Run a command in Gradle, ``clean``. Alternatively, run ``./gradlew clean`` in the terminal or delete the build directory.
 
-Invalid build due to missing GradleRIO
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+### Invalid build due to missing GradleRIO
 
 **Issue:** Rarely, a user's Gradle cache will get broken and they will get shown errors similar to the following:
 
-.. code-block:: console
-
-   Could not apply requested plugin [id: ‘edu.wpi.first.GradleRIO’, version: ‘2020.3.2’] as it does not provide a plugin with id ‘edu.wpi.first.GradleRIO’
-
-**Workaround:**
-
-Delete your Gradle cache located under ``~$USER_HOME/.gradle``. Windows machines may need to enable the ability to `view hidden files <https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5>`__. This issue has only shown up on Windows so far. Please `report <https://github.com/wpilibsuite/frc-docs/issues/new>`__ this issue if you get it on an alternative OS.
-
-Chinese characters in Driver Station Log
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Issue:** Rarely, the driver station log will show Chinese characters instead of the English text. This appears to only happen when Windows is set to a language other then English.
-
-.. image:: /docs/software/vscode-overview/images/known-issues/DS-chinese.jpg
-  :alt: Chinese character appearing in the Driver Station log window.
+```console
+Could not apply requested plugin [id: ‘edu.wpi.first.GradleRIO’, version: ‘2020.3.2’] as it does not provide a plugin with id ‘edu.wpi.first.GradleRIO’
+```
 
 **Workaround:**
-There are two known workarounds:
 
-  #. Copy and paste the Chinese characters into notepad, and the English text will be shown.
-  #. Temporarily change the Windows language to English.
+Delete your Gradle cache located under ``~$USER_HOME/.gradle``. Windows machines may need to enable the ability to [view hidden files](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5). This issue has only shown up on Windows so far. Please [report](https://github.com/wpilibsuite/wpilib-docs/issues/new) this issue if you get it on an alternative OS.
 
-C++ Intellisense - Files Open on Launch Don't Work Properly
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+### C++ Intellisense - Files Open on Launch Don't Work Properly
 
 **Issue:** In C++, files open when VS Code launches will have issues with Intellisense showing suggestions from all options from a compilation unit and not just the appropriate ones or not finding header files. This is a bug in VS Code.
 
 **Workaround:**
 
-  #. Close all  files in VS Code, but leave VS Code open
-  #. Delete c_cpp_properties.json file in the .vscode folder, if it exists
-  #. Run the "Refresh C++ Intellisense" command in VS Code.
-  #. In the bottom right you should see something that looks like a platform (linuxathena or windowsx86-64 etc). If it’s not linuxathena click it and set it to linuxathena (release)
-  #. Wait ~1 min
-  #. Open the main cpp file (not a header file). Intellisense should now be working
+#. Close all  files in VS Code, but leave VS Code open
+#. Delete c_cpp_properties.json file in the .vscode folder, if it exists
+#. Run the "Refresh C++ Intellisense" command in VS Code.
+#. In the bottom right you should see something that looks like a platform (linuxathena or windowsx86-64 etc). If it’s not linuxathena click it and set it to linuxathena (release)
+#. Wait ~1 min
+#. Open the main cpp file (not a header file). Intellisense should now be working
 
-Issues with WPILib Dashboards and Simulation on Windows N Editions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+### Issues with WPILib Dashboards and Simulation on Windows N Editions
 
 **Issue:** WPILib code using CSCore (dashboards and simulated robot code) will have issues on Education N editions of Windows.
 
@@ -100,5 +88,24 @@ Issues with WPILib Dashboards and Simulation on Windows N Editions
 - Smartdashbard will crash on start-up
 - Robot Simulation will crash on start-up
 
-**Solution:** Install the `Media Feature Pack <https://www.microsoft.com/en-us/software-download/mediafeaturepack>`__
+**Solution:** Install the [Media Feature Pack](https://support.microsoft.com/en-us/topic/media-feature-pack-list-for-windows-n-editions-c1c6fffa-d052-8338-7a79-a4bb980a700a)
 
+## Fixed in WPILib 2027.0.0-alpha-2
+
+### I2C numbering backwards
+
+The I2C numbering in WPILib is backwards from what the labels are on Systemcore. This will be fixed in Alpha 2 and later releases.
+
+### DutyCycle.getOutput crashes
+
+Attempting to call DutyCycle.getOutput() or DutyCycleEncoder.get() without calling setAssumedFrequency() will crash. This is because currently the HW does not report frequency, which doesn't allow us to compute a percentage output. This also means getFrequency() also will fail.
+
+Use DutyCycle.getHighTime() or DutyCycleEncoder.setAssumedFrequency(), and use the value specified in the datasheet of the sensor to compute a percentage output.
+
+## Fixed in VH-109 fimware version 2.0.0
+
+### Systemcore won't get 10.TE.AM.2 address from Radio.
+
+Due to the change in Hostname, the radio will not hand out .2 to Systemcore. Use the IP address displayed on the Systemcore screen if you need to know the IP address.
+
+Generally, everything should work in this configuration. But if you run into issues where the DS cannot connect (And you're sure the team number is set, it's required to connect the DS and can be verified on the screen), you can manually type the IP address into the team number selector in the DS.

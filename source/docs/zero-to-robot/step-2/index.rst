@@ -1,5 +1,4 @@
-Step 2: Installing Software
-===========================
+# Step 2: Installing Software
 
 An overview of the available control system software can be found :doc:`here </docs/controls-overviews/control-system-software>`.
 
@@ -7,7 +6,7 @@ An overview of the available control system software can be found :doc:`here </d
    :maxdepth: 1
 
    offline-installation-preparations
-   labview-setup
-   frc-game-tools
+   first-driver-station-installation
    wpilib-setup
+   python-setup
    step-2-next-steps

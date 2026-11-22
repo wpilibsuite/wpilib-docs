@@ -1,7 +1,6 @@
 :orphan:
 
-API Documentation
-=================
+# API Documentation
 
 Java and CSS class documentation.
 
@@ -11,3 +10,4 @@ Java and CSS class documentation.
 
    WPILib Java API Docs <https://github.wpilib.org/allwpilib/docs/beta/java/index.html>
    WPILib C++ API Docs <https://github.wpilib.org/allwpilib/docs/beta/cpp/index.html>
+   WPILib Python API Docs <https://robotpy.readthedocs.io/projects/robotpy/en/stable/api.html>

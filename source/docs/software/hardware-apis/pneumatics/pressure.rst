@@ -1,7 +1,6 @@
-Generating and Storing Pressure
-===============================
+# Generating and Storing Pressure
 
-Pressure is created using a pneumatic compressor and stored in pneumatic tanks. The compressor must be on the robot and powered by the robot's pneumatics module. The "Closed Loop" mode on the Compressor is enabled by default, and it is *not* recommended that teams change this setting. When closed loop control is enabled the pneumatic module will automatically turn the compressor on when the digital pressure switch is closed (below the pressure threshold) and turn it off when the pressure switch is open (~120PSI). When closed loop control is disabled the compressor will not be turned on. Using the ``Compressor`` (`Java <https://github.wpilib.org/allwpilib/docs/beta/java/edu/wpi/first/wpilibj/Compressor.html>`__ / `C++ <https://github.wpilib.org/allwpilib/docs/beta/cpp/classfrc_1_1_compressor.html>`__) class, users can query the status of the compressor. The state (currently on or off), pressure switch state, and compressor current can all be queried from the Compressor object, as shown by the following code from the Solenoid example project (`Java <https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/solenoid>`__, `C++ <https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/Solenoid>`__):
+Pressure is created using a pneumatic compressor and stored in pneumatic tanks. The compressor must be on the robot and powered by the robot's pneumatics module. The "Closed Loop" mode on the Compressor is enabled by default, and it is *not* recommended that teams change this setting. When closed loop control is enabled the pneumatic module will automatically turn the compressor on when the digital pressure switch is closed (below the pressure threshold) and turn it off when the pressure switch is open (~120PSI). When closed loop control is disabled the compressor will not be turned on. Using the ``Compressor`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.core/org/wpilib/hardware/pneumatic/Compressor.html) / [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_compressor.html)) class, users can query the status of the compressor. The state (currently on or off), pressure switch state, and compressor current can all be queried from the Compressor object, as shown by the following code from the Solenoid example project ([Java](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/snippets/solenoid), [C++](https://github.com/wpilibsuite/allwpilib/tree/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/snippets/Solenoid)):
 
 .. note:: The Compressor object is only needed if you want the ability to turn off the compressor, change the pressure sensor (PH only), or query compressor status.
 
@@ -14,16 +13,17 @@ Construct a ``Compressor`` object:
             .. tab-item:: Java
                :sync: Java
 
-               .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.1.1-beta-4/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/solenoid/Robot.java
+               .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2025.3.2/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/solenoid/Robot.java
                   :language: java
                   :lines: 39-40
 
             .. tab-item:: C++ (Header)
                :sync: C++ (Header)
 
-               .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.1.1-beta-4/wpilibcExamples/src/main/cpp/examples/Solenoid/include/Robot.h
+               .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2025.3.2/wpilibcExamples/src/main/cpp/examples/Solenoid/include/Robot.h
                   :language: c++
                   :lines: 54-55
+
     .. tab-item:: CTRE Pneumatics Control Module (PCM)
 
         .. tab-set::
@@ -56,7 +56,7 @@ Querying compressor current and state:
     .. tab-item:: C++ (Source)
        :sync: C++ (Source)
 
-       .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.1.1-beta-4/wpilibcExamples/src/main/cpp/examples/Solenoid/cpp/Robot.cpp
+       .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2025.3.2/wpilibcExamples/src/main/cpp/examples/Solenoid/cpp/Robot.cpp
           :language: c++
           :lines: 26-28, 31-32, 35-37
 
@@ -98,13 +98,11 @@ The Pneumatic Hub also has methods for enabling compressor control using the REV
           :lines: 76-81, 84-90
 
 
-Pressure Transducers
---------------------
+## Pressure Transducers
 
 A pressure transducer is a sensor where analog voltage is proportial to the measured pressure.
 
-Pneumatic Hub
-^^^^^^^^^^^^^
+### Pneumatic Hub
 
 The Pneumatic Hub has analog inputs that may be used to read a pressure transducer using the Compressor class.
 
@@ -122,19 +120,18 @@ The Pneumatic Hub has analog inputs that may be used to read a pressure transduc
     .. tab-item:: C++ (Header)
        :sync: C++ (Header)
 
-       .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.1.1-beta-4/wpilibcExamples/src/main/cpp/examples/Solenoid/include/Robot.h
+       .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2025.3.2/wpilibcExamples/src/main/cpp/examples/Solenoid/include/Robot.h
           :language: c++
           :lines: 54-55
 
     .. tab-item:: C++ (Source)
        :sync: C++ (Source)
 
-       .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.1.1-beta-4/wpilibcExamples/src/main/cpp/examples/Solenoid/cpp/Robot.cpp
+       .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2025.3.2/wpilibcExamples/src/main/cpp/examples/Solenoid/cpp/Robot.cpp
           :language: c++
           :lines: 19-23
 
-roboRIO
-^^^^^^^
+### roboRIO
 
 A pressure transducer can be connected to the Analog Input ports on the roboRIO, and can be read by the ``AnalogInput`` or ``AnalogPotentiometer`` classes in WPILib.
 
@@ -143,12 +140,12 @@ A pressure transducer can be connected to the Analog Input ports on the roboRIO,
     .. tab-item:: Java
        :sync: Java
 
-       .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.1.1-beta-4/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/rapidreactcommandbot/subsystems/Pneumatics.java
+       .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2025.3.2/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/rapidreactcommandbot/subsystems/Pneumatics.java
           :language: java
-          :lines: 16-24
-       .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2024.1.1-beta-4/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/rapidreactcommandbot/subsystems/Pneumatics.java
+          :lines: 17-25
+       .. rli:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2025.3.2/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/rapidreactcommandbot/subsystems/Pneumatics.java
           :language: java
-          :lines: 40-41
+          :lines: 36-37
 
     .. tab-item:: C++ (Header)
        :sync: C++ (Header)

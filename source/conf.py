@@ -23,10 +23,10 @@ sys.path.append(os.path.abspath("./frc-docs/source"))
 
 # -- Project information -----------------------------------------------------
 
-project = "FIRST Robotics Competition"
-copyright = "2024, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License"
+project = "WPILib Documentation"
+copyright = "2026, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License"
 author = "WPILib"
-version = "2024"
+version = "2027"
 
 
 # -- General configuration ---------------------------------------------------
@@ -41,15 +41,14 @@ extensions = [
     "sphinx.ext.autosectionlabel",
     "sphinx.ext.intersphinx",
     "sphinxcontrib.rsvgconverter",
+    "sphinxcontrib.video",
     "sphinxext.delta",
     "sphinxext.opengraph",
     "sphinxext.photofinish",
     "sphinxext.rediraffe",
     "sphinxext.remoteliteralinclude",
     "sphinxext.toptranslators",
-    "sphinxext.linkcheckdiff",
     "sphinxext.mimictoc",
-    "sphinxext.presentations",
     "hoverxref.extension",
     "notfound.extension",
     "versionwarning.extension",
@@ -57,35 +56,46 @@ extensions = [
     "sphinx-prompt",
     "sphinx_toolbox.collapse",
     "sphinx_copybutton",
+    "sphinx_contributors",
+    "sphinx_last_updated_by_git",
 ]
 
 local_extensions = [
-    "_extensions.post_process",
-    "_extensions.rtd_patch",
     "_extensions.localization",
     "_extensions.controls_js_sim",
     "_extensions.wpilib_release",
     "_extensions.default_latex_image_settings",
+    "_extensions.redown",
 ]
+
+if os.getenv("READTHEDOCS") == "True":
+    extensions.append("sphinx_build_compatibility.extension")
 
 extensions += local_extensions
 
 versionwarning_messages = {
+    # "latest": """
+    #    The documentation you are currently viewing is for upcoming changes to WPILib.
+    #    Please see the <a href="https://docs.wpilib.org" id="versionwarning_href">stable</a> version for the current release of WPILib.
+    #    <script>
+    #        document.getElementById("versionwarning_href").setAttribute("href", location.href.replace("/latest/", "/stable/"))
+    #    </script>
+    #    """,
     "latest": """
-        The documentation you are currently viewing is for upcoming changes to WPILib.
+        The documentation you are currently viewing is for the Systemcore Alpha Test.
         Please see the <a href="https://docs.wpilib.org" id="versionwarning_href">stable</a> version for the current release of WPILib.
         <script>
             document.getElementById("versionwarning_href").setAttribute("href", location.href.replace("/latest/", "/stable/"))
         </script>
-        """
+        """,
 }
 
 
 versionwarning_admonition_type = "warning"
 versionwarning_banner_title = "Warning!"
-versionwarning_body_selector = 'div[class="document"]'
+versionwarning_body_selector = 'article[role="main"]'
 
-# List of languages that frc-docs supports
+# List of languages that wpilib-docs supports
 localization_languages = [
     "en",
     "es",
@@ -105,15 +115,10 @@ rediraffe_redirects = "redirects.txt"
 # Required accuracy for redirect writer
 rediraffe_auto_redirect_perc = 80
 
-# Configure linkcheck diff branch
-linkcheckdiff_branch = "origin/main"
-
 # Configure OpenGraph support
 ogp_site_url = "https://docs.wpilib.org/en/stable/"
-ogp_site_name = "FIRST Robotics Competition Documentation"
-ogp_image = (
-    "https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png"
-)
+ogp_site_name = "WPILib Documentation"
+ogp_image = "https://raw.githubusercontent.com/wpilibsuite/branding/main/export/png/wpilib-icon-256.png"
 
 # Configure photofinish ci mode
 photofinish_ci_only = True
@@ -130,38 +135,66 @@ delta_doc_path = "source"
 
 # Enable hover content on glossary term
 hoverxref_roles = ["term"]
+hoverxref_role_types = {"term": "tooltip"}
 
 # TODO Directives omit a warning
 todo_emit_warnings = False
 
-# TODO Directives are not shown in output
-todo_include_todos = False
+# TODO Directives are shown in output
+todo_include_todos = True
 
 # Disable following anchors in URLS for linkcheck
-linkcheck_anchors = False
+linkcheck_anchors = True
 
 # Linkcheck Exclusions
 linkcheck_ignore = [
-    r".*kauailabs.com.*",
+    #    r".*kauailabs.com.*",
     r".*wpilibpi.local.*",
     r".*andymark.com.*",
-    r".*ti.com/lit/an/spma033a/spma033a.pdf.*",
-    r".*java.com/en/download/help/locale.xml.*",
+    #    r".*ti.com/lit/an/spma033a/spma033a.pdf.*",
+    r".*java.com.*",
     r".*playingwithfusion.com/contactus.php.*",
-    r".*github.com/wpilibsuite/BetaTest.*",
-    r".*vexrobotics.com/docs/.*",
+    #    r".*vexrobotics.com/docs/.*",
     r".*forums.firstinspires.org.*",
     r".*digikey.com.*",
     r".*chiefdelphi.com.*",
+    r".*raspberrypi.com.*",
+    r".*stackoverflow.com.*",
+    r".*allaboutcircuits.com.*",
+    r".*knowledge.ni.com.*",
+    r".*reduxrobotics.com.*",
+    r".*digilent.com.*",
+    r".*digilentinc.com.*",
+    r".*electrodragon.com.*",
+    r".*filezilla-project.org.*",
+    r".*miktex.org.*",
+    r".*analog.com.*",
+    r".*opencv.org.*",
+    r".*strawberryperl.com.*",
+    r".*docutils.sourceforge.io.*",
+    r".*cppreference.com.*",
+    r".*thriftybot.com.*",
+    r".*wcproducts.com.*",
+    r".*store.ctr-electronics.com.*",
+    r".*calib.io.*",
+    r".*limelightvision.io.*",
+    r".*https://wiki.debian.org.*",
+]
+
+linkcheck_anchors_ignore_for_url = [
+    r".*github.com.*",
+    r".*ni.com/en/support/downloads/drivers/download.frc-game-tools.html.*",
+    r".*developer.apple.com/documentation/technotes/tn3179-understanding-local-network-privacy.*",
 ]
 
 # Sets linkcheck timeout in seconds
 linkcheck_timeout = 30
 linkcheck_retries = 3
 linkcheck_workers = 1
+linkcheck_report_timeouts_as_broken = False
 
 # Specify a standard user agent, as Sphinx default is blocked on some sites
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
 
 # Autosection labels prefix document path and filename
 autosectionlabel_prefix_document = True
@@ -174,8 +207,6 @@ templates_path = ["_templates"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = [
     "docs/yearly-overview/2020-Game-Data.rst",
-    "docs/software/wpilib-tools/axon/**",
-    "docs/software/vision-processing/grip/**",
     "docs/beta/*",
 ]
 
@@ -189,6 +220,7 @@ IMAGE_SIZE_EXCLUSIONS = [
     "docs/software/vision-processing/introduction/diagrams/vision-code-on-a-coprocessor.drawio.svg",
     "docs/controls-overviews/images/frc-control-system-layout.svg",
     "docs/controls-overviews/images/frc-control-system-layout-rev.svg",
+    "docs/controls-overviews/images/frc-control-system-layout-basic.svg",
 ]
 
 # Required to display LaTeX in hover content
@@ -197,13 +229,14 @@ hoverxref_mathjax = True
 # Use MathJax3 for better page loading times
 mathjax_path = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
 
+nitpicky = True
 
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "sphinx_rtd_theme"
+html_theme = "furo"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -221,9 +254,26 @@ html_favicon = "assets/FIRSTicon_RGB_withTM.ico"
 html_baseurl = "https://docs.wpilib.org/en/stable/"
 
 html_theme_options = {
-    "collapse_navigation": True,
-    "sticky_navigation": False,
-    "titles_only": True,
+    "light_css_variables": {
+        "color-sidebar-background": "#003974",
+        "color-sidebar-brand-text": "#ffffffcc",
+        "color-sidebar-link-text--top-level": "#d9d9d9",
+        "color-background-hover": "#023160",
+        "color-sidebar-link-text": "#acb1b9",
+        "color-sidebar-caption-text": "#81868d",
+    }
+}
+
+html_sidebars = {
+    "**": [
+        "sidebar/scroll-start.html",
+        "sidebar/brand.html",
+        "sidebar/search.html",
+        "sidebar/navigation.html",
+        "sidebar/ethical-ads.html",
+        "sidebar/scroll-end.html",
+        "sidebar/variant-selector.html",
+    ]
 }
 
 user_options = [
@@ -232,7 +282,7 @@ user_options = [
 
 
 def setup(app):
-    app.add_css_file("css/frc-rtd.css")
+    app.add_css_file("css/wpilib-rtd.css")
 
     # Local Api Docs support
     app.add_js_file("js/api-docs-redirect.js")
@@ -241,7 +291,7 @@ def setup(app):
     is_rtl = app.config.language in rtl_locale
     app.config.hoverxref_tooltip_side = "left" if is_rtl else "right"
     if is_rtl:
-        app.add_css_file("css/frc-rtl.css")
+        app.add_css_file("css/wpilib-rtl.css")
 
     # Fix rtd version/language menu on iOS
     app.add_js_file("js/fix-rtd-menu-ios.js")
@@ -252,6 +302,17 @@ def setup(app):
     # Add 2014 archive link to rtd versions menu
     app.add_js_file("js/version-2014.js")
 
+    if on_pr():
+        app.tags.add("prbuild")
+
+
+html_context = {
+    "display_github": True,  # Integrate GitHub
+    "github_user": "wpilibsuite",  # Username
+    "github_repo": "wpilib-docs",  # Repo name
+    "github_version": "main",  # Version
+    "conf_py_path": "/source/",  # Path in the checkout to the docs root
+}
 
 # -- Options for latex generation --------------------------------------------
 
@@ -307,7 +368,7 @@ def new_send(self, data):
         )
 
         new_data = data
-        if b"api.github.com" in headers[b"host"]:
+        if headers[b"host"].endswith(b"api.github.com"):
             if b"authorization" not in headers:
                 if github_token := os.environ.get("GITHUB_TOKEN", None):
                     new_data = (
@@ -329,7 +390,10 @@ def new_send(self, data):
 http.client.HTTPConnection.send = new_send
 
 intersphinx_mapping = {
-    "robotpy": ("https://robotpy.readthedocs.io/projects/robotpy/en/latest/", None),
+    "robotpy": (
+        "https://robotpy.readthedocs.io/projects/robotpy/en/2027.0.0a8/",
+        None,
+    ),
 }
 
 # We recommend adding the following config value.
@@ -339,3 +403,10 @@ intersphinx_mapping = {
 # See also:
 # https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html#confval-intersphinx_disabled_reftypes
 intersphinx_disabled_reftypes = ["*"]
+
+
+def on_pr() -> bool:
+    return (
+        os.getenv("READTHEDOCS_VERSION_TYPE") == "external"
+        or os.getenv("GITHUB_EVENT_NAME") == "pull_request"
+    )

@@ -1,5 +1,4 @@
-Advanced Controls Introduction
-==============================
+# Advanced Controls Introduction
 
 .. toctree::
    :maxdepth: 1
@@ -13,4 +12,5 @@ Advanced Controls Introduction
    tuning-flywheel
    tuning-turret
    tuning-vertical-arm
+   tuning-elevator
    common-control-issues

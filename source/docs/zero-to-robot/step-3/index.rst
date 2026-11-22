@@ -1,9 +1,8 @@
-Step 3: Preparing Your Robot
-============================
+# Step 3: Preparing Your Robot
 
 .. toctree::
    :maxdepth: 1
 
-   roborio2-imaging
-   imaging-your-roborio
+   imaging-your-systemcore
    radio-programming
+   openmesh

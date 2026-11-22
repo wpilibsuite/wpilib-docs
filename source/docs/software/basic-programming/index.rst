@@ -1,5 +1,4 @@
-Basic Programming
-=================
+# Basic Programming
 
 .. toctree::
    :maxdepth: 1
@@ -8,9 +7,12 @@ Basic Programming
    cpp-units
    java-units
    joystick
+   coordinate-system
    robot-preferences
-   using-test-mode
+   deploy-directory
    reading-stacktraces
    functions-as-data
+   opmodes
    alliancecolor
    java-gc
+   using-utility-mode

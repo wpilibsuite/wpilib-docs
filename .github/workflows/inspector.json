@@ -3,28 +3,45 @@
     {
       "baseUrl": "https://raw.githubusercontent.com/wpilibsuite/allwpilib/",
       "versionScheme": "v\\d{4}\\.\\d\\.\\d(?:-(?:alpha|beta)-\\d)?|[0-9a-f]{40}",
-      "latestVersion": "v2024.1.1-beta-4"
+      "latestVersion": "v2027.0.0-alpha-8"
     },
     {
       "baseUrl": "https://github.com/wpilibsuite/allwpilib/raw/",
       "versionScheme": "v\\d{4}\\.\\d\\.\\d(?:-(?:alpha|beta)-\\d)?|[0-9a-f]{40}",
-      "latestVersion": "v2024.1.1-beta-4"
+      "latestVersion": "v2027.0.0-alpha-8"
     },
     {
-      "baseUrl": "https://raw.githubusercontent.com/robotpy/examples/",
-      "versionScheme": "\\d{4}\\.\\d\\.\\d\\.\\d(?:-(?:alpha|beta)-\\d)?|[0-9a-f]{40}",
-      "latestVersion": "c6d0540b01e138725fad7366ff4e317e9994b78b"
+      "baseUrl": "https://raw.githubusercontent.com/robotpy/mostrobotpy/",
+      "versionScheme": "\\d{4}\\.\\d\\.\\d(?:(?:a|b)\\d)?|[0-9a-f]{40}",
+      "latestVersion": "2027.0.0a8"
     },
     {
       "baseUrl": "https://raw.githubusercontent.com/wpilibsuite/vscode-wpilib/",
       "versionScheme": "v\\d{4}\\.\\d\\.\\d(?:-(?:alpha|beta)-\\d)?|[0-9a-f]{40}",
-      "latestVersion":"v2024.1.1-beta-4"
+      "latestVersion": "v2027.0.0-alpha-8"
     },
     {
       "baseUrl": "https://raw.githubusercontent.com/wpilibsuite/StandaloneAppSamples/",
       "versionScheme": "v\\d{4}\\.\\d\\.\\d(?:-(?:alpha|beta)-\\d)?|[0-9a-f]{40}",
-      "latestVersion":"3b64aadee717c9f0566497a40fd0be7d0eaed96d"
+      "latestVersion": "9020718b022ba220a2c5cc04ad12714d06e7a141"
     }
   ],
-  "ignoredFiles": ["source/docs/software/commandbased/command-scheduler.rst", "source/docs/software/hardware-apis/pneumatics/pressure.rst", "source/docs/software/hardware-apis/pneumatics/solenoids.rst", "source/docs/software/advanced-gradlerio/code-formatting.rst"]
+  "ignoredFiles": [
+    "source/docs/software/commandbased/commands-v2/command-scheduler.rst",
+    "source/docs/software/hardware-apis/pneumatics/pressure.rst",
+    "source/docs/software/hardware-apis/pneumatics/solenoids.rst",
+    "source/docs/software/advanced-controls/state-space/state-space-pose-estimators.rst",
+    "source/docs/software/commandbased/commands-v2/subsystems.rst",
+    "source/docs/software/advanced-controls/trajectories/troubleshooting.rst",
+    "source/docs/software/convenience-features/event-based.rst",
+    "source/docs/software/dashboards/glass/field2d-widget.rst",
+    "source/docs/software/hardware-apis/sensors/encoders-software.rst",
+    "source/docs/software/advanced-gradlerio/code-formatting.rst",
+    "source/docs/software/can-devices/power-distribution-module.rst",
+    "source/docs/software/commandbased/commands-v2/structuring-command-based-project.rst",
+    "source/docs/software/dashboards/glass/mech2d-widget.rst",
+    "source/docs/software/basic-programming/robot-preferences.rst",
+    "source/docs/software/wpilib-tools/robot-simulation/physics-sim.rst",
+    "source/docs/software/vision-processing/roborio/using-the-cameraserver-on-the-roborio.rst"
+  ]
 }

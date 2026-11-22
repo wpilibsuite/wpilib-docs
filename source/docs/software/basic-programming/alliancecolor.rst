@@ -1,52 +1,51 @@
-Get Alliance Color
-==================
+# Get Alliance Color
 
-The ``DriverStation`` class (`Java <https://github.wpilib.org/allwpilib/docs/beta/java/edu/wpi/first/wpilibj/DriverStation.html>`__, `C++ <https://github.wpilib.org/allwpilib/docs/beta/cpp/classfrc_1_1_driver_station.html>`__, `Python <https://robotpy.readthedocs.io/projects/wpilib/en/stable/wpilib/DriverStation.html>`__) has many useful features for getting data from the Driver Station computer.  One of the most important features is ``getAlliance`` (Java & Python) / ``GetAlliance`` (C++).
+The ``MatchState`` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.core/org/wpilib/driverstation/MatchState.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_match_state.html), :py:class:`Python <robotpy:wpilib.MatchState>`) has many useful features for getting data from the Driver Station about the current state of the match.  One of the most important features is ``getAlliance`` (Java) / ``GetAlliance`` (C++) / ``get_alliance`` (Python).
 
-Getting your Alliance Color and Doing an Action
------------------------------------------------
+Note that there are three cases: red, blue, and no color yet.  It is important that code handles the third case correctly because the alliance color will not be available until the Driver Station connects.  In particular, code should not assume that the alliance color will be available during constructor methods, but it should be available by the time `autoInit` or `teleopInit` is called.  FMS will set the alliance color automatically; when not connected to FMS, the alliance color can be set from the Driver Station (see :ref:`"Team Station" on the Settings Tab <docs/software/firstdriverstation/first-driver-station-introduction:settings tab>`).
+
+## Getting your Alliance Color and Doing an Action
 
 .. tab-set-code::
 
-  .. code-block:: java
+  ```java
+  Optional<Alliance> ally = MatchState.getAlliance();
+  if (ally.isPresent()) {
+      if (ally.get() == Alliance.RED) {
+          <RED ACTION>
+      }
+      if (ally.get() == Alliance.BLUE) {
+          <BLUE ACTION>
+      }
+  }
+  else {
+      <NO COLOR YET ACTION>
+  }
+  ```
 
-    Optional<Alliance> ally = DriverStation.getAlliance();
-    if (ally.isPresent()) {
-        if (ally.get() == Alliance.Red) {
-            <RED ACTION>
-        }
-        if (ally.get() == Alliance.Blue) {
-            <BLUE ACTION>
-        }
-    }
-    else {
-        <NO COLOR YET ACTION>
-    }
+  ```c++
+  if (auto ally = wpi::MatchState::GetAlliance()) {
+      if (ally.value() == wpi::Alliance::RED) {
+          <RED ACTION>
+      }
+      if (ally.value() == wpi::Alliance::BLUE) {
+          <BLUE ACTION>
+      }
+  }
+  else {
+      <NO COLOR YET ACTION>
+  }
+  ```
 
-  .. code-block:: c++
+  ```Python
+  from wpilib import MatchState
+  ally = MatchState.get_alliance()
+  if ally is not None:
+      if ally == MatchState.Alliance.RED:
+          <RED ACTION>
+      elif ally == MatchState.Alliance.BLUE:
+          <BLUE ACTION>
+  else:
+      <NO COLOR YET ACTION>
+  ```
 
-    using frc::DriverStation::Alliance;
-    if (auto ally = frc::DriverStation::GetAlliance()) {
-        if (ally.value() == Alliance::kRed) {
-            <RED ACTION>
-        }
-        if (ally.value() == Alliance::kBlue) {
-            <BLUE ACTION>
-        }
-    }
-    else {
-        <NO COLOR YET ACTION>
-    }
-
-  .. code-block:: Python
-
-    from wpilib import DriverStation
-
-    self.ally = DriverStation.getAlliance()
-    if self.ally:
-        if self.ally.value() == DriverStation.Alliance.kRed:
-            <RED ACTION>
-        if self.ally.value() == DriverStation.Alliance.kBlue:
-            <BLUE ACTION>
-    else:
-        <NO COLOR YET ACTION>

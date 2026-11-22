@@ -1,59 +1,147 @@
-Using Motor Controllers in Code
-================================
+# Using Motor Controllers in Code
 
 Motor controllers come in two main flavors: :term:`CAN` and :term:`PWM`. A CAN controller can send more detailed status information back to the roboRIO, whereas a PWM controller can only be set to a value. For information on using these motors with the WPILib drivetrain classes, see :doc:`wpi-drive-classes`.
 
-Using PWM Motor Controllers
----------------------------
+## Using PWM Motor Controllers
 
-PWM motor controllers can be controlled in the same way as a CAN motor controller. For a more detailed background on *how* they work, see :doc:`pwm-controllers`. To use a PWM motor controller, simply use the appropriate motor controller class provided by WPILib and supply it the port the motor controller(s) are plugged into on the roboRIO.  All approved motor controllers have WPILib classes provided for them.
+For a more detailed background on *how* PWM motor controllers work, see :doc:`pwm-controllers`. To use a PWM motor controller, simply use the appropriate motor controller class provided by WPILib and supply it the port the motor controller(s) are plugged into on the roboRIO.  All approved motor controllers have WPILib classes provided for them.
 
 .. note:: The ``Spark`` and ``VictorSP`` classes are used here as an example; other PWM motor controller classes have exactly the same API.
 
+.. important:: The ``set()`` method accepts values from **-1.0 to 1.0**, where:
+
+   - **-1.0** = full speed reverse
+   - **0.0** = stopped
+   - **1.0** = full speed forward
+
+### Where to Put This Code
+
+**In Command-Based programs:**
+
+Motor controllers should be declared as member variables in your subsystem class. Create them in the subsystem constructor, and use them in command methods.
+
 .. tab-set-code::
 
-   .. code-block:: java
+   ```java
+   public class IntakeSubsystem extends SubsystemBase {
+     private final Spark m_motor = new Spark(0);
 
-      Spark spark = new Spark(0); // 0 is the RIO PWM port this is connected to
+     public void runIntake() {
+       m_motor.set(0.8);
+     }
 
-      spark.set(-0.75); // the % output of the motor, between -1 and 1
+     public void stopIntake() {
+       m_motor.set(0.0);
+     }
+   }
+   ```
 
-      VictorSP victor = new VictorSP(0); // 0 is the RIO PWM port this is connected to
+   ```c++
+   class IntakeSubsystem : public wpi::cmd::SubsystemBase {
+    public:
+     IntakeSubsystem() : m_motor{0} {}
 
-      victor.set(0.6); // the % output of the motor, between -1 and 1
+     void RunIntake() {
+       m_motor.Set(0.8);
+     }
 
-   .. code-block:: c++
+     void StopIntake() {
+       m_motor.Set(0.0);
+     }
 
-      frc::Spark spark{0}; // 0 is the RIO PWM port this is connected to
+    private:
+     wpi::Spark m_motor;
+   };
+   ```
 
-      spark.Set(-0.75); // the % output of the motor, between -1 and 1
+   ```python
+   class IntakeSubsystem(commands2.SubsystemBase):
+       def __init__(self):
+           super().__init__()
+           self.motor = wpilib.Spark(0)
 
-      frc::VictorSP victor{0}; // 0 is the RIO PWM port this is connected to
+       def run_intake(self):
+           self.motor.set(0.8)
 
-      victor.Set(0.6); // the % output of the motor, between -1 and 1
+       def stop_intake(self):
+           self.motor.set(0.0)
+   ```
 
-   .. code-block:: python
+**In Timed Robot programs:**
 
-      spark = wpilib.Spark(0) # 0 is the RIO PWM port this is connected to
+Motor controllers should be declared as member variables in your ``Robot`` class. Create them in the ``Robot`` constructor, and use them in periodic methods or autonomous/teleop methods.
 
-      spark.set(-0.75) # the % output of the motor, between -1 and 1
+.. tab-set-code::
 
-      victor = wpilib.VictorSP(0) # 0 is the RIO PWM port this is connected to
+   ```java
+   public class Robot extends TimedRobot {
+     private Spark m_intakeMotor;
+     private Joystick m_joystick;
 
-      victor.set(0.6) # the % output of the motor, between -1 and 1
+     public Robot() {
+       m_intakeMotor = new Spark(0);
+       m_joystick = new Joystick(0);
+     }
 
+     @Override
+     public void teleopPeriodic() {
+       // Run intake when button is pressed
+       if (m_joystick.getRawButton(1)) {
+         m_intakeMotor.set(0.8);
+       } else {
+         m_intakeMotor.set(0.0);
+       }
+     }
+   }
+   ```
 
-CAN Motor Controllers
----------------------
+   ```c++
+   class Robot : public wpi::TimedRobot {
+    public:
+     Robot() : m_intakeMotor{0}, m_joystick{0} {}
 
-A handful of CAN motor controllers are available through vendors such as CTR Electronics and REV Robotics.
+     void TeleopPeriodic() override {
+       // Run intake when button is pressed
+       if (m_joystick.GetRawButton(1)) {
+         m_intakeMotor.Set(0.8);
+       } else {
+         m_intakeMotor.Set(0.0);
+       }
+     }
 
-SPARK MAX
-^^^^^^^^^
+    private:
+     wpi::Spark m_intakeMotor;
+     wpi::Joystick m_joystick;
+   };
+   ```
 
-For information regarding the SPARK MAX CAN Motor Controller, which can be used in either CAN or PWM mode, please refer to the SPARK MAX `software resources <https://www.revrobotics.com/sparkmax-software/>`_ and `example code. <https://github.com/REVrobotics/SPARK-MAX-Examples>`_
+   ```python
+   class MyRobot(wpilib.TimedRobot):
+       def __init__(self):
+           super().__init__()
+           self.intake_motor = wpilib.Spark(0)
+           self.joystick = wpilib.Joystick(0)
 
-CTRE CAN Motor Controllers
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+       def teleop_periodic(self):
+           # Run intake when button is pressed
+           if self.joystick.get_raw_button(1):
+               self.intake_motor.set(0.8)
+           else:
+               self.intake_motor.set(0.0)
+   ```
 
-Please refer to the third party CTRE documentation on the Phoenix software for more detailed information. The documentation is available `here. <https://docs.ctr-electronics.com/>`_
+### Common Use Cases
+
+Motor controllers are used throughout the robot for many mechanisms:
+
+- **Intakes**: Spin wheels to collect game pieces
+- **Shooters**: Spin flywheels to launch game pieces
+- **Conveyors**: Move game pieces through the robot
+- **Arms/Elevators**: Raise and lower mechanisms (often with position control)
+- **Climbers**: Extend or retract climbing mechanisms
+
+For drivetrain usage, see :doc:`wpi-drive-classes`. For more complete examples, see :doc:`/docs/software/examples-tutorials/wpilib-examples`.
+
+## CAN Motor Controllers
+
+CAN motor controllers are available through vendors such as CTR Electronics (Talon FX), REV Robotics (SPARK MAX/FLEX), and others. See :doc:`/docs/software/can-devices/third-party-devices`, :doc:`/docs/software/vscode-overview/3rd-party-libraries`, and :doc:`/docs/software/examples-tutorials/third-party-examples` for more information.

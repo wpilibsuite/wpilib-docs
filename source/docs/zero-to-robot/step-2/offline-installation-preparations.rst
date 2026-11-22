@@ -1,53 +1,36 @@
 .. include:: <isonum.txt>
 
-Offline Installation Preparation
-================================
+# Offline Installation Preparation
 
-This article contains instructions/links to components you will want to gather if you need to do offline installation of the FRC\ |reg| Control System software.
+This article contains instructions/links to components you will want to gather if you need to do offline installation of the FIRST\ |reg| Control System software.
 
 .. tip:: This document compiles all the download links from the following documents to make it easier to install on offline computers or on multiple computers. If you are you installing on a single computer that is connected to the internet, you can skip this page.
 
 .. note:: The order in which these tools are installed does not matter for Java and C++ teams.  LabVIEW should be installed before the FRC Game Tools or 3rd Party Libraries.
 
-Documentation
--------------
+## Documentation
 
-This documentation can be downloaded for offline viewing. The link to download the PDF can be found `here <https://buildmedia.readthedocs.org/media/pdf/frc-docs/stable/frc-docs.pdf>`__.
+This documentation can be downloaded for offline viewing. The link to download the PDF can be found [here](https://buildmedia.readthedocs.org/media/pdf/frc-docs/stable/frc-docs.pdf).
 
-Installers
-----------
+## Installers
 
-All Teams
-^^^^^^^^^
+### All Teams
 
-.. important:: As of 1/3/24 the 2024 Game Tools are not yet available. Game Tools will likely be available sometime on 1/4 or 1/5.
+-  [FIRST Driver Station](https://github.com/wpilibsuite/FirstDriverStation-Public/releases/)
 
--  `2024 FRC Game Tools <https://www.ni.com/en-us/support/downloads/drivers/download.frc-game-tools.html#479842>`__ (Note: Click on link for "Individual Offline Installers")
+### Java/C++ Teams
 
--  `2024 FRC Radio Configuration Utility <https://firstfrc.blob.core.windows.net/frc2024/Radio/FRC_Radio_Configuration_24_0_1.zip>`__ or `2024 FRC Radio Configuration Utility Israel Version <https://firstfrc.blob.core.windows.net/frc2024/Radio/FRC_Radio_Configuration_24_0_1_IL.zip>`__
-
-LabVIEW Teams
-^^^^^^^^^^^^^
-
--  `LabVIEW Base Installer <https://www.ni.com/en-us/support/downloads/drivers/download.labview-software-for-frc.html>`__ (Note: Click on link for "Individual Offline Installers")
-
-Java/C++ Teams
-^^^^^^^^^^^^^^
-
-.. important:: As of 1/3/24 the 2024 WPILib installer is not yet available. It will likely be available sometime on 1/4 or 1/5.
-
--  `Java/C++ WPILib Installer <https://github.com/wpilibsuite/allwpilib/releases/latest>`__
+-  [Java/C++ WPILib Installer](https://github.com/wpilibsuite/allwpilib/releases)
 
 Once on the GitHub releases page, scroll to the download section in the middle of the page.
 
-.. image:: images/installer-download/github-release.jpg
+.. image:: images/installer-download/github-release.png
    :alt: Latest WPILib release page on GitHub
 
 Then click on the correct binary for your OS and architecture to begin the download.
 
-.. note:: After downloading the Java/C++ WPILib installer, run it once while connected to the internet and select :guilabel:`Install for this User` then :guilabel:`Create VS Code zip to share with other computers/OSes for offline install` and save the downloaded VS Code zip file for future offline installations.
+.. note:: After downloading the Java/C++ WPILib installer, run it once while connected to the internet and select :guilabel:`Install for this User` then :guilabel:`Download VS Code archives to share with other computers/OSes for offline install` and save the downloaded VS Code archives for future offline installations.
 
-3rd Party Libraries/Software
-----------------------------
+## 3rd Party Libraries/Software
 
 A directory of available 3rd party software that plugs in to WPILib can be found on :ref:`docs/software/vscode-overview/3rd-party-libraries:3rd Party Libraries`.

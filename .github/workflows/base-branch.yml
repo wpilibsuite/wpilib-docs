@@ -8,11 +8,10 @@ on:
 
 jobs:
   check-base-branch:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
-      - uses: wpilibsuite/check-base-branch-action@v1.1
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          protected-branches: stable
-          default-branch: main
-          update-branch: true
+      - name: Base Branch
+        run: | 
+          echo "::error ::Base branch of PR is stable. It should be main. Please retarget the base branch of the PR." 
+          exit 1
+

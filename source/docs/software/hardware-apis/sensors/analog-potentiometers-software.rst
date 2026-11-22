@@ -1,16 +1,14 @@
-Analog Potentiometers - Software
-================================
+# Analog Potentiometers - Software
 
 .. note:: This section covers analog potentiometers in software.  For a hardware guide to analog potentiometers, see :ref:`docs/hardware/sensors/analog-potentiometers-hardware:Analog Potentiometers - Hardware`.
 
 Potentiometers are variable resistors that allow information about position to be converted into an analog voltage signal.  This signal can be read by the roboRIO to control whatever device is attached to the potentiometer.
 
-While it is possible to read information from a potentiometer directly with an :doc:`analog-inputs-software`, WPILib provides an :code:`AnalogPotentiometer` class (`Java <https://github.wpilib.org/allwpilib/docs/beta/java/edu/wpi/first/wpilibj/AnalogPotentiometer.html>`__, `C++ <https://github.wpilib.org/allwpilib/docs/beta/cpp/classfrc_1_1_analog_potentiometer.html>`__) that handles re-scaling the values into meaningful units for the user.  It is strongly encouraged to use this class.
+While it is possible to read information from a potentiometer directly with an :doc:`analog-inputs-software`, WPILib provides an :code:`AnalogPotentiometer` class ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.core/org/wpilib/hardware/rotation/AnalogPotentiometer.html), [C++](https://github.wpilib.org/allwpilib/docs/beta/cpp/classwpi_1_1_analog_potentiometer.html)) that handles re-scaling the values into meaningful units for the user.  It is strongly encouraged to use this class.
 
 In fact, the :code:`AnalogPotentiometer` name is something of a misnomer - this class should be used for the vast majority of sensors that return their signal as a simple, linearly-scaled analog voltage.
 
-The AnalogPotentiometer class
------------------------------
+## The AnalogPotentiometer class
 
 .. note:: The "full range" or "scale" parameters in the :code:`AnalogPotentiometer` constructor are scale factors from a range of 0-1 to the actual range, *not* from 0-5.  That is, they represent a native fractional scale, rather than a voltage scale.
 
@@ -18,73 +16,45 @@ An AnalogPotentiometer can be initialized as follows:
 
 .. tab-set-code::
 
-    .. code-block:: java
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/snippets/analogpotentiometer/Robot.java
+      :language: java
+      :lines: 16-21
 
-        // Initializes an AnalogPotentiometer on analog port 0
-        // The full range of motion (in meaningful external units) is 0-180 (this could be degrees, for instance)
-        // The "starting point" of the motion, i.e. where the mechanism is located when the potentiometer reads 0v, is 30.
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/snippets/AnalogPotentiometer/cpp/Robot.cpp
+      :language: c++
+      :lines: 23-27
 
-        AnalogPotentiometer pot = new AnalogPotentiometer(0, 180, 30);
 
-    .. code-block:: c++
-
-        // Initializes an AnalogPotentiometer on analog port 0
-        // The full range of motion (in meaningful external units) is 0-180 (this could be degrees, for instance)
-        // The "starting point" of the motion, i.e. where the mechanism is located when the potentiometer reads 0v, is 30.
-
-        frc::AnalogPotentiometer pot{0, 180, 30};
-
-Customizing the underlying AnalogInput
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. note:: If the user changes the scaling of the :code:`AnalogInput` with oversampling, this must be reflected in the scale setting passed to the :code:`AnalogPotentiometer`.
+### Customizing the underlying AnalogInput
 
 If the user would like to apply custom settings to the underlying :code:`AnalogInput` used by the :code:`AnalogPotentiometer`, an alternative constructor may be used in which the :code:`AnalogInput` is injected:
 
 .. tab-set-code::
 
-    .. code-block:: java
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/snippets/analogpotentiometer/Robot.java
+      :language: java
+      :lines: 23-30
 
-        // Initializes an AnalogInput on port 0, and enables 2-bit averaging
-        AnalogInput input = new AnalogInput(0);
-        input.setAverageBits(2);
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/snippets/AnalogPotentiometer/cpp/Robot.cpp
+      :language: c++
+      :lines: 29-35
 
-        // Initializes an AnalogPotentiometer with the given AnalogInput
-        // The full range of motion (in meaningful external units) is 0-180 (this could be degrees, for instance)
-        // The "starting point" of the motion, i.e. where the mechanism is located when the potentiometer reads 0v, is 30.
-
-        AnalogPotentiometer pot = new AnalogPotentiometer(input, 180, 30);
-
-    .. code-block:: c++
-
-        // Initializes an AnalogInput on port 0, and enables 2-bit averaging
-        frc::AnalogInput input{0};
-        input.SetAverageBits(2);
-
-        // Initializes an AnalogPotentiometer with the given AnalogInput
-        // The full range of motion (in meaningful external units) is 0-180 (this could be degrees, for instance)
-        // The "starting point" of the motion, i.e. where the mechanism is located when the potentiometer reads 0v, is 30.
-
-        frc::AnalogPotentiometer pot{input, 180, 30};
-
-Reading values from the AnalogPotentiometer
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+### Reading values from the AnalogPotentiometer
 
 The scaled value can be read by simply calling the :code:`get` method:
 
 .. tab-set-code::
 
-    .. code-block:: java
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibjExamples/src/main/java/org/wpilib/snippets/analogpotentiometer/Robot.java
+      :language: java
+      :lines: 39-40
 
-        pot.get();
+   .. remoteliteralinclude:: https://raw.githubusercontent.com/wpilibsuite/allwpilib/v2027.0.0-alpha-8/wpilibcExamples/src/main/cpp/snippets/AnalogPotentiometer/cpp/Robot.cpp
+      :language: c++
+      :lines: 18-19
 
-    .. code-block:: c++
+## Using AnalogPotentiometers in code
 
-        pot.Get();
-
-Using AnalogPotentiometers in code
-----------------------------------
-
-Analog sensors can be used in code much in the way other sensors that measure the same thing can be.  If the analog sensor is a potentiometer measuring an arm angle, it can be used similarly to an :doc:`encoder <encoders-software>`.  If it is an ultrasonic sensor, it can be used similarly to other :doc:`ultrasonics <ultrasonics-software>`.
+Analog sensors can be used in code much in the way other sensors that measure the same thing can be.  If the analog sensor is a potentiometer measuring an arm angle, it can be used similarly to an :doc:`encoder <encoders-software>`.
 
 It is very important to keep in mind that actual, physical potentiometers generally have a limited range of motion.  Safeguards should be present in both the physical mechanism and the code to ensure that the mechanism does not break the sensor by traveling past its maximum throw.

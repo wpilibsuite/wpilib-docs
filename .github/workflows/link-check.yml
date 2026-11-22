@@ -10,14 +10,16 @@ env:
 
 jobs:
   check-links:
-    if: github.repository_owner	== 'wpilibsuite'
-    runs-on: ubuntu-latest
+    if: github.repository_owner == 'wpilibsuite'
+    runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-python@v4
+    - uses: actions/checkout@v6
       with:
-        python-version: 3.9
-    - name: Install Dependencies
-      run: pip install -r source/requirements.txt
+        fetch-depth: 0
+    - uses: actions/setup-python@v6
+      with:
+        python-version: 3.13
+    - name: Install uv
+      uses: astral-sh/setup-uv@v8.1.0
     - name: Check Links
-      run: make linkcheck
+      run: uv run make linkcheck

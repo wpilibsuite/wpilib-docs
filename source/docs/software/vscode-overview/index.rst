@@ -1,5 +1,4 @@
-VS Code Overview
-================
+# VS Code Overview
 
 .. toctree::
    :maxdepth: 1
@@ -11,4 +10,4 @@ VS Code Overview
    deploying-robot-code
    viewing-console-output
    debugging-robot-program
-   importing-gradle-project
+   importing-last-years-robot-code

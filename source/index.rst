@@ -1,4 +1,4 @@
-.. FIRST Robotics Competition documentation master file, created by
+.. WPILib Documentation master file, created by
    sphinx-quickstart on Fri Apr  5 23:28:43 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -8,12 +8,11 @@
 .. meta::
    :google-site-verification: POR_nG8b56eXGxmUIutST7jcA_Vl58ypSdJTzJ1g0zg
 
-FIRST Robotics Competition Control System
-=========================================
+# FIRST Control System
 
-Welcome to the *FIRST*\ |reg| Robotics Competition Control System Documentation! This site contains everything you need to know for programming a competition robot!
+Welcome to the *FIRST*\ |reg| Control System Documentation! This site contains everything you need to know for programming a competition robot using WPILib!
 
-Community translations can be found in a variety of languages in the bottom-left menu.
+Community translations can be found in a variety of languages in the menu towards the bottom-right of the screen.
 
 .. grid:: 1 2 2 2
    :gutter: 3
@@ -25,7 +24,7 @@ Community translations can be found in a variety of languages in the bottom-left
 
       ^^^
 
-      If you are a returning team, please check out the overview of changes from 2023 to 2024, known issues, and quick start guide for updating.
+      If you are a returning team, please check out the overview of changes for 2027, known issues, and quick start guide for updating.
 
       +++
 
@@ -64,7 +63,7 @@ Community translations can be found in a variety of languages in the bottom-left
 
       ^^^
 
-      The Zero-to-Robot tutorial will guide you through preparation, wiring and programming a basic robot!
+      The Zero-to-Robot tutorial will guide you through preparation, wiring, and programming a basic robot!
 
       +++
 
@@ -238,7 +237,7 @@ Community translations can be found in a variety of languages in the bottom-left
 
          C++
 
-      .. button-link:: https://robotpy.readthedocs.io/projects/robotpy/en/latest/
+      .. button-link:: https://robotpy.readthedocs.io/projects/robotpy/en/stable/
          :color: primary
          :shadow:
          :align: center
@@ -254,7 +253,7 @@ Community translations can be found in a variety of languages in the bottom-left
 
       ^^^
 
-      Essential tooling such as FRC Driver Station, Dashboards, roboRIO Imaging Tool and more.
+      Essential tooling such as FIRST Driver Station, Dashboards, roboRIO Imaging Tool, and more.
 
       +++
 
@@ -357,7 +356,7 @@ Community translations can be found in a variety of languages in the bottom-left
    docs/software/vscode-overview/index
    docs/software/dashboards/index
    docs/software/telemetry/index
-   docs/software/labview/index
+   docs/software/python/index
    docs/software/hardware-apis/index
    docs/software/can-devices/index
    docs/software/basic-programming/index
@@ -371,17 +370,17 @@ Community translations can be found in a variety of languages in the bottom-left
 
    WPILib Java API Docs <https://github.wpilib.org/allwpilib/docs/beta/java/index.html>
    WPILib C++ API Docs <https://github.wpilib.org/allwpilib/docs/beta/cpp/index.html>
-   WPILib Python API Docs <https://robotpy.readthedocs.io/projects/robotpy/en/latest/>
+   WPILib Python API Docs <https://robotpy.readthedocs.io/projects/robotpy/en/stable/>
 
 .. toctree::
    :maxdepth: 1
    :caption: Software Tools
    :hidden:
 
-   docs/software/driverstation/index
-   docs/software/wpilib-tools/robotbuilder/index
+   docs/software/firstdriverstation/index
    docs/software/wpilib-tools/robot-simulation/index
    docs/software/wpilib-tools/outlineviewer/index
+   docs/software/wpilib-tools/wpical/index
 
 .. toctree::
    :maxdepth: 1
@@ -393,7 +392,7 @@ Community translations can be found in a variety of languages in the bottom-left
    docs/software/kinematics-and-odometry/index
    docs/software/networktables/index
    docs/software/pathplanning/index
-   docs/software/roborio-info/index
+   docs/software/systemcore-info/index
    docs/software/advanced-gradlerio/index
    docs/software/advanced-controls/index
    docs/software/convenience-features/index
@@ -436,14 +435,20 @@ Community translations can be found in a variety of languages in the bottom-left
    :caption: Contributing
    :hidden:
 
-   docs/contributing/frc-docs/index
+   docs/contributing/wpilib-docs/index
    docs/contributing/wpilib/index
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Legal
+   :hidden:
+
+   docs/legal/privacy-policy
 
 .. toctree::
    :maxdepth: 1
    :caption: Issues
    :hidden:
 
-   Report an Issue <https://github.com/wpilibsuite/frc-docs/issues>
+   Report a Documentation Issue <https://github.com/wpilibsuite/wpilib-docs/issues>
 
-.. todolist::

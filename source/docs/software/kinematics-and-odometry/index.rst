@@ -1,10 +1,9 @@
-Kinematics and Odometry
-=======================
+# Kinematics and Odometry
 
 .. toctree::
    :maxdepth: 1
 
-   intro-and-chassis-speeds
+   intro-and-chassis-velocities
    differential-drive-kinematics
    differential-drive-odometry
    swerve-drive-kinematics

@@ -1,16 +1,14 @@
-Romi Hardware & Assembly
-========================
+# Romi Hardware & Assembly
 
 To get started with the Romi, you will need to have the necessary hardware.
 
-1. `Romi Kit from Pololu <https://www.pololu.com/product/4022>`__ – Order qualifies for free shipping
-2. `Raspberry Pi <https://www.amazon.com/gp/product/B07BFH96M3/>`__ – 3B+ or 4
-3. `8GB (or larger) Micro SD card <https://www.amazon.com/dp/B073K14CVB/>`__
-4. `Micro SD card reader <https://www.amazon.com/gp/product/B0779V61XB/>`__ - if you don't already have one
-5. `6 AA batteries <https://www.amazon.com/gp/product/B07TW9T8JW/>`__ – Rechargeable is best (don't forget the charger)
+1. [Romi Kit from Pololu](https://www.pololu.com/product/4022) – Order qualifies for free shipping
+2. [Raspberry Pi](https://www.amazon.com/gp/product/B07BFH96M3/) – 3B+ or 4
+3. [8GB (or larger) Micro SD card](https://www.amazon.com/dp/B073K14CVB/)
+4. [Micro SD card reader](https://www.amazon.com/gp/product/B0779V61XB/) - if you don't already have one
+5. [6 AA batteries](https://www.amazon.com/gp/product/B07TW9T8JW/) – Rechargeable is best (don't forget the charger)
 
-Assembly
---------
+## Assembly
 
 The Romi Robot Kit for FIRST comes pre-soldered and only has to be put together before it can be used. Once you have gathered all the materials you can begin assembly:
 
@@ -24,12 +22,12 @@ The Romi Robot Kit for FIRST comes pre-soldered and only has to be put together 
 .. image:: images/hardware/assembly-motors.png
    :alt: Installing the motors on the Romi chassis.
 
-3. Press the wheels onto the output shafts of the motors until the motor shaft is flush with the outer face of the wheel. One way to do this is to set the wheel on a flat surface and line the chassis up with it so that the flat part of the motor’s D-shaft lines up correctly with the wheel. Then, lower the chassis, pressing the motor shaft into the wheel until it contacts the surface.
+3. Press the wheels onto the output shafts of the motors until the motor shaft is flush with the outer face of the wheel. One way to do this is to set the wheel on a flat surface and line the chassis up with it so that the flat part of the motor's D-shaft lines up correctly with the wheel. Then, lower the chassis, pressing the motor shaft into the wheel until it contacts the surface.
 
 .. image:: images/hardware/assembly-wheels.png
    :alt: Attaching the wheels on the Romi chassis.
 
-4. Flip the chassis upside down and place the three rollers for the rear ball caster into the cutouts in the chassis. Place the 1″ plastic ball on top of the three rollers. Then push the ball caster retention clip over the ball and into the chassis so the three legs snap into their respective holes.
+4. Flip the chassis upside down and place the three rollers for the rear ball caster into the cutouts in the chassis. Place the 1" plastic ball on top of the three rollers. Then push the ball caster retention clip over the ball and into the chassis so the three legs snap into their respective holes.
 
 .. image:: images/hardware/assembly-caster-rear.png
    :alt: Installing the rear ball caster on the Romi chassis.

@@ -1,15 +1,12 @@
-3rd Party Libraries
-===================
+# 3rd Party Libraries
 
 Teams that are using non-:term:`PWM` motor controllers or advanced sensors will most likely need to install external vendor dependencies.
 
-What Are Vendor Dependencies?
------------------------------
+## What Are Vendor Dependencies?
 
-A vendor dependency is a way for vendors such as CTRE, REV, and others to add their :term:`software library` to robot projects. This library can interface with motor controllers and other devices. This way, teams can interact with their devices via CAN and have access to more complex and in-depth features than traditional PWM control.
+A vendor dependency is a way for vendors to add their :term:`software library` to robot projects. This library can interface with motor controllers and other devices. This way, teams can interact with their devices via CAN and have access to more complex and in-depth features than traditional PWM control.
 
-Managing Vendor Dependencies
-----------------------------
+## Managing Vendor Dependencies
 
 Vendor dependencies are installed on a per-project basis (so each robot project can have its own set of vendor dependencies). Vendor dependencies can be installed "online" or "offline". The "online" functionality is done by downloading the dependencies over the internet, while offline is typically provided by a vendor-specific installer.
 
@@ -17,122 +14,137 @@ Vendor dependencies are installed on a per-project basis (so each robot project 
 
 .. note:: Vendors recommend using their offline installers when available, because the offline installer is typically bundled with additional programs that are extremely useful when working with their devices.
 
-How Does It Work?
-^^^^^^^^^^^^^^^^^
+### Installing Libraries
 
-How Does It Work? - Java/C++
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. tab-set::
 
-For Java and C++, a :term:`JSON` file describing the vendor library is installed on your system to ``~/wpilib/YYYY/vendordeps`` (where YYYY is the year and ~ is ``C:\Users\Public`` on Windows). This can either be done by an offline installer or the file can be fetched from an online location using the menu item in Visual Studio Code. This file is then used from VS Code to add to the library to each individual project. Vendor library information is managed on a per-project basis to make sure that a project is always pointing to a consistent version of a given vendor library. The libraries themselves are placed in the Maven cache at ``C:\Users\Public\wpilib\YYYY\maven``. Vendors can place a local copy here with an offline installer (recommended) or require users to be connected to the internet for an initial build to fetch the library from a remote Maven location.
+   .. tab-item:: Java/C++
+      :sync: javacpp
 
-This JSON file allows specification of complex libraries with multiple components (Java, C++, JNI, etc.) and also helps handle some complexities related to simulation. Vendors that choose to provide a remote URL in the JSON also enable users to check for updates from within VS Code.
+      **VS Code**
 
-How Does It Work? - LabVIEW
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      .. image:: images/3rd-party-libraries/dependency-activity-bar.png
+         :alt: The activity bar of VS Code showing the WPILib icon that opens the Dependency Manager.
 
-For LabVIEW teams, there might be a few new :guilabel:`Third Party` items on various palettes (specifically, one in :guilabel:`Actuators`, one in :guilabel:`Actuators` -> :guilabel:`Motor Control` labeled :guilabel:`CAN Motor`, and one in :guilabel:`Sensors`). These correspond to folders in ``C:\Program Files\National Instruments\LabVIEW 2023\vi.lib\Rock Robotics\WPI\Third Party``
+      All vendordep operations can be controlled by the Dependency Manager.  Click the WPILib logo in the activity bar as shown above to access the interface.
 
-In order to install third party libraries for LabVIEW, download the VIs from the vendor (typically via some sort of installer). Then drag and drop the third party VIs into the respective folder mentioned above just like any other VI.
+      .. image:: images/3rd-party-libraries/dependency-sidebar.png
+         :alt: The interface of the Dependency Manager with the installed vendordeps at the top and a list of available vendordeps below it.
 
-Installing Libraries
-^^^^^^^^^^^^^^^^^^^^^^^^
+      Select the desired libraries to add to the project by clicking the :guilabel:`Install` button next to each. The JSON file will be copied to the ``vendordeps`` folder in the project, adding the library as a dependency to the project.
 
-VS Code
-~~~~~~~
+      When an update is available for an installed vendordep you will see the :guilabel:`To Latest` button become available.  To update you can either press that or the :guilabel:`Update All` to move all vendordeps to the latest version.
 
-.. image:: images/3rd-party-libraries/adding-offline-library.png
-   :alt: Using the Manage Vendor Libraries option of the WPILib Command Palette.
+      The button with the trash icon will uninstall the vendordep.  The dropdown shows what version is currently installed but you can change that to a different version to :guilabel:`update` or :guilabel:`downgrade` to the specified version.
 
-To add a vendor library that has been installed by an offline installer, press :kbd:`Ctrl+Shift+P` and type WPILib or click on the WPILib icon in the top right to open the WPILib Command Palette and begin typing :guilabel:`Manage Vendor Libraries`, then select it from the menu. Select the option to :guilabel:`Install new libraries (offline)`.
+      .. note:: The Dependency Manager will automatically build your program when it loses focus.  This allows you to use the changed dependencies.
 
-.. image:: images/3rd-party-libraries/library-installer-steptwo.png
-   :alt: Select the libraries to add.
+   .. tab-item:: Python
+      :sync: python
 
-Select the desired libraries to add to the project by checking the box next to each, then click :guilabel:`OK`. The JSON file will be copied to the ``vendordeps`` folder in the project, adding the library as a dependency to the project.
+      All RobotPy project dependencies are specified in ``pyproject.toml``. You can specify optional WPILib components by adding the component name to ``components``.
 
-In order to install a vendor library in online mode, press :kbd:`Ctrl+Shift+P` and type WPILib or click on the WPILib icon in the top right to open the WPILib Command Palette and begin typing :guilabel:`Manage Vendor Libraries` and select it in the menu, and then click on :guilabel:`Install new libraries (online)` instead and copy + paste the vendor JSON URL.
+      .. seealso:: :doc:`/docs/software/python/pyproject_toml`
 
+      Optional WPILib components:
 
-Checking for Updates (Offline)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      +----------+----------------+---------------------+
+      |          | components     | requires            |
+      +==========+================+=====================+
+      | Apriltag | apriltag       | robotpy-apriltag    |
+      +----------+----------------+---------------------+
+      | Commands | commands2      | robotpy-commands-v2 |
+      +----------+----------------+---------------------+
+      | cscore   | cscore         | robotpy-cscore      |
+      +----------+----------------+---------------------+
+      | Romi     | romi           | robotpy-romi        |
+      +----------+----------------+---------------------+
+      | XRP      | xrp            | robotpy-xrp         |
+      +----------+----------------+---------------------+
 
-Since dependencies are version managed on a per-project basis, even when installed offline, you will need to :guilabel:`Manage Vendor Libraries` and select :guilabel:`Check for updates (offline)` for each project you wish to update.
+      To add vendor libraries to your project, you must add the PyPI package name to ``requires``.
 
-Checking for Updates (Online)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Optional vendor-specific components (not all are available at the beginning of the season):
 
-Part of the JSON file that vendors may optionally populate is an online update location. If a library has an appropriate location specified, running :guilabel:`Check for updates (online)` will check if a newer version of the library is available from the remote location.
+      +---------------------+-----------+---------------------------+
+      |                     | Origin    | requires                  |
+      +=====================+===========+===========================+
+      | ChoreoLib           | Vendor    | sleipnirgroup-choreolib   |
+      +---------------------+-----------+---------------------------+
+      | CTRE Phoenix 6      | Vendor    | phoenix6                  |
+      +---------------------+-----------+---------------------------+
+      | CTRE Phoenix 5      | Community | robotpy-ctre              |
+      +---------------------+-----------+---------------------------+
+      | PathPlannerLib      | Vendor    | robotpy-pathplannerlib    |
+      +---------------------+-----------+---------------------------+
+      | PhotonVision        | Vendor    | photonlibpy               |
+      +---------------------+-----------+---------------------------+
+      | Playing With Fusion | Community | robotpy-playingwithfusion |
+      +---------------------+-----------+---------------------------+
+      | REVLib              | Community | robotpy-rev               |
+      +---------------------+-----------+---------------------------+
+      | Studica             | Community | robotpy-navx              |
+      +---------------------+-----------+---------------------------+
+      | URCL                | Community | robotpy-urcl              |
+      +---------------------+-----------+---------------------------+
 
-Removing a Library Dependency
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      When using ``requires``, you should specify a version by appending ``==<version>`` to the package name, e.g. ``robotpy-commands-v2==2024.0.0``. If you do not specify a version, the latest version will be installed.
 
-To remove a library dependency from a project, select :guilabel:`Manage Current Libraries` from the :guilabel:`Manage Vendor Libraries` menu, check the box for any libraries to uninstall and click :guilabel:`OK`. These libraries will be removed as dependencies from the project.
+      To check what version of packages are currently installed, run the command ``pip list``.
 
-Command-Line
-~~~~~~~~~~~~
+      Note that pinning versions may cause issues with incompatibilities between different components. Unpinning all versions, installing, then re-pinning to the latest set is a good practice when updating.
 
-Adding a vendor library dependency from the vendor URL can also be done through the command-line via a gradle task. Open a command-line instance at the project root, and enter ``gradlew vendordep --url=<url>`` where ``<url>`` is the vendor JSON URL. This will add the vendor library dependency JSON file to the ``vendordeps`` folder of the project. Vendor libraries can be updated the same way.
+      Pinning versions is a good practice to do after most robot code is written and validated, before and during a competition. However, outside of this window, remaining on the latest version of the components is recommended, as it will ensure you have the latest bug fixes and features.
 
-The ``vendordep`` gradle task can also fetch vendordep JSONs from the user ``wpilib`` folder. To do so, pass ``FRCLOCAL/Filename.json`` as the file URL. For example, ``gradlew vendordep --url=FRCLOCAL/WPILibNewCommands.json`` will fetch the JSON for the command-based framework.
+      See https://pip.pypa.io/en/stable/topics/repeatable-installs/ for more information on how to specify versions.
 
-Libraries
----------
+   .. tab-item:: Java/C++ (Legacy)
+      :sync: javacpplegacy
 
-WPILib Libraries
-^^^^^^^^^^^^^^^^
+      **VS Code**
 
-Command Library
-~~~~~~~~~~~~~~~
+      .. image:: images/3rd-party-libraries/adding-offline-library.png
+         :alt: Using the Manage Vendor Libraries option of the WPILib Command Palette.
 
-The WPILib :doc:`command library </docs/software/commandbased/index>` has been split into a vendor library. It is installed by the WPILib installer for offline installation. It may also be installed with the following online link:
+      To add a vendor library that has been installed by an offline installer, press :kbd:`Ctrl+Shift+P` and type WPILib or click on the WPILib icon in the top right to open the WPILib Command Palette and begin typing :guilabel:`Manage Vendor Libraries`, then select it from the menu. Select the option to :guilabel:`Install new libraries (offline)`.
 
-`New Command Library <https://raw.githubusercontent.com/wpilibsuite/allwpilib/main/wpilibNewCommands/WPILibNewCommands.json>`__
+      .. image:: images/3rd-party-libraries/library-installer-steptwo.png
+         :alt: Select the libraries to add.
 
-Romi Library
-~~~~~~~~~~~~
+      Select the desired libraries to add to the project by checking the box next to each, then click :guilabel:`OK`. The JSON file will be copied to the ``vendordeps`` folder in the project, adding the library as a dependency to the project.
 
-A Romi Library has been created to contain several helper classes that are used in the ``RomiReference`` example.
+      In order to install a vendor library in online mode, press :kbd:`Ctrl+Shift+P` and type WPILib or click on the WPILib icon in the top right to open the WPILib Command Palette and begin typing :guilabel:`Manage Vendor Libraries` and select it in the menu, and then click on :guilabel:`Install new libraries (online)` instead and copy + paste the vendor JSON URL.
 
-`Romi Vendordep <https://raw.githubusercontent.com/wpilibsuite/allwpilib/main/romiVendordep/RomiVendordep.json>`__.
+      **Checking for Updates (Offline)**
 
-XRP Library
-~~~~~~~~~~~
+      Since dependencies are version managed on a per-project basis, even when installed offline, you will need to :guilabel:`Manage Vendor Libraries` and select :guilabel:`Check for updates (offline)` for each project you wish to update.
 
-An XRP Library has been created to contain several helper classes that are used in the ``XRPReference`` example.
+      **Checking for Updates (Online)**
 
-`XRP Vendordep <https://raw.githubusercontent.com/wpilibsuite/allwpilib/main/xrpVendordep/XRPVendordep.json>`__.
+      Part of the JSON file that vendors may optionally populate is an online update location. If a library has an appropriate location specified, running :guilabel:`Check for updates (online)` will check if a newer version of the library is available from the remote location.
 
-Vendor Libraries
-^^^^^^^^^^^^^^^^
+      **Removing a Library Dependency**
 
-Click these links to visit the vendor site to see whether they offer online installers, offline installers, or both.  URLs below are to plug in to the :guilabel:`VS Code` -> :guilabel:`Install New Libraries (online)` feature.
+      To remove a library dependency from a project, select :guilabel:`Manage Current Libraries` from the :guilabel:`Manage Vendor Libraries` menu, check the box for any libraries to uninstall and click :guilabel:`OK`. These libraries will be removed as dependencies from the project.
 
-`CTRE Phoenix Framework <https://store.ctr-electronics.com/software/>`__ - Contains CANcoder, CANifier, CANdle, Pigeon IMU, Pigeon 2.0, Talon FX, Talon SRX, and Victor SPX Libraries and Phoenix Tuner program for configuring CTRE CAN devices
-   Phoenix (v6):        Not yet available for 2024
+   .. tab-item:: Command-Line
 
-   Phoenix (v5):        Not yet available for 2024
+      Adding a vendor library dependency from the vendor URL can also be done through the command-line via a gradle task. Open a command-line instance at the project root, and enter ``gradlew vendordep --url=<url>`` where ``<url>`` is the vendor JSON URL. This will add the vendor library dependency JSON file to the ``vendordeps`` folder of the project. Vendor libraries can be updated the same way.
 
-   .. note:: All users should use the Phoenix (v6) library.  If you also need need both Phoenix v5 support, additionally install the v5 vendor library.
+      The ``vendordep`` gradle task can also fetch vendordep JSONs from the user ``wpilib`` folder. To do so, pass ``FIRSTLOCAL/Filename.json`` as the file URL. For example, ``gradlew vendordep --url=FIRSTLOCAL/WPILibNewCommands.json`` will fetch the JSON for the command-based framework.
 
-`Redux Robotics ReduxLib <https://docs.reduxrobotics.com/reduxlib.html>`__ - Library for all Redux devices including the Canandcoder
-   Not yet available for 2024
+### How Does It Work?
 
-`Playing With Fusion Driver <https://www.playingwithfusion.com/docview.php?docid=1205>`__ - Library for all PWF devices including the Venom motor/controller
-   Not yet available for 2024
+.. tab-set::
 
-`Kauai Labs <https://pdocs.kauailabs.com/navx-mxp/software/roborio-libraries/>`__ - Libraries for NavX-MXP, NavX-Micro, and Sensor Fusion
-   Not yet available for 2024
+   .. tab-item:: Java/C++
+      :sync: javacpp
 
-`REV Robotics REVLib <https://docs.revrobotics.com/sparkmax/software-resources/spark-max-api-information>`__ - Library for all REV devices including SPARK MAX and Color Sensor V3
-   Not yet available for 2024
+      For Java and C++, a :term:`JSON` file describing the vendor library is installed on your system to the vendordeps folder in WPILib Installation folder (e.g., ``wpilib/YYYY/vendordeps``) where YYYY is the WPILib version year. On macOS this is  ``~/wpilib/YYYY``, where ``~`` indicates the users home directory. On Linux, this is ``XDG_DATA_HOME/wpilib/YYYY`` (likely ``~/.local/share/wpilib/YYYY``) On Windows, the installation folder is ``C:\Users\Public``. This is often done by an offline installer, but may need to be done manually if a ``.zip`` of the ``.json`` files is provided. This file is then used from VS Code to add to the library to each individual project. Vendor library information is managed on a per-project basis to make sure that a project is always pointing to a consistent version of a given vendor library. The libraries themselves are placed in the Maven cache at ``wpilib/YYYY/maven``. Vendors can place a local copy here with an offline installer (recommended) or require users to be connected to the internet for an initial build to fetch the library from a remote Maven location.
 
-Community Libraries
-^^^^^^^^^^^^^^^^^^^
+      This JSON file allows specification of complex libraries with multiple components (Java, C++, JNI, etc.) and also helps handle some complexities related to simulation.
 
-`PhotonVision <https://docs.photonvision.org/en/latest/docs/programming/photonlib/adding-vendordep.html>`_ - Library for PhotonVision CV software
-   Not yet available for 2024
+   .. tab-item:: Python
+      :sync: python
 
-`PathPlanner <https://github.com/mjansen4857/pathplanner/wiki>`_ - Library for PathPlanner
-   Not yet available for 2024
-
-
+      Third party libraries are packaged into Python wheels and uploaded to PyPI (if pure python) and/or WPILib's artifactory. Users can enable them as dependencies either by adding them by adding an explicit dependency for the PyPI package in ``requires``. The dependencies are downloaded when ``robotpy sync`` is executed, and installed on the roboRIO when ``robotpy deploy`` is executed.
