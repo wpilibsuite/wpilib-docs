@@ -1,0 +1,125 @@
+#link-bar a:visited {
+	color: #FFF;
+}
+
+.sd-card.sw-card-shared {
+	--docs-card-accent: #2e7d32;
+}
+
+.sd-card.sw-card-ftc {
+	--docs-card-accent: #e07000;
+}
+
+.sd-card.sw-card-frc {
+	--docs-card-accent: #009cd7;
+}
+
+.sd-card:is(.sw-card-shared, .sw-card-ftc, .sw-card-frc) {
+	border-color: color-mix(in srgb, var(--docs-card-accent) 35%, transparent);
+	background: color-mix(in srgb, var(--docs-card-accent) 9%, var(--color-background-primary));
+}
+
+.sd-card:is(.sw-card-shared, .sw-card-ftc, .sw-card-frc):is(:hover, :focus-within) {
+	border-color: var(--docs-card-accent);
+}
+
+#link-bar li {
+	float: left;
+	padding: 15px;
+}
+
+/*
+* Prevent video containers from spilling over the edges of the main panel.
+* This matches the built-in style for `.rst-content img`
+*/
+.rst-content video {
+	max-width: 100%;
+	height: auto;
+	cursor: pointer;
+}
+
+.document img {
+	margin-bottom: 10px;
+}
+
+.header-bar {
+	background: #003974;
+	min-height: 60px;
+}
+
+.link-bar-container {
+	margin-left: 320px;
+}
+
+
+
+/* ======================================== */
+/* ====== START SPHINX DETAILS CSS ======== */
+details {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: .5em;
+    margin: .5em .5em 2em .5em;
+}
+
+summary {
+    font-weight: bold;
+    margin: -.5em -.5em 0;
+    padding: .5em;
+}
+
+code.py-class, code.py-func, code.py-meth {
+    all: unset!important;
+}
+
+/* 
+* Top color bar 
+*/
+
+.page::before {
+    background: linear-gradient(90deg, #ed1c24 0%,#ed1c24 33%, #f57e25 33%, #f57e25 67%,#009cd7 67%);
+    width: 100%;
+    height: 10px;
+    position: absolute;
+    top:0;
+    content: '';
+}
+
+body {
+    margin-top: 10px;
+}
+
+/* 
+* Sidebar styling
+*/
+
+.version {
+	margin-top: -.4045em;
+    margin-bottom: .809em;
+    font-weight: 400;
+    color: hsla(0, 0%, 100%, .3);
+}
+
+.sidebar-brand {
+	align-items: center;
+}
+
+.sidebar-brand-text {
+	font-size: .85rem;
+}
+
+aside.sidebar-drawer  {
+    width: revert;
+}
+
+.present svg {
+    height: 1.25rem;
+    width: 1.25rem;
+}
+
+/*
+* Widen the article body
+*/
+.content {
+    width: 900px;
+}

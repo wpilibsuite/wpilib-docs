@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Heebo&display=swap");
+
+body,
+.content .toctree-wrapper > p.caption,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+legend {
+  font-family: "Heebo", sans-serif;
+}
+body {
+  direction: rtl;
+}
+.fa:before {
+  transform: scale(-1, 1);
+}
+.content div[class^="highlight"] pre,
+.highlighttable {
+  direction: ltr;
+}
+.content code,
+.content tt {
+  direction: ltr;
+  unicode-bidi: bidi-override;
+}
+
+.link-bar-container {
+  margin-right: 320px;
+  margin-left: 0;
+}
+#link-bar li,
+.wy-nav-top i {
+  float: right;
+}
+
+aside.sidebar-drawer,
+.rst-versions {
+  right: 0;
+  left: unset;
+}
+.wy-nav-content-wrap {
+  margin-right: 320px;
+  margin-left: 0;
+}
+@media screen and (max-width: 67em) {
+  aside.sidebar-drawer,
+  .rst-versions {
+    right: -300px;
+    transition: right .25s ease-in-out;
+  }
+
+  #__navigation:checked ~ .page aside.sidebar-drawer {
+    right: 0;
+    top: 0;
+    left: unset !important;
+  }
+  #__toc:checked~.page aside.toc-drawer {
+    left: 0;
+    right: unset;
+    top: 0;
+  }
+  aside.toc-drawer {
+    left: -300px;
+    transition: left .25s ease-in-out;
+  }
+}
+
+.content .admonition-title:before {
+  margin-right: 0;
+  margin-left: 4px;
+}
+
+.float-right,
+.related-pages a.next-page[href],
+div.content-icon-container {
+  float: left;
+  clear: left;
+}
+.float-left,
+.related-pages a.prev-page[href] {
+  float: right;
+  clear: right;
+}
+.related-pages a.prev-page svg.furo-related-icon {
+  transform: revert;
+}
+.related-pages a.next-page svg.furo-related-icon {
+  transform: scaleX(-1);
+}
+
+.rst-versions .rst-current-version {
+  text-align: left;
+}
+.rst-versions .rst-current-version .fa-book,
+.rst-versions .rst-current-version .icon-book {
+  float: right;
+}
+.rst-other-versions {
+  text-align: right;
+}
+
+/* Furo uses padding-left in the heading TOC by default, which looks wrong on RTL */
+.toc-tree > ul > li:first-child > ul {
+  padding-inline-start: 0;
+  padding-left: initial;
+}
+.toc-tree ul {
+  padding-inline-start: var(--toc-item-spacing-horizontal);
+  padding-left: initial;
+}
+.toc-title {
+  padding-inline-start: var(--toc-item-spacing-horizontal);
+  padding-left: initial;
+}
+.page::before {
+  transform: scaleX(-1);
+}

@@ -1,0 +1,97 @@
+name: Update RLIs - Comment Commands
+on:
+  issue_comment:
+    types: [ created ]
+
+jobs:
+  check-rli:
+    if: contains(github.event.comment.html_url, '/pull/')  && contains(github.event.comment.body, '\inspector')
+    runs-on: ubuntu-22.04
+    steps:
+      # ---- Find Trigger States ----
+      # Run Inspector autofix on everything
+      - name: Trigger-Check
+        uses: shanegenschaw/pull-request-comment-trigger@v3.0.0
+        id: trigger-check-all
+        with:
+          trigger: '\inspector check all'
+          prefix_only: true
+          reaction: rocket
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+
+      # Run Inspector autofix on everything
+      - name: Trigger-All
+        uses: shanegenschaw/pull-request-comment-trigger@v3.0.0
+        id: trigger-all
+        with:
+          trigger: '\inspector fix all'
+          prefix_only: true
+          reaction: rocket
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+
+      # If this is a comment without a command, exit.
+      - name: Quick exit
+        if: ${{ !steps.trigger-all.outputs.triggered && !steps.trigger-check-all.outputs.triggered }}
+        run: exit 1
+
+      - name: Checkout [Common]
+        uses: actions/checkout@v6
+
+      - name: Checkout PR [Comment]
+        run: gh pr checkout $NUMBER
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          NUMBER: ${{ github.event.issue.number }}
+
+      # Run Inspector
+      - name: Inspect RLIs
+        uses: docker://ghcr.io/starlight220/inspector:v1.12
+        id: inspector
+        with:
+          root: ${{ github.workspace }}
+        env:
+          INSPECTOR_CONFIG: '.github/workflows/inspector.json'
+
+      # If autofix is triggered, commit changes
+      - name: Commit
+        if: steps.trigger-all.outputs.triggered == 'true'
+        run: |
+          # Set credentials
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          # Commit
+          git commit -am "Autofix RLIs"
+          git push
+
+      # ---- Common - Post Report ----
+      - name: Find Comment
+        uses: peter-evans/find-comment@v3
+        id: fc
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: Inspector Report
+          direction: last
+
+      - name: Create comment
+        if: ${{ steps.fc.outputs.comment-id == 0 }}
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          body: ${{ env.REPORT }}
+          issue-number: ${{ github.event.issue.number }}
+
+      - name: Update comment
+        if: ${{ steps.fc.outputs.comment-id != 0 }}
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          body: |
+            ${{ env.REPORT }}
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          edit-mode: replace
+
+      # If there are any outdated or invalid RLIs, fail the status check
+      - name: Set exit code
+        if: ${{ steps.inspector.outputs.up-to-date == false }}
+        run: exit 1
