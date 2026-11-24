@@ -1,0 +1,13 @@
+# Quick Start for Returning Teams
+
+This section serves as a launching point for veteran teams that need to update to the current year's software.
+
+It is advised that **all** teams read through the :doc:`changelog </docs/yearly-overview/yearly-changelog>` and :doc:`known issues </docs/yearly-overview/known-issues>` for the season.
+
+1. :doc:`Install the FIRST Driver Station </docs/zero-to-robot/step-2/first-driver-station-installation>`
+2. :doc:`Install WPILib </docs/zero-to-robot/step-2/wpilib-setup>` (Java / C++ teams only)
+3. `Update third party libraries <https://docs.wpilib.org/en/stable/docs/software/vscode-overview/3rd-party-libraries.html>`__
+4. Reimage :doc:`Systemcore </docs/zero-to-robot/step-3/imaging-your-systemcore>`
+5. Update firmware on and :doc:`program VH-109 radios </docs/zero-to-robot/step-3/radio-programming>`
+6. `Import robot project <https://docs.wpilib.org/en/stable/docs/software/vscode-overview/importing-last-years-robot-code.html>`__ (Java / C++ teams only)
+7. Update software based on the changes described in the :doc:`changelog </docs/yearly-overview/yearly-changelog>`

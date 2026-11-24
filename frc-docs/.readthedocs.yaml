@@ -1,0 +1,39 @@
+version: 2
+
+sphinx:
+  builder: html
+  configuration: frc-docs/source/conf.py
+  fail_on_warning: true
+
+python:
+  install:
+    - method: uv
+      command: sync
+      path: frc-docs
+
+build:
+  os: ubuntu-24.04
+  tools:
+    python: "3.13"
+  apt_packages:
+    - librsvg2-bin
+  jobs:
+    post_checkout:
+      - git fetch --unshallow || true
+    build:
+      htmlzip:
+        - mkdir --parents "$READTHEDOCS_OUTPUT/htmlzip"
+        # Build into an intermediate directory named after the project for the ZIP root.
+        - >-
+          cd "$READTHEDOCS_REPOSITORY_PATH" &&
+          uv run --project frc-docs sphinx-build -T -W --keep-going
+          -b readthedocssinglehtmllocalmedia -d frc-docs/_build/doctrees
+          -D "language=$READTHEDOCS_LANGUAGE" frc-docs/source
+          "$READTHEDOCS_OUTPUT/$READTHEDOCS_PROJECT"
+        - >-
+          cd "$READTHEDOCS_OUTPUT" &&
+          zip --recurse-path --symlinks "htmlzip/$READTHEDOCS_PROJECT.zip" "$READTHEDOCS_PROJECT"
+
+formats:
+  - htmlzip
+  - pdf
