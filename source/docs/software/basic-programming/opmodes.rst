@@ -51,9 +51,9 @@ The following methods in ``OpModeRobot`` run no matter the selected opmode:
 
 - ``driverStationConnected()``: called once when the Driver Station first connects
 - ``robotPeriodic()``: called every loop iteration regardless of enabled state or selected opmode
-- ``disabledInit()`` / ``disabledPeriodic()`` / ``disabledExit()``: called when entering, during, and exiting the disabled state. The robot is disabled whenever the DS has not enabled it or communication is lost; while disabled, actuators (motors, solenoids, etc.) cannot be commanded.
+- ``disabledStart()`` / ``disabledPeriodic()`` / ``disabledEnd()``: called when entering, during, and exiting the disabled state. The robot is disabled whenever the DS has not enabled it or communication is lost; while disabled, actuators (motors, solenoids, etc.) cannot be commanded.
 - ``nonePeriodic()``: called periodically when no opmode is selected (including when the DS is disconnected)
-- ``simulationInit()`` / ``simulationPeriodic()``: called during construction and every loop if simulation is running
+- ``simulationStart()`` / ``simulationPeriodic()``: called once during robot initialization in simulation and every loop if simulation is running
 
 ## Creating OpModes
 
@@ -271,6 +271,6 @@ Callbacks are registered immediately at opmode construction and run even while t
 
 ## Migration from TimedRobot
 
-To switch to the OpMode framework from TimedRobot, replace per-mode methods in ``Robot`` (``autonomousInit``, ``teleopPeriodic``, ``utilityInit``, ``utilityPeriodic`` etc.) with separate ``@Autonomous``, ``@Teleop``, and ``@Utility`` opmode classes. Multiple opmodes of the same type replace ``SendableChooser``.
+To switch to the OpMode framework from TimedRobot, replace per-mode methods in ``Robot`` (``autonomousStart``, ``teleopPeriodic``, ``utilityStart``, ``utilityPeriodic`` etc.) with separate ``@Autonomous``, ``@Teleop``, and ``@Utility`` opmode classes. Multiple opmodes of the same type replace ``SendableChooser``.
 
 .. note:: ``TimedRobot`` remains fully supported. Migration is not required.

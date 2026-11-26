@@ -434,6 +434,8 @@ Our code needs to reference the components of WPILib that are used. In C++ this 
                :lines: 13-30
                :lineno-start: 13
 
+.. todo:: Update python RLI above so it doesn't use robotInit
+
 The sample robot in our examples will have an Xbox Controller (or other Gamepad) on USB port 0 for arcade drive and two motors on PWM ports 0 and 1 (Vendor examples use CAN with IDs 1 and 2). Here we create objects of type ``DifferentialDrive`` (robotDrive), ``Gamepad`` (controller) and ``Timer`` (timer). This section of the code does three things:
 
 1. Defines the variables as members of our Robot class.
@@ -490,7 +492,7 @@ The ``Robot`` constructor for our sample program inverts the right side of the d
       :lines: 32-46
       :lineno-match:
 
-The ``AutonomousInit`` method is run once each time the robot transitions to autonomous from another mode. In this program, we restart the ``Timer`` in this method.
+The ``AutonomousStart`` method is run once each time the robot transitions to autonomous from another mode. In this program, we restart the ``Timer`` in this method.
 
 ``AutonomousPeriodic`` is run once every period while the robot is in autonomous mode. In the ``TimedRobot`` class the period is a fixed time, which defaults to 20ms. In this example, the periodic code checks if the timer is less than 2 seconds and if so, drives forward at half speed using the ``ArcadeDrive`` method of the ``DifferentialDrive`` class. If more than 2 seconds has elapsed, the code stops the robot drive.
 
@@ -513,7 +515,7 @@ The ``AutonomousInit`` method is run once each time the robot transitions to aut
       :lines: 48-57
       :lineno-match:
 
-Like in Autonomous, the Teleop mode has a ``TeleopInit`` and ``TeleopPeriodic`` function. In this example we don't have anything to do in ``TeleopInit``, it is provided for illustration purposes only. In ``TeleopPeriodic``, the code uses the ``ArcadeDrive`` method to map the Y-axis of the left thumbstick of the ``Gamepad`` to forward/back motion of the drive motors and the X-axis to turning motion.
+Like in Autonomous, the Teleop mode has a ``TeleopStart`` and ``TeleopPeriodic`` function. In this example we don't have anything to do in ``TeleopStart``, it is provided for illustration purposes only. In ``TeleopPeriodic``, the code uses the ``ArcadeDrive`` method to map the Y-axis of the left thumbstick of the ``Gamepad`` to forward/back motion of the drive motors and the X-axis to turning motion.
 
 ## Utility Mode
 
@@ -534,7 +536,7 @@ Like in Autonomous, the Teleop mode has a ``TeleopInit`` and ``TeleopPeriodic`` 
       :lines: 59-65
       :lineno-match:
 
-Utility Mode is used for testing robot functionality or running other code that shouldn't be run in a match. Similar to ``TeleopInit``, the ``UtilityInit`` and ``UtilityPeriodic`` methods are provided here for illustrative purposes only.
+Utility Mode is used for testing robot functionality or running other code that shouldn't be run in a match. Similar to ``TeleopStart``, the ``UtilityStart`` and ``UtilityPeriodic`` methods are provided here for illustrative purposes only.
 
 ## Deploying the Project to a Robot
 

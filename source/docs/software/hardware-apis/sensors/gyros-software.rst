@@ -239,7 +239,7 @@ The following example shows how to stabilize heading using a simple P loop close
     }
 
     @Override
-    public void autonomousInit() {
+    public void autonomousStart() {
         // Set setpoint to current heading at start of auto
         heading = gyro.getAngle();
     }
@@ -269,7 +269,7 @@ The following example shows how to stabilize heading using a simple P loop close
     Robot::Robot() {
       rightMotors.SetInverted(true);
     }
-    void Robot::AutonomousInit() {
+    void Robot::AutonomousStart() {
         // Set setpoint to current heading at start of auto
         heading = gyro.GetAngle();
     }
@@ -301,7 +301,7 @@ The following example shows how to stabilize heading using a simple P loop close
         right_leader.set_inverted(True)
 
 
-    def autonomous_init(self):
+    def autonomous_start(self):
         # Set setpoint to current heading at start of auto
         self.heading = self.gyro.get_angle()
 

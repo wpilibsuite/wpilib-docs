@@ -11,7 +11,7 @@ Utility mode on the robot can be enabled from the Driver Station just like auton
 
 ## Adding Utility mode code to your robot code
 
-When in utility mode, the ``utilityInit`` method is run once, and the ``utilityPeriodic`` method is run once per tick, in addition to ``robotPeriodic``, similar to teleop and autonomous control modes.
+When in utility mode, the ``utilityStart`` method is run once, and the ``utilityPeriodic`` method is run once per tick, in addition to ``robotPeriodic``, similar to teleop and autonomous control modes.
 
 Adding utility mode software can be as painless as calling your already written Teleop methods from Utility. Or you can write special code to try out a new feature that is only run in Utility mode, before integrating it into your teleop or autonomous code. You could even write code to move all motors and check all sensors to help the pit crew!
 

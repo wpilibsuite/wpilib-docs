@@ -8,6 +8,8 @@ When an unhandled exception occurs, it means that your code has one or more bugs
 
 This article will explore some of the tools and techniques involved in finding and fixing those bugs.
 
+.. todo:: Update the stack traces to reflect updates from new versions and no robotInit
+
 ## What's a "Stack Trace"?
 
 The ``unexpected error has occurred`` message is a signal that a *stack trace* has been printed out.
