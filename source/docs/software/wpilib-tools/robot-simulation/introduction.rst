@@ -45,7 +45,7 @@ Often a team may want to test their code without having an actual robot availabl
 
       ```console
       ********** Robot program starting **********
-      Default disabledInit() method... Override me!
+      Default disabledStart() method... Override me!
       Default disabledPeriodic() method... Override me!
       Default robotPeriodic() method... Override me!
       ```

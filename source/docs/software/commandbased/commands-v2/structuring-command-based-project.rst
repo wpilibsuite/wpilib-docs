@@ -66,7 +66,7 @@ The inclusion of the ``CommandScheduler.getInstance().run()`` call in the ``robo
          :lines: 32-43
          :lineno-match:
 
-The ``autonomousInit()`` method schedules an autonomous command returned by the ``RobotContainer`` instance. The logic for selecting which autonomous command to run can be handled inside of ``RobotContainer``.
+The ``autonomousStart()`` method schedules an autonomous command returned by the ``RobotContainer`` instance. The logic for selecting which autonomous command to run can be handled inside of ``RobotContainer``.
 
 .. tab-set::
 
@@ -86,7 +86,7 @@ The ``autonomousInit()`` method schedules an autonomous command returned by the 
          :lines: 47-55
          :lineno-match:
 
-The ``teleopInit()`` method cancels any still-running autonomous commands. This is generally good practice.
+The ``teleopStart()`` method cancels any still-running autonomous commands. This is generally good practice.
 
 Advanced users are free to add additional code to the various init and periodic methods as they see fit; however, it should be noted that including large amounts of imperative robot code in ``Robot.java`` is contrary to the declarative design philosophy of the command-based paradigm, and can result in confusingly-structured/disorganized code.
 

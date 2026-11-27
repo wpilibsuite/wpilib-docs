@@ -54,6 +54,8 @@ Visualizing your trajectory is a great debugging step for verifying that your tr
       :language: python
       :lines: 19,26-39,46-53
 
+.. todo:: The snippets above are pinned to older examples. ``robotInit()`` / ``robotInit`` was removed in 2027. Use the ``Robot()`` constructor (``__init__`` in Python) for one-time initialization. ``AutonomousInit()`` hook was renamed to ``AutonomousStart()`` in 2027;
+
 ## Viewing Trajectories with Glass
 
 The sent trajectory can be viewed with :ref:`Glass <docs/software/dashboards/glass/index:Glass>` through the dropdown :guilabel:`NetworkTables` -> :guilabel:`SmartDashboard` -> :guilabel:`Field2d`.

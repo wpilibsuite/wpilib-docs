@@ -42,7 +42,7 @@ Source:
 [Java](https://github.com/wpilibsuite/allwpilib/blob/v2027.0.0-alpha-8/wpilibj/src/main/java/org/wpilib/framework/TimedRobot.java)
 - [C++](https://github.com/wpilibsuite/allwpilib/blob/v2027.0.0-alpha-8/wpilibc/src/main/native/cpp/framework/TimedRobot.cpp)
 
-The :code:`TimedRobot` class is an alternative base class that structures robot code around a single :code:`Robot` class with :code:`init()`, :code:`periodic()`, and :code:`exit()` methods for each mode (autonomous, teleoperated, utility), which are called by WPILib during the corresponding robot states. During these calls, your code typically polls each input device and acts according to the data it receives.  For instance, you would typically determine the position of the joystick and state of the joystick buttons on each call and act accordingly.  ``TimedRobot`` uses ``Selectable`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.tunable/org/wpilib/tunable/Selectable.html)/ [C++](file:///C:/Users/Public/wpilib/2027_alpha7/documentation/cpp/classwpi_1_1tunables_1_1_selectable.html)) for autonomous routine selection via the dashboard.
+The :code:`TimedRobot` class is an alternative base class that structures robot code around a single :code:`Robot` class with :code:`start()`, :code:`periodic()`, and :code:`end()` methods for each mode (autonomous, teleoperated, utility), which are called by WPILib during the corresponding robot states. During these calls, your code typically polls each input device and acts according to the data it receives.  For instance, you would typically determine the position of the joystick and state of the joystick buttons on each call and act accordingly.  ``TimedRobot`` uses ``Selectable`` ([Java](https://github.wpilib.org/allwpilib/docs/beta/java/wpilib.tunable/org/wpilib/tunable/Selectable.html)/ [C++](file:///C:/Users/Public/wpilib/2027_alpha7/documentation/cpp/classwpi_1_1tunables_1_1_selectable.html)) for autonomous routine selection via the dashboard.
 
 .. note:: A `TimedRobot Skeleton` template is available that removes some informative comments and the autonomous example. You can use this if you're already familiar with `TimedRobot`. The example shown below is of `TimedRobot Skeleton`.
 
@@ -86,7 +86,7 @@ Source:
 
 The :code:`TimesliceRobot` class extends the :code:`TimedRobot` framework to provide more control over the scheduling of periodic functions. It allows users to allocate specific time slices to different robot operations, running them sequentially within a defined period (typically shorter than TimedRobot's default 20ms). This class is recommended for users who need more precise timing control and consistent starting times for their robot's periodic functions.
 
-:code:`TimesliceRobot` provides the same :code:`init()`, :code:`periodic()`, and :code:`exit()` methods as :code:`TimedRobot`, but adds the ability to schedule additional periodic functions with custom allocations. This allows for more efficient use of processing time and can lead to improved performance which can make odometry and estimators more accurate and controller outputs change more consistently.
+:code:`TimesliceRobot` provides the same :code:`start()`, :code:`periodic()`, and :code:`end()` methods as :code:`TimedRobot`, but adds the ability to schedule additional periodic functions with custom allocations. This allows for more efficient use of processing time and can lead to improved performance which can make odometry and estimators more accurate and controller outputs change more consistently.
 
 
 ### RobotBase
