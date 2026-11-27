@@ -120,7 +120,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 7: Multiple periodic callbacks in the same scope
 - 2027 Alpha 7: Fix Untils not Including "Until Condition"
 - 2027 Alpha 7: Allow fork/await failures to be handled by user code
-- 2927 Alpha 8: Add robot mode scopes
+- 2027 Alpha 8: Add robot mode scopes
 - 2027 Alpha 8: Do not track command-scoped bindings for cleanup
 - 2027 Alpha 8: Prevent new states from being added to state machines after no-arg ``switchFromAny()`` calls
 - 2027 Alpha 8: Prevent unsafe commands from running during disabled
