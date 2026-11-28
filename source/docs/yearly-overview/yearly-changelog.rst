@@ -203,7 +203,7 @@ In order to more closly track C++ compiler feature support, the supported Linux 
 - 2027 Alpha 5: Remove ``Mecanum``/``SwerveControllerCommand``
 - 2027 Alpha 5: Added structs for ``TrapezoidProfile.State`` and ``ExponentialProfile.State``
 - 2027 Alpha 5: Replace ``Pose2``/``3d.exp(Twist2/3d)`` with ``Pose2``/``3d.plus(Twist2/3d.exp())`` to match math notation better
-- 2027 Alpha 5:  Refactor ``MathUtil.interpolate()`` and ``MathUtil.inverseInterpolate()`` to handle extrapolation
+- 2027 Alpha 5: Rename ``MathUtil.interpolate()`` to ``lerp()``and ``MathUtil.inverseInterpolate()`` to ``inverseLerp()`` and refactor to handle extrapolation
 - 2027 Alpha 5: Fix units overload resolution
 - 2027 Alpha 5: Add 2D variants of ``MathUtil.applyDeadband`` and ``MathUtil.copySignPow`` for circular joystick inputs
 - 2027 Alpha 5: Rename 1D ``copySignPow`` to match 2D ``copyDirectionPow``
